@@ -68,9 +68,53 @@ public class UsuarioDao {
         return activo;
     }
 
+  public List<UsuarioVo> obtenerUsuarios() throws SQLException {
+        List<UsuarioVo> usuarios = new ArrayList<>();
+        sql = "select concat(nombre,' ',apellido) as  nombre from usuarios ;";
+        try (Connection conexion = Conexion.conectar();
+             PreparedStatement ps = conexion.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                UsuarioVo usuario = new UsuarioVo();
+                usuario.setNombre(rs.getString("nombre"));
+                System.out.println(rs.getString("nombre"));
+                usuarios.add(usuario);
+            }
+            System.out.println("Consulta exitosa");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada: " + e.getMessage());
+        }
+        return usuarios;
+    }
+
+
+
+
     public List<UsuarioVo> listarUsuarios() throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
         sql = "SELECT * FROM usuarios ORDER BY nombre ASC";
+        try (Connection conexion = Conexion.conectar();
+             PreparedStatement ps = conexion.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                UsuarioVo usuario = new UsuarioVo();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setActivo(rs.getBoolean("activo"));
+                usuarios.add(usuario);
+            }
+            System.out.println("Consulta exitosa");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada: " + e.getMessage());
+        }
+        return usuarios;
+    }
+
+     public List<UsuarioVo> listarCuentadantes() throws SQLException {
+        List<UsuarioVo> usuarios = new ArrayList<>();
+        sql = "SELECT * FROM usuarios   where  ORDER BY nombre ASC";
         try (Connection conexion = Conexion.conectar();
              PreparedStatement ps = conexion.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

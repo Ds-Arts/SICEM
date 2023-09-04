@@ -4,6 +4,8 @@
 <%@ page import="model.ElementosVo" %>
 <%@ page import="model.CategoriaDao" %>
 <%@ page import="model.CategoriaVo" %>
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="model.UsuarioDao" %>
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -62,7 +64,7 @@
                 CategoriaDao cd = new CategoriaDao();
                 List<CategoriaVo> categorias=cd.obtenerCategorias();
                      for (CategoriaVo categoria : categorias ) { %>                   
-                    <option value=><%= categoria.getNombreCategoria() %>   </option>   
+                    <option value=> <%= categoria.getNombreCategoria() %> </option>   
                 <% } %>
                 </select>
                 <label>N° Aula:</label>
@@ -70,6 +72,16 @@
                 <label>Descripcion:</label>
                 <input type="text" name="Descripcion" id="Descripcion" required>
                 <label>Estado:</label>
+                <select class="desp" name="Cuentadante" id="Cuentadante" required>
+                    <option disabled selected value="">Seleccionar una Cuentadante </option>
+                <!--   iteracion para las categorias  : se hizo con un for each importando la lista desde el modelo dao de categorias -->
+                <%   
+                UsuarioDao usu = new UsuarioDao();
+                List<UsuarioVo> usuarios=usu.obtenerUsuarios();
+                     for (UsuarioVo usuario : usuarios ) { %>                   
+                    <option value= "<%=usuario.getNombre()%>"  ><%= usuario.getNombre() %></option>   
+                <% } %>
+                </select>
                 <select class="desp" name="EstadoElemento" id="EstadoElemento" required>
                     <option disabled selected value="">Seleccionar el Estado del elemento </option>
                     <option>Activo</option>
