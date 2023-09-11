@@ -19,8 +19,10 @@
                     Préstamos
                 </div>
                 <form  action="prestamo" method="post">
+                    <label>id Propietario</label>
+                    <input class="formulario" type="text" id="usuario_fk" name="usuario_fk"   place holder=<%=request.getAttribute("id_cuentadante") %> value=<%=request.getAttribute("id_cuentadante")%> >
                     <label>Numero de placa</label>
-                    <input class="formulario" type="text" id="num_placa_fk" name="num_placa_fk"   placeholder=<%=request.getAttribute("n_placa_prestamo")%> value=<%=request.getAttribute("n_placa_prestamo")%> > 
+                    <input class="formulario" type="text" id="elemento_fk" name="elemento_fk"   placeholder=<%=request.getAttribute("n_placa_prestamo")%> value=<%=request.getAttribute("n_placa_prestamo")%> > 
                     <label>Fecha de inicio</label>
                     <input type="date" id="fecha_inicio" name="fecha_inicio" min="1904-01-01" max="6000-12-31" required>
                     <label>Fecha de fin</label>

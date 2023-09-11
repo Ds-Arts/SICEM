@@ -55,6 +55,7 @@
                         <th>N° aula</th>
                         <th>Descripción</th>
                         <th>Estado</th>
+                        <th>Propietario</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -86,8 +87,10 @@
                         <td><%= elemento.getNumeroAula()%></td>
                         <td><%= elemento.getDescripcion()%></td>
                         <td><%= elemento.getEstado()%></td> 
+                        <td><%= elemento.getUsu()%></td> 
                         <td>  
-                             <form action="elemento" method="post">
+                             <form action="elemento" method="post"> 
+                              <input type="number" name="id_cuentadante"  value=  <%=elemento.getUsu()%> hidden>
                              <input type="number" name="n_placa_prestamo"  value= <%= elemento.getNumeroPlaca()%>  hidden>
                              <button type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
                              </form>

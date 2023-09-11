@@ -72,22 +72,22 @@
                 <label>Descripcion:</label>
                 <input type="text" name="Descripcion" id="Descripcion" required>
                 <label>Estado:</label>
-                <select class="desp" name="Cuentadante" id="Cuentadante" required>
-                    <option disabled selected value="">Seleccionar una Cuentadante </option>
-                <!--   iteracion para las categorias  : se hizo con un for each importando la lista desde el modelo dao de categorias -->
-                <%
-                    UsuarioDao usu = new UsuarioDao();
-                    List<UsuarioVo> usuarios = usu.listarUsuarios();
-                    for (UsuarioVo usuario : usuarios) { %>                   
-                        <option value="<%= usuario.getNombre() %>"><%= usuario.getNombre() %></option>   
-                <% } %>
-
-                </select>
                 <select class="desp" name="EstadoElemento" id="EstadoElemento" required>
                     <option disabled selected value="">Seleccionar el Estado del elemento </option>
                     <option>Activo</option>
                     <option>Inactivo</option>
                 </select>
+                <label>Cuentadante:</label>
+                <select class="desp" name="usuario_fk" id="usuario_fk" required>
+                    <option disabled selected value="">Seleccionar una Cuentadante </option>    <!--   iteracion para las categorias  : se hizo con un for each importando la lista desde el modelo dao de categorias -->
+                <%
+                    UsuarioDao usu = new UsuarioDao();
+                    List<UsuarioVo> usuarios = usu.listarUsuarios();
+                    for (UsuarioVo usuario : usuarios) { %>                   
+                        <option value="<%= usuario.getId() %>"><%= usuario.getId() %></option>   
+                <% } %>
+                </select>
+
                 <button type="submit" name="accion" value="add">REGISTRO</button>
             </form>
             <div class="btngrupo">
@@ -104,7 +104,7 @@
                         <button>Consultar usuarios registrados en el sistema</button>
                     </a>
                     <button>Consultar prestamos</button>
-                                  <!--   boton para redireccionar a el servlet elemento para el formulario de creacion de  categoria en el servlet  elementos   -->
+                                <!--   boton para redireccionar a el servlet elemento para el formulario de creacion de  categoria en el servlet  elementos   -->
                     <a href="elemento?accion=c_categoria">    
                         <button> Crear nueva categoria </button>
                     </a>

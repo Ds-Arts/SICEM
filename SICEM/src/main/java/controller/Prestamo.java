@@ -30,7 +30,10 @@ public class Prestamo extends HttpServlet {
 
     private void prestamo(HttpServletRequest req, HttpServletResponse resp) {
         if (req.getParameter("num_placa_fk") != null) {
-            e.setNumPlacaFk(Integer.parseInt(req.getParameter("num_placa_fk")));
+            e.setUaurioFk(Integer.parseInt(req.getParameter("usuario_fk")));
+        }
+        if (req.getParameter("num_placa_fk") != null) {
+            e.setElementoFk(Integer.parseInt(req.getParameter("elemento_fk")));
         }
         if (req.getParameter("fecha_inicio") != null) {
             // Convertir la fecha ingreso del formulario a LocalDate

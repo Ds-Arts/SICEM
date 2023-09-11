@@ -14,13 +14,14 @@ public class ElementosVo {
     private String categoria;
     private int numeroAula;
     private String descripcion;
+    private int usu;
+
 
     public ElementosVo() {
     }
-
+    
     public ElementosVo(int id, String nombre, int numeroPlaca, int cantidad, int costo, String tipo,
-            LocalDate fechaIngreso,
-            String estado, String categoria, int numeroAula, String descripcion) {
+            LocalDate fechaIngreso, String estado, String categoria, int numeroAula, String descripcion, int usu) {
         Id = id;
         this.nombre = nombre;
         this.numeroPlaca = numeroPlaca;
@@ -29,10 +30,20 @@ public class ElementosVo {
         this.tipo = tipo;
         this.fechaIngreso = fechaIngreso;
         this.estado = estado;
-        this.categoria = categoria; // Corrección: se asigna a Categoria con "C" mayúscula
+        this.categoria = categoria;
         this.numeroAula = numeroAula;
         this.descripcion = descripcion;
+        this.usu = usu;
     }
+
+    public int getUsu() {
+        return usu;
+    }
+
+    public void setUsu(int usu) {
+        this.usu = usu;
+    }
+
 
     public int getId() {
         return Id;

@@ -70,7 +70,9 @@ public class Elementos extends HttpServlet {
                 break;
 
             case "data_prestamo":
-                String np = req.getParameter("n_placa_prestamo");
+                String np = req.getParameter("n_placa_prestamo"); 
+                String nc = req.getParameter("id_cuentadante");
+                req.setAttribute("id_cuentadante", nc);
                 req.setAttribute("n_placa_prestamo", np);
                 System.out.println(req.getParameter("n_placa_prestamo"));
                 req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);
@@ -94,7 +96,7 @@ public class Elementos extends HttpServlet {
         try {
             List<ElementosVo> elementos = l.buscarPorNumeroPlaca(placa);
             req.setAttribute("elementos", elementos);
-            req.getRequestDispatcher("views/Listar.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);
         } catch (SQLException e) {
             System.out.println("Error al buscar elementos por número de placa: " + e.getMessage());
         }
@@ -161,7 +163,9 @@ public class Elementos extends HttpServlet {
         if (req.getParameter("EstadoElemento") != null) {
             e.setEstado(req.getParameter("EstadoElemento"));
         }
-
+        if (req.getParameter("usuario_fk") != null) {
+            e.setUsu(Integer.parseInt(req.getParameter("usuario_fk")));
+        }
         try {
             int result = l.registrar(e);
             if (result == 1) {
@@ -170,7 +174,7 @@ public class Elementos extends HttpServlet {
             } else if (result == 0) {
                 System.out.println("El número de placa ya fue registrado");
                 req.setAttribute("error", "El número de placa ya fue registrado");
-                req.getRequestDispatcher("views/registrar.jsp").forward(req, resp);
+                req.getRequestDispatcher("views/registrarElementos.jsp").forward(req, resp);
             }
         } catch (SQLException ex) {
             System.out.println("Error en la inserción del registro " + ex.getMessage());

@@ -26,7 +26,7 @@ public class ElementosDao {
 
         // Si no existe un elemento con el mismo número de placa, proceder con el
         // registro
-        sql = "INSERT INTO Elementos(NombreElemento,N_placa,cantidad,Costo,TipoElemento,FechaIngresoElemento,categoriaElemento,NumAula,Descripcion,EstadoElemento) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        sql = "INSERT INTO Elementos(NombreElemento,N_placa,cantidad,Costo,TipoElemento,FechaIngresoElemento,categoriaElemento,NumAula,Descripcion,EstadoElemento,usuario_fk) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = Conexion.conectar(); // abrir conexión
             ps = con.prepareStatement(sql); // preparar sentencia
@@ -40,6 +40,7 @@ public class ElementosDao {
             ps.setInt(8, elementos.getNumeroAula());
             ps.setString(9, elementos.getDescripcion());
             ps.setString(10, elementos.getEstado());
+            ps.setInt(11, elementos.getUsu());
             System.out.println(ps);
             r = ps.executeUpdate(); // Ejecutar sentencia
             ps.close(); // cerrar sentencia
@@ -96,6 +97,7 @@ public class ElementosDao {
                 l.setNumeroAula(rs.getInt("NumAula"));
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
+                l.setUsu(rs.getInt("usuario_fk"));
 
                 System.out.println(l.getNombre());
                 System.out.println(l.getNumeroPlaca());
@@ -133,6 +135,7 @@ public class ElementosDao {
                 l.setNumeroAula(rs.getInt("NumAula"));
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
+                l.setUsu(rs.getInt("usuario_fk"));
 
                 elementos.add(l);
             }
@@ -168,6 +171,7 @@ public class ElementosDao {
                 l.setNumeroAula(rs.getInt("NumAula"));
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
+                l.setUsu(rs.getInt("usuario_fk"));
 
                 elementos.add(l);
             }

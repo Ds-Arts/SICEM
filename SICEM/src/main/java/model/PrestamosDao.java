@@ -18,13 +18,14 @@ public class PrestamosDao {
 
         // Si no existe un elemento con el mismo número de placa, proceder con el
         // registro
-        sql = "INSERT INTO Prestamos(num_placa_fk,fecha_inicio,fecha_fin) VALUES(?,?,?)";
+        sql = "INSERT INTO Prestamos(elemento_fk,usuario_fk,fecha_inicio,fecha_fin) VALUES(?.?,?,?)";
         try {
             con = Conexion.conectar(); // abrir conexión
             ps = con.prepareStatement(sql); // preparar sentencia
-            ps.setInt(1, prestamo.getNumPlacaFk());
-            ps.setDate(2, Date.valueOf(prestamo.getFecha_inicio()));
-            ps.setDate(3, Date.valueOf(prestamo.getFecha_fin()));
+            ps.setInt(1, prestamo.getUaurioFk());
+            ps.setInt(2, prestamo.getElementoFk());
+            ps.setDate(3, Date.valueOf(prestamo.getFecha_inicio()));
+            ps.setDate(4, Date.valueOf(prestamo.getFecha_fin()));
 
             System.out.println(ps);
             r = ps.executeUpdate(); // Ejecutar sentencia
