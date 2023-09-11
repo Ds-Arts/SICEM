@@ -1,0 +1,25 @@
+    /* INDEX */
+    .buttom__default {
+        min-width: 6em;
+        height: 40px;
+
+        font-weight: 400;
+
+        border: 1px solid rgb(212, 212, 212);
+
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 40px -7px;
+
+    }
+
+    .buttom__default:hover {
+        height: 40px;
+
+        text-align: center;
+        font-weight: 600;
+
+        border-bottom: 3px solid #06a11ba1;
+
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 40px -7px;
+    }
+    

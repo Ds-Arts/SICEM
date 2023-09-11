@@ -1,0 +1,14 @@
+controller\LoginServlet.class
+model\PrestamosVo.class
+model\UsuarioDao.class
+model\CategoriaVo.class
+controller\Usuario.class
+model\CategoriaDao.class
+model\ElementosDao.class
+model\UsuarioVo.class
+controller\Categoria.class
+model\PrestamosDao.class
+controller\Elementos.class
+model\Conexion.class
+controller\Prestamo.class
+model\ElementosVo.class
