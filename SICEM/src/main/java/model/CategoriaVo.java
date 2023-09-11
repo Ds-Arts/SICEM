@@ -1,5 +1,6 @@
-    package model;    
-    public class CategoriaVo {
+package model;
+
+public class CategoriaVo {
     private int idCategoria;
     private String nombreCategoria;
     private String descripcionCategoria;

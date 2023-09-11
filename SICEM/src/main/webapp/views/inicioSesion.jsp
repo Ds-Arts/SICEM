@@ -35,7 +35,7 @@
     <header class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container mx-2" style="width: 85px; height: 85px;">
         <a class="navbar-brand" href="#">
-          <img src="assets/IMG/IDENTIDAD/Logo_Sena.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top"> 
+          <img src="assets/IMG/Logo_Sena.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top"> 
         </a>
       </div>
       <div class="container-fluid">
@@ -74,16 +74,16 @@
         <aside class="col-6 px-5 py-5"><!-- FORMULARIO / LOGIN -->
           <h2>Iniciar sesión</h2>
           <p>Siempre es un placer verte de nuevo.</p>
-          <form class="my-5" action="" method="">
+          <form class="my-5" action="Usuario" method="POST">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">@</span>
-              <input type="text" class="form-control" placeholder="Nombre de usuario" aria-label="Username" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" id="numIdentificacion" name="numIdentificacion" placeholder="Numero de identificacion" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">*</span>
-              <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+              <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
             </div>
-            <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit">Ingresar</button>
+            <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
             <p class="my-3">¿Aún no tienes una cuenta? <a style="color: rgb(59, 169, 0);" href="#">Click aquí</a>.</p>
           </form>
         </aside><!-- END FORMULARIO / LOGIN -->

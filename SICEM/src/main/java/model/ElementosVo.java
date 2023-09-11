@@ -1,156 +1,125 @@
 package model;
+
 import java.time.LocalDate;
 
-public class ElementosVo{
-   private int Id;
-   private String nombre;
-   private int numeroPlaca;
-   private int cantidad;
-   private int costo;
-   private String tipo;
-   private LocalDate fechaIngreso;
-   private String estado;
-   private String categoria;
-   private int numeroAula;
-   private String descripcion;
+public class ElementosVo {
+    private int Id;
+    private String nombre;
+    private int numeroPlaca;
+    private int cantidad;
+    private int costo;
+    private String tipo;
+    private LocalDate fechaIngreso;
+    private String estado;
+    private String categoria;
+    private int numeroAula;
+    private String descripcion;
 
+    public ElementosVo() {
+    }
 
-   public ElementosVo() {
-}
+    public ElementosVo(int id, String nombre, int numeroPlaca, int cantidad, int costo, String tipo,
+            LocalDate fechaIngreso,
+            String estado, String categoria, int numeroAula, String descripcion) {
+        Id = id;
+        this.nombre = nombre;
+        this.numeroPlaca = numeroPlaca;
+        this.cantidad = cantidad;
+        this.costo = costo;
+        this.tipo = tipo;
+        this.fechaIngreso = fechaIngreso;
+        this.estado = estado;
+        this.categoria = categoria; // Corrección: se asigna a Categoria con "C" mayúscula
+        this.numeroAula = numeroAula;
+        this.descripcion = descripcion;
+    }
 
+    public int getId() {
+        return Id;
+    }
 
-public ElementosVo(int id, String nombre, int numeroPlaca, int cantidad, int costo, String tipo, LocalDate fechaIngreso,
-        String estado, String categoria, int numeroAula, String descripcion) {
-    Id = id;
-    this.nombre = nombre;
-    this.numeroPlaca = numeroPlaca;
-    this.cantidad = cantidad;
-    this.costo = costo;
-    this.tipo = tipo;
-    this.fechaIngreso = fechaIngreso;
-    this.estado = estado;
-    this.categoria = categoria; // Corrección: se asigna a Categoria con "C" mayúscula
-    this.numeroAula = numeroAula;
-    this.descripcion = descripcion;
-}
+    public void setId(int id) {
+        Id = id;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
 
-public int getId() {
-    return Id;
-}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public int getNumeroPlaca() {
+        return numeroPlaca;
+    }
 
-public void setId(int id) {
-    Id = id;
-}
+    public void setNumeroPlaca(int numeroPlaca) {
+        this.numeroPlaca = numeroPlaca;
+    }
 
+    public int getCantidad() {
+        return cantidad;
+    }
 
-public String getNombre() {
-    return nombre;
-}
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
+    public int getCosto() {
+        return costo;
+    }
 
-public void setNombre(String nombre) {
-    this.nombre = nombre;
-}
+    public void setCosto(int costo) {
+        this.costo = costo;
+    }
 
+    public String getTipo() {
+        return tipo;
+    }
 
-public int getNumeroPlaca() {
-    return numeroPlaca;
-}
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
 
-public void setNumeroPlaca(int numeroPlaca) {
-    this.numeroPlaca = numeroPlaca;
-}
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
 
+    public String getEstado() {
+        return estado;
+    }
 
-public int getCantidad() {
-    return cantidad;
-}
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
+    public String getCategoria() {
+        return categoria;
+    }
 
-public void setCantidad(int cantidad) {
-    this.cantidad = cantidad;
-}
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
+    public int getNumeroAula() {
+        return numeroAula;
+    }
 
-public int getCosto() {
-    return costo;
-}
+    public void setNumeroAula(int numeroAula) {
+        this.numeroAula = numeroAula;
+    }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-public void setCosto(int costo) {
-    this.costo = costo;
-}
-
-
-public String getTipo() {
-    return tipo;
-}
-
-
-public void setTipo(String tipo) {
-    this.tipo = tipo;
-}
-
-
-public LocalDate getFechaIngreso() {
-    return fechaIngreso;
-}
-
-
-public void setFechaIngreso(LocalDate fechaIngreso) {
-    this.fechaIngreso = fechaIngreso;
-}
-
-
-public String getEstado() {
-    return estado;
-}
-
-
-public void setEstado(String estado) {
-    this.estado = estado;
-}
-
-
-public String getCategoria() {
-    return categoria;
-}
-
-
-public void setCategoria(String categoria) {
-    this.categoria = categoria;
-}
-
-
-public int getNumeroAula() {
-    return numeroAula;
-}
-
-
-public void setNumeroAula(int numeroAula) {
-    this.numeroAula = numeroAula;
-}
-
-
-public String getDescripcion() {
-    return descripcion;
-}
-
-
-public void setDescripcion(String descripcion) {
-    this.descripcion = descripcion;
-}
-
-    
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
 }
-
-
-
-
-
-   
-

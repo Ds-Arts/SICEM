@@ -7,19 +7,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Usuario extends HttpServlet {
 
-    private UsuarioDao usuarioDao;
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        usuarioDao = new UsuarioDao();
-    }
+    UsuarioDao usuarioDao = new UsuarioDao();
+    UsuarioVo usuVo = new UsuarioVo();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,15 +25,17 @@ public class Usuario extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
-                //elementos que solo me redirigen a una pagina no necesitan una funcion propia como estos dos primeros
+                // elementos que solo me redirigen a una pagina no necesitan una funcion propia
+                // como estos dos primeros
                 case "registrarU":
-                request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
                     break;
-                case "login": 
+                case "login":
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                     break;
-                
-                //aunque me redirijan a una vista diferente estos tienen propios metodos creados en el Dao y veo por lo cual necesitan funciones
+
+                // aunque me redirijan a una vista diferente estos tienen propios metodos
+                // creados en el Dao y veo por lo cual necesitan funciones
                 case "list":
                     listarUsuarios(request, response);
                     break;
@@ -70,6 +70,9 @@ public class Usuario extends HttpServlet {
                 case "deactivate":
                     desactivarUsuario(request, response);
                     break;
+                case "login":
+                    iniciar(request, response);
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -79,14 +82,15 @@ public class Usuario extends HttpServlet {
         }
     }
 
-    //METODOS DOGET
+    // METODOS DOGET
     private void listarUsuarios(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             List<UsuarioVo> usuarios = usuarioDao.listarUsuarios();
             request.setAttribute("usuarios", usuarios);
 
-            // Si hay un usuario encontrado en la búsqueda, lo agregamos al atributo para mostrarlo en el JSP
+            // Si hay un usuario encontrado en la búsqueda, lo agregamos al atributo para
+            // mostrarlo en el JSP
             String searchTerm = request.getParameter("searchTerm");
             if (searchTerm != null && !searchTerm.isEmpty()) {
                 List<UsuarioVo> usuariosEncontrados = usuarioDao.buscarUsuariosPorNombre(searchTerm);
@@ -94,7 +98,6 @@ public class Usuario extends HttpServlet {
                     request.setAttribute("usuarioEncontrado", usuariosEncontrados.get(0));
                 }
             }
-
             request.getRequestDispatcher("views/listarUsuario.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,7 +114,8 @@ public class Usuario extends HttpServlet {
             List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(searchTerm);
             request.setAttribute("usuarios", usuarios);
 
-            // Si hay un usuario encontrado, lo agregamos al atributo para mostrarlo en el JSP
+            // Si hay un usuario encontrado, lo agregamos al atributo para mostrarlo en el
+            // JSP
             UsuarioVo usuarioEncontrado = null;
             if (!usuarios.isEmpty()) {
                 usuarioEncontrado = usuarios.get(0);
@@ -143,22 +147,38 @@ public class Usuario extends HttpServlet {
         }
     }
 
-    //METODOS DOPOST
+    // METODOS DOPOST
     private void registrarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parámetros del formulario de registro
-        String nombre = request.getParameter("nombre");
-        String usuario = request.getParameter("usuario");
-        String contrasena = request.getParameter("contrasena");
+        if (request.getParameter("nombre") != null) {
+            usuVo.setNombre(request.getParameter("nombre"));
+        }
+        if (request.getParameter("apellido") != null) {
+            usuVo.setApellido(request.getParameter("apellido"));
+        }
+        if (request.getParameter("email") != null) {
+            usuVo.setEmail(request.getParameter("email"));
+        }
+        if (request.getParameter("numIdentificacion") != null) {
+            usuVo.setNumIdentificacion(Integer.parseInt(request.getParameter("numIdentificacion")));
+        }
+        if (request.getParameter("contrasena") != null) {
+            usuVo.setContrasena(request.getParameter("contrasena"));
+        }
+        if (request.getParameter("usuario") != null) {
+            usuVo.setUsuario(request.getParameter("usuario"));
+        }
+        if (request.getParameter("activo") != null) {
+            usuVo.setActivo(request.getParameter("activo"));
+        }
 
-        // Crear un objeto UsuarioVo con los datos del nuevo usuario
-        UsuarioVo nuevoUsuario = new UsuarioVo(nombre, usuario, contrasena);
-
+        System.out.println(usuVo.getNombre() + "controlador0");
         try {
             // Registrar el nuevo usuario en la base de datos
-            usuarioDao.registrarUsuario(nuevoUsuario);
+            usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
@@ -200,5 +220,37 @@ public class Usuario extends HttpServlet {
         }
     }
 
+    public void iniciar(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("entro al inicio");
 
+        // Obtener los parámetros del formulario
+        String numIdentificacionStr = request.getParameter("numIdentificacion");
+        String contrasena = request.getParameter("contrasena");
+
+        try {
+            if (numIdentificacionStr != null && !numIdentificacionStr.isEmpty()) {
+                // Convertir el valor de numIdentificacionStr a un entero
+                Integer numIdentificacion = Integer.parseInt(numIdentificacionStr);
+
+                // Luego, puedes continuar con la verificación del usuario
+                usuVo = UsuarioDao.verificarUsuario(numIdentificacion, contrasena);
+
+                if (usuVo != null) {
+                    HttpSession iniciar = request.getSession();
+                    iniciar.setAttribute("numIdentificacion", usuVo);
+                    request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
+                }
+            } else {
+                // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus
+                // necesidades
+            }
+        } catch (NumberFormatException e) {
+            // Manejar la excepción de conversión aquí, si es necesario
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error en la modificación: " + e.getMessage());
+        }
+    }
 }

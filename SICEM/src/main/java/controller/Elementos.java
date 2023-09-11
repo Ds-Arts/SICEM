@@ -20,7 +20,7 @@ import model.ElementosVo;
 public class Elementos extends HttpServlet {
     ElementosVo e = new ElementosVo();
     ElementosDao l = new ElementosDao();
-    Categoria c= new Categoria();
+    Categoria c = new Categoria();
     CategoriaDao cd = new CategoriaDao();
 
     @Override
@@ -28,18 +28,21 @@ public class Elementos extends HttpServlet {
         System.out.println("Entró al Doget");
         String a = req.getParameter("accion");
         switch (a) {
-            //elementos que solo me redirigen a una pagina no necesitan una funcion propia como estos dos primeros
+            // elementos que solo me redirigen a una pagina no necesitan una funcion propia
+            // como estos dos primeros
             case "registrar":
                 req.getRequestDispatcher("views/registrarElementos.jsp").forward(req, resp);
                 break;
             case "entrahome":
                 req.getRequestDispatcher("index.jsp").forward(req, resp);
                 break;
-            case "c_categoria":    
-            // se invoca un metodo de el el servlet de categotia el cual tiene el dispacher para el formulario 
-              c.c_categoria(req, resp);
+            case "c_categoria":
+                // se invoca un metodo de el el servlet de categotia el cual tiene el dispacher
+                // para el formulario
+                c.c_categoria(req, resp);
                 break;
-            //aunque me redirijan a una vista diferente estos tienen propios metodos creados en el Dao y veo por lo cual necesitan funciones
+            // aunque me redirijan a una vista diferente estos tienen propios metodos
+            // creados en el Dao y veo por lo cual necesitan funciones
             case "listar":
                 listar(req, resp);
                 System.out.println("entro listar");
@@ -58,35 +61,35 @@ public class Elementos extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Entró al DoPost");
         String a = req.getParameter("accion");
-        
+
         switch (a) {
             case "add":
                 add(req, resp);
+                System.out.println(req.getAttribute("Cuentadante"));
                 System.out.println("accion boton");
                 break;
 
-          case "data_prestamo":
-          String np = req.getParameter("n_placa_prestamo"); 
-          req.setAttribute("n_placa_prestamo",np); 
-          System.out.println(req.getParameter("n_placa_prestamo")); 
-          req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);
-          break; 
+            case "data_prestamo":
+                String np = req.getParameter("n_placa_prestamo");
+                req.setAttribute("n_placa_prestamo", np);
+                System.out.println(req.getParameter("n_placa_prestamo"));
+                req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);
+                break;
 
-          case "prestamo":  
-            LocalDate fecha_inicio = LocalDate.parse(req.getParameter("Fecha_inicio"));
-            LocalDate fechafin = LocalDate.parse(req.getParameter("Fecha_fin"));
-             System.out.println(fecha_inicio);
-             System.out.println(fechafin);
-          break;
+            case "prestamo":
+                LocalDate fecha_inicio = LocalDate.parse(req.getParameter("Fecha_inicio"));
+                LocalDate fechafin = LocalDate.parse(req.getParameter("Fecha_fin"));
+                System.out.println(fecha_inicio);
+                System.out.println(fechafin);
+                break;
 
-        }    
+        }
 
-  
     }
 
-
-    //METODOS DOGET
-    private void buscarElementos(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    // METODOS DOGET
+    private void buscarElementos(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         String placa = req.getParameter("placa");
         try {
             List<ElementosVo> elementos = l.buscarPorNumeroPlaca(placa);
@@ -101,14 +104,13 @@ public class Elementos extends HttpServlet {
         String tipo = req.getParameter("TipoElemento");
         System.out.println("Valor de tipo recibido: " + tipo); // Agrega esta línea para verificar el valor recibido
         try {
-        List<ElementosVo> elementos = l.buscarPorTipo(tipo);
-        req.setAttribute("elementos", elementos);
-        req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);
-    } catch (SQLException e) {
-        System.out.println("Error al buscar elementos por tipo: " + e.getMessage());
+            List<ElementosVo> elementos = l.buscarPorTipo(tipo);
+            req.setAttribute("elementos", elementos);
+            req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);
+        } catch (SQLException e) {
+            System.out.println("Error al buscar elementos por tipo: " + e.getMessage());
+        }
     }
-    }
-
 
     private void listar(HttpServletRequest req, HttpServletResponse resp) {
         try {
@@ -122,8 +124,7 @@ public class Elementos extends HttpServlet {
         }
     }
 
-    
-    //METODOS DOPOST
+    // METODOS DOPOST
 
     private void add(HttpServletRequest req, HttpServletResponse resp) {
         if (req.getParameter("NombreElemento") != null) {
@@ -139,7 +140,8 @@ public class Elementos extends HttpServlet {
             e.setCosto(Integer.parseInt(req.getParameter("Costo")));
         }
         if (req.getParameter("TipoElemento") != null) {
-            // Asumiendo que el parámetro TipoElemento es un texto ("Consumo" o "Desechable")
+            // Asumiendo que el parámetro TipoElemento es un texto ("Consumo" o
+            // "Desechable")
             e.setTipo(req.getParameter("TipoElemento"));
         }
         if (req.getParameter("FechaIngresoElemento") != null) {
@@ -151,7 +153,7 @@ public class Elementos extends HttpServlet {
             e.setCategoria(req.getParameter("categoriaElemento"));
         }
         if (req.getParameter("NumAula") != null) {
-            e.setNumeroAula(Integer.parseInt(req.getParameter("NumAula")));
+            e.setNumeroAula((Integer.parseInt(req.getParameter("NumAula"))));
         }
         if (req.getParameter("Descripcion") != null) {
             e.setDescripcion(req.getParameter("Descripcion"));
@@ -176,6 +178,5 @@ public class Elementos extends HttpServlet {
             System.out.println("Error en la inserción del registro " + ex.getMessage());
         }
     }
-    
 
 }

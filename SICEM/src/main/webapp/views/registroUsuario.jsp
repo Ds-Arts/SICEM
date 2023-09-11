@@ -10,7 +10,10 @@
   <title>Registro de Usuario</title>
 
 </head>
-<body>
+<body> 
+
+
+  <h1>  REGISTRO USUARIO </h1>
   <div class="login-page">
       <header>
         <div class="logo">
@@ -28,11 +31,16 @@
     <nav>
       <div class="contenedor">
           <form class="formu" action="Usuario" method="POST">
-              <input type="hidden" name="action" value="register">
-              
               <label for="nombre">Nombre:</label>
               <input type="text" id="nombre" name="nombre" required>
-              
+              <label for="nombre">Apellido:</label>
+              <input type="text" id="apellido" name="apellido" required>
+              <label for="nombre">Email:</label>
+              <input type="text" id="email" name="email" required>
+              <label for="nombre">Numero de identifiacion:</label>
+              <input type="text" id="numIdentificacion" name="numIdentificacion" required>
+              <label for="nombre">Contraseña:</label>
+              <input type="text" id="contrasena" name="contrasena" required>
               <label for="usuario">Usuario:</label>
               <select class="desp" name="usuario" id="usuario" required>
               <option disabled selected value="">Seleccionar una categoria</option>
@@ -40,15 +48,18 @@
                   <option>cuentadante</option>
                   <option>admin</option>
               </select>
-              <label for="contrasena">Contraseña:</label>
-              <input type="password" id="contrasena" name="contrasena" required>
-              
-              <button type="submit">Registrar</button>
+              <label for="activo">Estado:</label>
+              <select class="desp" name="activo" id="activo" required>
+              <option disabled selected value="">disponibilidad</option>
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>              
+              <button type="submit" name="action" value="register">Registrar</button>
           </form>
 
   <div class="btngrupo">
     <aside class="extra">
-        <a href="Usuario?action=list">
+        <a href="Usuario?accion=list">
             <button><center>Consultar Usuario registrados</center></button>
         </a>
         

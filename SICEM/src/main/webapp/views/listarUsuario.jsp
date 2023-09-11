@@ -36,18 +36,27 @@
     <% if (usuarioEncontrado != null) { %>
         <div class="alert alert-success" role="alert">
             <p><strong>ID:</strong> <%= usuarioEncontrado.getId() %></p>
-            <p><strong>Nombre:</strong> <%= usuarioEncontrado.getNombre() %></p>
-            <p><strong>Usuario:</strong> <%= usuarioEncontrado.getUsuario() %></p>
-            <p><strong>Activo:</strong> <%= usuarioEncontrado.isActivo() %></p>
+            <p><strong>NOMBRE:</strong> <%= usuarioEncontrado.getNombre() %></p>
+            <p><strong>APELLIDO:</strong> <%= usuarioEncontrado.getApellido() %></p>
+            <p><strong>EMAIL:</strong> <%= usuarioEncontrado.getEmail() %></p>
+            <p><strong>NUMERO DE IDENTIFICACION:</strong> <%= usuarioEncontrado.getNumIdentificacion() %></p>
+            <p><strong>CONTRASEÑA:</strong> <%= usuarioEncontrado.getContrasena() %></p>
+            <p><strong>USUARIO:</strong> <%= usuarioEncontrado.getUsuario() %></p>
+            <p><strong>ACTIVO:</strong> <%= usuarioEncontrado.getActivo() %></p>
         </div>
     <% } %>
     <table>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Usuario</th>
-            <th>Activo</th>
-            <th>Detalles</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>EMAIL</th>
+            <th>NUMERO DE IDENTIFICACION</th>
+            <th>CONTRASEÑA</th>
+            <th>USUARIO</th>
+            <th>ACTIVO</th>
+            
+        
         </tr>
         <% 
             UsuarioDao usuarioDao = new UsuarioDao();
@@ -57,22 +66,23 @@
         <tr>
             <td><%= usuario.getId() %></td>
             <td><%= usuario.getNombre() %></td>
+            <td><%= usuario.getApellido() %></td>
+            <td><%= usuario.getEmail() %></td>
+            <td><%= usuario.getNumIdentificacion() %></td>
+            <td><%= usuario.getContrasena() %></td>
             <td><%= usuario.getUsuario() %></td>
-            <td><%= usuario.isActivo() %></td>
-            <td><a href="#" data-toggle="modal" data-target="#userDetailsModal"
-                   data-id="<%= usuario.getId() %>"
-                   data-nombre="<%= usuario.getNombre() %>"
-                   data-usuario="<%= usuario.getUsuario() %>"
-                   data-activo="<%= usuario.isActivo() %>">Ver detalles</a></td>
-        </tr>
+            <td><%= usuario.getActivo() %></td>
+  
         <tr class="separador">
             <td colspan="5"></td>
         </tr>
-        <% } %>
+  
+        <% } %> 
+        </tr>
     </table>
 
     <!-- Modal para mostrar los detalles del usuario -->
-    <div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel"
+<!--     <div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -93,13 +103,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- jQuery y Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+<!--     
     <script>
         $(document).ready(function () {
             // Mostrar los detalles del usuario en el modal al hacer clic en el enlace
@@ -118,9 +128,9 @@
                 modal.find('#userActive').text(activo);
             });
         });
-    </script>
+    </script> -->
     <div>
-        <a href="index.jsp">Volver</a>
+        <a href="Usuario?action=registrarU">Volver</a>
     </div>
 </body>
 </html>
