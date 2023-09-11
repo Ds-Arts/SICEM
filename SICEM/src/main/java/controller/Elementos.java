@@ -62,6 +62,7 @@ public class Elementos extends HttpServlet {
         switch (a) {
             case "add":
                 add(req, resp);
+                  System.out.println(req.getAttribute("Cuentadante"));
                 System.out.println("accion boton");
                 break;
 
@@ -151,7 +152,7 @@ public class Elementos extends HttpServlet {
             e.setCategoria(req.getParameter("categoriaElemento"));
         }
         if (req.getParameter("NumAula") != null) {
-            e.setNumeroAula(Integer.parseInt(req.getParameter("NumAula")));
+            e.setNumeroAula((Integer.parseInt(req.getParameter("NumAula"))));
         }
         if (req.getParameter("Descripcion") != null) {
             e.setDescripcion(req.getParameter("Descripcion"));

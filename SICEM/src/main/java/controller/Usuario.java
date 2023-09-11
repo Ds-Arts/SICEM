@@ -34,7 +34,9 @@ public class Usuario extends HttpServlet {
                 case "login": 
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                     break;
-                
+                case"list_Cuentadantes":
+
+                break;
                 //aunque me redirijan a una vista diferente estos tienen propios metodos creados en el Dao y veo por lo cual necesitan funciones
                 case "list":
                     listarUsuarios(request, response);
@@ -79,6 +81,8 @@ public class Usuario extends HttpServlet {
         }
     }
 
+
+    
     //METODOS DOGET
     private void listarUsuarios(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
