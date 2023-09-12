@@ -13,7 +13,7 @@
         NombreElemento VARCHAR(50),
         N_placa INT PRIMARY KEY ,
         cantidad INT,
-        Costo FLOAT,
+        Costo INT,
         TipoElemento VARCHAR(50),
         FechaIngresoElemento DATE,
         categoriaElemento VARCHAR(30),
