@@ -73,7 +73,7 @@ public class Categoria extends HttpServlet {
         }
     }
 
-    private void crearCategoria(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void crearCategoria(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("accion de el formulario ");
         String nombreCategoria = request.getParameter("n_categoria");
         String descripcionCategoria = request.getParameter("d_categoria");
@@ -83,6 +83,7 @@ public class Categoria extends HttpServlet {
         categoria.setDescripcionCategoria(descripcionCategoria);
         try {
             cd.crearCategoria(categoria);
+            request.getRequestDispatcher("views/registrarCategoria.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -32,13 +32,13 @@
       <div class="contenedor">
           <form class="formu" action="Usuario" method="POST">
               <label for="nombre">Nombre:</label>
-              <input type="text" id="nombre" name="nombre" required>
+              <input type="text" pattern="[A-Za-z ]{3,40}" id="nombre" name="nombre" required>
               <label for="nombre">Apellido:</label>
-              <input type="text" id="apellido" name="apellido" required>
+              <input type="text" pattern="[A-Za-z ]{3,40}" id="apellido" name="apellido" required>
               <label for="nombre">Email:</label>
               <input type="text" id="email" name="email" required>
               <label for="nombre">Numero de identifiacion:</label>
-              <input type="text" id="numIdentificacion" name="numIdentificacion" required>
+              <input type="text" pattern="[1-9]\d{0,9}" id="numIdentificacion" name="numIdentificacion" required>
               <label for="nombre">Contraseña:</label>
               <input type="text" id="contrasena" name="contrasena" required>
               <label for="usuario">Usuario:</label>

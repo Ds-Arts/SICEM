@@ -25,11 +25,11 @@
     <nav>
         <div class="contenedor">
             <!-- parametos con la informacion de la nueva categoria -->
-            <form class="formu" action="categoria" method="post">
+            <form class="formu"  action="categoria" method="post">
                 <label for="">Ingrese nombre de la categoria</label>
-                <input type="text" name="n_categoria">
+                <input type="text" pattern="[A-Za-z ]{3,40}" name="n_categoria">
                 <label for="">Caracteristicas de  la categoria</label>
-                <input type="text" name="d_categoria">  
+                <input type="text" pattern="[A-Za-z ]{3,40}" name="d_categoria">  
                 <button type="submit" name="action" value="en_categoria">Guardar</button>  
             </form>
             <aside class="extra">

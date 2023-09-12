@@ -11,9 +11,9 @@
 
     CREATE TABLE Elementos (
         NombreElemento VARCHAR(50),
-        N_placa INT PRIMARY KEY,
+        N_placa INT PRIMARY KEY ,
         cantidad INT,
-        Costo INT,
+        Costo FLOAT,
         TipoElemento VARCHAR(50),
         FechaIngresoElemento DATE,
         categoriaElemento VARCHAR(30),

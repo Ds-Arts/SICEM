@@ -41,13 +41,13 @@
                     </div>
                 <% } %>
                 <label>Nombre:</label>
-                <input type="text" name="NombreElemento" id="NombreElemento" required>
+                <input type="text" pattern="[A-Za-z ]{3,40}" name="NombreElemento" id="NombreElemento" required >
                 <label>N° placa:</label>
-                <input type="text" name="N_placa" id="N_placa" required>
+                <input type="number" pattern="[1-9]\d{0,9}" name="N_placa" id="N_placa" required>
                 <label>Cantidad:</label>
-                <input type="text" name="cantidad" id="cantidad" required>
+                <input type="number" pattern="[1-9]\d{0,9}" name="cantidad" id="cantidad" required>
                 <label>Costo:</label>
-                <input type="text" name="Costo" id="Costo" required>
+                <input type="number" pattern="[1-9]\d{1,9}" name="Costo" id="Costo" required>
                 <label>Tipo:</label>
                 <select class="desp" name="TipoElemento" id="TipoElemento" required>
                     <option disabled selected value="">Seleccionar el tipo</option>
@@ -68,7 +68,7 @@
                 <% } %>
                 </select>
                 <label>N° Aula:</label>
-                <input type="text" name="NumAula" id="NumAula">
+                <input type="number" pattern="[1-9]\d{0,5}" name="NumAula" id="NumAula">
                 <label>Descripcion:</label>
                 <input type="text" name="Descripcion" id="Descripcion" required>
                 <label>Estado:</label>
