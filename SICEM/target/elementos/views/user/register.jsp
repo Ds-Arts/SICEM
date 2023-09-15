@@ -75,11 +75,11 @@
             <article>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Aa</span>
-                <input id="nombre" name="nombre" required type="text" class="form-control" placeholder="Nombres de usuario">
+                <input id="nombre" name="nombre" required type="text" class="form-control" placeholder="Nombres">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Aa</span>
-                <input id="apellido" name="apellido" required type="text" class="form-control" placeholder="Apellidos de usuario">
+                <input id="apellido" name="apellido" required type="text" class="form-control" placeholder="Apellidos">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">@</span>
@@ -91,7 +91,7 @@
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">*</span>
-                <input type="contrasena" class="form-control" placeholder="Contraseña">
+                <input type="contrasena" class="form-control" placeholder="Contraseña" id="contrasena" name="contrasena" required>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">*</span>
