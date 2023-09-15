@@ -93,5 +93,4 @@ public class UsuarioVo {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
 }

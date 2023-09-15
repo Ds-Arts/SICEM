@@ -1,109 +1,109 @@
-    CREATE DATABASE elementos1;
+CREATE DATABASE elementos1;
 
-    USE elementos1;
+USE elementos1;
 
-    CREATE TABLE Categoria (
-        nombreCategoria VARCHAR(50) PRIMARY KEY,
-        DescripcionCategoria VARCHAR(300)
-    );
+CREATE TABLE Categoria (
+nombreCategoria VARCHAR(50) PRIMARY KEY,
+DescripcionCategoria VARCHAR(300)
+);
 
-    SELECT * FROM Categoria;
+SELECT * FROM Categoria;
 
-    CREATE TABLE Elementos (
-        NombreElemento VARCHAR(50),
-        N_placa INT PRIMARY KEY ,
-        cantidad INT,
-        Costo FLOAT,
-        TipoElemento VARCHAR(50),
-        FechaIngresoElemento DATE,
-        categoriaElemento VARCHAR(30),
-        NumAula INT,
-        Descripcion VARCHAR(300),
-        EstadoElemento VARCHAR(20),
-        usuario_fk int
-    );
-    SELECT * FROM Elementos;
+CREATE TABLE Elementos (
+NombreElemento VARCHAR(50),
+N_placa INT PRIMARY KEY ,
+cantidad INT,
+Costo INT,
+TipoElemento VARCHAR(50),
+FechaIngresoElemento DATE,
+categoriaElemento VARCHAR(30),
+NumAula INT,
+Descripcion VARCHAR(300),
+EstadoElemento VARCHAR(20),
+usuario_fk int
+);
+SELECT * FROM Elementos;
 
-    CREATE TABLE usuarios (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        nombre VARCHAR(100),
-        apellido VARCHAR(50),
-        email VARCHAR(225),
-        numIdentificacion INT,
-        contrasena VARCHAR(50),
-        usuario VARCHAR(50),
-        activo VARCHAR(50)
-    );
+CREATE TABLE usuarios (
+id INT PRIMARY KEY AUTO_INCREMENT,
+nombre VARCHAR(100),
+apellido VARCHAR(50),
+email VARCHAR(225),
+numIdentificacion INT,
+contrasena VARCHAR(50),
+usuario VARCHAR(50),
+activo VARCHAR(50)
+);
 
-    CREATE TABLE propiedad (
-        usuario_fk INT,
-        elemento_fk INT,
-        fecha_transpaso DATE,
-        tipo BOOLEAN,
-        fecha_inicio DATE,
-        fecha_fin DATE,
-        PRIMARY KEY (usuario_fk, elemento_fk),
-        FOREIGN KEY (usuario_fk) REFERENCES usuarios (id),
-        FOREIGN KEY (elemento_fk) REFERENCES Elementos (N_placa)
-    );
+CREATE TABLE propiedad (
+usuario_fk INT,
+elemento_fk INT,
+fecha_transpaso DATE,
+tipo BOOLEAN,
+fecha_inicio DATE,
+fecha_fin DATE,
+PRIMARY KEY (usuario_fk, elemento_fk),
+FOREIGN KEY (usuario_fk) REFERENCES usuarios (id),
+FOREIGN KEY (elemento_fk) REFERENCES Elementos (N_placa)
+);
 
-    CREATE TABLE rol (
-        idRol INT PRIMARY KEY AUTO_INCREMENT,
-        nombreRol VARCHAR(50)
-    );
-    alter table elementos 
-    add constraint uFk FOREIGN KEY (usuario_fk) 
-    REFERENCES usuarios (id);
+CREATE TABLE rol (
+idRol INT PRIMARY KEY AUTO_INCREMENT,
+nombreRol VARCHAR(50)
+);
+alter table elementos 
+add constraint uFk FOREIGN KEY (usuario_fk) 
+REFERENCES usuarios (id);
 
-    ALTER TABLE Elementos
-    ADD CONSTRAINT fkcategoria FOREIGN KEY (categoriaElemento)
-    REFERENCES Categoria (nombreCategoria);
+ALTER TABLE Elementos
+ADD CONSTRAINT fkcategoria FOREIGN KEY (categoriaElemento)
+REFERENCES Categoria (nombreCategoria);
 
-    DELIMITER //
-    CREATE PROCEDURE InsertarCategoria(IN nombreCat VARCHAR(50), IN descripcionCat VARCHAR(300))
-    BEGIN
-        INSERT INTO Categoria(nombreCategoria, DescripcionCategoria)
-        VALUES(nombreCat, descripcionCat);
-    END;
-    //
-    DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE InsertarCategoria(IN nombreCat VARCHAR(50), IN descripcionCat VARCHAR(300))
+BEGIN
+INSERT INTO Categoria(nombreCategoria, DescripcionCategoria)
+VALUES(nombreCat, descripcionCat);
+END;
+//
+DELIMITER ;
 
-    DELIMITER //
-    CREATE PROCEDURE InsertarUsuario(
-        IN nombreUsuario VARCHAR(100),
-        IN apellidoUsuario VARCHAR(50),
-        IN emailUsuario VARCHAR(225),
-        IN numIdentificacionUsuario INT,
-        IN contrasenaUsuario VARCHAR(50),
-        IN usuarioUsuario VARCHAR(50),
-        IN activoUsuario VARCHAR(50)
-    )
-    BEGIN
-        INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, usuario, activo)
-        VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, usuarioUsuario, activoUsuario);
-    END;
-    //
-    DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE InsertarUsuario(
+IN nombreUsuario VARCHAR(100),
+IN apellidoUsuario VARCHAR(50),
+IN emailUsuario VARCHAR(225),
+IN numIdentificacionUsuario INT,
+IN contrasenaUsuario VARCHAR(50),
+IN usuarioUsuario VARCHAR(50),
+IN activoUsuario VARCHAR(50)
+)
+BEGIN
+INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, usuario, activo)
+VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, usuarioUsuario, activoUsuario);
+END;
+//
+DELIMITER ;
 
-    DELIMITER //
-    CREATE PROCEDURE InsertarElemento(
-        IN nombreElemento VARCHAR(50),
-        IN nPlaca INT,
-        IN cantidad INT,
-        IN costo INT,
-        IN tipoElemento VARCHAR(50),
-        IN fechaIngreso DATE,
-        IN categoriaElemento VARCHAR(50),
-        IN numAula INT,
-        IN descripcion VARCHAR(300),
-        IN estadoElemento VARCHAR(20),
-        IN usuarioElemento int
-    )
-    BEGIN
-        INSERT INTO Elementos(NombreElemento, N_placa, cantidad, Costo, TipoElemento, FechaIngresoElemento, categoriaElemento, NumAula, Descripcion, EstadoElemento,usuario_fk)
-        VALUES(nombreElemento, nPlaca, cantidad, costo, tipoElemento, fechaIngreso, categoriaElemento, numAula, descripcion, estadoElemento,usuarioElemento);
-    END;
-    //
-    DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE InsertarElemento(
+IN nombreElemento VARCHAR(50),
+IN nPlaca INT,
+IN cantidad INT,
+IN costo INT,
+IN tipoElemento VARCHAR(50),
+IN fechaIngreso DATE,
+IN categoriaElemento VARCHAR(50),
+IN numAula INT,
+IN descripcion VARCHAR(300),
+IN estadoElemento VARCHAR(20),
+IN usuarioElemento int
+)
+BEGIN
+INSERT INTO Elementos(NombreElemento, N_placa, cantidad, Costo, TipoElemento, FechaIngresoElemento, categoriaElemento, NumAula, Descripcion, EstadoElemento,usuario_fk)
+VALUES(nombreElemento, nPlaca, cantidad, costo, tipoElemento, fechaIngreso, categoriaElemento, numAula, descripcion, estadoElemento,usuarioElemento);
+END;
+//
+DELIMITER ;
 
-    nose
+nose

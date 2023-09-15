@@ -38,7 +38,7 @@
 
   <servlet-mapping>
     <servlet-name>controller.Prestamo</servlet-name>
-    <url-pattern>/prestamo</url-pattern>
+    <url-pattern>/Prestamo</url-pattern>
   </servlet-mapping>
 
 </web-app>

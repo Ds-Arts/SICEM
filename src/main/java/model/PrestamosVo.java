@@ -3,46 +3,70 @@ package model;
 import java.time.LocalDate;
 
 public class PrestamosVo {
-    private int uaurioFk;
+    private int usuarioFk;
     private int elementoFk;
-    private LocalDate fecha_inicio;
-    private LocalDate fecha_fin;
+    private LocalDate fechaTranspaso;
+    private boolean tipo;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
 
-
-    
     public PrestamosVo() {
     }
-    public PrestamosVo(int uaurioFk, int elementoFk, LocalDate fecha_inicio, LocalDate fecha_fin) {
-        this.uaurioFk = uaurioFk;
+
+    public PrestamosVo(int usuarioFk, int elementoFk, LocalDate fechaTranspaso, boolean tipo, LocalDate fechaInicio, LocalDate fechaFin) {
+        this.usuarioFk = usuarioFk;
         this.elementoFk = elementoFk;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
+        this.fechaTranspaso = fechaTranspaso;
+        this.tipo = tipo;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
-    public int getUaurioFk() {
-        return uaurioFk;
+
+    public int getUsuarioFk() {
+        return usuarioFk;
     }
-    public void setUaurioFk(int uaurioFk) {
-        this.uaurioFk = uaurioFk;
+
+    public void setUsuarioFk(int usuarioFk) {
+        this.usuarioFk = usuarioFk;
     }
+
     public int getElementoFk() {
         return elementoFk;
     }
+
     public void setElementoFk(int elementoFk) {
         this.elementoFk = elementoFk;
     }
-    public LocalDate getFecha_inicio() {
-        return fecha_inicio;
-    }
-    public void setFecha_inicio(LocalDate fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
-    }
-    public LocalDate getFecha_fin() {
-        return fecha_fin;
-    }
-    public void setFecha_fin(LocalDate fecha_fin) {
-        this.fecha_fin = fecha_fin;
+
+    public LocalDate getFechaTranspaso() {
+        return fechaTranspaso;
     }
 
+    public void setFechaTranspaso(LocalDate fechaTranspaso) {
+        this.fechaTranspaso = fechaTranspaso;
+    }
 
+    public boolean isTipo() {
+        return tipo;
+    }
 
+    public void setTipo(boolean tipo) {
+        this.tipo = tipo;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
 }

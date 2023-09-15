@@ -1,6 +1,8 @@
 package controller;
 
 import model.UsuarioDao;
+import model.ElementosDao;
+import model.ElementosVo;
 import model.UsuarioVo;
 
 import javax.servlet.ServletException;
@@ -18,6 +20,8 @@ public class Usuario extends HttpServlet {
 
     UsuarioDao usuarioDao = new UsuarioDao();
     UsuarioVo usuVo = new UsuarioVo();
+    ElementosDao elementoDao = new ElementosDao();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +49,10 @@ public class Usuario extends HttpServlet {
                 case "searchById": // Nueva acción para buscar por ID
                     buscarUsuarioPorId(request, response);
                     break;
+                case "detalle":
+                mostrarDetalleUsuario(request, response);
+                break;
+                
 
                 default:
                     response.sendRedirect(request.getContextPath());
@@ -104,6 +112,31 @@ public class Usuario extends HttpServlet {
             response.getWriter().println("Error al obtener la lista de usuarios");
         }
     }
+
+    private void mostrarDetalleUsuario(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+    // Obtener el ID del usuario a mostrar detalles
+    int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
+
+
+    try {
+    // Obtener los detalles del usuario
+    UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuarioDetalle);
+    request.setAttribute("usuarioEncontrado", usuarioEncontrado);
+
+    // Obtener la lista de elementos asociados al usuario
+    List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
+
+    request.setAttribute("elementos", elementos);
+
+    // Redireccionar a la página de detalles del usuario
+    request.getRequestDispatcher("views/detalleUsuario.jsp").forward(request, response);
+    } catch (SQLException e) {
+    e.printStackTrace();
+    response.getWriter().println("Error al obtener los detalles del usuario y sus elementos asociados");
+    }
+    }
+
 
     private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

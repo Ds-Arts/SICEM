@@ -184,5 +184,40 @@ public class ElementosDao {
 
         return elementos;
     }
+    public List<ElementosVo> getElementosByUsuarioId(int idUsuario) throws SQLException {
+    List<ElementosVo> elementos = new ArrayList<>();
+    sql = "SELECT * FROM Elementos WHERE usuario_fk = ?";
+    try {
+        con = Conexion.conectar();
+        ps = con.prepareStatement(sql);
+        ps.setInt(1, idUsuario);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            ElementosVo l = new ElementosVo();
+            l.setNombre(rs.getString("NombreElemento"));
+            l.setCantidad(rs.getInt("cantidad"));
+            l.setCosto(rs.getInt("Costo"));
+            l.setNumeroPlaca(rs.getInt("N_placa"));
+            l.setTipo(rs.getString("TipoElemento"));
+            l.setFechaIngreso(rs.getDate("FechaIngresoElemento").toLocalDate());
+            l.setCategoria(rs.getString("categoriaElemento"));
+            l.setNumeroAula(rs.getInt("NumAula"));
+            l.setDescripcion(rs.getString("Descripcion"));
+            l.setEstado(rs.getString("EstadoElemento"));
+            l.setUsu(rs.getInt("usuario_fk"));
+
+            elementos.add(l);
+        }
+        ps.close();
+    } catch (Exception e) {
+        System.out.println("Error en la consulta: " + e.getMessage());
+    } finally {
+        con.close();
+    }
+
+    return elementos;
+}
+
 
 }

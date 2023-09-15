@@ -12,13 +12,8 @@
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="assets/CSS/Listas.css">
     <style>
-        
         /* Estilos de la tabla y la barra de búsqueda */
         /* ... */
-        /* Estilos para el modal */
-        .modal-content {
-            max-width: 500px;
-        }
     </style>
 </head>
 <body>
@@ -43,6 +38,7 @@
             <p><strong>CONTRASEÑA:</strong> <%= usuarioEncontrado.getContrasena() %></p>
             <p><strong>USUARIO:</strong> <%= usuarioEncontrado.getUsuario() %></p>
             <p><strong>ACTIVO:</strong> <%= usuarioEncontrado.getActivo() %></p>
+            <p><a href="Usuario?action=elementos&idUsuarioDetalle=<%= usuarioEncontrado.getId() %>">Ver Elementos</a></p>
         </div>
     <% } %>
     <table>
@@ -55,8 +51,7 @@
             <th>CONTRASEÑA</th>
             <th>USUARIO</th>
             <th>ACTIVO</th>
-            
-        
+            <th>DETALLES</th>
         </tr>
         <% 
             UsuarioDao usuarioDao = new UsuarioDao();
@@ -72,63 +67,20 @@
             <td><%= usuario.getContrasena() %></td>
             <td><%= usuario.getUsuario() %></td>
             <td><%= usuario.getActivo() %></td>
-  
+            <td><a href="Usuario?action=detalle&idUsuarioDetalle=<%= usuario.getId() %>">Detalle</a></td>
+        </tr>
         <tr class="separador">
             <td colspan="5"></td>
         </tr>
-  
         <% } %> 
         </tr>
     </table>
-
-    <!-- Modal para mostrar los detalles del usuario -->
-<!--     <div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="userDetailsModalLabel">Detalles del usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>ID:</strong> <span id="userId"></span></p>
-                    <p><strong>Nombre:</strong> <span id="userName"></span></p>
-                    <p><strong>Usuario:</strong> <span id="userUsername"></span></p>
-                    <p><strong>Activo:</strong> <span id="userActive"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <!-- jQuery y Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!--     
-    <script>
-        $(document).ready(function () {
-            // Mostrar los detalles del usuario en el modal al hacer clic en el enlace
-            $('#userDetailsModal').on('show.bs.modal', function (event) {
-                var link = $(event.relatedTarget); // Enlace que activó el modal
-                var modal = $(this);
-                // Obtener los datos del usuario del atributo data-* del enlace
-                var id = link.data('id');
-                var nombre = link.data('nombre');
-                var usuario = link.data('usuario');
-                var activo = link.data('activo');
-                // Mostrar los datos en el modal
-                modal.find('#userId').text(id);
-                modal.find('#userName').text(nombre);
-                modal.find('#userUsername').text(usuario);
-                modal.find('#userActive').text(activo);
-            });
-        });
-    </script> -->
+
     <div>
         <a href="Usuario?action=registrarU">Volver</a>
     </div>

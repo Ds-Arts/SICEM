@@ -79,14 +79,16 @@
                 </select>
                 <label>Cuentadante:</label>
                 <select class="desp" name="usuario_fk" id="usuario_fk" required>
-                    <option disabled selected value="">Seleccionar una Cuentadante </option>    <!--   iteracion para las categorias  : se hizo con un for each importando la lista desde el modelo dao de categorias -->
-                <%
-                    UsuarioDao usu = new UsuarioDao();
-                    List<UsuarioVo> usuarios = usu.listarUsuarios();
-                    for (UsuarioVo usuario : usuarios) { %>                   
-                        <option value="<%= usuario.getId() %>"><%= usuario.getId() %></option>   
-                <% } %>
+                    <option disabled selected value="">Seleccionar una Cuentadante </option>
+                    <!-- Iterar a través de los usuarios y mostrar sus nombres en lugar de IDs -->
+                    <%
+                        UsuarioDao usu = new UsuarioDao();
+                        List<UsuarioVo> usuarios = usu.listarUsuarios();
+                        for (UsuarioVo usuario : usuarios) { %>                   
+                            <option value="<%= usuario.getId() %>"><%= usuario.getNombre() %></option>   
+                    <% } %>
                 </select>
+
 
                 <button type="submit" name="accion" value="add">REGISTRO</button>
             </form>
@@ -94,6 +96,10 @@
                 <aside class="extra">
                     <a href="elemento?accion=listar">
                         <button><center>Consultar Elementos registrados</center></button>
+                    </a>
+
+                    <a href="Prestamo?action=listarPrestamos">
+                        <button>prestamos list</button>
                     </a>
 
                     <a href="Usuario?action=registrarU">
