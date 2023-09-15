@@ -181,7 +181,7 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("views/user/register.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
@@ -241,9 +241,9 @@ public class Usuario extends HttpServlet {
                 if (usuVo != null) {
                     HttpSession iniciar = request.getSession();
                     iniciar.setAttribute("numIdentificacion", usuVo);
-                    request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/user/dashboard.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/user/login.jsp").forward(request, response);
                 }
             } else {
                 // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus

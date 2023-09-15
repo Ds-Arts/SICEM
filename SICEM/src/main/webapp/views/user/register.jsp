@@ -91,7 +91,7 @@
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">*</span>
-                <input type="contrasena" class="form-control" placeholder="Contraseña">
+                <input type="contrasena" class="form-control" placeholder="Contraseña" id="contrasena" name="contrasena" required>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">*</span>
