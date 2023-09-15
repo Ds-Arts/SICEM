@@ -27,11 +27,14 @@ public class Usuario extends HttpServlet {
             switch (action) {
                 // elementos que solo me redirigen a una pagina no necesitan una funcion propia
                 // como estos dos primeros
-                case "registrarU":
-                    request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
+                case "register":
+                    request.getRequestDispatcher("views/user/register.jsp").forward(request, response);
                     break;
                 case "login":
-                    request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/user/login.jsp").forward(request, response);
+                    break;
+                case "home":
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;
 
                 // aunque me redirijan a una vista diferente estos tienen propios metodos
