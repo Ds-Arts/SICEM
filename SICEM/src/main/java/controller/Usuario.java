@@ -170,7 +170,7 @@ public class Usuario extends HttpServlet {
             usuVo.setContrasena(request.getParameter("contrasena"));
         }
         if (request.getParameter("usuario") != null) {
-            usuVo.setUsuario(request.getParameter("usuario"));
+            usuVo.setRol_fk(Integer.parseInt(request.getParameter("rol_fk")));
         }
         if (request.getParameter("activo") != null) {
             usuVo.setActivo(request.getParameter("activo"));
@@ -181,7 +181,8 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("views/user/register.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL

@@ -14,7 +14,7 @@ public class UsuarioDao {
     private int r;
 
     public int registrarUsuario(UsuarioVo nuevoUsuario) throws SQLException {
-        sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,usuario, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
+        sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
         try (Connection conexion = Conexion.conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql)) {
             ps.setString(1, nuevoUsuario.getNombre());
@@ -22,7 +22,7 @@ public class UsuarioDao {
             ps.setString(3, nuevoUsuario.getEmail());
             ps.setInt(4, nuevoUsuario.getNumIdentificacion());
             ps.setString(5, nuevoUsuario.getContrasena());
-            ps.setString(6, nuevoUsuario.getUsuario());
+            ps.setInt(6, nuevoUsuario.getRol_fk());
             ps.setString(7, nuevoUsuario.getActivo()); // Establecer el estado de activación
             r = ps.executeUpdate();
             System.out.println("Se registró el usuario correctamente");
@@ -81,7 +81,7 @@ public class UsuarioDao {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setRol_fk(rs.getInt("rol_fk"));
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
@@ -142,7 +142,7 @@ public class UsuarioDao {
                     usuario.setApellido(rs.getString("apellido"));
                     usuario.setEmail(rs.getString("email"));
                     usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuario.setUsuario(rs.getString("usuario"));
+                    usuario.setRol_fk(rs.getInt("rol_fk"));
                     usuario.setActivo(rs.getString("activo"));
                     usuarios.add(usuario);
                 }
@@ -168,7 +168,7 @@ public class UsuarioDao {
                     usuarioEncontrado.setApellido(rs.getString("apellido"));
                     usuarioEncontrado.setEmail(rs.getString("email"));
                     usuarioEncontrado.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuarioEncontrado.setUsuario(rs.getString("usuario"));
+                    usuarioEncontrado.setRol_fk(rs.getInt("rol_fk"));
                     usuarioEncontrado.setActivo(rs.getString("activo"));
                 }
             }

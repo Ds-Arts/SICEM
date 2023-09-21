@@ -75,7 +75,7 @@
             <article>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">@</span>
-                <input id="numIdentificacion" name="numIdentificacion" type="number" class="form-control" placeholder="Ingrese su nombre" aria-label="ID" aria-describedby="basic-addon1">
+                <input id="numIdentificacion" name="numIdentificacion" type="number" class="form-control" placeholder="Ingrese su numero de identifiación" aria-label="ID" aria-describedby="basic-addon1">
                 
               </div>
               <div class="input-group mb-3">

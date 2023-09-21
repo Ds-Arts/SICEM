@@ -7,7 +7,7 @@ public class UsuarioVo {
     private String email;
     private int numIdentificacion;
     private String contrasena;
-    private String usuario;
+    private int rol_fk;
     private String activo;
 
     public UsuarioVo() {
@@ -15,19 +15,19 @@ public class UsuarioVo {
     }
 
     public UsuarioVo(int id, String nombre, String apellido, String email, int numIdentificacion, String contrasena,
-            String usuario, String activo) {
+            int rol_fk, String activo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.numIdentificacion = numIdentificacion;
         this.contrasena = contrasena;
-        this.usuario = usuario;
+        this.rol_fk = rol_fk;
         this.activo = activo;
     }
 
     public UsuarioVo(String nombre2, String nombre3, String apellido2, String email2, Integer numIdentificacion2,
-            String usuario2, String activo2) {
+            int rol_fk2, String activo2) {
     }
 
     public int getId() {
@@ -70,12 +70,12 @@ public class UsuarioVo {
         this.numIdentificacion = numIdentificacion;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public int getRol_fk() {
+        return rol_fk;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setRol_fk(int rol_fk) {
+        this.rol_fk = rol_fk;
     }
 
     public String getActivo() {
