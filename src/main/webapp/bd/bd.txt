@@ -24,6 +24,15 @@ usuario_fk int
 );
 SELECT * FROM Elementos;
 
+CREATE TABLE rol (
+idRol INT PRIMARY KEY AUTO_INCREMENT,
+nombreRol VARCHAR(50)
+);
+
+insert into rol values(1,'admin');
+insert into rol values(2,'profesor');
+insert into rol values(3,'presta');
+
 CREATE TABLE usuarios (
 id INT PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(100),
@@ -31,8 +40,9 @@ apellido VARCHAR(50),
 email VARCHAR(225),
 numIdentificacion INT,
 contrasena VARCHAR(50),
-usuario VARCHAR(50),
-activo VARCHAR(50)
+rol_fk int,
+activo VARCHAR(50),
+FOREIGN KEY (rol_fk) REFERENCES rol (idRol)
 );
 
 CREATE TABLE propiedad (
@@ -47,10 +57,6 @@ FOREIGN KEY (usuario_fk) REFERENCES usuarios (id),
 FOREIGN KEY (elemento_fk) REFERENCES Elementos (N_placa)
 );
 
-CREATE TABLE rol (
-idRol INT PRIMARY KEY AUTO_INCREMENT,
-nombreRol VARCHAR(50)
-);
 alter table elementos 
 add constraint uFk FOREIGN KEY (usuario_fk) 
 REFERENCES usuarios (id);
@@ -75,12 +81,12 @@ IN apellidoUsuario VARCHAR(50),
 IN emailUsuario VARCHAR(225),
 IN numIdentificacionUsuario INT,
 IN contrasenaUsuario VARCHAR(50),
-IN usuarioUsuario VARCHAR(50),
+IN rol_fk int,
 IN activoUsuario VARCHAR(50)
 )
 BEGIN
-INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, usuario, activo)
-VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, usuarioUsuario, activoUsuario);
+INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, rol_fk, activo)
+VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, 1, activoUsuario);
 END;
 //
 DELIMITER ;
