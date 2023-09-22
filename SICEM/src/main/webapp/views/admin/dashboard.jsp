@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%-- IMPORTS DE ELEMENTOS --%>
 <%@ page import="model.ElementosDao" %>
@@ -93,55 +94,55 @@
                                     <h6 class="col mb-0">Elementos registrados</h6>
                                     <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroElementoModal">Nuevo elemento</a>
                                 </div>
-                                <% 
-                                    ElementosDao elementosDao = new ElementosDao();
-                                    List<ElementosVo> elementos;
-                                    String placa = request.getParameter("placa");
-                                    if (placa != null && !placa.isEmpty()) {
-                                        elementos = elementosDao.buscarPorNumeroPlaca(placa);
-                                    } else {
-                                        String tipo = request.getParameter("TipoElemento");
-                                        if (tipo != null && !tipo.isEmpty()) {
-                                            elementos = elementosDao.buscarPorTipo(tipo);
-                                        } else {
-                                            elementos = elementosDao.listar();
-                                        }
-                                    }
-                                    for (ElementosVo elemento : elementos) {
-                                %>
-                                <div class="accordion accordion-flush rounded" id="accordionFlushExample">
-                                    <div class="accordion-item border-bottom">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="flush-collaps
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" viewBox="2 1 23 23" style="fill: rgba(0, 0, 0, );"><path d="m3.553 18.895 4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132-2.913 1.457-2.264-1.132L8 12.118zm4-2.5 3-1.5v2.264l-3 1.5V9.618zm6.264 3.632-2.882 1.441-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132-2.882 1.441-2.264-1.132L12 5.118z"><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                        
-                                                <div class="mb-0 small lh-sm w-100">
-                                                    <div class="d-flex">
-                                                        <strong class="text-gray-dark"><%=elemento.getNombre()%></strong>
-                                                    </div>
-                                                    <span class="d-block"><%=elemento.getNombre()%></span>
-                                                </div>
-                                            </button>
-                                        </h2>
-                                        <div id="<%= elemento.getNumeroPlaca()%>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <ul>
-                                                <li><b>Nombres: </b><%=elemento.getNombre()%></li>
-                                                <li><b>Numero de placa: </b><%=elemento.getNombre()%></li>
-                                                <li><b>Costo: </b><%=elemento.getCosto()%></li>
-                                                <li><b>Tipo: </b><%=elemento.getTipo()%></li>
-                                                <li><b>Fecha: </b><%=elemento.getFechaIngreso()%></li>
-                                                <li><b>Categoria: </b><%=elemento.getCategoria()%></li>
-                                                <li><b>Aula: </b><%=elemento.getNumeroAula()%></li>
-                                                <li><b>Descripción: </b><%=elemento.getDescripcion()%></li>
-                                                <li><b>Cuadrante: </b><%=elemento.getUsu()%></li>
-                                                <li><b>Estado de elemento: </b><%=elemento.getEstado()%></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    </div>
+                                <div class="table-responsive small">
+                                    <table class="table table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Num. placa</th>
+                                                <th scope="col">Costo</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Categoria</th>
+                                                <th scope="col">Aula</th>
+                                                <th scope="col">Descripción</th>
+                                                <th scope="col">Cuadrante</th>
+                                                <th scope="col">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% 
+                                                ElementosDao elementosDao = new ElementosDao();
+                                                List<ElementosVo> elementos;
+                                                String placa = request.getParameter("placa");
+                                                if (placa != null && !placa.isEmpty()) {
+                                                    elementos = elementosDao.buscarPorNumeroPlaca(placa);
+                                                } else {
+                                                    String tipo = request.getParameter("TipoElemento");
+                                                    if (tipo != null && !tipo.isEmpty()) {
+                                                        elementos = elementosDao.buscarPorTipo(tipo);
+                                                    } else {
+                                                        elementos = elementosDao.listar();
+                                                    }
+                                                }
+                                                for (ElementosVo elemento : elementos) {
+                                            %>
+                                                <tr>
+                                                    <td><%=elemento.getNombre()%></td>
+                                                    <td><%= elemento.getNumeroPlaca()%></td>
+                                                    <td><%=elemento.getCosto()%></td>
+                                                    <td><%=elemento.getTipo()%></td>
+                                                    <td><%=elemento.getFechaIngreso()%></td>
+                                                    <td><%=elemento.getCategoria()%></td>
+                                                    <td><%=elemento.getNumeroAula()%></td>
+                                                    <td><%=elemento.getDescripcion()%></td>
+                                                    <td><%=elemento.getUsu()%></td>
+                                                    <td><%=elemento.getEstado()%></td>
+                                                </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <% } %>
                             </div>
                         </section>
                     </section>
@@ -152,43 +153,38 @@
                                     <h6 class="col mb-0">usuarios registrados</h6>
                                     <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroUsuarioModal">Nuevo usuario</a>
                                 </div>
-
-                                <% 
-                                    UsuarioDao usuarioDao = new UsuarioDao();
-                                    List<UsuarioVo> usuarios = usuarioDao.listarUsuarios();
-                                    for (UsuarioVo usuario : usuarios) {
-                                %>
-                                <div class="accordion accordion-flush rounded" id="accordionFlushExample">
-                                    <div class="accordion-item border-bottom">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="flush-collapseOne">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" viewBox="2 1 23 23" style="fill: rgba(0, 0, 0, );"><path d="m3.553 18.895 4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132-2.913 1.457-2.264-1.132L8 12.118zm4-2.5 3-1.5v2.264l-3 1.5V9.618zm6.264 3.632-2.882 1.441-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132-2.882 1.441-2.264-1.132L12 5.118z"><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                                <div class="mb-0 small lh-sm w-100">
-                                                    <div class="d-flex">
-                                                        <strong class="text-gray-dark"><%= usuario.getNombre() %></strong>
-                                                    </div>
-                                                    <span class="d-block">@<%= usuario.getId() %></span>
-                                                </div>
-                                            </button>
-                                        </h2>
-                                        <div  class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <ul>
-                                                <li><b>Id: </b><%= usuario.getId() %></li>
-                                                <li><b>Nombre: </b><%= usuario.getNombre() %></li>
-                                                <li><b>Apellido: </b><%= usuario.getApellido() %></li>
-                                                <li><b>Email: </b><%= usuario.getEmail() %></li>
-                                                <li><b>No° de identificación: </b><%= usuario.getNumIdentificacion() %></li>
-                                                <li><b>Contraseña: </b><%= usuario.getContrasena() %></li>
-                                                <li><b>Nombre de usuario: </b><%= usuario.getRol_fk() %></li>
-                                                <li><b>Activo/Inactivo</b><td><%= usuario.getActivo() %></td></li>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    </div>
+                                <div class="table-responsive small">
+                                    <table class="table table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Nombre y apellido</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Identificación</th>
+                                                <th scope="col">Contraseña</th>
+                                                <th scope="col">Rol</th>
+                                                <th scope="col">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% 
+                                                UsuarioDao usuarioDao = new UsuarioDao();
+                                                List<UsuarioVo> usuarios = usuarioDao.listarUsuarios();
+                                                for (UsuarioVo usuario : usuarios) {
+                                            %>
+                                                <tr>
+                                                    <td><%= usuario.getId() %></td>
+                                                    <td><p><%= usuario.getNombre() %> <%= usuario.getApellido() %></p></td>
+                                                    <td><%= usuario.getEmail() %></td>
+                                                    <td><%= usuario.getNumIdentificacion() %></td>
+                                                    <td><%= usuario.getContrasena() %></td>
+                                                    <td><%= usuario.getRol_fk() %></td>
+                                                    <td><%= usuario.getActivo() %></td>
+                                                </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <% } %>
                             </div>
                         </section>
                     </section>
@@ -197,31 +193,27 @@
                             <section>
                                 <div style="width: 90vh; height: 30em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-start">
                                     <h6 class="border-bottom pb-2 mb-0">Categorias registradas</h6>
-                                    <div class="accordion accordion-flush rounded" id="accordionFlushExample">
-                                        <div class="accordion-item border-bottom">
-                                            <h2 class="accordion-header" id="flush-headingOne">
-                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" viewBox="2 1 23 23" style="fill: rgba(0, 0, 0, );"><path d="m3.553 18.895 4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132-2.913 1.457-2.264-1.132L8 12.118zm4-2.5 3-1.5v2.264l-3 1.5V9.618zm6.264 3.632-2.882 1.441-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132-2.882 1.441-2.264-1.132L12 5.118z"><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                                    <div class="mb-0 small lh-sm w-100">
-                                                        <div class="d-flex">
-                                                            <strong class="text-gray-dark"><%-- REGISTRO INRREPETIBLE --%></strong>
-                                                        </div>
-                                                        <span class="d-block">@<%-- REGISTRO INRREPETIBLE --%></span>
-                                                    </div>
-                                                </button>
-                                            </h2 class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">
-                                                <ul>
-                                                    <%   
-                                                        CategoriaDao cd = new CategoriaDao();
-                                                        List<CategoriaVo> categorias=cd.obtenerCategorias();
-                                                            for (CategoriaVo categoria : categorias ) { %>  
-                                                            <li><%= categoria.getNombreCategoria() %></li>
-                                                    <% } %>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        </div>
+                                    <div class="table-responsive small">
+                                        <table class="table table-striped table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Nombres</th>
+                                                    <th scope="col">Descripción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%   
+                                                    CategoriaDao cd = new CategoriaDao();
+                                                    List<CategoriaVo> categorias=cd.obtenerCategorias();
+                                                    for (CategoriaVo categoria : categorias ) { 
+                                                %> 
+                                                    <tr>
+                                                        <td><%= categoria.getNombreCategoria() %></td>
+                                                        <td><%= categoria.getDescripcionCategoria() %></td>
+                                                    </tr>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                                 <div style="width: 70vh; height: 22em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-end">
@@ -231,7 +223,7 @@
                                             <form action="categoria" method="post" class="d-flex flex-column justify-content-between">
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                                                    <input name="n_categoria" type="email" class="form-control" id="exampleFormControlInput1">                                                </div>
+                                                    <input name="n_categoria" type="text" class="form-control" id="exampleFormControlInput1">                                                </div>
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlTextarea1" class="form-label">Descripción de la categoria</label>
                                                     <textarea name="d_categoria" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -287,8 +279,13 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="container">
+                <div class="container"></div>
                     <form style="width: 30em" class="col-auto float-start bg-body shadow-sm p-3 rounded" action method>
+                        <% if (request.getAttribute("error") != null) { %>
+                            <div style="color: red; margin-bottom: 10px;">
+                                <%= request.getAttribute("error") %>
+                            </div>
+                        <% } %>
                         <div>
                             <h4>Registro de elementos</h4>
                         </div>
@@ -301,7 +298,7 @@
                                             d="M15 4h7v2h-7zm1 4h6v2h-6zm2 4h4v2h-4zM9.307 4l-6 16h2.137l1.875-5h6.363l1.875 5h2.137l-6-16H9.307zm-1.239 9L10.5 6.515 12.932 13H8.068z">
                                         </path>
                                     </svg></label>
-                                <input type="text" placeholder="Nombres" aria-label="First name" class="form-control" />
+                                <input type="text" placeholder="Nombres" aria-label="First name" class="form-control" name="NombreElemento" id="NombreElemento" required/>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
@@ -316,7 +313,7 @@
                                         <circle cx="12" cy="18" r="2"></circle>
                                     </svg></label>
                                 <input type="text" placeholder="Numero de placa" aria-label="First name"
-                                    class="form-control" />
+                                    class="form-control" name="N_placa" id="N_placa" required/>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
@@ -327,7 +324,7 @@
                                         </path>
                                     </svg></label>
                                 <input type="text" placeholder="Cantidad" aria-label="First name"
-                                    class="form-control" />
+                                    class="form-control" name="cantidad" id="cantidad" required/>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
@@ -337,15 +334,14 @@
                                             d="M15.999 8.5h2c0-2.837-2.755-4.131-5-4.429V2h-2v2.071c-2.245.298-5 1.592-5 4.429 0 2.706 2.666 4.113 5 4.43v4.97c-1.448-.251-3-1.024-3-2.4h-2c0 2.589 2.425 4.119 5 4.436V22h2v-2.07c2.245-.298 5-1.593 5-4.43s-2.755-4.131-5-4.429V6.1c1.33.239 3 .941 3 2.4zm-8 0c0-1.459 1.67-2.161 3-2.4v4.799c-1.371-.253-3-1.002-3-2.399zm8 7c0 1.459-1.67 2.161-3 2.4v-4.8c1.33.239 3 .941 3 2.4z">
                                         </path>
                                     </svg></label>
-                                <input type="text" placeholder="Costo" aria-label="First name" class="form-control" />
+                                <input type="text" placeholder="Costo" aria-label="First name" class="form-control" name="Costo" id="Costo" required/>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                                <select class="form-select" id="inputGroupSelect01">
-                                    <option selected>Elige...</option>
-                                    <option value="profesor">Hay que colocar una opción</option>
-                                    <option value="admin">Hay que colocar una opción</option>
-                                    <option value="cuentadante">Hay que colocar una opción</option>
+                                <select class="form-select" name="TipoElemento" id="TipoElemento" required>
+                                    <option selected disabled>Elige...</option>
+                                    <option>Consumo</option>
+                                    <option>Desechable</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
@@ -360,8 +356,19 @@
                                         </path>
                                     </svg></label>
                                 <input type="date" placeholder="Fecha de ingreso" aria-label="First name"
-                                    class="form-control" />
+                                    class="form-control" name="FechaIngresoElemento" id="FechaIngresoElemento" required/>
                             </div>
+                            <label>Categoría:</label>
+                            <select class="desp" name="categoriaElemento" id="categoriaElemento" required>
+                                <option disabled selected value="">Seleccionar una categoria</option>
+    
+                            <%   
+                            CategoriaDao cdi = new CategoriaDao();
+                            List<CategoriaVo> categorias=cdd.obtenerCategorias();
+                                for (CategoriaVo categoria : categorias ) { %>                   
+                                <option value="<%= categoria.getNombreCategoria() %>"> <%= categoria.getNombreCategoria() %> </option>   
+                            <% } %>
+                            </select>
                             <div class="input-group mb-3">
                                 <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -373,35 +380,37 @@
                                             d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z">
                                         </path>
                                     </svg></label>
-                                <input type="text" placeholder="Aula" aria-label="First name" class="form-control" />
+                                <input type="text" placeholder="Aula" aria-label="First name" class="form-control" name="NumAula" id="NumAula" required/>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Escriba una descripción del
                                     elemento</label>
                                 <textarea class="form-control" placeholder="Descripción"
-                                    id="exampleFormControlTextarea1" rows="3"></textarea>
+                                name="Descripcion" id="Descripcion" required rows="3"></textarea>
                             </div>
                             <div class="input-group mb-3">
-                                <label class="input-group-text" for="inputGroupSelect01">Cuadrante</label>
-                                <select class="form-select" id="inputGroupSelect01">
-                                    <option selected>Elige...</option>
-                                    <option value="profesor">Profesor</option>
-                                    <option value="admin">Administrador</option>
-                                    <option value="cuentadante">Cuantadatnte</option>
+                                <label>Cuentadante:</label>
+                                <select class="desp" name="usuario_fk" id="usuario_fk" required>
+                                    <option disabled selected value="">Seleccionar una Cuentadante </option>
+                                <%
+                                    UsuarioDao usua = new UsuarioDao();
+                                    List<UsuarioVo> usuarios = usut.listarUsuarios();
+                                    for (UsuarioVo usuario : usuarios) { %>                   
+                                        <option value="<%= usuario.getId() %>"><%= usuario.getId() %></option>   
+                                <% } %>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="inputGroupSelect01">Estado del elemento</label>
-                                <select class="form-select" id="inputGroupSelect01">
+                                <select class="form-select"name="EstadoElemento" id="EstadoElemento" required>
                                     <option selected>Elige...</option>
-                                    <option value="profesor">Profesor</option>
-                                    <option value="admin">Administrador</option>
-                                    <option value="cuentadante">Cuantadatnte</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
                                 </select>
                             </div>
                         </div>
                         <div class="container">
-                            <button type="button buttom__default" class="btn btn-primary">Registrar</button>
+                            <button type="submit" name="accion" value="add" class="btn btn-primary">Registrar</button>
                         </div>
 
                     </form>

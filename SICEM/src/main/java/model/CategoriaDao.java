@@ -42,7 +42,7 @@ public class CategoriaDao {
     // metodo con las estructura funcional
     public List<CategoriaVo> obtenerCategorias() throws SQLException {
         List<CategoriaVo> categorias = new ArrayList<>();
-        sql = "SELECT nombreCategoria FROM Categoria";
+        sql = "SELECT * FROM Categoria";
 
         try {
             con = Conexion.conectar();
@@ -51,6 +51,7 @@ public class CategoriaDao {
             while (rs.next()) {
                 CategoriaVo categoria = new CategoriaVo();
                 categoria.setNombreCategoria(rs.getString("nombreCategoria"));
+                categoria.setDescripcionCategoria(rs.getString("descripcionCategoria"));
                 categorias.add(categoria);
                 System.out.println(sql);
                 System.out.println(r);
