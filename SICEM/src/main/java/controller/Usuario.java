@@ -242,7 +242,7 @@ public class Usuario extends HttpServlet {
                 if (usuVo != null) {
                     HttpSession iniciar = request.getSession();
                     iniciar.setAttribute("numIdentificacion", usuVo);
-                    request.getRequestDispatcher("views/user/dashboard.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
                 } else {
                     request.getRequestDispatcher("views/user/login.jsp").forward(request, response);
                 }

@@ -84,7 +84,7 @@
               </div>
             </article>
             <article>
-              <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit">Ingresar</button>
+              <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
               <p class="my-3">¿Aún no tienes una cuenta? <a style="color: rgb(59, 169, 0);" href="Usuario?action=register">Click aquí</a>.</p>
             </article>
           </form>

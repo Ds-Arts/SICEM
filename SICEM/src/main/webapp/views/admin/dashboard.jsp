@@ -205,20 +205,20 @@
                                                     <div class="d-flex">
                                                         <strong class="text-gray-dark"><%= usuario.getNombre() %></strong>
                                                     </div>
-                                                    <span class="d-block">@<%= usuarioEncontrado.getId() %></span>
+                                                    <span class="d-block">@<%= usuario.getId() %></span>
                                                 </div>
                                             </button>
                                         </h2>
-                                        <div id="<%= usuarioEncontrado.getId() %>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div id="<%= usuario.getId() %>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <ul>
-                                                <li><b>Id: </b><%= usuarioEncontrado.getId() %></li>
+                                                <li><b>Id: </b><%= usuario.getId() %></li>
                                                 <li><b>Nombre: </b><%= usuario.getNombre() %></li>
                                                 <li><b>Apellido: </b><%= usuario.getApellido() %></li>
                                                 <li><b>Email: </b><%= usuario.getEmail() %></li>
                                                 <li><b>No° de identificación: </b><%= usuario.getNumIdentificacion() %></li>
                                                 <li><b>Contraseña: </b><%= usuario.getContrasena() %></li>
-                                                <li><b>Nombre de usuario: </b><%= usuario.getUsuario() %></li>
+                                                <li><b>Nombre de usuario: </b><%= usuario.getRol_fk() %></li>
                                                 <li><b>Activo/Inactivo</b><td><%= usuario.getActivo() %></td></li>
                                                 </li>
                                             </ul>

@@ -75,7 +75,7 @@
             <article>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">@</span>
-                <input id="numIdentificacion" name="numIdentificacion" type="number" class="form-control" placeholder="Ingrese su nombre" aria-label="ID" aria-describedby="basic-addon1">
+                <input id="numIdentificacion" name="numIdentificacion" type="number" class="form-control" placeholder="Ingrese su numero de identifiación" aria-label="ID" aria-describedby="basic-addon1">
                 
               </div>
               <div class="input-group mb-3">
@@ -84,7 +84,7 @@
               </div>
             </article>
             <article>
-              <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit">Ingresar</button>
+              <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
               <p class="my-3">¿Aún no tienes una cuenta? <a style="color: rgb(59, 169, 0);" href="Usuario?action=register">Click aquí</a>.</p>
             </article>
           </form>
