@@ -19,7 +19,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SENA - SICEM</title>
-    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -36,20 +35,13 @@
 </head>
 
 <body class="bg-body-tertiary">
-    <!-- CONTENEDOR GENERAL DE CONTENIDO VISIBLE -->
     <section class="container-fluid ">
         <div class="row">
-            <!-- MENU LATERAL -->
             <aside id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow bg-body" style="height: 100vh; position: fixed;">
                 <div class="position-sticky pt-3">
                     <div class="row border-bottom px-3 pb-3">
-                        <!-- <div style="width: 70px;" class="col-5 mb-2">
-                            <img class="img-fluid" src="../img/logo1.png" alt="">
-                        </div>
-                        <h2 class="col text-start">SICEM</h2> -->
                         <img src="/img/logo_mono.png" alt="">
                     </div>
-                    <!-- BOTONES DE NAVEGACION -->
                     <ul class="navbar-nav">
                         <div class=" border-bottom">
                             <li class="nav-item">
@@ -85,23 +77,15 @@
                         </li>
                     </ul>
                 </div>
-                <!-- NO BORRAR ESTE CANVAS PLIS -->
-                <!-- <aside class="my-4 w-100 chartjs-render-monitor" id="myChart" style="display: block; height: 100vh;"></aside> -->
             </aside>
-
-            <!-- CONTENEDOR DEL DASHBOARD COMPLETO --> 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="chartjs-size-monitor">
-                    <!-- TITULO DE LA SECCION -->
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
                         <h1 class="h2">Administrador</h1>
-
-                        <!-- LINK DEL MODAL DE NOTIFICACIONES -->
                         <a data-bs-toggle="offcanvas" href="#news" role="button" aria-controls="offcanvasExample">
                             <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                         </a>
                     </div>
-                    <!-- CONTENEDOR ELEMENTOS -->
                     <section id="elementosRegistrados" class="container-fluid position-relative py-1 px-1">
                         <section>
                             <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
@@ -109,7 +93,6 @@
                                     <h6 class="col mb-0">Elementos registrados</h6>
                                     <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroElementoModal">Nuevo elemento</a>
                                 </div>
-                                <!-- CONTENEDOR DEL REGISTRO -->
                                 <% 
                                     ElementosDao elementosDao = new ElementosDao();
                                     List<ElementosVo> elementos;
@@ -129,10 +112,9 @@
                                 <div class="accordion accordion-flush rounded" id="accordionFlushExample">
                                     <div class="accordion-item border-bottom">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= elemento.getNumeroPlaca()%>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                <!-- ICONO -->
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="flush-collaps
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" viewBox="2 1 23 23" style="fill: rgba(0, 0, 0, );"><path d="m3.553 18.895 4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132-2.913 1.457-2.264-1.132L8 12.118zm4-2.5 3-1.5v2.264l-3 1.5V9.618zm6.264 3.632-2.882 1.441-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132-2.882 1.441-2.264-1.132L12 5.118z"><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                                <!-- CONTENEDOR DEL RESUMEN DEL ELEMENTO -->
+                                        
                                                 <div class="mb-0 small lh-sm w-100">
                                                     <div class="d-flex">
                                                         <strong class="text-gray-dark"><%=elemento.getNombre()%></strong>
@@ -154,22 +136,6 @@
                                                 <li><b>Descripción: </b><%=elemento.getDescripcion()%></li>
                                                 <li><b>Cuadrante: </b><%=elemento.getUsu()%></li>
                                                 <li><b>Estado de elemento: </b><%=elemento.getEstado()%></li>
-                                                <!-- 
-                                                    ATENCION:
-                                                    Esta seccoin esta comentada hasta saber para que sirve o cual
-                                                    será su utilidad a largo plazo.
-                                                -->
-                                                <!-- 
-                                                    <li>
-                                                        <div class="container-fluid">
-                                                            <form action="elemento" method="post"> 
-                                                                <input type="number" name="id_cuentadante"  value=  <%=elemento.getUsu()%> hidden>
-                                                                <input type="number" name="n_placa_prestamo"  value= <%= elemento.getNumeroPlaca()%>  hidden>
-                                                                <button type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
-                                                            </form>
-                                                        </div> 
-                                                    </li> 
-                                                -->
                                             </ul>
                                         </div>
                                     </div>
@@ -179,7 +145,6 @@
                             </div>
                         </section>
                     </section>
-                    <!-- CONTENEDOR USUARIOS -->
                     <section id="usuariosRegistrados" class="container-fluid position-relative py-1 px-1">
                         <section>
                             <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
@@ -187,7 +152,6 @@
                                     <h6 class="col mb-0">usuarios registrados</h6>
                                     <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroUsuarioModal">Nuevo usuario</a>
                                 </div>
-                                <!-- CONTENEDOR DEL REGISTRO -->
 
                                 <% 
                                     UsuarioDao usuarioDao = new UsuarioDao();
@@ -197,10 +161,8 @@
                                 <div class="accordion accordion-flush rounded" id="accordionFlushExample">
                                     <div class="accordion-item border-bottom">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= elemento.getNumeroPlaca()%>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                <!-- ICONO -->
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" viewBox="2 1 23 23" style="fill: rgba(0, 0, 0, );"><path d="m3.553 18.895 4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132-2.913 1.457-2.264-1.132L8 12.118zm4-2.5 3-1.5v2.264l-3 1.5V9.618zm6.264 3.632-2.882 1.441-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132-2.882 1.441-2.264-1.132L12 5.118z"><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                                <!-- CONTENEDOR DEL RESUMEN DEL ELEMENTO -->
                                                 <div class="mb-0 small lh-sm w-100">
                                                     <div class="d-flex">
                                                         <strong class="text-gray-dark"><%= usuario.getNombre() %></strong>
@@ -209,7 +171,7 @@
                                                 </div>
                                             </button>
                                         </h2>
-                                        <div id="<%= usuario.getId() %>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div  class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <ul>
                                                 <li><b>Id: </b><%= usuario.getId() %></li>
@@ -230,22 +192,16 @@
                             </div>
                         </section>
                     </section>
-                    
-                    <!-- CONTENEDOR CATEGORIAS -->
                     <section id="categoriasRegistrados" class="container-fluid position-relative py-1 px-1">
                         <article class="row">
-                            <!-- LISTAR CATEGIRIAS -->
                             <section>
                                 <div style="width: 90vh; height: 30em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-start">
                                     <h6 class="border-bottom pb-2 mb-0">Categorias registradas</h6>
-                                    <!-- CONTENEDOR DE LA CATEGORIA -->
                                     <div class="accordion accordion-flush rounded" id="accordionFlushExample">
                                         <div class="accordion-item border-bottom">
                                             <h2 class="accordion-header" id="flush-headingOne">
-                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%-- REGISTRO INRREPETIBLE --%>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    <!-- ICONO -->
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="flush-collapseOne">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" viewBox="2 1 23 23" style="fill: rgba(0, 0, 0, );"><path d="m3.553 18.895 4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132-2.913 1.457-2.264-1.132L8 12.118zm4-2.5 3-1.5v2.264l-3 1.5V9.618zm6.264 3.632-2.882 1.441-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132-2.882 1.441-2.264-1.132L12 5.118z"><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                                    <!-- CONTENEDOR DEL RESUMEN DE CATEGORIAS -->
                                                     <div class="mb-0 small lh-sm w-100">
                                                         <div class="d-flex">
                                                             <strong class="text-gray-dark"><%-- REGISTRO INRREPETIBLE --%></strong>
@@ -254,7 +210,7 @@
                                                     </div>
                                                 </button>
                                             </h2>
-                                            <div id="<%-- REGISTRO INRREPETIBLE --%>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div  class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
                                                 <ul>
                                                     <%   
@@ -269,10 +225,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- REGISTRAR CATEGORIA -->
                                 <div style="width: 70vh; height: 22em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-end">
                                     <h6 class="border-bottom pb-2 mb-0">Registro de categorias</h6>
-                                    <!-- CONTENEDOR DEL ELEMENTO -->
                                     <div class="d-flex text-muted pt-3">
                                         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                             <form action="categoria" method="post" class="d-flex flex-column justify-content-between">
@@ -296,14 +250,12 @@
         </div>
     </section>
 
-    <!-- SECCION: OFFCANVAS -->
     <div class="offcanvas offcanvas-end o" tabindex="-1" id="news" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h3 class="offcanvas-title" id="offcanvasExampleLabel">Notificaciones</h3>
             <button type="button" class="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body overflow-x-auto">
-            <!-- NOTIFICACION DE NUEVA SOLICITUD -->
             <div class="mb-3 border rounded p-2">
                 <div>
                     <h4  class="mb-3 pb-1 border-bottom">Nueva solucitud</h4>
@@ -317,8 +269,6 @@
                     <button type="button" class="btn btn-danger">Danger</button>
                 </div>
             </div>
-
-            <!-- NOTIFICACION DE DAÑO -->
             <div class="mb-3 border rounded p-2">
                 <div>
                     <h4  class="mb-3 pb-1 border-bottom">Se ha notificado un daño</h4>
@@ -334,16 +284,11 @@
             </div>
         </div>
     </div>
-
-    <!-- SECCION: MODALES -->
-
-    <!-- REGISTRO MODAL ELEMENTO -->
     <div class="modal fade" id="registroElementoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
-                    <!-- FORMULARIO DE REGISTRO DE CLIENTES -->
                     <form style="width: 30em" class="col-auto float-start bg-body shadow-sm p-3 rounded" action method>
                         <div>
                             <h4>Registro de elementos</h4>
@@ -461,19 +406,16 @@
                         </div>
 
                     </form>
-                    <!-- TABLA DE CONSULTA DE USUARIOS -->
                     <div class="col-auto float-end"></div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- REGISTRO MODAL CLIENTE -->
     <div class="modal fade" id="registroUsuarioModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
-                    <!-- FORMULARIO DE REGISTRO DE CLIENTES -->
                     <form style="width: 30em" class="col-auto float-start bg-body shadow-sm p-3 rounded" action method>
                         <div>
                             <h4>Registro de usuarios</h4>
@@ -514,20 +456,11 @@
                             <button type="button buttom__default" class="btn btn-primary">Registrar</button>
                         </div>
                     </form>
-                    <!-- TABLA DE CONSULTA DE USUARIOS -->
                     <div class="col-auto float-end"></div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- CONSULTA ESPECIFICA MODAL -->
-    
-    <!-- ELEMENTOS -->
-
-    <!-- USUARIOS -->
-
-    <!-- CATEGORIAS -->
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inicio de sesión</title>
-    <!-- ICON -->
+      
     <link rel="icon" href="/ASSETS/IMG/IDENTIDAD/Logo_Sena.png">
-    <!-- BOOTSTRAP -->
+      
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -32,9 +32,9 @@
     <link rel="stylesheet" href="../../assets/CSS/custom.css">
   </head>
   <body>
-    <!-- HEADER -->
+      
     <header class="navbar navbar-expand-lg bg-body-tertiary">
-      <!-- LOGO -->
+        
       <div class="container ms-5" style="width: 85px; height: 85px;">
           <a class="navbar-brand">
               <img src="https://senacertificados.co/wp-content/uploads/2021/10/Logo-de-SENA-png-verde-300x300-1.png"
@@ -42,7 +42,7 @@
           </a>
           <h2 class="ms-5">SICEM</h2>
       </div>
-      <!-- BOTONES -->
+        
       <div class="container-fluid botones">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
               aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,14 +59,14 @@
               </ul>
           </div>
       </div>
-  </header> <!-- END HEADER -->
+  </header>   
 
-    <!-- CONTENEDOR GENERAL -->
+      
     <section class="container">
 
-      <div style="height: 70vh;" class="container border row my-5 border border-1 p-0"><!-- CONTENEDOR GENERAL LOGIN -->
+      <div style="height: 70vh;" class="container border row my-5 border border-1 p-0"> 
         
-        <aside style="height: 70vh;" class="col-6 px-5 py-5"><!-- FORMULARIO / LOGIN -->
+        <aside style="height: 70vh;" class="col-6 px-5 py-5"> 
           <article>
             <h2>Iniciar sesión</h2>
             <p>Siempre es un placer verte de nuevo.</p>
@@ -88,10 +88,10 @@
               <p class="my-3">¿Aún no tienes una cuenta? <a style="color: rgb(59, 169, 0);" href="Usuario?action=register">Click aquí</a>.</p>
             </article>
           </form>
-        </aside><!-- END FORMULARIO / LOGIN -->
+        </aside>  
 
-        <aside style="height: 70vh;" class="backgroundCover col-6"><!-- CONTENIDO / MAS INFORMACION -->
-          <!-- FONDO DE PANTALLA -->
+        <aside style="height: 70vh;" class="backgroundCover col-6"> 
+            
           <style>
             .backgroundCover{
               background-image: url(https://images.unsplash.com/photo-1545830790-68595959c491?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80);
@@ -101,7 +101,7 @@
               opacity: 95%;
             }
           </style>
-        </aside><!-- END CONTENIDO / MAS INFORMACION -->
+        </aside>  
         <article style="height: 20px; font-size: 12px; color: white; background-color: rgb(59, 169, 0);" class="text-end px-2">
           <p>Esta imagen proviene de 
             <a style="color: white;" href="https://unsplash.com/es/fotos/xj7HV0FvSg0">
@@ -120,9 +120,9 @@
             justify-content: center;
           }
         </style>
-      </div><!-- END CONTENEDOR LOGIN -->
+      </div>  
 
-    </section><!-- END CONTENEDOR GENERAL -->
+    </section>  
 
   </body>
 </html>
