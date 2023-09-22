@@ -1,5 +1,4 @@
 CREATE DATABASE elementos1;
-
 USE elementos1;
 
 CREATE TABLE Categoria (
@@ -34,14 +33,17 @@ activo VARCHAR(50)
 );
 
 CREATE TABLE propiedad (
-usuario_fk INT,
+cuentadante_fk INT,
+prestatario_fk INT,
 elemento_fk INT,
 fecha_transpaso DATE,
 tipo BOOLEAN,
 fecha_inicio DATE,
 fecha_fin DATE,
-PRIMARY KEY (usuario_fk, elemento_fk),
-FOREIGN KEY (usuario_fk) REFERENCES usuarios (id),
+
+PRIMARY KEY (cuentadante_fk, elemento_fk,prestatario_fk),
+FOREIGN KEY (cuentadante_fk) REFERENCES usuarios (id),
+FOREIGN KEY (prestatario_fk) REFERENCES usuarios (id),
 FOREIGN KEY (elemento_fk) REFERENCES Elementos (N_placa)
 );
 
