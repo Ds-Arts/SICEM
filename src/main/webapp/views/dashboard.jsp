@@ -42,7 +42,7 @@
     </header>
 <nav>
     <h1>este es el home</h1>
-</footer>
+</nav>
 
 </body>
 </html>

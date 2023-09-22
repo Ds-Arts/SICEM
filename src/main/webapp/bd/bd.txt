@@ -7,7 +7,6 @@ nombreCategoria VARCHAR(50) PRIMARY KEY,
 DescripcionCategoria VARCHAR(300)
 );
 
-SELECT * FROM Categoria;
 
 CREATE TABLE Elementos (
 NombreElemento VARCHAR(50),
@@ -22,7 +21,6 @@ Descripcion VARCHAR(300),
 EstadoElemento VARCHAR(20),
 usuario_fk int
 );
-SELECT * FROM Elementos;
 
 CREATE TABLE usuarios (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -51,8 +49,8 @@ CREATE TABLE rol (
 idRol INT PRIMARY KEY AUTO_INCREMENT,
 nombreRol VARCHAR(50)
 );
-alter table elementos 
-add constraint uFk FOREIGN KEY (usuario_fk) 
+alter table elementos
+add constraint uFk FOREIGN KEY (usuario_fk)
 REFERENCES usuarios (id);
 
 ALTER TABLE Elementos
@@ -106,4 +104,3 @@ END;
 //
 DELIMITER ;
 
-nose
