@@ -209,7 +209,7 @@
                                                         <span class="d-block">@<%-- REGISTRO INRREPETIBLE --%></span>
                                                     </div>
                                                 </button>
-                                         class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            </h2 class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
                                                 <ul>
                                                     <%   
