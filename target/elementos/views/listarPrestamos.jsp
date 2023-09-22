@@ -5,6 +5,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/CSS/Listas.css">
+    <link rel="icon" href="assets/IMG/ventana.png">
     <title>Listado de Préstamos</title>
     <!-- Agrega tus enlaces a hojas de estilo y scripts aquí -->
 </head>
@@ -23,8 +25,8 @@
     <% } %>
 
     <!-- Agrega una tabla para mostrar la lista de préstamos -->
-    <table border="1">
-        <tr>
+    <table border="1"  class="tabla">
+        <tr id="cabecera">
             <th>Elemento</th>
             <th>Usuario</th>
             <th>Fecha de Inicio</th>
@@ -34,6 +36,7 @@
             List<PrestamosVo> prestamos = (List<PrestamosVo>) request.getAttribute("prestamos");
             for (PrestamosVo prestamo : prestamos) {
         %>
+
         <tr>
             <td><%= prestamo.getElementoFk() %></td>
             <td><%= prestamo.getUsuarioFk() %></td>

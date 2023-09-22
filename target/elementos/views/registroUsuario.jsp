@@ -10,10 +10,7 @@
   <title>Registro de Usuario</title>
 
 </head>
-<body> 
-
-
-  <h1>  REGISTRO USUARIO </h1>
+<body>
   <div class="login-page">
       <header>
         <div class="logo">
@@ -70,7 +67,10 @@
         <a href="elemento?accion=listar">
           <button>Consultar Elementos registrados</button>
         </a>
-        <button>Consultar prestamos</button>
+
+        <a href="Prestamo?action=listarPrestamos">
+            <button>Consultar prestamos</button>
+        </a>
         <!--   boton para redireccionar a el servlet elemento para el formulario de creacion de  categoria en el servlet  elementos   -->
         <a href="elemento?accion=c_categoria">    
             <button> Crear nueva categoria </button>

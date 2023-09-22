@@ -27,13 +27,6 @@
                     <label>Fecha de Fin</label>
                     <input type="date" id="fechaFin" name="fechaFin" min="1904-01-01" max="6000-12-31" required>
                     
-                    <!-- Nuevos campos -->
-                    <label>Fecha de Traspaso</label>
-                    <input type="date" id="fechaTranspaso" name="fechaTranspaso" required>
-                    
-                    <label>Tipo</label>
-                    <input type="checkbox" id="tipo" name="tipo" value="true">
-                    
                     <button type="submit" name="action" value="registrar">Realizar Préstamo</button>
                 </form>
                 <div class="pie-form">

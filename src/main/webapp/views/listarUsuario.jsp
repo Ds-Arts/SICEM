@@ -35,23 +35,20 @@
             <p><strong>APELLIDO:</strong> <%= usuarioEncontrado.getApellido() %></p>
             <p><strong>EMAIL:</strong> <%= usuarioEncontrado.getEmail() %></p>
             <p><strong>NUMERO DE IDENTIFICACION:</strong> <%= usuarioEncontrado.getNumIdentificacion() %></p>
-            <p><strong>CONTRASEÑA:</strong> <%= usuarioEncontrado.getContrasena() %></p>
             <p><strong>USUARIO:</strong> <%= usuarioEncontrado.getUsuario() %></p>
             <p><strong>ACTIVO:</strong> <%= usuarioEncontrado.getActivo() %></p>
             <p><a href="Usuario?action=elementos&idUsuarioDetalle=<%= usuarioEncontrado.getId() %>">Ver Elementos</a></p>
         </div>
     <% } %>
-    <table>
-        <tr>
+    <table class="tabla">
+        <tr id="cabecera">
             <th>ID</th>
             <th>NOMBRE</th>
             <th>APELLIDO</th>
             <th>EMAIL</th>
             <th>NUMERO DE IDENTIFICACION</th>
-            <th>CONTRASEÑA</th>
             <th>USUARIO</th>
             <th>ACTIVO</th>
-            <th>DETALLES</th>
         </tr>
         <% 
             UsuarioDao usuarioDao = new UsuarioDao();
@@ -64,10 +61,8 @@
             <td><%= usuario.getApellido() %></td>
             <td><%= usuario.getEmail() %></td>
             <td><%= usuario.getNumIdentificacion() %></td>
-            <td><%= usuario.getContrasena() %></td>
             <td><%= usuario.getUsuario() %></td>
             <td><%= usuario.getActivo() %></td>
-            <td><a href="Usuario?action=detalle&idUsuarioDetalle=<%= usuario.getId() %>">Detalle</a></td>
         </tr>
         <tr class="separador">
             <td colspan="5"></td>

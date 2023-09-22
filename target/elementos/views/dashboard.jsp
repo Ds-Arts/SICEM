@@ -17,7 +17,7 @@
         <div class="logo">
             <img src="assets/IMG/sena.png">
             <h1>  | Sistema Inventario</h1>
-            <div class="btnsup"> 
+            <div class="btnsup">
                 <a href="elemento?accion=registrar">
                     <button>Registrar elementos</button>
                 </a>
@@ -26,7 +26,7 @@
                     <button>registrar usuarios</button>
                 </a>
 
-                <a href="elemento?accion=c_categoria"> 
+                <a href="elemento?accion=c_categoria">
                 <button>crear categoria</button>
                 </a>
                 <button>Notificaciones</button>
@@ -34,10 +34,10 @@
                 <button>Acceso</button>
             </div>
         </div>
-        
+
 <!--Parte superior ⬆️⬆️-->
 
-      
+
         </div>
     </header>
 <nav>

@@ -97,7 +97,7 @@
                         <td><%= elemento.getNumeroAula()%></td>
                         <td><%= elemento.getDescripcion()%></td>
                         <td><%= elemento.getEstado()%></td> 
-                        <td><%= elemento.getUsu() + " = " + usuario.getNombre() %></td>
+                        <td><%= usuario.getNombre() %></td>
                         <td>  
                             <form action="elemento" method="post"> 
                                 <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>

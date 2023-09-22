@@ -99,7 +99,7 @@
                     </a>
 
                     <a href="Prestamo?action=listarPrestamos">
-                        <button>prestamos list</button>
+                        <button>Consultar prestamos</button>
                     </a>
 
                     <a href="Usuario?action=registrarU">
