@@ -1,11 +1,12 @@
 CREATE DATABASE elementos1;
 USE elementos1;
-
 CREATE TABLE Categoria (
 nombreCategoria VARCHAR(50) PRIMARY KEY,
 DescripcionCategoria VARCHAR(300)
 );
-
+CREATE TABLE rol (
+nombreRol VARCHAR(50) PRIMARY KEY
+);
 
 CREATE TABLE Elementos (
 NombreElemento VARCHAR(50),
@@ -28,8 +29,9 @@ apellido VARCHAR(50),
 email VARCHAR(225),
 numIdentificacion INT,
 contrasena VARCHAR(50),
-usuario VARCHAR(50),
-activo VARCHAR(50)
+rol_fk VARCHAR(50),
+activo VARCHAR(50),
+FOREIGN KEY (rol_fk) REFERENCES rol (nombreRol)
 );
 
 CREATE TABLE propiedad (
@@ -47,10 +49,6 @@ FOREIGN KEY (prestatario_fk) REFERENCES usuarios (id),
 FOREIGN KEY (elemento_fk) REFERENCES Elementos (N_placa)
 );
 
-CREATE TABLE rol (
-idRol INT PRIMARY KEY AUTO_INCREMENT,
-nombreRol VARCHAR(50)
-);
 alter table elementos
 add constraint uFk FOREIGN KEY (usuario_fk)
 REFERENCES usuarios (id);
@@ -75,12 +73,12 @@ IN apellidoUsuario VARCHAR(50),
 IN emailUsuario VARCHAR(225),
 IN numIdentificacionUsuario INT,
 IN contrasenaUsuario VARCHAR(50),
-IN usuarioUsuario VARCHAR(50),
+IN rolUsuario VARCHAR(50),
 IN activoUsuario VARCHAR(50)
 )
 BEGIN
-INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, usuario, activo)
-VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, usuarioUsuario, activoUsuario);
+INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, rol_fk, activo)
+VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, rolUsuario, activoUsuario);
 END;
 //
 DELIMITER ;
@@ -106,3 +104,16 @@ END;
 //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE InsertarRol(
+IN nombreRol VARCHAR(50)
+)
+BEGIN
+INSERT INTO Rol(nombreRol)
+VALUES(nombreRol);
+END;
+//
+DELIMITER ;
+call elementos1.InsertarRol('Cuentadante');
+call elementos1.InsertarRol('Instructor');
+call elementos1.InsertarRol('Administrador');
