@@ -199,8 +199,8 @@ public class Usuario extends HttpServlet {
         if (request.getParameter("contrasena") != null) {
             usuVo.setContrasena(request.getParameter("contrasena"));
         }
-        if (request.getParameter("usuario") != null) {
-            usuVo.setUsuario(request.getParameter("usuario"));
+        if (request.getParameter("rol_fk") != null) {
+            usuVo.setUsuario(request.getParameter("rol_fk"));
         }
         if (request.getParameter("activo") != null) {
             usuVo.setActivo(request.getParameter("activo"));

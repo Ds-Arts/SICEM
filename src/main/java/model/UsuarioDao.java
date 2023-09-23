@@ -14,7 +14,7 @@ public class UsuarioDao {
     private int r;
 
     public int registrarUsuario(UsuarioVo nuevoUsuario) throws SQLException {
-        sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,usuario, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
+        sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
         try (Connection conexion = Conexion.conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql)) {
             ps.setString(1, nuevoUsuario.getNombre());
@@ -81,7 +81,7 @@ public class UsuarioDao {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setUsuario(rs.getString("rol_fk"));
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
@@ -91,6 +91,37 @@ public class UsuarioDao {
         }
         return usuarios;
     }
+ 
+
+
+ public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+        List<UsuarioVo> usuarios = new ArrayList<>();
+        sql = "SELECT * FROM usuarios where id!="+a+" ORDER BY nombre ASC;";
+        try (Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                UsuarioVo usuario = new UsuarioVo();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                usuario.setUsuario(rs.getString("rol_fk"));
+                usuario.setActivo(rs.getString("activo"));
+                usuarios.add(usuario);
+            }
+            System.out.println("Consulta exitosa"); 
+            System.out.println(usuarios+"lista de usuarios");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada: " + e.getMessage());
+        }
+        return usuarios;
+    }
+ 
+
+
+
 
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
@@ -142,7 +173,7 @@ public class UsuarioDao {
                     usuario.setApellido(rs.getString("apellido"));
                     usuario.setEmail(rs.getString("email"));
                     usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuario.setUsuario(rs.getString("usuario"));
+                    usuario.setUsuario(rs.getString("rol_fk"));
                     usuario.setActivo(rs.getString("activo"));
                     usuarios.add(usuario);
                 }
@@ -168,7 +199,7 @@ public class UsuarioDao {
                     usuarioEncontrado.setApellido(rs.getString("apellido"));
                     usuarioEncontrado.setEmail(rs.getString("email"));
                     usuarioEncontrado.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuarioEncontrado.setUsuario(rs.getString("usuario"));
+                    usuarioEncontrado.setUsuario(rs.getString("rol_fk"));
                     usuarioEncontrado.setActivo(rs.getString("activo"));
                 }
             }

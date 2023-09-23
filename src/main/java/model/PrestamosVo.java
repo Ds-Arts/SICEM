@@ -3,32 +3,91 @@ package model;
 import java.time.LocalDate;
 
 public class PrestamosVo {
-    private int usuarioFk;
+    private int  cuentadantefk;
     private int elementoFk;
     private LocalDate fechaTranspaso;
     private boolean tipo;
     private LocalDate fechaInicio;
-    private LocalDate fechaFin;
-
+    private LocalDate fechaFin; 
+    private int prestatariofk;
+ 
     public PrestamosVo() {
     }
 
-    public PrestamosVo(int usuarioFk, int elementoFk, LocalDate fechaTranspaso, boolean tipo, LocalDate fechaInicio, LocalDate fechaFin) {
-        this.usuarioFk = usuarioFk;
+
+
+
+
+
+    
+   
+
+    public PrestamosVo(int cuentadantefk, int elementoFk, LocalDate fechaTranspaso, boolean tipo, LocalDate fechaInicio,
+            LocalDate fechaFin, int prestatariofk) {
+        this.cuentadantefk = cuentadantefk;
         this.elementoFk = elementoFk;
         this.fechaTranspaso = fechaTranspaso;
         this.tipo = tipo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.prestatariofk = prestatariofk;
     }
 
-    public int getUsuarioFk() {
-        return usuarioFk;
+
+
+
+
+
+
+
+
+    public int getCuentadantefk() {
+        return cuentadantefk;
     }
 
-    public void setUsuarioFk(int usuarioFk) {
-        this.usuarioFk = usuarioFk;
+
+
+
+
+
+
+
+
+    public void setCuentadantefk(int cuentadantefk) {
+        this.cuentadantefk = cuentadantefk;
     }
+
+
+
+
+
+
+
+
+
+    public int getPrestatariofk() {
+        return prestatariofk;
+    }
+
+
+
+
+
+
+
+
+
+    public void setPrestatariofk(int prestatariofk) {
+        this.prestatariofk = prestatariofk;
+    }
+
+
+
+
+
+
+
+
 
     public int getElementoFk() {
         return elementoFk;

@@ -22,12 +22,12 @@ public class PrestamosDao {
     }
 
     public int registrar(PrestamosVo prestamo) throws SQLException {
-        sql = "INSERT INTO propiedad(usuario_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin) " +
-              "VALUES (?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO propiedad(cuentadante_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin,prestatario_fk) " +
+              "VALUES (?, ?, ?, ?, ?, ?,?)";
         
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, prestamo.getUsuarioFk());
+            ps.setInt(1, prestamo.getCuentadantefk());
             ps.setInt(2, prestamo.getElementoFk());
     
             // Validar y manejar la fecha de transpaso
@@ -51,8 +51,8 @@ public class PrestamosDao {
                 ps.setDate(6, java.sql.Date.valueOf(prestamo.getFechaFin()));
             } else {
                 ps.setNull(6, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
-            }
-    
+            } 
+            ps.setInt(7, prestamo.getCuentadantefk());
             r = ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -64,21 +64,21 @@ public class PrestamosDao {
 
     public List<PrestamosVo> listarPrestamos() throws SQLException {
         List<PrestamosVo> prestamos = new ArrayList<>();
-        sql = "SELECT usuario_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin FROM propiedad";
+        sql = "SELECT cuentadante_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin,prestatario_fk FROM propiedad";
         
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                int usuarioFk = rs.getInt("usuario_fk");
+                int cuentadantefk = rs.getInt("cuentadante_fk");
                 int elementoFk = rs.getInt("elemento_fk");
                 LocalDate fechaTranspaso = rs.getDate("fecha_transpaso").toLocalDate();
                 boolean tipo = rs.getBoolean("tipo");
                 LocalDate fechaInicio = rs.getDate("fecha_inicio").toLocalDate();
                 LocalDate fechaFin = rs.getDate("fecha_fin").toLocalDate();
-
-                PrestamosVo prestamo = new PrestamosVo(usuarioFk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin);
+                int prestatario_fk = rs.getInt("prestatario_fk");
+                PrestamosVo prestamo = new PrestamosVo(cuentadantefk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin,prestatario_fk);
                 prestamos.add(prestamo);
             }
         } catch (SQLException e) {
@@ -93,7 +93,10 @@ public class PrestamosDao {
         }
         return prestamos;
     }
+ 
 
+
+    
     // Otros métodos DAO según tus necesidades
 
     public void cerrarConexion() throws SQLException {

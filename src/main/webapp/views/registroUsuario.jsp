@@ -30,20 +30,20 @@
           <form class="formu" action="Usuario" method="POST">
               <label for="nombre">Nombre:</label>
               <input type="text" pattern="[A-Za-z ]{3,40}" id="nombre" name="nombre" required>
-              <label for="nombre">Apellido:</label>
+              <label for="apellido">Apellido:</label>
               <input type="text" pattern="[A-Za-z ]{3,40}" id="apellido" name="apellido" required>
-              <label for="nombre">Email:</label>
-              <input type="text" id="email" name="email" required>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
               <label for="nombre">Numero de identifiacion:</label>
               <input type="text" pattern="[1-9]\d{0,9}" id="numIdentificacion" name="numIdentificacion" required>
               <label for="nombre">Contraseña:</label>
               <input type="text" id="contrasena" name="contrasena" required>
-              <label for="usuario">Usuario:</label>
-              <select class="desp" name="usuario" id="usuario" required>
+              <label for="rol_fk">Usuario:</label>
+              <select class="desp" name="rol_fk" id="rol_fk" required>
               <option disabled selected value="">Seleccionar una categoria</option>
-                  <option>profesor</option>
-                  <option>cuentadante</option>
-                  <option>admin</option>
+                  <option>Instructor</option>
+                  <option>Cuentadante</option>
+                  <option>Administrador</option>
               </select>
               <label for="activo">Estado:</label>
               <select class="desp" name="activo" id="activo" required>

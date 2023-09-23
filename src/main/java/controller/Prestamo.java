@@ -55,9 +55,9 @@ public class Prestamo extends HttpServlet {
 
     private void registrarPrestamo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrestamosVo prestamo = new PrestamosVo();
-    
-        if (req.getParameter("usuarioFk") != null) {
-            prestamo.setUsuarioFk(Integer.parseInt(req.getParameter("usuarioFk")));
+        
+        if (req.getParameter("cuentadante_fk") != null) {  
+            prestamo.setCuentadantefk(Integer.parseInt(req.getParameter("cuentadante_fk")));
         }
         if (req.getParameter("elementoFk") != null) {
             prestamo.setElementoFk(Integer.parseInt(req.getParameter("elementoFk")));
@@ -91,11 +91,18 @@ public class Prestamo extends HttpServlet {
             LocalDate fechaFin = LocalDate.parse(req.getParameter("fechaFin"));
             prestamo.setFechaFin(fechaFin);
         }
+          if (req.getParameter("prestatario_fk") != null) {
+            
+             prestamo.setCuentadantefk(Integer.parseInt(req.getParameter("prestatario_fk")));
+        }
     
         try {
-            prestamosDao.registrar(prestamo);
+            prestamosDao.registrar(prestamo); 
+
             System.out.println("Registro de préstamo creado correctamente");
-            req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);
+          /*   req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);   */
+            
+
         } catch (SQLException e) {
             System.out.println("Error en la inserción del registro de préstamo: " + e.getMessage());
             req.getRequestDispatcher("views/error.jsp").forward(req, resp);
@@ -106,11 +113,10 @@ public class Prestamo extends HttpServlet {
 
     private void listarPrestamos(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            List<PrestamosVo> prestamos = prestamosDao.listarPrestamos();
 
+            List<PrestamosVo> prestamos = prestamosDao.listarPrestamos();
             // Puedes almacenar la lista en el request para que esté disponible en el JSP
             req.setAttribute("prestamos", prestamos);
-
             req.getRequestDispatcher("views/listarPrestamos.jsp").forward(req, resp);
         } catch (SQLException e) {
             System.out.println("Error al listar préstamos: " + e.getMessage());
