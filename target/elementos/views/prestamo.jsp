@@ -26,7 +26,6 @@
                     <input type="date" id="fechaInicio" name="fechaInicio" min="1904-01-01" max="6000-12-31" required>
                     <label>Fecha de Fin</label>
                     <input type="date" id="fechaFin" name="fechaFin" min="1904-01-01" max="6000-12-31" required>
-                    
                     <button type="submit" name="action" value="registrar">Realizar Préstamo</button>
                 </form>
                 <div class="pie-form">
