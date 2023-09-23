@@ -56,8 +56,10 @@ public class Prestamo extends HttpServlet {
     private void registrarPrestamo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrestamosVo prestamo = new PrestamosVo();
         
-        if (req.getParameter("cuentadante_fk") != null) {  
-            prestamo.setCuentadantefk(Integer.parseInt(req.getParameter("cuentadante_fk")));
+        if (req.getParameter("cuentadante_fk") != null) {   
+            System.out.println(req.getParameter("cuentadante_fk"));
+            prestamo.setCuentadantefk(Integer.parseInt(req.getParameter("cuentadante_fk"))); 
+            System.out.println(prestamo.getCuentadantefk());
         }
         if (req.getParameter("elementoFk") != null) {
             prestamo.setElementoFk(Integer.parseInt(req.getParameter("elementoFk")));
@@ -92,8 +94,9 @@ public class Prestamo extends HttpServlet {
             prestamo.setFechaFin(fechaFin);
         }
           if (req.getParameter("prestatario_fk") != null) {
-            
-             prestamo.setCuentadantefk(Integer.parseInt(req.getParameter("prestatario_fk")));
+            System.out.println(req.getParameter("prestatario_fk"));
+             prestamo.setPrestatariofk(Integer.parseInt(req.getParameter("prestatario_fk")));  
+             System.out.println("este es id de el prestatario"+prestamo.getPrestatariofk());
         }
     
         try {

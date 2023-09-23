@@ -22,38 +22,42 @@ public class PrestamosDao {
     }
 
     public int registrar(PrestamosVo prestamo) throws SQLException {
-        sql = "INSERT INTO propiedad(cuentadante_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin,prestatario_fk) " +
+        sql = "INSERT INTO propiedad(cuentadante_fk,prestatario_fk,elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin) " +
               "VALUES (?, ?, ?, ?, ?, ?,?)";
-        
+   
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, prestamo.getCuentadantefk());
-            ps.setInt(2, prestamo.getElementoFk());
+            ps.setInt(2, prestamo.getPrestatariofk()); 
+            ps.setInt(3, prestamo.getElementoFk());
     
             // Validar y manejar la fecha de transpaso
             if (prestamo.getFechaTranspaso() != null) {
-                ps.setDate(3, java.sql.Date.valueOf(prestamo.getFechaTranspaso()));
+                ps.setDate(4, java.sql.Date.valueOf(prestamo.getFechaTranspaso()));
             } else {
-                ps.setNull(3, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
+                ps.setNull(4, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
             }
     
-            ps.setBoolean(4, prestamo.isTipo());
+            ps.setBoolean(5, prestamo.isTipo());
     
             // Validar y manejar la fecha de inicio
             if (prestamo.getFechaInicio() != null) {
-                ps.setDate(5, java.sql.Date.valueOf(prestamo.getFechaInicio()));
+                ps.setDate(6, java.sql.Date.valueOf(prestamo.getFechaInicio()));
             } else {
-                ps.setNull(5, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
+                ps.setNull(6, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
             }
     
             // Validar y manejar la fecha de fin
             if (prestamo.getFechaFin() != null) {
-                ps.setDate(6, java.sql.Date.valueOf(prestamo.getFechaFin()));
+                ps.setDate(7, java.sql.Date.valueOf(prestamo.getFechaFin()));
             } else {
-                ps.setNull(6, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
+                ps.setNull(7, Types.DATE); // Opcional: Establecer como nulo si la fecha es null
             } 
-            ps.setInt(7, prestamo.getCuentadantefk());
-            r = ps.executeUpdate();
+            
+            System.out.println(ps);
+            System.out.println(sql);
+            r = ps.executeUpdate();  
+           
             ps.close();
         } catch (SQLException e) {
             e.printStackTrace();

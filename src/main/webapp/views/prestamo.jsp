@@ -29,8 +29,6 @@
                     <input type="date" id="fechaInicio" name="fechaInicio" min="1904-01-01" max="6000-12-31" required>
                     <label>Fecha de Fin</label>
                     <input type="date" id="fechaFin" name="fechaFin" min="1904-01-01" max="6000-12-31" required>
-<<<<<<< HEAD
-=======
                     <select class="desp" name="prestatario_fk" id="prestatario_fk" required>
                         <option disabled selected value="">Seleccionar un Prestatario </option>
                         <!-- Iterar a través de los usuarios y mostrar sus nombres en lugar de IDs -->
@@ -45,7 +43,6 @@
                                 <option value="<%= usuario.getId() %>"><%= usuario.getNombre() %></option>
                         <% } %>
                     </select> 
->>>>>>> 87a76c1e8be6253e2b7f8d89e5fe95202b4aaddc
                     <button type="submit" name="action" value="registrar">Realizar Préstamo</button>
                 </form>
                 <div class="pie-form">
