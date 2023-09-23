@@ -1,9 +1,8 @@
 package controller;
 
-import model.UsuarioDao;
-import model.ElementosDao;
-import model.ElementosVo;
-import model.UsuarioVo;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
+import model.ElementosDao;
+import model.ElementosVo;
+import model.UsuarioDao;
+import model.UsuarioVo;
 
 public class Usuario extends HttpServlet {
 
@@ -31,6 +30,9 @@ public class Usuario extends HttpServlet {
             switch (action) {
                 // elementos que solo me redirigen a una pagina no necesitan una funcion propia
                 // como estos dos primeros
+                case "dash":
+                    request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
+                    break;
                 case "registrarU":
                     request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
                     break;
