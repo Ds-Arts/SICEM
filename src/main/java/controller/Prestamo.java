@@ -95,7 +95,9 @@ public class Prestamo extends HttpServlet {
         try {
             prestamosDao.registrar(prestamo);
             System.out.println("Registro de préstamo creado correctamente");
-            req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);  
+            
+
         } catch (SQLException e) {
             System.out.println("Error en la inserción del registro de préstamo: " + e.getMessage());
             req.getRequestDispatcher("views/error.jsp").forward(req, resp);
@@ -106,11 +108,10 @@ public class Prestamo extends HttpServlet {
 
     private void listarPrestamos(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            List<PrestamosVo> prestamos = prestamosDao.listarPrestamos();
 
+            List<PrestamosVo> prestamos = prestamosDao.listarPrestamos();
             // Puedes almacenar la lista en el request para que esté disponible en el JSP
             req.setAttribute("prestamos", prestamos);
-
             req.getRequestDispatcher("views/listarPrestamos.jsp").forward(req, resp);
         } catch (SQLException e) {
             System.out.println("Error al listar préstamos: " + e.getMessage());

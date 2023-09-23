@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="model.UsuarioDao" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,14 +22,27 @@
                 </div>
                 <form action="Prestamo" method="post">
                     <label>ID de Propietario</label>
-                    <input class="formulario" type="text" id="usuarioFk" name="usuarioFk" placeholder="<%=request.getAttribute("id_cuentadante") %>" value="<%=request.getAttribute("id_cuentadante") %>">
+                    <input class="formulario" type="text" id="usuarioFk" name="usuarioFk"   readonly placeholder="<%=request.getAttribute("id_cuentadante") %>" value="<%=request.getAttribute("id_cuentadante") %>">
                     <label>Número de Placa</label>
                     <input class="formulario" type="text" id="elementoFk" name="elementoFk" placeholder="<%=request.getAttribute("n_placa_prestamo") %>" value="<%=request.getAttribute("n_placa_prestamo") %>">
                     <label>Fecha de Inicio</label>
                     <input type="date" id="fechaInicio" name="fechaInicio" min="1904-01-01" max="6000-12-31" required>
                     <label>Fecha de Fin</label>
                     <input type="date" id="fechaFin" name="fechaFin" min="1904-01-01" max="6000-12-31" required>
-                    
+                    <select class="desp" name="usuario_fk" id="usuario_fk" required>
+                        <option disabled selected value="">Seleccionar un Prestatario </option>
+                        <!-- Iterar a través de los usuarios y mostrar sus nombres en lugar de IDs -->
+                        <% 
+                        String valorAtributo = (String) request.getAttribute("id_cuentadante"); 
+                        int a = 0; // Valor por defecto en caso de que no se pueda convertir
+                         a = Integer.parseInt(valorAtributo); %>
+                         <%
+                            UsuarioDao usu = new UsuarioDao(); 
+                            List<UsuarioVo> usuarios = usu.listarUsuarios_(a); 
+                            for (UsuarioVo usuario : usuarios) { %> 
+                                <option value="<%= usuario.getId() %>"><%= usuario.getNombre() %></option>
+                        <% } %>
+                    </select> 
                     <button type="submit" name="action" value="registrar">Realizar Préstamo</button>
                 </form>
                 <div class="pie-form">

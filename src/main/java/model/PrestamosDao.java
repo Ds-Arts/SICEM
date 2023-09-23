@@ -93,7 +93,10 @@ public class PrestamosDao {
         }
         return prestamos;
     }
+ 
 
+
+    
     // Otros métodos DAO según tus necesidades
 
     public void cerrarConexion() throws SQLException {
