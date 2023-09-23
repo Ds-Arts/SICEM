@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%-- IMPORTS DE ELEMENTOS --%>
-<%@ page import="model.ElementosDao" %>
-<%@ page import="model.ElementosVo" %>
-<%@ page import="model.CategoriaDao" %>
-<%@ page import="model.CategoriaVo" %>
-<%@ page import="java.util.List" %>
-
 <%-- IMPORTS DE USUARIOS --%>
 <%@ page import="model.UsuarioDao" %>
 <%@ page import="model.UsuarioVo" %>
@@ -87,65 +80,10 @@
                             <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                         </a>
                     </div>
-                    <section id="elementosRegistrados" class="container-fluid position-relative py-1 px-1">
-                        <section>
-                            <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
-                                <div class="border-bottom pb-2 mb-0 row">
-                                    <h6 class="col mb-0">Elementos registrados</h6>
-                                    <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroElementoModal">Nuevo elemento</a>
-                                </div>
-                                <div class="table-responsive small">
-                                    <table class="table table-striped table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Num. placa</th>
-                                                <th scope="col">Costo</th>
-                                                <th scope="col">Tipo</th>
-                                                <th scope="col">Fecha</th>
-                                                <th scope="col">Categoria</th>
-                                                <th scope="col">Aula</th>
-                                                <th scope="col">Descripción</th>
-                                                <th scope="col">Cuadrante</th>
-                                                <th scope="col">Estado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% 
-                                                ElementosDao elementosDao = new ElementosDao();
-                                                List<ElementosVo> elementos;
-                                                String placa = request.getParameter("placa");
-                                                if (placa != null && !placa.isEmpty()) {
-                                                    elementos = elementosDao.buscarPorNumeroPlaca(placa);
-                                                } else {
-                                                    String tipo = request.getParameter("TipoElemento");
-                                                    if (tipo != null && !tipo.isEmpty()) {
-                                                        elementos = elementosDao.buscarPorTipo(tipo);
-                                                    } else {
-                                                        elementos = elementosDao.listar();
-                                                    }
-                                                }
-                                                for (ElementosVo elemento : elementos) {
-                                            %>
-                                                <tr>
-                                                    <td><%=elemento.getNombre()%></td>
-                                                    <td><%= elemento.getNumeroPlaca()%></td>
-                                                    <td><%=elemento.getCosto()%></td>
-                                                    <td><%=elemento.getTipo()%></td>
-                                                    <td><%=elemento.getFechaIngreso()%></td>
-                                                    <td><%=elemento.getCategoria()%></td>
-                                                    <td><%=elemento.getNumeroAula()%></td>
-                                                    <td><%=elemento.getDescripcion()%></td>
-                                                    <td><%=elemento.getUsu()%></td>
-                                                    <td><%=elemento.getEstado()%></td>
-                                                </tr>
-                                            <% } %>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
+
+                    <%-- CRUD DE ELEMENTOS --%>
+                    <jsp:include page="components/tables/elementosRegistrados.jsp"/>
+
                     <section id="usuariosRegistrados" class="container-fluid position-relative py-1 px-1">
                         <section>
                             <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
@@ -191,7 +129,7 @@
                     <section id="categoriasRegistrados" class="container-fluid position-relative py-1 px-1">
                         <article class="row">
                             <section>
-                                <div style="width: 90vh; height: 30em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-start">
+                                <div style="width: 60%; height: 30em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-start">
                                     <h6 class="border-bottom pb-2 mb-0">Categorias registradas</h6>
                                     <div class="table-responsive small">
                                         <table class="table table-striped table-sm">
@@ -216,7 +154,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div style="width: 70vh; height: 22em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-end">
+                                <div style="width: 40%; height: 22em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-end">
                                     <h6 class="border-bottom pb-2 mb-0">Registro de categorias</h6>
                                     <div class="d-flex text-muted pt-3">
                                         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
@@ -360,14 +298,7 @@
                             </div>
                             <label>Categoría:</label>
                             <select class="desp" name="categoriaElemento" id="categoriaElemento" required>
-                                <option disabled selected value="">Seleccionar una categoria</option>
-    
-                            <%   
-                            CategoriaDao cdi = new CategoriaDao();
-                            List<CategoriaVo> categorias=cdd.obtenerCategorias();
-                                for (CategoriaVo categoria : categorias ) { %>                   
-                                <option value="<%= categoria.getNombreCategoria() %>"> <%= categoria.getNombreCategoria() %> </option>   
-                            <% } %>
+                                <option disabled selected value="">Seleccionar una categoria</option> 
                             </select>
                             <div class="input-group mb-3">
                                 <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
@@ -392,12 +323,6 @@
                                 <label>Cuentadante:</label>
                                 <select class="desp" name="usuario_fk" id="usuario_fk" required>
                                     <option disabled selected value="">Seleccionar una Cuentadante </option>
-                                <%
-                                    UsuarioDao usua = new UsuarioDao();
-                                    List<UsuarioVo> usuarios = usut.listarUsuarios();
-                                    for (UsuarioVo usuario : usuarios) { %>                   
-                                        <option value="<%= usuario.getId() %>"><%= usuario.getId() %></option>   
-                                <% } %>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
@@ -470,6 +395,7 @@
         </div>
     </div>
 
+    <jsp:include page="../dashboard_(borrable).jsp" />
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
