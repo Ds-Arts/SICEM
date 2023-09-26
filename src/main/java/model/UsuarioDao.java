@@ -15,17 +15,20 @@ public class UsuarioDao {
 
     public int registrarUsuario(UsuarioVo nuevoUsuario) throws SQLException {
         sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
-        try (Connection conexion = Conexion.conectar();
-                PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (
+            Connection conexion = Conexion.conectar();
+            PreparedStatement ps = conexion.prepareStatement(sql)
+        ){
+
             ps.setString(1, nuevoUsuario.getNombre());
             ps.setString(2, nuevoUsuario.getApellido());
             ps.setString(3, nuevoUsuario.getEmail());
             ps.setInt(4, nuevoUsuario.getNumIdentificacion());
             ps.setString(5, nuevoUsuario.getContrasena());
-            ps.setString(6, nuevoUsuario.getUsuario());
+            ps.setInt(6, nuevoUsuario.getRol_fk());
             ps.setString(7, nuevoUsuario.getActivo()); // Establecer el estado de activación
             r = ps.executeUpdate();
-            System.out.println("Se registró el usuario correctamente");
+            System.out.println("Registro de usuario finalizado.");
 
         } catch (Exception e) {
             System.out.println("Error en el registro: " + e.getMessage());
@@ -81,7 +84,7 @@ public class UsuarioDao {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                usuario.setUsuario(rs.getString("rol_fk"));
+                usuario.setRol_fk(rs.getInt("rol_fk"));
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
@@ -107,7 +110,7 @@ public class UsuarioDao {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                usuario.setUsuario(rs.getString("rol_fk"));
+                usuario.setRol_fk(rs.getInt("rol_fk"));
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
@@ -173,7 +176,7 @@ public class UsuarioDao {
                     usuario.setApellido(rs.getString("apellido"));
                     usuario.setEmail(rs.getString("email"));
                     usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuario.setUsuario(rs.getString("rol_fk"));
+                    usuario.setRol_fk(rs.getInt("rol_fk"));
                     usuario.setActivo(rs.getString("activo"));
                     usuarios.add(usuario);
                 }
@@ -199,7 +202,7 @@ public class UsuarioDao {
                     usuarioEncontrado.setApellido(rs.getString("apellido"));
                     usuarioEncontrado.setEmail(rs.getString("email"));
                     usuarioEncontrado.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuarioEncontrado.setUsuario(rs.getString("rol_fk"));
+                    usuarioEncontrado.setRol_fk(rs.getInt("rol_fk"));
                     usuarioEncontrado.setActivo(rs.getString("activo"));
                 }
             }

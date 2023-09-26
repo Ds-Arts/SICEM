@@ -23,66 +23,77 @@ public class Usuario extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+
+        System.out.println("\nDoGet del controlador de usuario.\n");
+
         if (action != null) {
+
             switch (action) {
                 // elementos que solo me redirigen a una pagina no necesitan una funcion propia
                 // como estos dos primeros
                 case "dash":
+                    System.out.println("Se ha direccionado al dashboard de administrador.");
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
                     break;
-                case "registrarU":
-                    request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
-                    break;
+
                 case "login":
+                    System.out.println("Se ha direccionado al login de usuarios.");
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                     break;
 
-                // aunque me redirijan a una vista diferente estos tienen propios metodos
-                // creados en el Dao y veo por lo cual necesitan funciones
-                case "list":
-                    listarUsuarios(request, response);
-                    break;
                 case "search":
+                    System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
                     buscarUsuariosPorNombre(request, response);
                     break;
+
                 case "searchById": // Nueva acción para buscar por ID
+                    System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
                     buscarUsuarioPorId(request, response);
                     break;
+
                 case "detalle":
-                mostrarDetalleUsuario(request, response);
-                break;
-                
+                    System.out.println("Se ha redireccionado al metodo 'mostrarDetalleUsuario'");
+                    mostrarDetalleUsuario(request, response);
+                    break;
 
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
             }
-        } else {
-            listarUsuarios(request, response);
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+
+        System.out.println("DoPost del controlador de usuario.");
+
         if (action != null) {
+
             switch (action) {
                 case "register":
+                    System.out.println("Se ha enviado al metodo 'registrarUsuario'");
                     registrarUsuario(request, response);
                     break;
+
                 case "activate":
+                    System.out.println("Se ha enviado al metodo 'activarUsuario'");
                     activarUsuario(request, response);
                     break;
+
                 case "deactivate":
+                    System.out.println("Se ha enviado al metodo 'desactivarUsuario'");
                     desactivarUsuario(request, response);
                     break;
+
                 case "login":
+                    System.out.println("Se ha enviado al metodo 'iniciar'");
                     iniciar(request, response);
                     break;
+
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -202,13 +213,11 @@ public class Usuario extends HttpServlet {
             usuVo.setContrasena(request.getParameter("contrasena"));
         }
         if (request.getParameter("rol_fk") != null) {
-            usuVo.setUsuario(request.getParameter("rol_fk"));
+            usuVo.setRol_fk(Integer.parseInt(request.getParameter("rol_fk")));
         }
         if (request.getParameter("activo") != null) {
             usuVo.setActivo(request.getParameter("activo"));
         }
-
-        System.out.println(usuVo.getNombre() + "controlador0");
         try {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);

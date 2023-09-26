@@ -188,7 +188,7 @@
                                         <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
                                         <td><%= usuari.getEmail() %></td>
                                         <td><%= usuari.getNumIdentificacion() %></td>
-                                        <td><%= usuari.getUsuario() %></td>
+                                        <td><%= usuari.getRol_fk() %></td>
                                         <td><%= usuari.getActivo() %></td>
                                     </tr>
                                     <% } %>
@@ -499,9 +499,9 @@
                             <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
                             <select class="form-select" id="inputGroupSelect01" name="rol_fk" id="rol_fk" required>
                                 <option selected>Elige categoria del usuario</option>
-                                <option>Instructor</option>
-                                <option>Cuentadante</option>
-                                <option>Administrador</option>
+                                <option value="3">Instructor</option>
+                                <option value="2">Cuentadante</option>
+                                <option value="1">Administrador</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">
