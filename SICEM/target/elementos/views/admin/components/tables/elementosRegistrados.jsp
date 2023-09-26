@@ -7,6 +7,8 @@
 <%@ page import="model.CategoriaDao" %>
 <%@ page import="model.CategoriaVo" %>
 <%@ page import="java.util.List" %>
+
+<%-- TABLA DE ELEMENTOS --%>
 <section id="elementosRegistrados" class="container-fluid position-relative py-1 px-1">
     <section>
         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
