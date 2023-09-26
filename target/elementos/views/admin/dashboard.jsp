@@ -114,6 +114,7 @@
                                     </thead>
                                     <tbody>
                                     <%
+                                        System.out.println("");
                                         ElementosDao elementosDao = new ElementosDao();
                                         UsuarioDao usuarioDao = new UsuarioDao(); // Importa la clase UsuarioDao
 
@@ -177,6 +178,7 @@
                                     </thead>
                                     <tbody>
                                     <%
+                                        System.out.println("");
                                         UsuarioDao UsuarioDao = new UsuarioDao();
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
@@ -211,6 +213,7 @@
                                         </thead>
                                         <tbody>
                                         <%
+                                            System.out.println("");
                                             CategoriaDao cd = new CategoriaDao();
                                             List<CategoriaVo> categorias=cd.obtenerCategorias();
                                             for (CategoriaVo categoria : categorias ) {
@@ -370,6 +373,7 @@
                         <option disabled selected value="">Seleccionar una categoria</option>
                     <!--   iteracion para las categorias  : se hizo con un for each importando la lista desde el modelo dao de categorias -->
                     <%
+                        System.out.println("");
                         CategoriaDao ad = new CategoriaDao();
                         List<CategoriaVo> categoriass=cd.obtenerCategorias();
                         for (CategoriaVo categoria : categoriass ) { %>
@@ -410,6 +414,7 @@
                         <option disabled selected value="">Seleccionar una Cuentadante </option>
                     <!-- Iterar a través de los usuarios y mostrar sus nombres en lugar de IDs -->
                     <%
+                        System.out.println("");
                         UsuarioDao Usu = new UsuarioDao();
                         List<UsuarioVo> usuarioss = Usu.listarUsuarios();
                         for (UsuarioVo usua : usuarioss) { %>
@@ -488,8 +493,7 @@
                                                 d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z">
                                         </path>
                                     </svg></span>
-                            <input type="text" class="form-control" placeholder="Contraseña" aria-label
-                                   aria-describedby="addon-wrapping" id="contrasena" name="contrasena" required />
+                            <input type="text" class="form-control" placeholder="Contraseña" aria-label aria-describedby="addon-wrapping" id="contrasena" name="contrasena" required />
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Categoria</label>

@@ -15,7 +15,6 @@ public class Conexion {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(bbdd, usuario, clave);
-			System.out.println("Conexión Exitosa");
 		} catch (Exception e) {
 			System.out.println("Error de conexión a la base de datos " + e.getMessage().toString());
 		}

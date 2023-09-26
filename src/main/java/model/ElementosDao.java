@@ -1,12 +1,12 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
 
 public class ElementosDao {
     /* Atributos para realizar operaciones sobre la BD */
@@ -17,6 +17,7 @@ public class ElementosDao {
     String sql = null;
     int r; // cantidad de filas que devuelve una sentencia
 
+    
     public int registrar(ElementosVo elementos) throws SQLException {
         // Verificar si ya existe un elemento con el mismo número de placa
         if (existeElementoConPlaca(elementos.getNumeroPlaca())) {
@@ -79,7 +80,9 @@ public class ElementosDao {
     public List<ElementosVo> listar() throws SQLException {
         List<ElementosVo> Elementos = new ArrayList<>();
         sql = "SELECT * FROM Elementos";
+
         try {
+            System.out.println("Se estan consultando elementos...");
             con = Conexion.conectar();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -98,13 +101,12 @@ public class ElementosDao {
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
                 l.setUsu(rs.getInt("usuario_fk"));
-
-                System.out.println(l.getNombre());
-                System.out.println(l.getNumeroPlaca());
                 Elementos.add(l);
+                Elementos.size();
             }
             ps.close();
-            System.out.println("consulta exitosa");
+            System.out.println("Consulta de elementos finalizada.");
+            System.out.println("Filas consultadas: " + Elementos.size());
         } catch (Exception e) {
             System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
         } finally {

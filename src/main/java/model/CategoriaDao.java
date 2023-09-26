@@ -19,17 +19,16 @@ public class CategoriaDao {
     public void crearCategoria(CategoriaVo categoria) throws SQLException {
         sql = "INSERT INTO Categoria (nombreCategoria,DescripcionCategoria) VALUES (?, ?)";
         try {
+            System.out.println("Se estan registrando categorias...\n");
             con = Conexion.conectar(); // abrir conexión
             ps = con.prepareStatement(sql); // preparar sentencia
 
             ps.setString(1, categoria.getNombreCategoria());
             ps.setString(2, categoria.getDescripcionCategoria());
-
-            System.out.println("Se registró el rol correctamente");
-            System.out.println(ps);
+            System.out.println(ps  + "\n");
             ps.executeUpdate(); // Ejecutar sentencia
             ps.close(); // cerrar sentencia
-            System.out.println("Se registró el rol correctamente");
+            System.out.println("Registro de categoria finalizada.");
         } catch (Exception e) {
             System.out.println();
             System.out.println("Error en el regisro " + e.getMessage().toString());
@@ -42,21 +41,30 @@ public class CategoriaDao {
     // metodo con las estructura funcional
     public List<CategoriaVo> obtenerCategorias() throws SQLException {
         List<CategoriaVo> categorias = new ArrayList<>();
-        sql = "SELECT nombreCategoria FROM Categoria";
+        sql = "SELECT * FROM Categoria";
 
         try {
+            System.out.println("Se esta consultando categorias...");
             con = Conexion.conectar();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery(sql);
+
             while (rs.next()) {
                 CategoriaVo categoria = new CategoriaVo();
                 categoria.setNombreCategoria(rs.getString("nombreCategoria"));
+                categoria.setDescripcionCategoria(rs.getString("DescripcionCategoria"));
                 categorias.add(categoria);
-                System.out.println(sql);
-                System.out.println(r);
-                System.out.println("Se consulto categoria");
-                System.out.println(categorias.size());
+
+                //Este es un contador.
+                categorias.size();
             }
+            ps.close();
+
+            //Testing zone...
+            System.out.println("Consulta de categorias finalizada.");
+            //Cuantas filas (registros) se tragieron desde la base de datos gracias a la consulta.
+            System.out.println("Filas consultadas: " + categorias.size());
+
         } catch (Exception e) {
             System.out.println("La consulta no pudo ser ejecutado " + e.getMessage().toString());
         } finally {

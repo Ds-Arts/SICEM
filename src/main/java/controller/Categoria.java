@@ -1,43 +1,22 @@
 package controller;
 
-import model.CategoriaDao;
-import model.CategoriaVo;
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
+
+import model.CategoriaDao;
+import model.CategoriaVo;
 
 public class Categoria extends HttpServlet {
-
     CategoriaDao cd = new CategoriaDao();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
-
-        switch (action) {
-            case "list":
-                mostrarCategorias(request, response);
-                break;
-
-            case "en_categoria":
-                request.getRequestDispatcher("resgitrarCategoria.jsp").forward(request, response);
-                break;
-            default:
-                // Acción por defecto, puedes redirigir o mostrar una página de error
-                break;
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("DoPost del controlador de Categoria.\n");
         String action = request.getParameter("action");
 
         switch (action) {
@@ -50,56 +29,29 @@ public class Categoria extends HttpServlet {
         }
     }
 
-    public List<CategoriaVo> mostrarCategorias(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            List<CategoriaVo> categorias = cd.obtenerCategorias();
-            /* request.setAttribute("categorias", categorias); */
-            return categorias;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Manejo de errores
-        }
-        return null;
-    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("DoGet del controlador de Categoria.");
+        String action = request.getParameter("action");
 
-    public void c_categoria(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            request.getRequestDispatcher("views/registrarCategoria.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-            // Manejo de errores
+        switch (action) {
+            // Noy hay a donde direccionar.
         }
     }
 
     private void crearCategoria(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("accion de el formulario ");
         String nombreCategoria = request.getParameter("n_categoria");
         String descripcionCategoria = request.getParameter("d_categoria");
-        System.out.println(nombreCategoria);
         CategoriaVo categoria = new CategoriaVo();
         categoria.setNombreCategoria(nombreCategoria);
         categoria.setDescripcionCategoria(descripcionCategoria);
         try {
             cd.crearCategoria(categoria);
-            request.getRequestDispatcher("views/registrarCategoria.jsp").forward(request, response);
+            request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
             // Manejo de errores
         }
     }
-    /*
-     * @Override
-     * public void destroy() {
-     * super.destroy();
-     * try {
-     * connection.close();
-     * } catch (SQLException e) {
-     * e.printStackTrace();
-     * // Manejo de errores
-     * }
-     * }
-     */
 }

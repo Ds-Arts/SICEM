@@ -36,17 +36,9 @@ public class Elementos extends HttpServlet {
             case "entrahome":
                 req.getRequestDispatcher("index.jsp").forward(req, resp);
                 break;
-            case "c_categoria":
-                // se invoca un metodo de el el servlet de categotia el cual tiene el dispacher
-                // para el formulario
-                c.c_categoria(req, resp);
-                break;
             // aunque me redirijan a una vista diferente estos tienen propios metodos
             // creados en el Dao y veo por lo cual necesitan funciones
-            case "listar":
-                listar(req, resp);
-                System.out.println("entro listar");
-                break;
+            
             case "buscar_elementos":
                 buscarElementos(req, resp);
                 break;
@@ -114,17 +106,7 @@ public class Elementos extends HttpServlet {
         }
     }
 
-    private void listar(HttpServletRequest req, HttpServletResponse resp) {
-        try {
-            List<ElementosVo> elemento = l.listar();
-            req.setAttribute("elementos", elemento);
-            req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);
-            System.out.println("Datos listados correctamente");
-            System.out.println(req.getAttribute("elementos"));
-        } catch (Exception e) {
-            System.out.println("Hay problemas al listar los datos " + e.getMessage().toString());
-        }
-    }
+    
 
     // METODOS DOPOST
 
