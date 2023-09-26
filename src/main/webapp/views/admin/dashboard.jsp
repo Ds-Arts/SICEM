@@ -41,7 +41,7 @@
         <aside id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow bg-body" style="height: 100vh; position: fixed;">
             <div class="position-sticky pt-3">
                 <div class="row border-bottom px-3 pb-3">
-                    <img src="/img/logo_mono.png" alt="">
+                    <img src="../../../assets/img/logo_mono.png" alt="">
                 </div>
                 <ul class="navbar-nav">
                     <div class=" border-bottom">
@@ -368,18 +368,20 @@
                         <input type="date" placeholder="Fecha de ingreso" aria-label="First name"
                             class="form-control" name="FechaIngresoElemento" id="FechaIngresoElemento" required/>
                     </div>
-                    <label>Categoría:</label>
-                    <select class="desp" name="categoriaElemento" id="categoriaElemento" required>
-                        <option disabled selected value="">Seleccionar una categoria</option>
-                    <!--   iteracion para las categorias  : se hizo con un for each importando la lista desde el modelo dao de categorias -->
-                    <%
-                        System.out.println("");
-                        CategoriaDao ad = new CategoriaDao();
-                        List<CategoriaVo> categoriass=cd.obtenerCategorias();
-                        for (CategoriaVo categoria : categoriass ) { %>
-                    <option value="<%= categoria.getNombreCategoria() %>"> <%= categoria.getNombreCategoria() %> </option>
-                    <% } %>
-                    </select>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
+                        <select class="form-select" name="categoriaElemento" id="categoriaElemento" required>
+                            <option selected>Elige una categoria...</option>
+                            <%
+                                System.out.println("");
+                                CategoriaDao ad = new CategoriaDao();
+                                List<CategoriaVo> categoriass=cd.obtenerCategorias();
+                                for (CategoriaVo categoria : categoriass ) { 
+                            %>
+                            <option value="<%= categoria.getNombreCategoria() %>"><%= categoria.getNombreCategoria() %></option>
+                            <% } %>
+                        </select>
+                    </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -409,11 +411,10 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <label>Cuentadante:</label>
-                    <select class="desp" name="usuario_fk" id="usuario_fk" required>
-                        <option disabled selected value="">Seleccionar una Cuentadante </option>
-                    <!-- Iterar a través de los usuarios y mostrar sus nombres en lugar de IDs -->
-                    <%
+                    <label class="input-group-text" for="inputGroupSelect01">Cuentadante</label>
+                    <select class="form-select" name="usuario_fk" id="usuario_fk" required>
+                        <option selected>Elige un cuentadante...</option>
+                        <%
                         System.out.println("");
                         UsuarioDao Usu = new UsuarioDao();
                         List<UsuarioVo> usuarioss = Usu.listarUsuarios();

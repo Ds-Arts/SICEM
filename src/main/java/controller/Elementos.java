@@ -152,11 +152,11 @@ public class Elementos extends HttpServlet {
             int result = l.registrar(e);
             if (result == 1) {
                 System.out.println("Registro insertado correctamente");
-                req.getRequestDispatcher("views/registrarElementos.jsp").forward(req, resp);
+                req.getRequestDispatcher("views/admin/dashboard.jsp").forward(req, resp);
             } else if (result == 0) {
                 System.out.println("El número de placa ya fue registrado");
                 req.setAttribute("error", "El número de placa ya fue registrado");
-                req.getRequestDispatcher("views/registrarElementos.jsp").forward(req, resp);
+                req.getRequestDispatcher("views/admin/dashboard.jsp").forward(req, resp);
             }
         } catch (SQLException ex) {
             System.out.println("Error en la inserción del registro " + ex.getMessage());
