@@ -147,7 +147,7 @@
                                         <td><%=elemento.getDescripcion()%></td>
                                         <td><%=elemento.getEstado()%></td>
                                         <td><%=usuario.getNombre()%></td>
-                                        <center><td><a href="#">Pedir Prestamo</a></td></center>
+                                        <td><a href="Prestamo?action=registrar">Pedir Prestamo</a></td>
                                     </tr>
                                     <% } %>
                                     </tbody>
@@ -199,7 +199,7 @@
                 <section id="categoriasRegistrados" class="container-fluid position-relative py-1 px-1">
                     <article class="row">
                         <section>
-                            <div style="width: 90vh; height: 30em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-start">
+                            <div style="width:55%; height: 30em;" class="my-3 p-3  pe-3 bg-body rounded shadow-sm border overflow-auto float-start">
                                 <h6 class="border-bottom pb-2 mb-0">Categorias registradas</h6>
                                 <div class="table-responsive small">
                                     <table class="table table-striped table-sm">
@@ -224,7 +224,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div style="width: 70vh; height: 22em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-end">
+                            <div style="width: 40%; height: 22em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto float-end">
                                 <h6 class="border-bottom pb-2 mb-0">Registro de categorias</h6>
                                 <div class="d-flex text-muted pt-3">
                                     <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
@@ -363,7 +363,7 @@
                             </path>
                         </svg></label>
                         <input type="date" placeholder="Fecha de ingreso" aria-label="First name"
-                               class="form-control" name="FechaIngresoElemento" id="FechaIngresoElemento" required/>
+                            class="form-control" name="FechaIngresoElemento" id="FechaIngresoElemento" required/>
                     </div>
                     <label>Categoría:</label>
                     <select class="desp" name="categoriaElemento" id="categoriaElemento" required>
@@ -393,7 +393,7 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Escriba una descripción del
                             elemento</label>
                         <textarea class="form-control" placeholder="Descripción"
-                                  name="Descripcion" id="Descripcion" required rows="3"></textarea>
+                                    name="Descripcion" id="Descripcion" required rows="3"></textarea>
                     </div>
                     <div class="input-group mb-3">
                         <%--@declare id="inputgroupselect01"--%><label class="input-group-text" for="inputGroupSelect01">Estado del elemento</label>
@@ -426,9 +426,9 @@
         </div>
     </div>
 </div>
-</div
+</div>
 <div class="modal fade" id="registroUsuarioModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="container">

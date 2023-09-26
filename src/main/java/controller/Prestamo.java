@@ -39,6 +39,9 @@ public class Prestamo extends HttpServlet {
 
         if (action != null) {
             switch (action) {
+                case "registrar":
+                    req.getRequestDispatcher("views/prestamos/Prestamos.jsp").forward(req, resp);
+                    break;
                 case "listarPrestamos":
                     listarPrestamos(req, resp);
                     break;
