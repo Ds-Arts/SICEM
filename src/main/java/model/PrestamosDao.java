@@ -26,7 +26,8 @@ public class PrestamosDao {
               "VALUES (?, ?, ?, ?, ?, ?,?)";
    
         try {
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql); 
+            
             ps.setInt(1, prestamo.getCuentadantefk());
             ps.setInt(2, prestamo.getPrestatariofk()); 
             ps.setInt(3, prestamo.getElementoFk());
@@ -56,6 +57,7 @@ public class PrestamosDao {
             
             System.out.println(ps);
             System.out.println(sql);
+            System.out.println("AA");
             r = ps.executeUpdate();  
            
             ps.close();
