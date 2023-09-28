@@ -105,26 +105,29 @@
                     </div>
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Información del prestamo</h4>
-                        <form class="needs-validation" novalidate>
+                        <form   action="Prestamo"   method="post"  class="needs-validation" novalidate >
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label for="firstName" class="form-label">Nombre del prestamista</label>
-                                    <input type="text" class="form-control" id="cuentadante_fk" name="cuentadante_fk" readonly placeholder='<%=request.getAttribute("id_cuentadante") %>' value='<%=request.getAttribute("id_cuentadante") %>'>
+                                    <input class="formulario" type="text" id="nombre_cuentadante" name="nombre_cuentadante"    readonly placeholder="<%=request.getAttribute("nombre_cuentadante") %>"  value="<%=request.getAttribute("nombre_cuentadante") %>" >
+                                    <input class="formulario" type="text" id="cuentadante_fk" name="cuentadante_fk"    readonly placeholder="<%=request.getAttribute("id_cuentadante") %>"  value="<%=request.getAttribute("id_cuentadante") %>" hidden>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="lastName" class="form-label">Nombre del prestatario</label>
-                                    <select class="form-select" id="inputGroupSelect01" required>
-                                        <option selected>Elige...</option>
+                                    <select   name="prestatario_fk"   class="form-select" id="inputGroupSelect01" required>
+                                        <option disabled selected value="" >Elige...</option>
                                             <!-- Iterar a través de los usuarios y mostrar sus nombres en lugar de IDs -->
                                             <% 
                                             String valorAtributo = (String) request.getAttribute("id_cuentadante"); 
-                                            int a = 0;%>
+                                            int a = 0;
+                                            a = Integer.parseInt(valorAtributo);
+                                            %>
                                             <%
                                                 UsuarioDao usu = new UsuarioDao(); 
                                                 List<UsuarioVo> usuarios = usu.listarUsuarios_(a); 
                                                 for (UsuarioVo usuario : usuarios) { %> 
-                                                    <option value="<%= usuario.getId() %>"><%= usuario.getNombre() %></option>
+                                                    <option value="<%= usuario.getId() %>"><%= usuario.getNombre()%></option>
                                             <% } %>
                                         </select> 
                                     <div class="invalid-feedback">

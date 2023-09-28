@@ -148,7 +148,12 @@
                                         <td><%=elemento.getDescripcion()%></td>
                                         <td><%=elemento.getEstado()%></td>
                                         <td><%=usuario.getNombre()%></td>
-                                        <td><a href="Prestamo?action=registrar">Pedir Prestamo</a></td>
+                                        <td> <form action="elemento" method="post">
+                                            <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
+                                            <input type="text" name="nombre_cuentadante" value="<%=usuario.getNombre()%>" hidden>
+                                            <input type="number" name="n_placa_prestamo" value="<%= elemento.getNumeroPlaca()%>" hidden>
+                                            <button type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
+                                        </form>  </td>
                                     </tr>
                                     <% } %>
                                     </tbody>
