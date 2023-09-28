@@ -10,20 +10,14 @@ public class PrestamosVo {
     private LocalDate fechaInicio;
     private LocalDate fechaFin; 
     private int prestatariofk;
+    private int usu;
+    private int us;
  
     public PrestamosVo() {
     }
 
-
-
-
-
-
-    
-   
-
     public PrestamosVo(int cuentadantefk, int elementoFk, LocalDate fechaTranspaso, boolean tipo, LocalDate fechaInicio,
-            LocalDate fechaFin, int prestatariofk) {
+            LocalDate fechaFin, int prestatariofk, int usu,int us) {
         this.cuentadantefk = cuentadantefk;
         this.elementoFk = elementoFk;
         this.fechaTranspaso = fechaTranspaso;
@@ -31,63 +25,41 @@ public class PrestamosVo {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.prestatariofk = prestatariofk;
+        this.usu= usu;
+        this.us= us;
     }
 
+    public int getUs() {
+        return us;
+    }
 
+    public void setUs(int us) {
+        this.us = us;
+    }
 
+    public int getUsu() {
+        return usu;
+    }
 
-
-
-
-
+    public void setUsu(int usu) {
+        this.usu = usu;
+    }
 
     public int getCuentadantefk() {
         return cuentadantefk;
     }
 
-
-
-
-
-
-
-
-
     public void setCuentadantefk(int cuentadantefk) {
         this.cuentadantefk = cuentadantefk;
     }
-
-
-
-
-
-
-
-
 
     public int getPrestatariofk() {
         return prestatariofk;
     }
 
-
-
-
-
-
-
-
-
     public void setPrestatariofk(int prestatariofk) {
         this.prestatariofk = prestatariofk;
     }
-
-
-
-
-
-
-
-
 
     public int getElementoFk() {
         return elementoFk;

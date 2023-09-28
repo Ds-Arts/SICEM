@@ -66,12 +66,12 @@ public class PrestamosDao {
         }
         return r;
     }
-    
+
 
     public List<PrestamosVo> listarPrestamos() throws SQLException {
         List<PrestamosVo> prestamos = new ArrayList<>();
         sql = "SELECT cuentadante_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin,prestatario_fk FROM propiedad";
-        
+
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -84,7 +84,9 @@ public class PrestamosDao {
                 LocalDate fechaInicio = rs.getDate("fecha_inicio").toLocalDate();
                 LocalDate fechaFin = rs.getDate("fecha_fin").toLocalDate();
                 int prestatario_fk = rs.getInt("prestatario_fk");
-                PrestamosVo prestamo = new PrestamosVo(cuentadantefk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin,prestatario_fk);
+                int usu= rs.getInt("cuentadante_fk");
+                int us= rs.getInt("prestatario_fk");
+                PrestamosVo prestamo = new PrestamosVo(cuentadantefk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin,prestatario_fk,usu,us);
                 prestamos.add(prestamo);
             }
         } catch (SQLException e) {

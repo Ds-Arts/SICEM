@@ -8,6 +8,10 @@
 <%@ page import="model.CategoriaVo" %>
 <%@ page import="java.util.List" %>
 
+<%-- IMPORTS DE PRESTAMOS --%>
+<%@ page import="model.PrestamosVo" %>
+<%@ page import="model.PrestamosDao" %>
+
 <%-- IMPORTS DE USUARIOS --%>
 <%@ page import="model.UsuarioDao" %>
 <%@ page import="model.UsuarioVo" %>
@@ -186,6 +190,7 @@
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
                                     %>
+
                                     <tr>
                                         <td><%= usuari.getId() %></td>
                                         <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
@@ -195,6 +200,51 @@
                                         <td><%= usuari.getActivo() %></td>
                                     </tr>
                                     <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section id="" class="container-fluid position-relative py-1 px-1">
+                    <section>
+                        <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
+                            <div class="border-bottom pb-2 mb-0 row">
+                                <h6 class="col mb-0">Prestamos Registrados</h6>
+                                <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroElementoModal">Nuevo elemento</a>
+                            </div>
+                            <div class="table-responsive small">
+                                <table class="table table-striped table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Cuentadante</th>
+                                        <th>Elemento</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Prestatario</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                        PrestamosDao prestamoDao = new PrestamosDao();
+                                            UsuarioDao usuariDao = new UsuarioDao(); // Importa la clase UsuarioDao
+                                        List<PrestamosVo> prestamos = prestamoDao.listarPrestamos();
+                                        for (PrestamosVo prestamo : prestamos) {
+                                            // Obtener el Usuario correspondiente por su ID
+                                            UsuarioVo usuario = usuarioDao.buscarUsuarioPorId(prestamo.getUsu());
+                                            UsuarioVo usuari = usuarioDao.buscarUsuarioPorId(prestamo.getUs());// Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+                                        %>
+
+                                    <tr>
+                                        <td><%=usuario.getNombre()%></td>
+                                        <td><%=prestamo.getElementoFk()%></td>
+                                        <td><%= prestamo.getFechaInicio() %></td>
+                                        <td><%= prestamo.getFechaFin() %></td>
+                                        <td><%= usuari.getNombre() %></td>
+                                    </tr>
+                                        <%
+            }
+        %>
                                     </tbody>
                                 </table>
                             </div>
@@ -261,12 +311,15 @@
     </div>
     <div class="offcanvas-body overflow-x-auto">
         <div class="mb-3 border rounded p-2">
+
             <div>
+
                 <h4  class="mb-3 pb-1 border-bottom">Nueva solucitud</h4>
-                <p><b>Profesor:</b> Nombre del profesor.</p>
-                <p><b>Fecha de solicitud:</b> 00/00/00.</p>
-                <p><b>Elemento solicitado:</b>Nombre del elemento.</p>
-                <p><b>Placa del elemento solicitado:</b>Placa del elemento.</p>
+                <p><b>Propietario:</b> </p>
+                <p><b>Prestatario:</b></p>
+                <p><b>Fecha de solicitud:</b> </p>
+                <p><b>Elemento solicitado:</b></p>
+                <p><b>Placa del elemento solicitado:</b></p>
             </div>
             <div class="my-2">
                 <button type="button" class="btn btn-success">Success</button>
