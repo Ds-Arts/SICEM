@@ -102,6 +102,10 @@
                                 <button type="submit" class="btn btn-secondary">Redeem</button>
                             </div>
                         </form>
+                        <form action="Prestamo" method="get">
+                            <input type="hidden" name="action" value="listarPrestamos">
+                            <button type="submit" class="btn btn-primary">Listar Préstamos</button>
+                        </form>  
                     </div>
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">Información del prestamo</h4>

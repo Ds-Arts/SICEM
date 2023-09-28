@@ -124,7 +124,7 @@ public class Prestamo extends HttpServlet {
             List<PrestamosVo> prestamos = prestamosDao.listarPrestamos();
             // Puedes almacenar la lista en el request para que esté disponible en el JSP
             req.setAttribute("prestamos", prestamos);
-            req.getRequestDispatcher("views/listarPrestamos.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/prestamos/listarPrestamos.jsp").forward(req, resp);
         } catch (SQLException e) {
             System.out.println("Error al listar préstamos: " + e.getMessage());
             req.getRequestDispatcher("views/error.jsp").forward(req, resp);
