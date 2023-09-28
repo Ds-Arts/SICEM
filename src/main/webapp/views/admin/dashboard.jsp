@@ -211,7 +211,6 @@
                         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
                             <div class="border-bottom pb-2 mb-0 row">
                                 <h6 class="col mb-0">Prestamos Registrados</h6>
-                                <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroElementoModal">Nuevo elemento</a>
                             </div>
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
