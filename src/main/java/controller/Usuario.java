@@ -213,7 +213,7 @@ public class Usuario extends HttpServlet {
             usuVo.setContrasena(request.getParameter("contrasena"));
         }
         if (request.getParameter("rol_fk") != null) {
-            usuVo.setRol_fk(Integer.parseInt(request.getParameter("rol_fk")));
+            usuVo.setRol_fk(request.getParameter("rol_fk"));
         }
         if (request.getParameter("activo") != null) {
             usuVo.setActivo(request.getParameter("activo"));

@@ -25,7 +25,7 @@ public class UsuarioDao {
             ps.setString(3, nuevoUsuario.getEmail());
             ps.setInt(4, nuevoUsuario.getNumIdentificacion());
             ps.setString(5, nuevoUsuario.getContrasena());
-            ps.setInt(6, nuevoUsuario.getRol_fk());
+            ps.setString(6, nuevoUsuario.getRol_fk());
             ps.setString(7, nuevoUsuario.getActivo()); // Establecer el estado de activación
             r = ps.executeUpdate();
             System.out.println("Registro de usuario finalizado.");
@@ -84,7 +84,7 @@ public class UsuarioDao {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                usuario.setRol_fk(rs.getInt("rol_fk"));
+                usuario.setRol_fk(rs.getString("rol_fk"));
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
@@ -110,7 +110,7 @@ public class UsuarioDao {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                usuario.setRol_fk(rs.getInt("rol_fk"));
+                usuario.setRol_fk(rs.getString("rol_fk"));
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
@@ -176,7 +176,7 @@ public class UsuarioDao {
                     usuario.setApellido(rs.getString("apellido"));
                     usuario.setEmail(rs.getString("email"));
                     usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuario.setRol_fk(rs.getInt("rol_fk"));
+                    usuario.setRol_fk(rs.getString("rol_fk"));
                     usuario.setActivo(rs.getString("activo"));
                     usuarios.add(usuario);
                 }
@@ -202,7 +202,7 @@ public class UsuarioDao {
                     usuarioEncontrado.setApellido(rs.getString("apellido"));
                     usuarioEncontrado.setEmail(rs.getString("email"));
                     usuarioEncontrado.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuarioEncontrado.setRol_fk(rs.getInt("rol_fk"));
+                    usuarioEncontrado.setRol_fk(rs.getString("rol_fk"));
                     usuarioEncontrado.setActivo(rs.getString("activo"));
                 }
             }

@@ -176,9 +176,7 @@
                                         <th scope="col">Estado</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <%
-                                        System.out.println("");
+                                    <tbody>                                    <%
                                         UsuarioDao UsuarioDao = new UsuarioDao();
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
@@ -414,15 +412,15 @@
                     <label class="input-group-text" for="inputGroupSelect01">Cuentadante</label>
                     <select class="form-select" name="usuario_fk" id="usuario_fk" required>
                         <option selected>Elige un cuentadante...</option>
-                        <%
-                        System.out.println("");
-                        UsuarioDao Usu = new UsuarioDao();
-                        List<UsuarioVo> usuarioss = Usu.listarUsuarios();
-                        for (UsuarioVo usua : usuarioss) { %>
-                    <option value="<%= usua.getId() %>"><%= usua.getNombre() %></option>
-                    <% } %>
+                            <%
+                            UsuarioDao Usu = new UsuarioDao();
+                            List<UsuarioVo> usuarioss = Usu.listarUsuarios();
+                            for (UsuarioVo usua : usuarioss) { %>
+                        <option value="<%= usua.getId() %>"><%= usua.getNombre() %></option>
+                            <% } %>
                     </select>
                 </div>
+
                 <div class="container">
                     <button type="submit" name="accion" value="add" class="btn btn-primary">Registrar</button>
                 </div>
