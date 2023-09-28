@@ -62,10 +62,11 @@ public class Prestamo extends HttpServlet {
         if (req.getParameter("cuentadante_fk") != null) {   
             System.out.println(req.getParameter("cuentadante_fk"));
             prestamo.setCuentadantefk(Integer.parseInt(req.getParameter("cuentadante_fk"))); 
-            System.out.println(prestamo.getCuentadantefk());
+            System.out.println("cuentadante_fk"+prestamo.getCuentadantefk());
         }
-        if (req.getParameter("elementoFk") != null) {
-            prestamo.setElementoFk(Integer.parseInt(req.getParameter("elementoFk")));
+        if (req.getParameter("elemento_fk") != null) {
+            prestamo.setElementoFk(Integer.parseInt(req.getParameter("elemento_fk")));
+
         }
     
         // Verificar si fechaTranspaso no es nula
@@ -88,12 +89,12 @@ public class Prestamo extends HttpServlet {
             prestamo.setTipo(false);
         }
     
-        if (req.getParameter("fechaInicio") != null) {
-            LocalDate fechaInicio = LocalDate.parse(req.getParameter("fechaInicio"));
+        if (req.getParameter("fecha_inicio") != null) {
+            LocalDate fechaInicio = LocalDate.parse(req.getParameter("fecha_inicio"));
             prestamo.setFechaInicio(fechaInicio);
         }
-        if (req.getParameter("fechaFin") != null) {
-            LocalDate fechaFin = LocalDate.parse(req.getParameter("fechaFin"));
+        if (req.getParameter("fecha_fin") != null) {
+            LocalDate fechaFin = LocalDate.parse(req.getParameter("fecha_fin"));
             prestamo.setFechaFin(fechaFin);
         }
           if (req.getParameter("prestatario_fk") != null) {

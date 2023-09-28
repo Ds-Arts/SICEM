@@ -64,10 +64,13 @@ public class Elementos extends HttpServlet {
             case "data_prestamo":
                 String np = req.getParameter("n_placa_prestamo"); 
                 String nc = req.getParameter("id_cuentadante");
+                String nombre_c = req.getParameter("nombre_cuentadante");
+
                 req.setAttribute("id_cuentadante", nc);
                 req.setAttribute("n_placa_prestamo", np);
+                req.setAttribute("nombre_cuentadante", nombre_c);
                 System.out.println(req.getParameter("n_placa_prestamo"));
-                req.getRequestDispatcher("views/prestamo.jsp").forward(req, resp);
+                req.getRequestDispatcher("views/prestamos/Prestamos.jsp").forward(req, resp);
                 break;
 
             case "prestamo":
