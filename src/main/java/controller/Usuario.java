@@ -43,6 +43,11 @@ public class Usuario extends HttpServlet {
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                     break;
 
+                case "lll":
+                    System.out.println("Se ha direccionado al login de usuarios.");
+                    request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+                    break;
+
                 case "search":
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
                     buscarUsuariosPorNombre(request, response);
@@ -282,7 +287,7 @@ public class Usuario extends HttpServlet {
                 if (usuVo != null) {
                     HttpSession iniciar = request.getSession();
                     iniciar.setAttribute("numIdentificacion", usuVo);
-                    request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
                 } else {
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                 }

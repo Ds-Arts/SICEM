@@ -49,6 +49,7 @@
                 </div>
                 <ul class="navbar-nav">
                     <div class=" border-bottom">
+                        <h4>Tablas </h4>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#elementosRegistrados">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="bd-placeholder-img flex-shrink-0 me-0 rounded"
@@ -60,6 +61,7 @@
                                 Elementos
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#usuariosRegistrados">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path></svg>
@@ -79,6 +81,12 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19.002 3h-14c-1.103 0-2 .897-2 2v4h2V5h14v14h-14v-4h-2v4c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.898-2-2-2z"></path><path d="m11 16 5-4-5-4v3.001H3v2h8z"></path></svg>
                             Salir
                         </a>
+                    </li>
+                    <li>
+                        <form action="Usuario" method="get">
+                            <input type="hidden" name="action" value="lll">
+                            <button type="submit" class="btn btn-light">perfil</button>
+                        </form> 
                     </li>
                 </ul>
             </div>
