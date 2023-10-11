@@ -312,18 +312,27 @@
         <div class="mb-3 border rounded p-2">
 
             <div>
-
+                <%
+                PrestamosDao pDao = new PrestamosDao();
+                    UsuarioDao urDao = new UsuarioDao(); // Importa la clase UsuarioDao
+                List<PrestamosVo> prest = prestamoDao.listarPrestamos();
+                for (PrestamosVo pres : prest) {
+                    // Obtener el Usuario correspondiente por su ID
+                    UsuarioVo ur = urDao.buscarUsuarioPorId(pres.getUsu());
+                    UsuarioVo nazi = urDao.buscarUsuarioPorId(pres.getUs());// Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+                %>
                 <h4  class="mb-3 pb-1 border-bottom">Nueva solucitud</h4>
-                <p><b>Propietario:</b> </p>
-                <p><b>Prestatario:</b></p>
-                <p><b>Fecha de solicitud:</b> </p>
-                <p><b>Elemento solicitado:</b></p>
-                <p><b>Placa del elemento solicitado:</b></p>
+                <p><b>Propietario:</b><%=ur.getNombre()%></p>
+                <p><b>Prestatario:</b><%= nazi.getNombre() %></p>
+                <p><b>Fecha de solicitud:</b> <%= pres.getFechaInicio() %></p>
+                <p><b>Elemento solicitado:</b><%= pres.getFechaFin() %></p>
+                <p><b>Placa del elemento solicitado:</b><%=pres.getElementoFk()%></p>
+                
             </div>
             <div class="my-2">
-                <button type="button" class="btn btn-success">Success</button>
-                <button type="button" class="btn btn-danger">Danger</button>
+                <button type="button" class="btn btn-danger">Cancelar solicitud</button>
             </div>
+            <% } %>
         </div>
         <div class="mb-3 border rounded p-2">
             <div>
@@ -553,11 +562,11 @@
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
-                            <select class="form-select" id="inputGroupSelect01" name="rol_fk" id="rol_fk" required>
+                            <select class="form-select"  name="rol_fk" id="rol_fk" required>
                                 <option selected>Elige categoria del usuario</option>
-                                <option value="3">Instructor</option>
-                                <option value="2">Cuentadante</option>
-                                <option value="1">Administrador</option>
+                                <option>Instructor</option>
+                                <option>Cuentadante</option>
+                                <option>Administrador</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">
