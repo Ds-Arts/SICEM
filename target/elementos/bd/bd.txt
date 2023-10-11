@@ -132,4 +132,8 @@ DELIMITER ;
 CALL InsertarRol('Cuentadante');
 CALL InsertarRol('Instructor');
 CALL InsertarRol('Administrador');
+<<<<<<< HEAD
 CALL InsertarUsuario('GzAdmin', 'Omega', 'gzsans@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
+=======
+CALL InsertarUsuario('GzAdmin', 'Omega', 'gzsans@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
+>>>>>>> 4b13f6a4b910754e6faa656e69ee426a132c278e
