@@ -1,0 +1,135 @@
+-- Crea una nueva base de datos llamada "elementos1" si no existe
+CREATE DATABASE elementos1;
+
+-- Establece la base de datos "elementos1" como la base de datos actual para las siguientes consultas
+USE elementos1;
+
+-- Crea una tabla llamada "Categoria" con dos columnas: "nombreCategoria" y "DescripcionCategoria"
+CREATE TABLE Categoria (
+   nombreCategoria VARCHAR(50) PRIMARY KEY,
+   DescripcionCategoria VARCHAR(300)
+);
+
+-- Crea una tabla llamada "rol" con una columna llamada "nombreRol"
+CREATE TABLE rol (
+   nombreRol VARCHAR(50) PRIMARY KEY
+);
+
+-- Crea una tabla llamada "Elementos" con múltiples columnas para almacenar información sobre los elementos
+CREATE TABLE Elementos (
+   NombreElemento VARCHAR(50),
+   N_placa INT PRIMARY KEY,
+   cantidad INT,
+   Costo INT,
+   TipoElemento VARCHAR(50),
+   FechaIngresoElemento DATE,
+   categoriaElemento VARCHAR(30),
+   NumAula INT,
+   Descripcion VARCHAR(300),
+   EstadoElemento VARCHAR(20),
+   usuario_fk INT
+);
+
+-- Crea una tabla llamada "usuarios" para almacenar información de los usuarios
+CREATE TABLE usuarios (
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   nombre VARCHAR(100),
+   apellido VARCHAR(50),
+   email VARCHAR(225),
+   numIdentificacion INT,
+   contrasena VARCHAR(50),
+   rol_fk VARCHAR(50),
+   activo VARCHAR(50),
+   FOREIGN KEY (rol_fk) REFERENCES rol (nombreRol)
+);
+
+-- Crea una tabla llamada "propiedad" para gestionar la propiedad de los elementos
+CREATE TABLE propiedad (
+   cuentadante_fk INT,
+   prestatario_fk INT,
+   elemento_fk INT,
+   fecha_transpaso DATE,
+   tipo BOOLEAN,
+   fecha_inicio DATE,
+   fecha_fin DATE,
+   PRIMARY KEY (cuentadante_fk, elemento_fk, prestatario_fk),
+   FOREIGN KEY (cuentadante_fk) REFERENCES usuarios (id),
+   FOREIGN KEY (prestatario_fk) REFERENCES usuarios (id),
+   FOREIGN KEY (elemento_fk) REFERENCES Elementos (N_placa)
+);
+
+-- Agrega una restricción de clave externa a la tabla "elementos" para vincularla con la tabla "usuarios"
+ALTER TABLE elementos
+ADD CONSTRAINT uFk FOREIGN KEY (usuario_fk)
+REFERENCES usuarios (id);
+
+-- Agrega una restricción de clave externa a la tabla "Elementos" para vincularla con la tabla "Categoria"
+ALTER TABLE Elementos
+ADD CONSTRAINT fkcategoria FOREIGN KEY (categoriaElemento)
+REFERENCES Categoria (nombreCategoria);
+
+-- Define un procedimiento almacenado llamado "InsertarCategoria" para insertar categorías
+DELIMITER //
+CREATE PROCEDURE InsertarCategoria(IN nombreCat VARCHAR(50), IN descripcionCat VARCHAR(300))
+BEGIN
+   INSERT INTO Categoria(nombreCategoria, DescripcionCategoria)
+   VALUES(nombreCat, descripcionCat);
+END;
+//
+DELIMITER ;
+
+-- Define un procedimiento almacenado llamado "InsertarUsuario" para insertar usuarios
+DELIMITER //
+CREATE PROCEDURE InsertarUsuario(
+   IN nombreUsuario VARCHAR(100),
+   IN apellidoUsuario VARCHAR(50),
+   IN emailUsuario VARCHAR(225),
+   IN numIdentificacionUsuario INT,
+   IN contrasenaUsuario VARCHAR(50),
+   IN rolUsuario VARCHAR(50),
+   IN activoUsuario VARCHAR(50)
+)
+BEGIN
+   INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, rol_fk, activo)
+   VALUES(nombreUsuario, apellidoUsuario, emailUsuario, numIdentificacionUsuario, contrasenaUsuario, rolUsuario, activoUsuario);
+END;
+//
+DELIMITER ;
+
+-- Define un procedimiento almacenado llamado "InsertarElemento" para insertar elementos
+DELIMITER //
+CREATE PROCEDURE InsertarElemento(
+   IN nombreElemento VARCHAR(50),
+   IN nPlaca INT,
+   IN cantidad INT,
+   IN costo INT,
+   IN tipoElemento VARCHAR(50),
+   IN fechaIngreso DATE,
+   IN categoriaElemento VARCHAR(50),
+   IN numAula INT,
+   IN descripcion VARCHAR(300),
+   IN estadoElemento VARCHAR(20),
+   IN usuarioElemento INT
+)
+BEGIN
+   INSERT INTO Elementos(NombreElemento, N_placa, cantidad, Costo, TipoElemento, FechaIngresoElemento, categoriaElemento, NumAula, Descripcion, EstadoElemento, usuario_fk)
+   VALUES(nombreElemento, nPlaca, cantidad, costo, tipoElemento, fechaIngreso, categoriaElemento, numAula, descripcion, estadoElemento, usuarioElemento);
+END;
+//
+DELIMITER ;
+
+-- Define un procedimiento almacenado llamado "InsertarRol" para insertar roles
+DELIMITER //
+CREATE PROCEDURE InsertarRol(IN nombreRol VARCHAR(50))
+BEGIN
+   INSERT INTO Rol(nombreRol)
+   VALUES(nombreRol);
+END;
+//
+DELIMITER ;
+
+-- Llama a los procedimientos almacenados para insertar roles de usuario y un usuario de ejemplo en la base de datos
+CALL InsertarRol('Cuentadante');
+CALL InsertarRol('Instructor');
+CALL InsertarRol('Administrador');
+CALL InsertarUsuario('GzAdmin', 'Omega', 'gzsans@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
