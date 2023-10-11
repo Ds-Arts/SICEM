@@ -24,6 +24,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SENA - SICEM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -178,9 +179,21 @@
                     <section>
                         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
                             <div class="border-bottom pb-2 mb-0 row">
-                                <h6 class="col mb-0">usuarios registrados</h6>
+                                <h6 class="col mb-0">Usuarios registrados</h6>
                                 <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroUsuarioModal">Nuevo usuario</a>
                             </div>
+
+                        <div class="input-group">
+                            <form action="<%= request.getContextPath() %>/Usuario" method="GET">
+                                <input type="text" name="searchTerm" placeholder="Buscar por nombre" class="form-control rounded"/>
+                                <button type="submit" class="brn btn-outline-primary">Buscar por Nombre</button>
+                            </form>
+                            <form action="<%= request.getContextPath() %>/Usuario" method="GET">
+                                <input type="number" name="idUsuario" placeholder="Buscar por ID" class="form-control rounded"/>
+                                <button type="submit" name="action" value="searchById" class="brn btn-outline-primary">Buscar por ID</button>
+                            </form>
+                        </div>
+
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
                                     <thead>

@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class Conexion {
 	// Declarar atributos para la conexión
-	private static final String bbdd = "jdbc:mysql://localhost:3310/elementos1";
+	private static final String bbdd = "jdbc:mysql://localhost:3306/elementos1";
 	private static final String usuario = "root";
-	private static final String clave = "1234";
+	private static final String clave = "0000";
 	private static Connection con;
 
 	public static Connection conectar() {
