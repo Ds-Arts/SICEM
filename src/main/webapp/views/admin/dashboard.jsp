@@ -186,11 +186,11 @@
                         <div class="input-group">
                             <form action="<%= request.getContextPath() %>/Usuario" method="GET">
                                 <input type="text" name="searchTerm" placeholder="Buscar por nombre" class="form-control rounded"/>
-                                <button type="submit" class="brn btn-outline-primary">Buscar por Nombre</button>
+                                <button type="submit" class="btn btn-primary">Buscar por Nombre</button>
                             </form>
                             <form action="<%= request.getContextPath() %>/Usuario" method="GET">
                                 <input type="number" name="idUsuario" placeholder="Buscar por ID" class="form-control rounded"/>
-                                <button type="submit" name="action" value="searchById" class="brn btn-outline-primary">Buscar por ID</button>
+                                <button type="submit" name="action" value="searchById" class="brn btn-primary">Buscar por ID</button>
                             </form>
                         </div>
 
