@@ -48,7 +48,10 @@
                     <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=login">Ingresar</a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=dash">Testing</a>
+                    <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=testing">Testing 1</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=dash">Testing 2</a>
                 </li>
             </ul>
         </div>

@@ -33,6 +33,10 @@ public class Usuario extends HttpServlet {
             switch (action) {
                 // elementos que solo me redirigen a una pagina no necesitan una funcion propia
                 // como estos dos primeros
+                case "testing":
+                    System.out.println("Se ha direccionado a una vista de testing.");
+                        request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
+                    break;
                 case "dash":
                     System.out.println("Se ha direccionado al dashboard de administrador.");
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
