@@ -95,8 +95,7 @@ public class UsuarioDao {
         return usuarios;
     }
  
-
-
+    
  public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
         sql = "SELECT * FROM usuarios where id!="+a+" ORDER BY nombre ASC;";
@@ -122,7 +121,6 @@ public class UsuarioDao {
         return usuarios;
     }
  
-
 
 
 

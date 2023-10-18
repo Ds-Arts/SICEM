@@ -96,6 +96,33 @@
                         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
                             <div class="border-bottom pb-2 mb-0 row">
                                 <h6 class="col mb-0">Elementos registrados</h6>
+
+                                <div class="row">
+                                    <form class="row g-3"  action="elemento" method="GET">
+                                        <div class="col-auto">
+                                          <label for="staticEmail2" class="visually-hidden">Email</label>
+                                          <input name="placa" type="text" class="form-control" placeholder="Buscar por N° de placa">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Buscar</button>
+                                        </div>
+                                        
+                                      </form>
+                                      <form class="row g-3"  action="elemento" method="GET">
+                                        <div class="col-auto">
+                                          <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
+                                            <option disabled="" selected="" value="">Buscar</option>
+                                            <option>Consumo</option>
+                                            <option>Desechable</option>
+                                        </select>                                   
+                                     </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-success" name="accion" value="buscar_tipo">Buscar</button>
+                                        </div>
+                                        
+                                      </form>
+                                        </div>
+
                                 <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroElementoModal">Nuevo elemento</a>
                             </div>
                             <div class="table-responsive small">
@@ -183,6 +210,8 @@
                                         <th scope="col">Identificación</th>
                                         <th scope="col">Rol</th>
                                         <th scope="col">Estado</th>
+                                        <th scope="col">Acciones</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>                                    <%
@@ -197,7 +226,19 @@
                                         <td><%= usuari.getEmail() %></td>
                                         <td><%= usuari.getNumIdentificacion() %></td>
                                         <td><%= usuari.getRol_fk() %></td>
-                                        <td><%= usuari.getActivo() %></td>
+                                        <td><%= usuari.getActivo() %></td>  
+                                        <td>
+                                        <form action="Usuario" method="post">
+                                        <input type="number" name="id" value="<%=usuari.getId()%>" hidden>   
+                                        <input type="text" name="nombre" value="<%=usuari.getNombre()%>" hidden>   
+                                        <input type="text" name="apellido" value="<%=usuari.getApellido()%>" hidden>   
+                                        <input type="email" name="email" value="<%=usuari.getEmail()%>" hidden>   
+                                        <input type="number" name="identificacion" value="<%=usuari.getNumIdentificacion()%>" hidden>   
+                                        <select name="rol" value="<%=usuari.getRol_fk()%>" hidden>
+                                        <select name="activo" value="<%=usuari.getActivo()%>" hidden>   
+                                        <button type="submit" name="action" value="editar_info">Editar</button>    
+                                        </form>
+                                    </td>
                                     </tr>
                                     <% } %>
                                     </tbody>
