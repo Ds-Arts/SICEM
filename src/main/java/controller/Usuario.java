@@ -57,7 +57,10 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha redireccionado al metodo 'mostrarDetalleUsuario'");
                     mostrarDetalleUsuario(request, response);
                     break;
-
+                case "profile":
+                    System.out.println("Se ha direccionado al perfil del ususario.");
+                    request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -119,7 +122,7 @@ public class Usuario extends HttpServlet {
                     request.setAttribute("usuarioEncontrado", usuariosEncontrados.get(0));
                 }
             }
-            request.getRequestDispatcher("views/listarUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener la lista de usuarios");
@@ -153,27 +156,16 @@ public class Usuario extends HttpServlet {
 
     private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Obtener el término de búsqueda ingresado por el usuario
-        String searchTerm = request.getParameter("searchTerm");
-
-        try {
-            List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(searchTerm);
-            request.setAttribute("usuarios", usuarios);
-
-            // Si hay un usuario encontrado, lo agregamos al atributo para mostrarlo en el
-            // JSP
-            UsuarioVo usuarioEncontrado = null;
-            if (!usuarios.isEmpty()) {
-                usuarioEncontrado = usuarios.get(0);
-            }
-            request.setAttribute("usuarioEncontrado", usuarioEncontrado);
-
-            request.getRequestDispatcher("listarUsu.jsp").forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.getWriter().println("Error al obtener la lista de usuarios");
+                String nombre = request.getParameter("nombre");
+                try {
+                    List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(nombre);
+                    request.setAttribute("usuarios", usuarios);
+                    request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
+                } catch (SQLException e) {
+                    System.out.println("Error al buscar nombres " + e.getMessage());
+                }
         }
-    }
+
 
     private void buscarUsuarioPorId(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -282,7 +274,7 @@ public class Usuario extends HttpServlet {
                 if (usuVo != null) {
                     HttpSession iniciar = request.getSession();
                     iniciar.setAttribute("numIdentificacion", usuVo);
-                    request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
                 } else {
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                 }

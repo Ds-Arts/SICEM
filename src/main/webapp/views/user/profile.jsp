@@ -39,7 +39,7 @@
                 <!-- LOGO -->
                 <a class="navbar-brand" href="#">
                     <img
-                        src="../img/favicon.ico"
+                        src="assets/IMG/logo1.png"
                         alt
                         width="30"
                         height="30"
@@ -48,7 +48,7 @@
                 </a>
                 <!-- CONTENEDOR DE BOTONES -->
                 <div class="navbar-nav">
-                    <button type="button" class="btn btn-danger">Salir</button>
+                    <a href="Usuario?action=dash" type="button" class="btn btn-danger">Salir</a>
                 </div>
             </div>
         </nav>
