@@ -95,19 +95,20 @@
                     <section>
                         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
                             <div class="border-bottom pb-2 mb-0 row">
-                                <h6 class="col mb-0">Elementos registrados</h6>
-                                <div class="row">
-                                    <form class="row g-3"  action="elemento" method="GET">
+                                <h3 class="col mb-0">Elementos registrados</h3>
+
+                                <div class="input-group mb-3">
+                                    <form class="row g-2"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <label for="staticEmail2" class="visually-hidden">Email</label>
                                           <input name="placa" type="text" class="form-control" placeholder="Buscar por N° de placa">
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" name="accion" value="buscar_elementos">Buscar</button>
+                                            <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Buscar</button>
                                         </div>
-                                        
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                       </form>
-                                      <form class="row g-3"  action="elemento" method="GET">
+                                      <form class="row g-2"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
                                             <option disabled="" selected="" value="">Buscar</option>
@@ -116,7 +117,7 @@
                                         </select>                                   
                                      </div>
                                         <div class="col-auto">
-                                            <button type="submit" name="accion" value="buscar_tipo">Buscar</button>
+                                            <button type="submit" class="btn btn-success" name="accion" value="buscar_tipo">Buscar</button>
                                         </div>
                                         
                                       </form>
