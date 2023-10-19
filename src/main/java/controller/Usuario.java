@@ -136,6 +136,70 @@ public class Usuario extends HttpServlet {
         }
     }
 
+    private void actualizarPerfilUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Recupera el usuario de la sesión
+        model.UsuarioVo usuarioSesion = (model.UsuarioVo) request.getSession().getAttribute("usuarioSesion");
+
+        // Verifica que el usuario esté autenticado
+        if (usuarioSesion != null) {
+            // Obtiene los datos del formulario
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String email = request.getParameter("email");
+            String contrasena = request.getParameter("contrasena"); // Nueva contraseña
+
+            // Verifica que los campos requeridos no estén vacíos
+            if (nombre != null && !nombre.isEmpty() && apellido != null && !apellido.isEmpty() && email != null
+                    && !email.isEmpty()) {
+                try {
+                    // Crea un objeto UsuarioVo con los datos actualizados
+                    model.UsuarioVo usuarioActualizado = new model.UsuarioVo();
+                    usuarioActualizado.setId(usuarioSesion.getId());
+                    usuarioActualizado.setNombre(nombre);
+                    usuarioActualizado.setApellido(apellido);
+                    usuarioActualizado.setEmail(email);
+
+                    // Si se proporcionó una nueva contraseña, actualízala
+                    if (contrasena != null && !contrasena.isEmpty()) {
+                        usuarioActualizado.setContrasena(contrasena);
+                    }
+
+                    // Llama al método de actualización en el DAO
+                    int exito = usuarioDao.actualizarPerfil(usuarioActualizado);
+
+                    if (exito > 0) {
+                        // Actualiza la variable usuarioSesion con los datos actualizados
+                        usuarioSesion.setNombre(nombre);
+                        usuarioSesion.setApellido(apellido);
+                        usuarioSesion.setEmail(email);
+
+                        // Vuelve a almacenar el usuario actualizado en la sesión
+                        request.getSession().setAttribute("usuarioSesion", usuarioSesion);
+
+                        // Redirecciona a la página de perfil actualizada
+                        request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+                    } else {
+                        // Manejar el error de actualización, por ejemplo, redirigir a una página de
+                        // error
+                        response.sendRedirect("error.jsp");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    // Manejar el error de base de datos
+                    response.sendRedirect("error.jsp");
+                }
+            } else {
+                // Manejar campos obligatorios vacíos, por ejemplo, redirigir a una página de
+                // error
+                response.sendRedirect("error.jsp");
+            }
+        } else {
+            // El usuario no está autenticado, redirige a la página de inicio de sesión
+            response.sendRedirect("login.jsp");
+        }
+    }
+
     private void mostrarDetalleUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener el ID del usuario a mostrar detalles
@@ -269,49 +333,6 @@ public class Usuario extends HttpServlet {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
             response.getWriter().println("Error al desactivar el usuario");
-        }
-    }
-
-    private void actualizarPerfilUsuario(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Obtener los datos actualizados del formulario
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String email = request.getParameter("email");
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-
-        try {
-            // Actualizar el perfil del usuario en la base de datos
-            UsuarioVo usuarioActualizado = new UsuarioVo();
-            usuarioActualizado.setId(idUsuario);
-            usuarioActualizado.setNombre(nombre);
-            usuarioActualizado.setApellido(apellido);
-            usuarioActualizado.setEmail(email);
-
-            // Llamar al método de actualización en el DAO
-            int exito = usuarioDao.actualizarPerfil(usuarioActualizado);
-
-            if (exito > 0) {
-                // Actualiza la variable usuarioSesion con los datos actualizados
-                usuVo.setNombre(nombre);
-                usuVo.setApellido(apellido);
-                usuVo.setEmail(email);
-
-                // Vuelve a almacenar el usuario actualizado en la sesión
-                HttpSession session = request.getSession();
-                session.setAttribute("usuarioSesion", usuVo);
-
-                // Redireccionar a la página de perfil actualizada
-                request.getRequestDispatcher("views/profile.jsp").forward(request, response);
-            } else {
-                // Manejar el error de actualización, por ejemplo, redirigir a una página de
-                // error
-                response.sendRedirect("error.jsp");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Manejar el error de base de datos
-            response.sendRedirect("error.jsp");
         }
     }
 

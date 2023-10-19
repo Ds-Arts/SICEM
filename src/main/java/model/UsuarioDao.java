@@ -16,9 +16,8 @@ public class UsuarioDao {
     public int registrarUsuario(UsuarioVo nuevoUsuario) throws SQLException {
         sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
         try (
-            Connection conexion = Conexion.conectar();
-            PreparedStatement ps = conexion.prepareStatement(sql)
-        ){
+                Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, nuevoUsuario.getNombre());
             ps.setString(2, nuevoUsuario.getApellido());
@@ -53,7 +52,6 @@ public class UsuarioDao {
         }
         return r;
     }
-    
 
     public boolean obtenerEstadoUsuario(int idUsuario) throws SQLException {
         boolean activo = false;
@@ -95,29 +93,7 @@ public class UsuarioDao {
         }
         return usuarios;
     }
- 
-    public int actualizarPerfil(UsuarioVo usuario) throws SQLException {
-        int r = 0;
-        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ? WHERE id = ?";
-        try (Connection conexion = Conexion.conectar(); 
-             PreparedStatement ps = conexion.prepareStatement(sql)) {
-            ps.setString(1, usuario.getNombre());
-            ps.setString(2, usuario.getApellido());
-            ps.setString(3, usuario.getEmail());
-            ps.setInt(4, usuario.getId());
-            r = ps.executeUpdate();
-            if (r > 0) {
-                System.out.println("Perfil de usuario actualizado correctamente");
-            } else {
-                System.out.println("No se encontró ningún usuario con el ID proporcionado");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Error al actualizar el perfil del usuario: " + e.getMessage());
-        }
-        return r;
-    }
-    
+
     public UsuarioVo obtenerUsuarioPorNumeroIdentificacion(Integer numIdentificacion) throws SQLException {
         UsuarioVo usuarioEncontrado = null;
         sql = "SELECT * FROM usuarios WHERE numIdentificacion = ?";
@@ -142,11 +118,10 @@ public class UsuarioDao {
         }
         return usuarioEncontrado;
     }
-    
 
- public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+    public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
-        sql = "SELECT * FROM usuarios where id!="+a+" ORDER BY nombre ASC;";
+        sql = "SELECT * FROM usuarios where id!=" + a + " ORDER BY nombre ASC;";
         try (Connection conexion = Conexion.conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
@@ -161,17 +136,35 @@ public class UsuarioDao {
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
-            System.out.println("Consulta exitosa"); 
-            System.out.println(usuarios+"lista de usuarios");
+            System.out.println("Consulta exitosa");
+            System.out.println(usuarios + "lista de usuarios");
         } catch (Exception e) {
             System.out.println("La consulta no pudo ser ejecutada: " + e.getMessage());
         }
         return usuarios;
     }
- 
 
-
-
+    public int actualizarPerfil(UsuarioVo usuario) throws SQLException {
+        int r = 0;
+        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ? WHERE id = ?";
+        try (Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getApellido());
+            ps.setString(3, usuario.getEmail());
+            ps.setInt(4, usuario.getId());
+            r = ps.executeUpdate();
+            if (r > 0) {
+                System.out.println("Perfil de usuario actualizado correctamente");
+            } else {
+                System.out.println("No se encontró ningún usuario con el ID proporcionado");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al actualizar el perfil del usuario: " + e.getMessage());
+        }
+        return r;
+    }
 
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
