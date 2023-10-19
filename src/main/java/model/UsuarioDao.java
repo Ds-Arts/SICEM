@@ -53,6 +53,7 @@ public class UsuarioDao {
         }
         return r;
     }
+    
 
     public boolean obtenerEstadoUsuario(int idUsuario) throws SQLException {
         boolean activo = false;
@@ -95,7 +96,53 @@ public class UsuarioDao {
         return usuarios;
     }
  
-
+    public int actualizarPerfil(UsuarioVo usuario) throws SQLException {
+        int r = 0;
+        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ? WHERE id = ?";
+        try (Connection conexion = Conexion.conectar(); 
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getApellido());
+            ps.setString(3, usuario.getEmail());
+            ps.setInt(4, usuario.getId());
+            r = ps.executeUpdate();
+            if (r > 0) {
+                System.out.println("Perfil de usuario actualizado correctamente");
+            } else {
+                System.out.println("No se encontró ningún usuario con el ID proporcionado");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al actualizar el perfil del usuario: " + e.getMessage());
+        }
+        return r;
+    }
+    
+    public UsuarioVo obtenerUsuarioPorNumeroIdentificacion(Integer numIdentificacion) throws SQLException {
+        UsuarioVo usuarioEncontrado = null;
+        sql = "SELECT * FROM usuarios WHERE numIdentificacion = ?";
+        try (Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setInt(1, numIdentificacion);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    usuarioEncontrado = new UsuarioVo();
+                    usuarioEncontrado.setId(rs.getInt("id"));
+                    usuarioEncontrado.setNombre(rs.getString("nombre"));
+                    usuarioEncontrado.setApellido(rs.getString("apellido"));
+                    usuarioEncontrado.setEmail(rs.getString("email"));
+                    usuarioEncontrado.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                    usuarioEncontrado.setContrasena(rs.getString("contrasena"));
+                    usuarioEncontrado.setRol_fk(rs.getString("rol_fk"));
+                    usuarioEncontrado.setActivo(rs.getString("activo"));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener el usuario por número de identificación: " + e.getMessage());
+        }
+        return usuarioEncontrado;
+    }
+    
 
  public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
