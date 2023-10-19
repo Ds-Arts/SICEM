@@ -14,6 +14,7 @@
 
         if (usuarioSesion != null) {
     %>
+            //y aqui se muestran los datos que se han recuperado del inicio de sesion
         <p>Bienvenido, <%= usuarioSesion.getNombre() %> <%= usuarioSesion.getApellido() %>.</p>
         <p>Correo electrónico: <%= usuarioSesion.getEmail() %></p>
 
