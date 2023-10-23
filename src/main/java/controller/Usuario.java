@@ -35,7 +35,7 @@ public class Usuario extends HttpServlet {
                 // como estos dos primeros
                 case "testing":
                     System.out.println("Se ha direccionado a una vista de testing.");
-                        request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
+                        request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
                     break;
                 case "dash":
                     System.out.println("Se ha direccionado al dashboard de administrador.");

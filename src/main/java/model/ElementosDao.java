@@ -75,6 +75,7 @@ public class ElementosDao {
         }
 
         return false; // Si ocurre algún error, retornar false por defecto
+
     }
 
     public List<ElementosVo> listar() throws SQLException {
@@ -211,15 +212,49 @@ public class ElementosDao {
 
             elementos.add(l);
         }
-        ps.close();
-    } catch (Exception e) {
-        System.out.println("Error en la consulta: " + e.getMessage());
-    } finally {
-        con.close();
-    }
+            ps.close();
+        } catch (Exception e) {
+            System.out.println("Error en la consulta: " + e.getMessage());
+        } finally {
+            con.close();
+        }
 
-    return elementos;
-}
+        return elementos;
+    }
+    
+    // Contador de elementos
+    public List<ElementosVo> contadorElementos() throws SQLException {
+
+        // Creamos una lista/arreglo basada en ELementosVo 
+        List<ElementosVo> Elementos = new ArrayList<>();
+
+        // Asignamos una consulta que muestre cuantos elementos hay en la base de datos.
+        sql = "SELECT count(*) as contado FROM Elementos";
+
+        // Inicializamos la comsulta.
+        try {
+            System.out.println("Se estan contando elementos...");
+            con = Conexion.conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ElementosVo l = new ElementosVo();
+                l.setCantidad(rs.getInt("contado"));
+                Elementos.add(l);
+                Elementos.size();
+            }
+            ps.close();
+            System.out.println("Cuenta de elementos finalizada.");
+            System.out.println("Comprueba la vista correspondiente para comprobar el correcto funcionamiento de la consulta.");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
+        } finally {
+            con.close();
+        }
+
+        return Elementos;
+    }
 
 
 }

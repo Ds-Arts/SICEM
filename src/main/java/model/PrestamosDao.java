@@ -101,10 +101,40 @@ public class PrestamosDao {
         }
         return prestamos;
     }
- 
 
+// Contador de elementos
+public List<PrestamosVo> contadorPrestamos() throws SQLException {
 
-    
+    // Creamos una lista/arreglo basada en ELementosVo 
+    List<PrestamosVo> Prestamos = new ArrayList<>();
+
+    // Asignamos una consulta que muestre cuantos elementos hay en la base de datos.
+    sql = "SELECT count(*) as contado FROM prestamos";
+
+    // Inicializamos la comsulta.
+    try {
+        System.out.println("Se estan contando prestamos...");
+        con = Conexion.conectar();
+        ps = con.prepareStatement(sql);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            PrestamosVo prestamo = new PrestamosVo();
+            prestamo.setUs(rs.getInt("contado"));
+            Prestamos.add(prestamo);
+            Prestamos.size();
+        }
+        ps.close();
+        System.out.println("Cuenta de prestamos finalizada.");
+        System.out.println("Comprueba la vista correspondiente para comprobar el correcto funcionamiento de la consulta.");
+    } catch (Exception e) {
+        System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
+    } finally {
+        con.close();
+    }
+
+    return Prestamos;
+}
     // Otros métodos DAO según tus necesidades
 
     public void cerrarConexion() throws SQLException {

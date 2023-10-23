@@ -16,9 +16,8 @@ public class UsuarioDao {
     public int registrarUsuario(UsuarioVo nuevoUsuario) throws SQLException {
         sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
         try (
-            Connection conexion = Conexion.conectar();
-            PreparedStatement ps = conexion.prepareStatement(sql)
-        ){
+                Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, nuevoUsuario.getNombre());
             ps.setString(2, nuevoUsuario.getApellido());
@@ -94,12 +93,10 @@ public class UsuarioDao {
         }
         return usuarios;
     }
- 
 
-
- public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+    public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
-        sql = "SELECT * FROM usuarios where id!="+a+" ORDER BY nombre ASC;";
+        sql = "SELECT * FROM usuarios where id!=" + a + " ORDER BY nombre ASC;";
         try (Connection conexion = Conexion.conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
@@ -114,17 +111,13 @@ public class UsuarioDao {
                 usuario.setActivo(rs.getString("activo"));
                 usuarios.add(usuario);
             }
-            System.out.println("Consulta exitosa"); 
-            System.out.println(usuarios+"lista de usuarios");
+            System.out.println("Consulta exitosa");
+            System.out.println(usuarios + "lista de usuarios");
         } catch (Exception e) {
             System.out.println("La consulta no pudo ser ejecutada: " + e.getMessage());
         }
         return usuarios;
     }
- 
-
-
-
 
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
@@ -191,8 +184,11 @@ public class UsuarioDao {
     public UsuarioVo buscarUsuarioPorId(int idUsuario) throws SQLException {
         UsuarioVo usuarioEncontrado = null;
         sql = "SELECT * FROM usuarios WHERE id = ?";
-        try (Connection conexion = Conexion.conectar();
-                PreparedStatement ps = conexion.prepareStatement(sql)) {
+        try (
+                Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)
+            ) 
+            {
             ps.setInt(1, idUsuario);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -210,5 +206,42 @@ public class UsuarioDao {
             System.out.println("Error al obtener el usuario por ID: " + e.getMessage());
         }
         return usuarioEncontrado;
+    }
+
+    // Contador de elementos
+
+    Connection con;
+
+    public List<UsuarioVo> contadorUsuarios() throws SQLException {
+
+        // Creamos una lista/arreglo basada en UsuarioVo 
+        List<UsuarioVo> Usuarios = new ArrayList<>();
+
+        // Asignamos una consulta que muestre cuantos usuarios hay en la base de datos.
+        sql = "SELECT count(*) as contado FROM usuarios";
+
+        // Inicializamos la comsulta.
+        try {
+            System.out.println("Se estan contando usuarios...");
+            con = Conexion.conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                UsuarioVo l = new UsuarioVo();
+                l.setId(rs.getInt("contado"));
+                Usuarios.add(l);
+                Usuarios.size();
+            }
+            ps.close();
+            System.out.println("Cuenta de usuarios finalizada.");
+            System.out.println("Comprueba la vista correspondiente para comprobar el correcto funcionamiento de la consulta.");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
+        } finally {
+            con.close();
+        }
+
+        return Usuarios;
     }
 }

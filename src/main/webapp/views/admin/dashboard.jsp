@@ -212,7 +212,8 @@
                                         <th scope="col">Estado</th>
                                     </tr>
                                     </thead>
-                                    <tbody>                                    <%
+                                    <tbody>                                    
+                                    <%
                                         UsuarioDao UsuarioDao = new UsuarioDao();
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
