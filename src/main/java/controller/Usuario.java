@@ -97,6 +97,31 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha enviado al metodo 'iniciar'");
                     iniciar(request, response);
                     break;
+                case "editar_info":
+                System.out.println("Se ha enviado al metodo edit");
+                request.setAttribute("id",request.getParameter("id"));
+                request.setAttribute("nombre",request.getParameter("nombre"));
+                request.setAttribute("apellido",request.getParameter("apellido"));
+                request.setAttribute("email", request.getParameter("email"));
+                request.setAttribute(  "identificacion" , request.getParameter("identificacion"));
+                request.setAttribute("rol",request.getParameter("rol"));
+                request.setAttribute("activo",request.getParameter("activo"));      
+                System.out.println( request.getParameter("id"));
+                System.out.println( request.getParameter("nombre"));
+                System.out.println( request.getParameter("identificacion"));
+                System.out.println( request.getParameter("rol"));
+             
+               
+                request.getRequestDispatcher("views/user/Edit_usu.jsp").forward(request, response);
+                      
+
+
+                    
+
+                     
+
+
+                    break;
 
                 default:
                     response.sendRedirect(request.getContextPath());

@@ -93,8 +93,14 @@ public class UsuarioDao {
         }
         return usuarios;
     }
+<<<<<<< HEAD
 
     public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+=======
+ 
+    
+ public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+>>>>>>> 743f9b2e1e638704cf4b530c5779bd318c722db8
         List<UsuarioVo> usuarios = new ArrayList<>();
         sql = "SELECT * FROM usuarios where id!=" + a + " ORDER BY nombre ASC;";
         try (Connection conexion = Conexion.conectar();
@@ -118,6 +124,12 @@ public class UsuarioDao {
         }
         return usuarios;
     }
+<<<<<<< HEAD
+=======
+ 
+
+
+>>>>>>> 743f9b2e1e638704cf4b530c5779bd318c722db8
 
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");

@@ -210,6 +210,8 @@
                                         <th scope="col">Identificación</th>
                                         <th scope="col">Rol</th>
                                         <th scope="col">Estado</th>
+                                        <th scope="col">Acciones</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>                                    
@@ -225,7 +227,19 @@
                                         <td><%= usuari.getEmail() %></td>
                                         <td><%= usuari.getNumIdentificacion() %></td>
                                         <td><%= usuari.getRol_fk() %></td>
-                                        <td><%= usuari.getActivo() %></td>
+                                        <td><%= usuari.getActivo() %></td>  
+                                        <td>
+                                        <form action="Usuario" method="post">
+                                        <input type="number" name="id" value="<%=usuari.getId()%>" hidden>   
+                                        <input type="text" name="nombre" value="<%=usuari.getNombre()%>" hidden>   
+                                        <input type="text" name="apellido" value="<%=usuari.getApellido()%>" hidden>   
+                                        <input type="email" name="email" value="<%=usuari.getEmail()%>" hidden>   
+                                        <input type="number" name="identificacion" value="<%=usuari.getNumIdentificacion()%>" hidden>   
+                                        <select name="rol" value="<%=usuari.getRol_fk()%>" hidden>
+                                        <select name="activo" value="<%=usuari.getActivo()%>" hidden>   
+                                        <button type="submit" name="action" value="editar_info">Editar</button>    
+                                        </form>
+                                    </td>
                                     </tr>
                                     <% } %>
                                     </tbody>
