@@ -100,29 +100,29 @@ public class Usuario extends HttpServlet {
                 case "editar_info":
                 System.out.println("Se ha enviado al metodo edit");
                 request.setAttribute("id",request.getParameter("id"));
-                request.setAttribute("nombre",request.getParameter("nombre"));
-                request.setAttribute("apellido",request.getParameter("apellido"));
-                request.setAttribute("email", request.getParameter("email"));
-                request.setAttribute(  "identificacion" , request.getParameter("identificacion"));
-                request.setAttribute("rol",request.getParameter("rol"));
-                request.setAttribute("activo",request.getParameter("activo"));      
-                System.out.println( request.getParameter("id"));
-                System.out.println( request.getParameter("nombre"));
-                System.out.println( request.getParameter("identificacion"));
-                System.out.println( request.getParameter("rol"));
-             
-               
-                request.getRequestDispatcher("views/user/Edit_usu.jsp").forward(request, response);
-                      
-
-
-                    
-
-                     
-
-
+                int a = Integer.parseInt(request.getParameter("id"));
+                    try {
+                     request.setAttribute( "usuario",usuarioDao.buscarUsuarioPorId(a));
+                     System.out.print(request.getAttribute("usuario"));
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+         /*         request.setAttribute("nombre",request.getParameter("nombre"));
+                    request.setAttribute("apellido",request.getParameter("apellido"));
+                    request.setAttribute("email", request.getParameter("email"));
+                    request.setAttribute(  "identificacion" , request.getParameter("identificacion"));
+                    request.setAttribute("rol",request.getParameter("rol"));
+                    request.setAttribute("activo",request.getParameter("activo"));
+                    System.out.println( request.getParameter("id"));
+                    System.out.println( request.getParameter("nombre"));
+                    System.out.println( request.getParameter("identificacion"));
+                    System.out.println( request.getParameter("rol"));
+           */
+                    request.getRequestDispatcher("views/user/Edit_usu.jsp").forward(request, response);
                     break;
-
+                case"editar_usuario" :
+                    editarUsuario(request,response);
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -259,6 +259,12 @@ public class Usuario extends HttpServlet {
         }
     }
 
+
+
+
+
+
+
     private void activarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener el ID del usuario a activar
@@ -326,4 +332,58 @@ public class Usuario extends HttpServlet {
             System.out.println("Error en la modificación: " + e.getMessage());
         }
     }
+    private void editarUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Obtener los parámetros del formulario de editar
+        if (request.getParameter("id") != null) {
+            usuVo.setId(Integer.parseInt(request.getParameter("id")));
+        }
+        if (request.getParameter("nombre") != null) {
+            usuVo.setNombre(request.getParameter("nombre"));
+        }
+        if (request.getParameter("apellido") != null) {
+            usuVo.setApellido(request.getParameter("apellido"));
+        }
+        if (request.getParameter("email") != null) {
+            usuVo.setEmail(request.getParameter("email"));
+        }
+        if (request.getParameter("numIdentificacion") != null) {
+            usuVo.setNumIdentificacion(Integer.parseInt(request.getParameter("numIdentificacion")));
+        }
+        if (request.getParameter("contrasena") != null) {
+            usuVo.setContrasena(request.getParameter("contrasena"));
+        }
+        if (request.getParameter("rol_fk") != null) {
+            usuVo.setRol_fk(request.getParameter("rol_fk"));
+        }
+        if (request.getParameter("activo") != null  ) {
+            usuVo.setActivo(request.getParameter("activo"));
+        }
+        try {
+            // Registrar el nuevo usuario en la base de datos
+            usuarioDao.editar_Usuario(usuVo);
+            // Redireccionar a la página de éxito después del registro
+            request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Imprimir mensaje de error si ocurre una excepción SQL
+            response.getWriter().println("Error al registrar el usuario");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
