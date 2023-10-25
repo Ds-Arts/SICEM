@@ -1,48 +1,37 @@
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
-        <table class="table table-striped shadow border rounded-3">
-            <thead class="">
-                <div class="row mx-0">
-                    <!-- TITULO DE LA TABLA -->
-                    <div class="col-4">
-                        <h3>Usuarios</h3>
+        <table class="table table-striped shadow border rounded-3 mb-3">
+            <div class="row mx-0 mb-3">
+                <div class="hstack gap-3">
+                    <h3>Usuarios</h3>
+                    <div class="vr"></div>
+                    <input id="buscar-x-id" class="form-control me-auto barra-busqueda-usuario"  style="display: none;" type="text" placeholder="Buscar por ID">
+                    <input id="buscar-x-nombre" class="form-control me-auto barra-busqueda-usuario" type="text" placeholder="Buscar por nombre">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Buscar por...
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button onclick="cambiarBusqueda('buscar-x-id')" class="dropdown-item" href="#">ID</button></li>
+                            <li><button onclick="cambiarBusqueda('buscar-x-nombre')" class="dropdown-item" href="#">Nombre</button></li>
+                        </ul>
                     </div>
-                    <!-- BARRA DE BUSQUEDA -->
-                    <div class="col-4">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-transparent" id="basic-addon1">Buscar</span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                            <span class="input-group-text" id="basic-addon1"><div class="btn btn-success"><i class="bi bi-search"></i></div></span>
-                        </div>
-                    </div>
-                    <!-- BORDENAR POR -->
-                    <div class="col-4">
-                            <div class="row">
-                                <div class="col-4">
-                                    <p>Ordenar por:</p>
-                                </div>
-                                <div class="col-8 btn-group">
-                                    <button 
-                                        class="btn btn-outline-secondary"
-                                        type="button"
-                                        data-bs-toggle="tooltip" 
-                                        data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Nombre y apellido"
-                                    >
-                                        <i class="bi bi-alphabet-uppercase"></i>
-                                    </button>
-                                    <button class="btn btn-outline-secondary">
-                                        <i class="bi bi-envelope-at"></i>
-                                    </button>
-                                    <button class="btn btn-outline-secondary">
-                                        <i class="bi bi-list-ol"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    <div class="vr"></div>
+                    <h5>Organizar</h5>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-success" for="btnradio1">Aa</label>
+                        
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-success" for="btnradio2">#</label>
+                        
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                        <label class="btn btn-outline-success" for="btnradio3">@</label>
                     </div>
                 </div>
+            </div>
+            <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre y apellido</th>

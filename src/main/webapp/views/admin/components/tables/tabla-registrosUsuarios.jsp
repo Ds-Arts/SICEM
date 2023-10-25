@@ -1,8 +1,8 @@
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
-        <table class="table table-striped shadow border rounded-3">
-            <thead class="">
+        <table class="table table-striped shadow border rounded-3 mb-3">
+            <div class="row mx-0 mb-3">
                 <div class="hstack gap-3">
                     <h3>Usuarios</h3>
                     <div class="vr"></div>
@@ -13,8 +13,8 @@
                             Buscar por...
                         </button>
                         <ul class="dropdown-menu">
-                            <li><buttom onclick="cambiarBusqueda('buscar-x-id')" class="dropdown-item" href="#">ID</buttom></li>
-                            <li><buttom onclick="cambiarBusqueda('buscar-x-nombre')" class="dropdown-item" href="#">Nombre</butt></li>
+                            <li><button onclick="cambiarBusqueda('buscar-x-id')" class="dropdown-item" href="#">ID</button></li>
+                            <li><button onclick="cambiarBusqueda('buscar-x-nombre')" class="dropdown-item" href="#">Nombre</button></li>
                         </ul>
                     </div>
                     <div class="vr"></div>
@@ -30,6 +30,8 @@
                         <label class="btn btn-outline-success" for="btnradio3">@</label>
                     </div>
                 </div>
+            </div>
+            <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre y apellido</th>
