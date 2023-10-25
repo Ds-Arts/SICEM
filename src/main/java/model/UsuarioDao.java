@@ -34,7 +34,28 @@ public class UsuarioDao {
         }
         return r;
     }
+    public int editar_Usuario(UsuarioVo nuevoUsuario) throws SQLException {
+        sql = "UPDATE  usuarios set nombre=?, apellido=?, email=?,numIdentificacion=?,contrasena=?,rol_fk=?,activo=?  where id =?";
+        try (
+                Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)) {
 
+            ps.setString(1, nuevoUsuario.getNombre());
+            ps.setString(2, nuevoUsuario.getApellido());
+            ps.setString(3, nuevoUsuario.getEmail());
+            ps.setInt(4, nuevoUsuario.getNumIdentificacion());
+            ps.setString(5, nuevoUsuario.getContrasena());
+            ps.setString(6, nuevoUsuario.getRol_fk());
+            ps.setString(7, nuevoUsuario.getActivo());
+            ps.setInt(8,nuevoUsuario.getId());// Establecer el estado de activación
+            r = ps.executeUpdate();
+            System.out.println("Registro de usuario finalizado.");
+
+        } catch (Exception e) {
+            System.out.println("Error en el registro: " + e.getMessage());
+        }
+        return r;
+    }
     public int actualizarEstadoUsuario(int idUsuario, boolean activo) throws SQLException {
         sql = "UPDATE usuarios SET activo = ? WHERE id = ?";
         try (Connection conexion = Conexion.conectar();
@@ -93,7 +114,18 @@ public class UsuarioDao {
         }
         return usuarios;
     }
+<<<<<<< HEAD
  public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+=======
+
+
+
+
+ 
+    
+ public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
+
+>>>>>>> 1b6848337480df85ff20fb4c3bad810eb40842fd
         List<UsuarioVo> usuarios = new ArrayList<>();
         sql = "SELECT * FROM usuarios where id!=" + a + " ORDER BY nombre ASC;";
         try (Connection conexion = Conexion.conectar();
@@ -113,11 +145,15 @@ public class UsuarioDao {
             System.out.println("Consulta exitosa");
             System.out.println(usuarios + "lista de usuarios");
         } catch (Exception e) {
-            System.out.println("La consulta no pudo ser ejecutada: " + e.getMessage());
+            System.out.println("La consulta no pudo ser ejecutada:" + e.getMessage());
         }
         return usuarios;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b6848337480df85ff20fb4c3bad810eb40842fd
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
         UsuarioVo usuarioValidado = null;
@@ -197,6 +233,7 @@ public class UsuarioDao {
                     usuarioEncontrado.setApellido(rs.getString("apellido"));
                     usuarioEncontrado.setEmail(rs.getString("email"));
                     usuarioEncontrado.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                    usuarioEncontrado.setContrasena(rs.getString("contrasena"));
                     usuarioEncontrado.setRol_fk(rs.getString("rol_fk"));
                     usuarioEncontrado.setActivo(rs.getString("activo"));
                 }

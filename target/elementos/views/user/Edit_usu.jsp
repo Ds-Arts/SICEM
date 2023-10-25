@@ -1,3 +1,5 @@
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="model.UsuarioDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +22,12 @@
     <option value="2">Cuentadante</option>
     <option value="1">Administrador</option>
 </select>
-<select class="form-select" id="inputGroupSelect01" name="rol_fk" id="rol_fk" required>
-    <option selected>Elige categoria del usuario</option>
-    <option value="3">Instructor</option>
-    <option value="2">Cuentadante</option>
-    <option value="1">Administrador</option>
-</select>
-<button name="action" value="actualizar"> Actualizar  </button>
+    <select class="form-select"name="activo" id="Activo" required>
+        <option selected>Elige...</option>
+        <option value="Activo">Activo</option>
+        <option value="inactivo">Inactivo</option>
+    </select>
+<button name="action" value="editar_usuario"> Actualizar  </button>
 </form>
 </body>
 </html>
