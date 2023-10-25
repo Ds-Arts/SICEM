@@ -9,7 +9,7 @@
 <body>
     <form action="Usuario" method="post">
 <input type="number" hidden name="id"  placeholder="<%request.getAttribute("id");%>"  value="<% request.getAttribute("id");%>" > 
-<input type="text" name="nombre" required  placeholder="<% request.getAttribute("nombre");%>"  value="<% request.getAttribute("nombre");%>">
+<input type="text" name="nombre" required  placeholder="<% request.getAttribute("nombre");%>"  value="<%request.getAttribute("nombre");%> ">
 <input type="text" name="apellido" required  value="<% request.getAttribute("apellido");%>">
 <input type="email" name="email"  required value="<% request.getAttribute("email");%> ">
 <input type="number" name="identificacion"  required  value="<% request.getAttribute("identificacion");%>">

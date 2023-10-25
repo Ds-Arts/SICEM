@@ -41,9 +41,9 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
             integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
             crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../css/custom.css" />
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>\views\js\dashboard.js"></script>
     </head>
 
     <body class="bg-body-tertiary">
@@ -102,7 +102,7 @@
                                     %>
                                     <p class="h2 text-success mt-1"><%=usuario.getId()%></p>
                                     <% } %>    
-                                    <a href="" class="link-success">Ver mas</a>
+                                    <button onclick="mostrarComponente('./components/tables/tabla-registrosUsuarios.html')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
                             
@@ -127,7 +127,7 @@
                                         <%=elemento.getCantidad()%>
                                     </p>   
                                     <% } %>
-                                    <a href="" class="link-success">Ver mas</a>
+                                    <button onclick="mostrarComponente('./components/tables/tabla-registrosElementos.html')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
                             
@@ -152,90 +152,23 @@
                                             <%=prestamo.getUs()%>
                                         </p>    
                                     <% } %>
-                                    <a href="" class="link-success">Ver mas</a>
+                                    <button onclick="mostrarComponente('./components/tables/tabla-registrosPrestamos.html')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
                         </div>
+                        <div class="row mt-5 text-center opacity-50">
+                            <p><i class="bi bi-info-circle-fill"></i> Selecciona uno de los contadores para ver los <span class="text-success">registros</span>.</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- TABLAS -->
-        <section class="container-fluid mt-3">
-            <!-- TABLA DE USUARIOS -->
-            <div class="container">
-                <table class="table table-striped shadow border rounded-3">
-                    <thead class="">
-                        <div class="row mx-0">
-                            <!-- TITULO DE LA TABLA -->
-                            <div class="col-4">
-                                <h3>Usuarios</h3>
-                            </div>
-                            <!-- BARRA DE BUSQUEDA -->
-                            <div class="col-4">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text bg-transparent" id="basic-addon1">Buscar</span>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                                    <span class="input-group-text" id="basic-addon1"><div class="btn btn-success"><i class="bi bi-search"></i></div></span>
-                                </div>
-                            </div>
-                            <!-- BORDENAR POR -->
-                            <div class="col-4">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p>Ordenar por:</p>
-                                        </div>
-                                        <div class="col-8 btn-group">
-                                            <button 
-                                                class="btn btn-outline-secondary"
-                                                type="button"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip"
-                                                data-bs-title="Nombre y apellido"
-                                            >
-                                                <i class="bi bi-alphabet-uppercase"></i>
-                                            </button>
-                                            <button class="btn btn-outline-secondary">
-                                                <i class="bi bi-envelope-at"></i>
-                                            </button>
-                                            <button class="btn btn-outline-secondary">
-                                                <i class="bi bi-list-ol"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <div id="contenedor-tablas" class="container-fluid">
+            <!-- AQUI SE MUESTRAN LOS COMPONENTES QUE VOY A ASIGNAR EN DASHBOARD.JS -->
+        </div>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
