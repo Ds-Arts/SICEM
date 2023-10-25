@@ -56,6 +56,7 @@ public class UsuarioDao {
         }
         return r;
     }
+    
     public int actualizarEstadoUsuario(int idUsuario, boolean activo) throws SQLException {
         sql = "UPDATE usuarios SET activo = ? WHERE id = ?";
         try (Connection conexion = Conexion.conectar();
@@ -114,18 +115,7 @@ public class UsuarioDao {
         }
         return usuarios;
     }
-<<<<<<< HEAD
  public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
-=======
-
-
-
-
- 
-    
- public List<UsuarioVo> listarUsuarios_(int a) throws SQLException {
-
->>>>>>> 1b6848337480df85ff20fb4c3bad810eb40842fd
         List<UsuarioVo> usuarios = new ArrayList<>();
         sql = "SELECT * FROM usuarios where id!=" + a + " ORDER BY nombre ASC;";
         try (Connection conexion = Conexion.conectar();
@@ -150,10 +140,6 @@ public class UsuarioDao {
         return usuarios;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1b6848337480df85ff20fb4c3bad810eb40842fd
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
         UsuarioVo usuarioValidado = null;

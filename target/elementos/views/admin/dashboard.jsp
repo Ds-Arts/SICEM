@@ -162,7 +162,6 @@
                                                 elementos = elementosDao.listar();
                                             }
                                         }
-
                                         for (ElementosVo elemento : elementos) {
                                             // Obtener el Usuario correspondiente por su ID
                                             UsuarioVo usuario = usuarioDao.buscarUsuarioPorId(elemento.getUsu()); // Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao

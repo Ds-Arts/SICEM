@@ -1,3 +1,4 @@
 #Carpeta que crea automaticamente itelliIDEA
 /.idea
-/SICEM\target
+\SICEM\target
+\src\main\java\model\Conexion.java

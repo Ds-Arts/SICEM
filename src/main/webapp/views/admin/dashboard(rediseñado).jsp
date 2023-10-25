@@ -43,7 +43,9 @@
             crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-        <script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>\views\js\dashboard.js"></script>
+        
+        <!-- JAVASCRIPT IMPORTANTE -->
+        <script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>\views\admin\js\dashboard.js"></script>
     </head>
 
     <body class="bg-body-tertiary">
@@ -102,7 +104,7 @@
                                     %>
                                     <p class="h2 text-success mt-1"><%=usuario.getId()%></p>
                                     <% } %>    
-                                    <button onclick="mostrarComponente('./components/tables/tabla-registrosUsuarios.html')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
+                                    <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosUsuarios.jsp')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
                             
@@ -127,7 +129,7 @@
                                         <%=elemento.getCantidad()%>
                                     </p>   
                                     <% } %>
-                                    <button onclick="mostrarComponente('./components/tables/tabla-registrosElementos.html')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
+                                    <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosElementos.jsp')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
                             
@@ -152,7 +154,7 @@
                                             <%=prestamo.getUs()%>
                                         </p>    
                                     <% } %>
-                                    <button onclick="mostrarComponente('./components/tables/tabla-registrosPrestamos.html')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
+                                    <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosPrestamos.jsp')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
                         </div>
