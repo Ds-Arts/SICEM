@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page import="model.UsuarioDao" %>
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="java.util.List" %>
+
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
@@ -39,36 +46,23 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Rol</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Correo</th>
                 </tr>
             </thead>
             <tbody>
+                <%
+                    UsuarioDao UsuarioDao = new UsuarioDao();
+                    List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
+                    for (UsuarioVo usuari : usu) {
+                %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <th scope="row"><%= usuari.getId() %></th>
+                    <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                    <td><%= usuari.getNumIdentificacion() %></td>
+                    <td><%= usuari.getEmail() %></td>
+                    <td><%= usuari.getRol_fk() %></td>
+                    <td><%= usuari.getActivo() %></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                </tr>
+                <%} %>
             </tbody>
         </table>
     </div>

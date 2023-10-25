@@ -109,7 +109,7 @@ public List<PrestamosVo> contadorPrestamos() throws SQLException {
     List<PrestamosVo> Prestamos = new ArrayList<>();
 
     // Asignamos una consulta que muestre cuantos elementos hay en la base de datos.
-    sql = "SELECT count(*) as contado FROM prestamos";
+    sql = "SELECT count(*) as contado FROM propiedad";
 
     // Inicializamos la comsulta.
     try {
