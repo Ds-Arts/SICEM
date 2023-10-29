@@ -102,39 +102,81 @@ public class PrestamosDao {
         return prestamos;
     }
 
-// Contador de elementos
-public List<PrestamosVo> contadorPrestamos() throws SQLException {
+    // Contador de elementos
+    public List<PrestamosVo> contadorPrestamos() throws SQLException {
 
-    // Creamos una lista/arreglo basada en ELementosVo 
-    List<PrestamosVo> Prestamos = new ArrayList<>();
+        // Creamos una lista/arreglo basada en ELementosVo 
+        List<PrestamosVo> Prestamos = new ArrayList<>();
 
-    // Asignamos una consulta que muestre cuantos elementos hay en la base de datos.
-    sql = "SELECT count(*) as contado FROM propiedad";
+        // Asignamos una consulta que muestre cuantos elementos hay en la base de datos.
+        sql = "SELECT count(*) as contado FROM propiedad";
 
-    // Inicializamos la comsulta.
-    try {
-        System.out.println("Se estan contando prestamos...");
-        con = Conexion.conectar();
-        ps = con.prepareStatement(sql);
-        rs = ps.executeQuery();
+        // Inicializamos la comsulta.
+        try {
+            System.out.println("Se estan contando prestamos...");
+            con = Conexion.conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
 
-        while (rs.next()) {
-            PrestamosVo prestamo = new PrestamosVo();
-            prestamo.setUs(rs.getInt("contado"));
-            Prestamos.add(prestamo);
-            Prestamos.size();
+            while (rs.next()) {
+                PrestamosVo prestamo = new PrestamosVo();
+                prestamo.setUs(rs.getInt("contado"));
+                Prestamos.add(prestamo);
+                Prestamos.size();
+            }
+            ps.close();
+            System.out.println("Cuenta de prestamos finalizada.");
+            System.out.println("Comprueba la vista correspondiente para comprobar el correcto funcionamiento de la consulta.");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
+        } finally {
+            con.close();
         }
-        ps.close();
-        System.out.println("Cuenta de prestamos finalizada.");
-        System.out.println("Comprueba la vista correspondiente para comprobar el correcto funcionamiento de la consulta.");
-    } catch (Exception e) {
-        System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
-    } finally {
-        con.close();
+
+        return Prestamos;
     }
 
-    return Prestamos;
-}
+    // Ultimos 4 prestamos
+    public List<PrestamosVo> ultimosPrestamos() throws SQLException {
+        List<PrestamosVo> prestamos = new ArrayList<>();
+        sql = "SELECT cuentadante_fk as id_cuenta, (SELECT usuarios.nombre from usuarios where usuarios.id = propiedad.cuentadante_fk) as nom_cuenta, prestatario_fk as id_presta, (SELECT usuarios.nombre from usuarios where usuarios.id = propiedad.prestatario_fk) as nom_presta, elemento_fk as id_elemento, (SELECT elementos.NombreElemento from elementos where elementos.N_placa = propiedad.elemento_fk) as nom_elemento FROM propiedad inner join usuarios as usu1 on propiedad.cuentadante_fk = usu1.id inner join usuarios as usu2 on propiedad.cuentadante_fk = usu2.id inner join elementos on elementos.N_placa = propiedad.elemento_fk limit 5;";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                //Trae el id y luego el nombre
+                int getCuentadantefk = rs.getInt("id_cuenta");
+                String getNom_cuenta= rs.getString("nom_cuenta");
+
+                int getPrestatariofk = rs.getInt("id_presta");
+                String getNom_presta= rs.getString("nom_presta");
+
+                int getElementoFk = rs.getInt("id_elemento");
+                String getNom_elemento = rs.getString("nom_elemento");
+
+                PrestamosVo prestamo = new PrestamosVo(
+                    getCuentadantefk, getNom_cuenta, 
+                    getPrestatariofk, getNom_presta,
+                    getElementoFk, getNom_elemento
+                );
+                prestamos.add(prestamo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+        }
+        return prestamos;
+    }
+
+
     // Otros métodos DAO según tus necesidades
 
     public void cerrarConexion() throws SQLException {

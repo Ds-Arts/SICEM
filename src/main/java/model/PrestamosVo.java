@@ -12,6 +12,11 @@ public class PrestamosVo {
     private int prestatariofk;
     private int usu;
     private int us;
+
+    // Tranquilos, espara los ultimos 4 prestamos regitrados
+    private String nom_cuenta;
+    private String nom_presta;
+    private String nom_elemento;
  
     public PrestamosVo() {
     }
@@ -27,6 +32,18 @@ public class PrestamosVo {
         this.prestatariofk = prestatariofk;
         this.usu= usu;
         this.us= us;
+    }
+
+    // Constructor para los ultimos 4 elementos
+    public PrestamosVo(int id_cuenta, String nom_cuenta, int id_presta, String nom_presta, int id_elemento,
+            String nom_elemento) {
+        this.cuentadantefk = id_cuenta;
+        this.nom_cuenta = nom_cuenta;
+        this.prestatariofk = id_presta;
+        this.nom_presta = nom_presta;
+        this.elementoFk = id_elemento;
+        this.nom_elemento = nom_elemento;
+
     }
 
     public int getUs() {
@@ -100,4 +117,30 @@ public class PrestamosVo {
     public void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
+
+    public String getNom_cuenta() {
+        return nom_cuenta;
+    }
+
+    public void setNom_cuenta(String nom_cuenta) {
+        this.nom_cuenta = nom_cuenta;
+    }
+
+    public String getNom_presta() {
+        return nom_presta;
+    }
+
+    public void setNom_presta(String nom_presta) {
+        this.nom_presta = nom_presta;
+    }
+
+    public String getNom_elemento() {
+        return nom_elemento;
+    }
+
+    public void setNom_elemento(String nom_elemento) {
+        this.nom_elemento = nom_elemento;
+    }
+
+    
 }

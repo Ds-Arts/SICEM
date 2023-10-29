@@ -2,6 +2,10 @@
 <%@ page import="model.UsuarioVo" %>
 <%@ page import="model.UsuarioDao" %>
 <%@ page import="java.util.List" %>
+
+<%@ page import="java.util.List" %>
+<%@ page import="model.PrestamosDao" %>
+<%@ page import="model.PrestamosVo" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,6 +31,7 @@
             crossorigin="anonymous"></script>
         <link href="../assets/CSS/custom.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     </head>
     <body class="bg-body-secondary">
         <div class="container">
@@ -48,63 +53,32 @@
                     <div class="col-md-5 col-lg-4 order-md-last">
                         <h4
                             class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="text-primary">Prestamos actuales</span>
+                            <span class="text-success">Ultimos prestamos</span>
                         </h4>
-                        <ul class="list-group mb-3">
-                            <li
-                                class="list-group-item d-flex justify-content-between lh-sm">
-                                <div>
-                                    <h6 class="my-0">Product name</h6>
-                                    <small class="text-body-secondary">Brief
-                                        description</small>
-                                </div>
-                                <span class="text-body-secondary">$12</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between lh-sm">
-                                <div>
-                                    <h6 class="my-0">Second product</h6>
-                                    <small class="text-body-secondary">Brief
-                                        description</small>
-                                </div>
-                                <span class="text-body-secondary">$8</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between lh-sm">
-                                <div>
-                                    <h6 class="my-0">Third item</h6>
-                                    <small class="text-body-secondary">Brief
-                                        description</small>
-                                </div>
-                                <span class="text-body-secondary">$5</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between bg-body-tertiary">
-                                <div class="text-success">
-                                    <h6 class="my-0">Promo code</h6>
-                                    <small>EXAMPLECODE</small>
-                                </div>
-                                <span class="text-success">−$5</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex justify-content-between">
-                                <span>Total (USD)</span>
-                                <strong>$20</strong>
-                            </li>
+                        <ul class="list-group mb-3 border-bottom">
+                            <%
+                                PrestamosDao prestamoDao = new PrestamosDao();
+                                List<PrestamosVo> prestamos = prestamoDao.ultimosPrestamos();
+                                for (PrestamosVo prestamo : prestamos) {
+                            %>
+                                <li
+                                    class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="my-2 text-success"><%= prestamo.getNom_elemento() %></h5>
+                                        <small class="my-0"><span class="h6">Placa</span>: <%= prestamo.getElementoFk() %></small>
+                                        <small class="my-0"><span class="h6">Prestamista</span>: <%= prestamo.getNom_cuenta() %></small>
+                                        <small class="my-0"><span class="h6">Prestatario</span>: <%= prestamo.getNom_presta() %></small>
+                                    </div>
+                                    <span class="text-body-secondary"><i class="bi bi-type"></i></span>
+                                </li>
+                            <%
+                                }
+                            %>
                         </ul>
 
-                        <form class="card p-2">
-                            <div class="input-group">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Promo code" />
-                                <button type="submit" class="btn btn-secondary">Redeem</button>
-                            </div>
-                        </form>
                         <form action="Prestamo" method="get">
                             <input type="hidden" name="action" value="listarPrestamos">
-                            <button type="submit" class="btn btn-primary">Listar Préstamos</button>
+                            <button type="submit" class="btn btn-success">Listar Préstamos</button>
                         </form>  
                     </div>
                     <div class="col-md-7 col-lg-8">
@@ -113,8 +87,8 @@
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label for="firstName" class="form-label">Nombre del prestamista</label>
-                                    <input class="formulario" type="text" id="nombre_cuentadante" name="nombre_cuentadante"    readonly placeholder="<%=request.getAttribute("nombre_cuentadante") %>"  value="<%=request.getAttribute("nombre_cuentadante") %>" >
-                                    <input class="formulario" type="text" id="cuentadante_fk" name="cuentadante_fk"    readonly placeholder="<%=request.getAttribute("id_cuentadante") %>"  value="<%=request.getAttribute("id_cuentadante") %>" hidden>
+                                    <input class="form-control" type="text" id="nombre_cuentadante" name="nombre_cuentadante"    readonly placeholder="<%=request.getAttribute("nombre_cuentadante") %>"  value="<%=request.getAttribute("nombre_cuentadante") %>" >
+                                    <input class="form-control" type="text" id="cuentadante_fk" name="cuentadante_fk"    readonly placeholder="<%=request.getAttribute("id_cuentadante") %>"  value="<%=request.getAttribute("id_cuentadante") %>" hidden>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -163,7 +137,7 @@
 
                             <hr class="my-4" />
 
-                            <button class="w-100 btn btn-primary btn-lg"
+                            <button class="w-100 btn btn-success btn-lg"
                             type="submit" name="action" value="registrar">
                                 Realizar prestamo
                             </button>
