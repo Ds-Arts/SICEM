@@ -1,3 +1,19 @@
+<%-- IMPORTS DE ELEMENTOS --%>
+<%@ page import="model.ElementosDao" %>
+<%@ page import="model.ElementosVo" %>
+<%@ page import="model.CategoriaDao" %>
+<%@ page import="model.CategoriaVo" %>
+<%@ page import="java.util.List" %>
+
+<%-- IMPORTS DE PRESTAMOS --%>
+<%@ page import="model.PrestamosVo" %>
+<%@ page import="model.PrestamosDao" %>
+
+<%-- IMPORTS DE USUARIOS --%>
+<%@ page import="model.UsuarioDao" %>
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="java.util.List" %>
+
 <section id="tabla-registrosElementos" class="container-fluid mt-3">
     <!-- TABLA DE ELEMENTOS -->
     <div class="container">
@@ -19,7 +35,28 @@
         </div>
         <!-- CONTENEDOR DE ACORDIONES -->
         <div class="container d-flex flex-row flex-wrap">
+            <%
+                System.out.println("");
+                ElementosDao elementosDao = new ElementosDao();
+                UsuarioDao usuarioDao = new UsuarioDao(); // Importa la clase UsuarioDao
 
+                List<ElementosVo> elementos;
+                String placa = request.getParameter("placa");
+
+                if (placa != null && !placa.isEmpty()) {
+                    elementos = elementosDao.buscarPorNumeroPlaca(placa);
+                } else {
+                    String tipo = request.getParameter("TipoElemento");
+                    if (tipo != null && !tipo.isEmpty()) {
+                        elementos = elementosDao.buscarPorTipo(tipo);
+                    } else {
+                        elementos = elementosDao.listar();
+                    }
+                }
+                for (ElementosVo elemento : elementos) {
+                    // Obtener el Usuario correspondiente por su ID
+                    UsuarioVo usuario = usuarioDao.buscarUsuarioPorId(elemento.getUsu()); // Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+            %>
             <!-- ACORDION AUTOGENERADO -->
             <div class="col-6 p-3">
                 <div class="accordion accordion-flush rounded-3" id="accordionFlushExample">
@@ -28,11 +65,11 @@
                             <button class="accordion-button collapsed rounded-3 bg-success text-white text" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <div class="row">
                                     <div class="row">
-                                        <h6>#0909 | <span class="bi-text-paragraph">AIBD76SBWyQO</span></h6>
+                                        <h6>#0909 | <span class="bi-text-paragraph"><%= elemento.getNumeroPlaca()%></span></h6>
                                     </div>
                                     <div class="row">
-                                        <h5>HP Victus 3Gen 2023</h5>
-                                        <p>Computadora portatil</p>
+                                        <h5><%=elemento.getNombre()%></h5>
+                                        <p><%=elemento.getTipo()%></p>
                                     </div>
                                 </div>
                             </button>
@@ -43,43 +80,45 @@
                                     <div class="row">
                                         <div class="col">
                                             <h6>Aula</h6>
-                                            <p>414</p>
+                                            <p><%=elemento.getNumeroAula()%></p>
                                         </div>
                                         <div class="col">
                                             <h6>Estado</h6>
-                                            <p>Activo</p>
+                                            <p><%=elemento.getEstado()%></p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <h6>N. Placa</h6>
-                                            <p>918274aA1ey8</p>
+                                            <p><%= elemento.getNumeroPlaca()%></p>
                                         </div>
                                         <div class="col">
                                             <h6>Fecha ingreso</h6>
-                                            <p>00/00/00</p>
+                                            <p><%=elemento.getFechaIngreso()%></p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <h6>Cuentadante</h6>
-                                            <p>Andres Julian Cordoba Ventura</p>
+                                            <p><%=usuario.getNombre()%></p>
                                         </div>
                                         <div class="col">
                                             <h6>Costo</h6>
-                                            <p>$200000</p>
+                                            <p>$<%=elemento.getCosto()%></p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <h6>Descripción</h6>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores dolorem atque eos commodi possimus. Explicabo officiis rem, atque nesciunt eos eveniet laboriosam qui aliquid deserunt molestiae tenetur consectetur, veritatis mollitia ipsam quod quo laborum sit ad libero inventore. Ex odio aspernatur atque sequi ad consequatur tenetur cupiditate vero ratione fuga!</p>
+                                            <p><%=elemento.getDescripcion()%></p>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-success mb-2">Success</button>
-                                        <button type="button" class="btn btn-danger ">Success</button>
-                                    </div>
+                                    <form class="row" action="elemento" method="post">
+                                        <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
+                                        <input type="text" name="nombre_cuentadante" value="<%=usuario.getNombre()%>" hidden>
+                                        <input type="number" name="n_placa_prestamo" value="<%= elemento.getNumeroPlaca()%>" hidden>
+                                        <button type="submit" name="accion" value="data_prestamo" class="btn btn-success mb-2">Realizar prestamo</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +126,7 @@
                     
                 </div>
             </div>
-            
+            <% } %>
         </div>
     </div>
 </section>

@@ -76,9 +76,9 @@
                             %>
                         </ul>
 
-                        <form action="Prestamo" method="get">
-                            <input type="hidden" name="action" value="listarPrestamos">
-                            <button type="submit" class="btn btn-success">Listar Préstamos</button>
+                        <form action="Usuario" method="get">
+                            <input type="hidden" name="action" value="testing">
+                            <button type="submit"  class="btn btn-success">Lista completa</button>
                         </form>  
                     </div>
                     <div class="col-md-7 col-lg-8">
