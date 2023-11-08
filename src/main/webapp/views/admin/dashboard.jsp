@@ -111,7 +111,7 @@
                                       <form class="row g-3"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
-                                            <option disabled="" selected="" value="">Buscar</option>
+                                            <option disabled="" selected="" name="accion" value="buscar_tipo">Buscar</option>
                                             <option>Consumo</option>
                                             <option>Desechable</option>
                                         </select>                                   
