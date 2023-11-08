@@ -29,11 +29,11 @@
                     <div class="btn-group"role="group" aria-label="Basic radio toggle button group">
                         <form action="elemento" method="GET">
                             <input type="radio" name="TipoElemento" id="TipoElemento" class="btn-check" autocomplete="off" checked  value="Desechable">
-                            <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosElementos.jsp')" type="submit" class="btn btn-outline-success" for="btnradio1" name="accion" value="buscar_tipo">Desechable</button>
+                            <button type="submit" class="btn btn-outline-success" for="btnradio1" name="accion" value="buscar_tipo">Desechable</button>
                         </form>
                         <form action="elemento" method="GET">
                             <input type="radio" name="TipoElemento" id="TipoElemento" class="btn-check"  autocomplete="off" value="Consumo">
-                            <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosElementos.jsp')" type="submit" class="btn btn-outline-success" for="btnradio2" name="accion" value="buscar_tipo">Consumo</button>
+                            <button  type="submit" class="btn btn-outline-success" for="btnradio2" name="accion" value="buscar_tipo">Consumo</button>
                         </form>
                     </div>
 

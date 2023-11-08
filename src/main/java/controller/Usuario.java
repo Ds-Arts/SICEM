@@ -123,6 +123,9 @@ public class Usuario extends HttpServlet {
                 case"editar_usuario" :
                     editarUsuario(request,response);
                     break;
+                case "logout":
+                    cerrarSesion(request, response);
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -371,9 +374,17 @@ public class Usuario extends HttpServlet {
         }
     }
 
+private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+// Invalida la sesión actual
+HttpSession session = request.getSession(false);
+if (session != null) {
+    session.invalidate();
+}
 
-
-
+// Redirige a la página de inicio de sesión o a la página principal
+response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
+}
 
 
 
