@@ -91,7 +91,7 @@ public class Elementos extends HttpServlet {
         try {
             List<ElementosVo> elementos = l.buscarPorNumeroPlaca(placa);
             req.setAttribute("elementos", elementos);
-            req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/admin/components/tables/tabla-registrosElementos.jsp").forward(req, resp);
         } catch (SQLException e) {
             System.out.println("Error al buscar elementos por número de placa: " + e.getMessage());
         }
@@ -103,7 +103,7 @@ public class Elementos extends HttpServlet {
         try {
             List<ElementosVo> elementos = l.buscarPorTipo(tipo);
             req.setAttribute("elementos", elementos);
-            req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/admin/components/tables/tabla-registrosElementos.jsp").forward(req, resp);
         } catch (SQLException e) {
             System.out.println("Error al buscar elementos por tipo: " + e.getMessage());
         }
