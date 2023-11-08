@@ -36,7 +36,7 @@ public class Usuario extends HttpServlet {
                 case "dash":
                     System.out.println("Se ha direccionado al dashboard de administrador.");
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
-                    break;
+                    break; 
 
                 case "login":
                     System.out.println("Se ha direccionado al login de usuarios.");
@@ -44,13 +44,16 @@ public class Usuario extends HttpServlet {
                     break;
 
                 case "search":
-                    System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
-                    buscarUsuariosPorNombre(request, response);
+                   System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
+                   System.out.println(  request.getParameter("nombre"));   
+                buscarUsuariosPorNombre(request, response); 
                     break;
 
                 case "searchById": // Nueva acción para buscar por ID
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
-                    buscarUsuarioPorId(request, response);
+                    System.out.println(request.getParameter("idUsuario"));
+                    
+                    /*  buscarUsuarioPorId(request, response); */
                     break;
 
                 case "detalle":
@@ -155,16 +158,19 @@ public class Usuario extends HttpServlet {
 
 
     private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException { 
+            
                 String nombre = request.getParameter("nombre");
                 try {
                     List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(nombre);
+                   request.setAttribute("nombre",nombre);
                     request.setAttribute("usuarios", usuarios);
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
                 } catch (SQLException e) {
                     System.out.println("Error al buscar nombres " + e.getMessage());
                 }
-        }
+        
+            }
 
 
     private void buscarUsuarioPorId(HttpServletRequest request, HttpServletResponse response)

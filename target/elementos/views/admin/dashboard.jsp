@@ -220,7 +220,7 @@
                                 </form>
                                 <form class="row g-2" action="Usuario" method="GET">
                                     <div class="col-auto">
-                                        <input type="number" name="idUsuario" placeholder="Buscar por ID" class="form-control rounded"/>
+                                        <input type="number" name="idUsuario" placeholder="Buscar por Num Identificaion" class="form-control rounded"/>
                                     </div>
                                     <div class="col-auto">
                                         <button type="submit" name="action" value="searchById" class="btn btn-success">Buscar</button>
@@ -239,12 +239,41 @@
                                         <th scope="col">Estado</th>
                                     </tr>
                                     </thead>
-                                    <tbody>                                    <%
+                                    <tbody> 
+                                           
+                                    <%
+                                    String nombre=request.getParameter("nombre");
+                                    System.out.print(nombre+"el nombre que llega por busqueda de nombre ");
+                                    if(nombre != null  && ! nombre.isEmpty()){
+                                    
+                                        System.out.println("el nombre llego") ;
+                                        UsuarioDao UsuarioDao = new UsuarioDao();
+                                        List<UsuarioVo> usu =  usuarioDao.buscarUsuariosPorNombre(nombre);
+                                        for (UsuarioVo usuari : usu)
+                                      {
+                                     %>
+
+                                     <tr>
+                                        <td><%= usuari.getId() %></td>
+                                        <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                                        <td><%= usuari.getEmail() %></td>
+                                        <td><%= usuari.getNumIdentificacion() %></td>
+                                        <td><%= usuari.getRol_fk() %></td>
+                                        <td><%= usuari.getActivo() %></td>
+                                    </tr>
+
+
+
+                                    <%
+                                     }
+                                     }
+                                     else{
+                                    %>
+                                <%
                                         UsuarioDao UsuarioDao = new UsuarioDao();
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
                                     %>
-
                                     <tr>
                                         <td><%= usuari.getId() %></td>
                                         <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
@@ -253,7 +282,7 @@
                                         <td><%= usuari.getRol_fk() %></td>
                                         <td><%= usuari.getActivo() %></td>
                                     </tr>
-                                    <% } %>
+                                    <% } }%>
                                     </tbody>
                                 </table>
                             </div>

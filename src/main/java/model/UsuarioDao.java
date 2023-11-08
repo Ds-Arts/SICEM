@@ -197,9 +197,7 @@ public class UsuarioDao {
             ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             rs = ps.executeQuery();
-
             while (rs.next()) {
-
                     UsuarioVo usuario = new UsuarioVo();
                     usuario.setId(rs.getInt("id"));
                     usuario.setNombre(rs.getString("nombre"));
@@ -208,9 +206,7 @@ public class UsuarioDao {
                     usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
                     usuario.setRol_fk(rs.getString("rol_fk"));
                     usuario.setActivo(rs.getString("activo"));
-                    usuarios.add(usuario);
-
-                
+                    usuarios.add(usuario);    
             }
             ps.close();
         } catch (Exception e) {
@@ -221,6 +217,16 @@ public class UsuarioDao {
 
         return usuarios ;
     }
+    
+      
+
+
+
+
+
+
+
+
 
     public UsuarioVo buscarUsuarioPorId(int idUsuario) throws SQLException {
         UsuarioVo usuarioEncontrado = null;
