@@ -105,7 +105,7 @@ public class Prestamo extends HttpServlet {
     
         try {
             prestamosDao.registrar(prestamo);
-            req.getRequestDispatcher("views/prestamos/Prestamos.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(req, resp);
             System.out.println("Registro de préstamo creado correctamente");
           /*   req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);   */
             
