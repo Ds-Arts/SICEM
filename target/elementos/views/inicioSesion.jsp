@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inicio de sesión</title>
     <!-- ICON -->
-    <link rel="icon" href="assets/IMG/Logo_Sena.png">
+    <link rel="icon" href="assets/IMG/logo1.png">
     <!-- BOOTSTRAP -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -35,7 +35,7 @@
     <header class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container mx-2" style="width: 85px; height: 85px;">
         <a class="navbar-brand" href="#">
-          <img src="assets/IMG/Logo_Sena.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top"> 
+          <img src="assets/IMG/logo1.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top"> 
         </a>
       </div>
       <div class="container-fluid">
@@ -92,7 +92,7 @@
           <!-- FONDO DE PANTALLA -->
           <style>
             .backgroundCover{
-              background-image: url(assets/IMG/Login_Granjero.jpg);
+              background-image: url(assets/IMG/imagen1.jpg);
               background-position: center center;
               background-size: cover;
               background-repeat: no-repeat;

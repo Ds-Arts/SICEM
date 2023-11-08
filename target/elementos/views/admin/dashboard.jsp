@@ -36,7 +36,8 @@
             integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
             crossorigin="anonymous"></script>
     <link href="../assets/CSS/custom.css" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/IMG/logo1.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <body class="bg-body-tertiary">
@@ -75,7 +76,13 @@
                         </li>
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../home.html">
+                        <a class="nav-link active" href="Usuario?action=profile">
+                            <i class="bi bi-github"></i>
+                            Perfil
+                        </a>
+                    </li>                
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Usuario?action=login">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19.002 3h-14c-1.103 0-2 .897-2 2v4h2V5h14v14h-14v-4h-2v4c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.898-2-2-2z"></path><path d="m11 16 5-4-5-4v3.001H3v2h8z"></path></svg>
                             Salir
                         </a>
@@ -97,8 +104,13 @@
                             <div class="border-bottom pb-2 mb-0 row">
                                 <h6 class="col mb-0">Elementos registrados</h6>
 
+<<<<<<< HEAD
                                 <div class="row">
                                     <form class="row g-3"  action="elemento" method="GET">
+=======
+                                <div class="input-group mb-3">
+                                    <form class="row g-2"  action="elemento" method="GET">
+>>>>>>> d8972533dc3383b511a3d1e2c01ecf3a8f42f0fe
                                         <div class="col-auto">
                                           <label for="staticEmail2" class="visually-hidden">Email</label>
                                           <input name="placa" type="text" class="form-control" placeholder="Buscar por N° de placa">
@@ -106,9 +118,15 @@
                                         <div class="col-auto">
                                             <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Buscar</button>
                                         </div>
+<<<<<<< HEAD
                                         
                                       </form>
                                       <form class="row g-3"  action="elemento" method="GET">
+=======
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      </form>
+                                      <form class="row g-2"  action="elemento" method="GET">
+>>>>>>> d8972533dc3383b511a3d1e2c01ecf3a8f42f0fe
                                         <div class="col-auto">
                                           <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
                                             <option disabled="" selected="" value="">Buscar</option>
@@ -180,11 +198,13 @@
                                         <td><%=elemento.getEstado()%></td>
                                         <td><%=usuario.getNombre()%></td>
                                         <td> <form action="elemento" method="post">
-                                            <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
-                                            <input type="text" name="nombre_cuentadante" value="<%=usuario.getNombre()%>" hidden>
-                                            <input type="number" name="n_placa_prestamo" value="<%= elemento.getNumeroPlaca()%>" hidden>
-                                            <button type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
-                                        </form>  </td>
+                                                <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
+                                                <input type="text" name="nombre_cuentadante" value="<%=usuario.getNombre()%>" hidden>
+                                                <input type="number" name="n_placa_prestamo" value="<%= elemento.getNumeroPlaca()%>" hidden>
+                                            
+                                                <button class="btn btn-light" type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
+                                            </form>  
+                                        </td>
                                     </tr>
                                     <% } %>
                                     </tbody>
@@ -197,8 +217,26 @@
                     <section>
                         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
                             <div class="border-bottom pb-2 mb-0 row">
-                                <h6 class="col mb-0">usuarios registrados</h6>
+                                <h6 class="col mb-0">Usuarios registrados</h6>
                                 <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroUsuarioModal">Nuevo usuario</a>
+                            </div>
+                            <div class="input-group mb-3">
+                                <form class="row g-2" action="Usuario" method="GET">
+                                    <div class="col-auto">
+                                        <input type="text" name="nombre" placeholder="Buscar por nombre" class="form-control rounded"/>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+                                    </div>
+                                </form>
+                                <form class="row g-2" action="Usuario" method="GET">
+                                    <div class="col-auto">
+                                        <input type="number" name="idUsuario" placeholder="Buscar por ID" class="form-control rounded"/>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" name="action" value="searchById" class="btn btn-success">Buscar</button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
