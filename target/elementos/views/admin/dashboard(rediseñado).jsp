@@ -110,7 +110,6 @@
                             </div>
                             
                         </div>
-                    
                         <!-- ELEMENTOS -->
                         <div class="col">
                             <div class="rounded-3 shadow-sm border">
