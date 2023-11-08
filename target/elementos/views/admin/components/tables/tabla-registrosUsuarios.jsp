@@ -13,6 +13,7 @@
                 <div class="hstack gap-3">
                     <h3>Usuarios</h3>
                     <div class="vr"></div>
+                    <!-- BARRA DE BUSQUEDA -->
                     <input id="buscar-x-id" class="form-control me-auto barra-busqueda-usuario"  style="display: none;" type="text" placeholder="Buscar por ID">
                     <input id="buscar-x-nombre" class="form-control me-auto barra-busqueda-usuario" type="text" placeholder="Buscar por nombre">
                     <div class="btn-group">
@@ -25,6 +26,14 @@
                         </ul>
                     </div>
                     <div class="vr"></div>
+                    <!-- BOTON DE AGREGAR NUEVO USUARIO -->
+                    <h5>Agregar</h5>
+                    <input class="btn-check">
+                    <button class="btn btn-outline-success" onclick="mostrarComponente('views/admin/components/tables/tabla-registrarUsuarios.jsp')">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="vr"></div>
+                    <!-- BOTONES PARA ORGANIZAR LOS REGISTROS CONSULTADOS (INCOMPLETO) -->
                     <h5>Organizar</h5>
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -62,7 +71,9 @@
                     <td><%= usuari.getRol_fk() %></td>
                     <td><%= usuari.getActivo() %></td>
                 </tr>
-                <%} %>
+                <%
+                    } 
+                %>
             </tbody>
         </table>
     </div>

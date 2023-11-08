@@ -25,6 +25,10 @@
                     <input name="placa" class="form-control me-auto" type="text" placeholder="Buscar por numero de placa" aria-label="Add your item here...">
                     <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Enviar</button>
                 </form>
+                <form action="elemento" method="get">
+                    <input class="form-control me-auto" type="text" name="placa" placeholder="Buscar por numero de placa" aria-label="Add your item here...">
+                    <button type="submit" name="accion" value="buscar_elementos" class="btn btn-success">Enviar</button>
+                </form>
                 <div class="vr"></div>
                     <div class="btn-group"role="group" aria-label="Basic radio toggle button group">
                         <form action="elemento" method="GET">
@@ -65,7 +69,7 @@
             %>
             <!-- ACORDION AUTOGENERADO -->
             <div class="col-6 p-3">
-                <div class="accordion accordion-flush rounded-3" id="accordionFlushExample">
+                <div class="accordion accordion-flush rounded-3" id="<%= elemento.getNumeroPlaca()%>">
                     <div class="accordion-item rounded-3 shadow-sm">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed rounded-3 bg-success text-white text" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -80,7 +84,7 @@
                                 </div>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#<%= elemento.getNumeroPlaca()%>">
                             <div class="accordion-body">
                                 <div class="container">
                                     <div class="row">

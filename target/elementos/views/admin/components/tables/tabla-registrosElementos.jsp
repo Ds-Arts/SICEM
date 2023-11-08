@@ -65,7 +65,7 @@
             %>
             <!-- ACORDION AUTOGENERADO -->
             <div class="col-6 p-3">
-                <div class="accordion accordion-flush rounded-3" id="accordionFlushExample">
+                <div class="accordion accordion-flush rounded-3" id="<%= elemento.getNumeroPlaca()%>">
                     <div class="accordion-item rounded-3 shadow-sm">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed rounded-3 bg-success text-white text" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -80,7 +80,7 @@
                                 </div>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#<%= elemento.getNumeroPlaca()%>">
                             <div class="accordion-body">
                                 <div class="container">
                                     <div class="row">

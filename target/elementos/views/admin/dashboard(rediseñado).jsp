@@ -61,7 +61,7 @@
                 <!-- LOGO -->
                 <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
-                        src="\..\..\assets\IMG\logo_mono.png"
+                        src="..\..\assets\IMG\logo_mono.png"
                         
                         alt
                         width="30"
@@ -112,7 +112,6 @@
                             </div>
                             
                         </div>
-                    
                         <!-- ELEMENTOS -->
                         <div class="col">
                             <div class="rounded-3 shadow-sm border">
@@ -174,7 +173,6 @@
         <div id="contenedor-tablas" class="container-fluid">
             <!-- AQUI SE MUESTRAN LOS COMPONENTES QUE VOY A ASIGNAR EN DASHBOARD.JS -->
         </div>
-
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
