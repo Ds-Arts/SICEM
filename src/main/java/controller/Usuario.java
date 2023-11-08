@@ -51,8 +51,8 @@ public class Usuario extends HttpServlet {
 
                 case "searchById": // Nueva acción para buscar por ID
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
-                    System.out.println(request.getParameter("idUsuario"));
-                    
+                    System.out.println(request.getParameter("numidusuario"));
+                    buscarUsuariosPornumIdentificacion(request, response);
                     /*  buscarUsuarioPorId(request, response); */
                     break;
 
@@ -172,19 +172,26 @@ public class Usuario extends HttpServlet {
         
             }
 
+            
 
-    private void buscarUsuarioPorId(HttpServletRequest request, HttpServletResponse response)
+
+    private void buscarUsuariosPornumIdentificacion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener el ID del usuario a buscar
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-
+        int idUsuario = 1;
         try {
             // Realizar la búsqueda del usuario por ID
             UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuario);
             request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
+            request.setAttribute("numidentificacionusuario",request.getParameter("numidusuario") );
+            System.out.println(request.getParameter("numidusuario")+"se esta enviando el parametro");
+            String numidentificacionusuario = request.getParameter("numidusuario");
+            System.out.println(request.getAttribute(numidentificacionusuario));
+            System.out.println(numidentificacionusuario + "esta vacio");
+            request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
             // Redireccionar a la página de lista de usuarios con el usuario encontrado
-            listarUsuarios(request, response);
+         /*    listarUsuarios(request, response); */
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener el usuario por ID");

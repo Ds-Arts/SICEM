@@ -118,7 +118,7 @@
                                       <form class="row g-2"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
-                                            <option disabled="" selected="" value="">Buscar</option>
+                                            <option disabled="" selected="" name="accion" value="buscar_tipo">Buscar</option>
                                             <option>Consumo</option>
                                             <option>Desechable</option>
                                         </select>                                   
@@ -220,7 +220,7 @@
                                 </form>
                                 <form class="row g-2" action="Usuario" method="GET">
                                     <div class="col-auto">
-                                        <input type="number" name="idUsuario" placeholder="Buscar por Num Identificaion" class="form-control rounded"/>
+                                        <input type="text" name="numidusuario" placeholder="Buscar por Num Identificaion" class="form-control rounded"/>
                                     </div>
                                     <div class="col-auto">
                                         <button type="submit" name="action" value="searchById" class="btn btn-success">Buscar</button>
@@ -243,6 +243,9 @@
                                            
                                     <%
                                     String nombre=request.getParameter("nombre");
+                                    String numidentificacion= request.getParameter("numidentificacionusuario") ;
+                                    System.out.print(numidentificacion);
+                                    System.out.print(numidentificacion+"el nombre que llega por busqueda de nombre ");
                                     System.out.print(nombre+"el nombre que llega por busqueda de nombre ");
                                     if(nombre != null  && ! nombre.isEmpty()){
                                     
@@ -252,7 +255,6 @@
                                         for (UsuarioVo usuari : usu)
                                       {
                                      %>
-
                                      <tr>
                                         <td><%= usuari.getId() %></td>
                                         <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
@@ -261,12 +263,30 @@
                                         <td><%= usuari.getRol_fk() %></td>
                                         <td><%= usuari.getActivo() %></td>
                                     </tr>
-
-
-
                                     <%
                                      }
+                                    }
+                                     if (numidentificacion != null  && ! numidentificacion.isEmpty() ){
+                                        System.out.println("el id llego") ;
+                                        UsuarioDao UsuarioDao = new UsuarioDao();
+                                        int id = Integer.parseInt(numidentificacion);
+                                        List<UsuarioVo> usu =  usuarioDao.buscarUsuariosPornumIdentificacion(id);
+                                        for (UsuarioVo usuari : usu){
+
+                                         %>
+
+                                        <tr>
+                                            <td><%= usuari.getId() %></td>
+                                            <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                                            <td><%= usuari.getEmail() %></td>
+                                            <td><%= usuari.getNumIdentificacion() %></td>
+                                            <td><%= usuari.getRol_fk() %></td>
+                                            <td><%= usuari.getActivo() %></td>
+                                        </tr>
+                                    
+                      <%             }
                                      }
+                                 
                                      else{
                                     %>
                                 <%
