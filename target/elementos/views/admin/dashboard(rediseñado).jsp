@@ -59,9 +59,10 @@
             <!-- ORGANIZADOR DEL CONTENIDO -->
             <div class="container-fluid">
                 <!-- LOGO -->
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
-                        src="../img/favicon.ico"
+                        src="\..\..\assets\IMG\logo_mono.png"
+                        
                         alt
                         width="30"
                         height="30"
