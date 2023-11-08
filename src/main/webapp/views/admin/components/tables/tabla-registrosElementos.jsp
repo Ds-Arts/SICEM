@@ -21,8 +21,10 @@
             <div class="hstack gap-3">
                 <h3>Elementos</h3>
                 <div class="vr"></div>
-                <input class="form-control me-auto" type="text" placeholder="Buscar por numero de placa" aria-label="Add your item here...">
-                <button type="button" class="btn btn-success">Enviar</button>
+                <form action="elemento" method="get">
+                    <input class="form-control me-auto" type="text" name="placa" placeholder="Buscar por numero de placa" aria-label="Add your item here...">
+                    <button type="submit" name="accion" value="buscar_elementos" class="btn btn-success">Enviar</button>
+                </form>
                 <div class="vr"></div>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
