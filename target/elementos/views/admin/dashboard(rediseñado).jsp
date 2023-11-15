@@ -71,7 +71,9 @@
                 </a>
                 <!-- CONTENEDOR DE BOTONES -->
                 <div class="navbar-nav">
-                    <button type="button" class="btn btn-danger">Salir</button>
+                    <form action="Usuario" method="POST">
+                        <button name="action" value="logout" class="btn btn-danger">Salir</button>
+                    </form>
                 </div>
             </div>
         </nav>
