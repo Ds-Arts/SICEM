@@ -29,7 +29,7 @@
                     <!-- BOTON DE AGREGAR NUEVO USUARIO -->
                     <h5>Agregar</h5>
                     <input class="btn-check">
-                    <button class="btn btn-outline-success" onclick="mostrarComponente('views/admin/components/tables/tabla-registrarUsuarios.jsp')">
+                    <button class="btn btn-outline-success" onclick="mostrarComponente('views/admin/components/forms/tabla-registrarUsuarios.jsp')">
                         <i class="bi bi-plus-lg"></i>
                     </button>
                     <div class="vr"></div>
