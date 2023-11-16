@@ -61,7 +61,7 @@
                 <!-- LOGO -->
                 <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
-                        src="..\..\assets\IMG\logo_mono.png"
+                        src="\views\admin\img\logo_mono.png"
                         
                         alt
                         width="30"
