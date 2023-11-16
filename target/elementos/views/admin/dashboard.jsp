@@ -75,7 +75,7 @@
                         </li>
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../home.html">
+                        <a class="nav-link active" href="Usuario?action=home">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19.002 3h-14c-1.103 0-2 .897-2 2v4h2V5h14v14h-14v-4h-2v4c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.898-2-2-2z"></path><path d="m11 16 5-4-5-4v3.001H3v2h8z"></path></svg>
                             Salir
                         </a>
@@ -418,8 +418,7 @@
                             <circle cx="18" cy="12" r="2"></circle>
                             <circle cx="12" cy="18" r="2"></circle>
                         </svg></label>
-                        <input type="text" placeholder="Numero de placa" aria-label="First name"
-                               class="form-control" name="N_placa" id="N_placa" required/>
+                        <input type="text" placeholder="Numero de placa" aria-label="First name" class="form-control" name="N_placa" id="N_placa" required/>
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
@@ -429,8 +428,7 @@
                                     d="M19.649 5.286 14 8.548V2.025h-4v6.523L4.351 5.286l-2 3.465 5.648 3.261-5.648 3.261 2 3.465L10 15.477V22h4v-6.523l5.649 3.261 2-3.465-5.648-3.261 5.648-3.261z">
                             </path>
                         </svg></label>
-                        <input type="text" placeholder="Cantidad" aria-label="First name"
-                               class="form-control" name="cantidad" id="cantidad" required/>
+                        <input type="text" placeholder="Cantidad" class="form-control" name="cantidad" id="cantidad" required/>
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text opacity-75" for="inputGroupSelect01"><svg
@@ -461,8 +459,7 @@
                                     d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z">
                             </path>
                         </svg></label>
-                        <input type="date" placeholder="Fecha de ingreso" aria-label="First name"
-                            class="form-control" name="FechaIngresoElemento" id="FechaIngresoElemento" required/>
+                        <input type="date" placeholder="Fecha de ingreso" class="form-control" name="FechaIngresoElemento" id="FechaIngresoElemento" required/>
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
@@ -492,13 +489,11 @@
                         <input type="text" placeholder="Aula" aria-label="First name" class="form-control" name="NumAula" id="NumAula" required/>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Escriba una descripción del
-                            elemento</label>
-                        <textarea class="form-control" placeholder="Descripción"
-                                    name="Descripcion" id="Descripcion" required rows="3"></textarea>
+                        <label for="exampleFormControlTextarea1" class="form-label">Escriba una descripción del elemento</label>
+                        <textarea class="form-control" placeholder="Descripción" name="Descripcion" id="Descripcion" required rows="3"></textarea>
                     </div>
                     <div class="input-group mb-3">
-                        <%--@declare id="inputgroupselect01"--%><label class="input-group-text" for="inputGroupSelect01">Estado del elemento</label>
+                        <label class="input-group-text" for="inputGroupSelect01">Estado del elemento</label>
                         <select class="form-select"name="EstadoElemento" id="EstadoElemento" required>
                             <option selected>Elige...</option>
                             <option value="Activo">Activo</option>

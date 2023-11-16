@@ -12,6 +12,7 @@
                 <div class="hstack gap-3">
                     <h3>Prestamos</h3>
                     <div class="vr"></div>
+                    <!-- BUSCAR POR -->
                     <input id="buscar-x-id" class="form-control me-auto barra-busqueda-usuario"  style="display: none;" type="text" placeholder="Buscar por ID">
                     <input id="buscar-x-nombre" class="form-control me-auto barra-busqueda-usuario" type="text" placeholder="Buscar por nombre">
                     <div class="btn-group">

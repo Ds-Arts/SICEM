@@ -21,23 +21,30 @@
             <div class="hstack gap-3">
                 <h3>Elementos</h3>
                 <div class="vr"></div>
-                <form action="elemento" method="GET">
+                    <!-- BOTON DE AGREGAR NUEVO USUARIO -->
+                    <h5>Agregar</h5>
+                    <input class="btn-check">
+                    <button class="btn btn-outline-success" onclick="mostrarComponente('views/admin/components/forms/tabla-registrarElementos.jsp')">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                <div class="vr"></div>
+                <form class="input-group" action="elemento" method="GET">
                     <input name="placa" class="form-control me-auto" type="text" placeholder="Buscar por numero de placa" aria-label="Add your item here...">
                     <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Enviar</button>
                 </form>
-                <form action="elemento" method="get">
+                <%-- <form class="input-group" action="elemento" method="get">
                     <input class="form-control me-auto" type="text" name="placa" placeholder="Buscar por numero de placa" aria-label="Add your item here...">
                     <button type="submit" name="accion" value="buscar_elementos" class="btn btn-success">Enviar</button>
-                </form>
+                </form> --%>
                 <div class="vr"></div>
-                    <div class="btn-group"role="group" aria-label="Basic radio toggle button group">
+                    <div class="d-flex align-content-around" role="group" aria-label="Basic radio toggle button group">
                         <form action="elemento" method="GET">
                             <input type="radio" name="TipoElemento" id="TipoElemento" class="btn-check" autocomplete="off" checked  value="Desechable">
-                            <button type="submit" class="btn btn-outline-success" for="btnradio1" name="accion" value="buscar_tipo">Desechable</button>
+                            <button type="submit" class="btn btn-outline-success" name="accion" value="buscar_tipo">Desechable</button>
                         </form>
                         <form action="elemento" method="GET">
                             <input type="radio" name="TipoElemento" id="TipoElemento" class="btn-check"  autocomplete="off" value="Consumo">
-                            <button  type="submit" class="btn btn-outline-success" for="btnradio2" name="accion" value="buscar_tipo">Consumo</button>
+                            <button  type="submit" class="btn btn-outline-success" name="accion" value="buscar_tipo">Consumo</button>
                         </form>
                     </div>
 
