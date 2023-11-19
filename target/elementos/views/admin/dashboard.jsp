@@ -76,22 +76,11 @@
                         </li>
                     </div>
                     <li class="nav-item">
-<<<<<<< HEAD
                         <a class="nav-link active" href="Usuario?action=logout">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
                                 <path d="M19.002 3h-14c-1.103 0-2 .897-2 2v4h2V5h14v14h-14v-4h-2v4c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.898-2-2-2z"></path>
                                 <path d="m11 16 5-4-5-4v3.001H3v2h8z"></path>
                             </svg>
-=======
-                        <a class="nav-link active" href="Usuario?action=profile">
-                            <i class="bi bi-github"></i>
-                            Perfil
-                        </a>
-                    </li>                
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Usuario?action=login">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19.002 3h-14c-1.103 0-2 .897-2 2v4h2V5h14v14h-14v-4h-2v4c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.898-2-2-2z"></path><path d="m11 16 5-4-5-4v3.001H3v2h8z"></path></svg>
->>>>>>> origin/duvan
                             Salir
                         </a>
                     </li>
@@ -119,13 +108,8 @@
                             <div class="border-bottom pb-2 mb-0 row">
                                 <h6 class="col mb-0">Elementos registrados</h6>
 
-<<<<<<< HEAD
-                                <div class="row">
-                                    <form class="row g-3"  action="elemento" method="GET">
-=======
                                 <div class="input-group mb-3">
                                     <form class="row g-2"  action="elemento" method="GET">
->>>>>>> origin/duvan
                                         <div class="col-auto">
                                           <label for="staticEmail2" class="visually-hidden">Email</label>
                                           <input name="placa" type="text" class="form-control" placeholder="Buscar por N° de placa">
@@ -133,21 +117,12 @@
                                         <div class="col-auto">
                                             <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Buscar</button>
                                         </div>
-<<<<<<< HEAD
-                                        
-                                      </form>
-                                      <form class="row g-3"  action="elemento" method="GET">
-                                        <div class="col-auto">
-                                          <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
-                                            <option disabled="" selected="" value="">Buscar</option>
-=======
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                       </form>
                                       <form class="row g-2"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
                                             <option disabled="" selected="" name="accion" value="buscar_tipo">Buscar</option>
->>>>>>> origin/duvan
                                             <option>Consumo</option>
                                             <option>Desechable</option>
                                         </select>                                   
@@ -269,10 +244,6 @@
 
                                     </tr>
                                     </thead>
-<<<<<<< HEAD
-                                    <tbody>                                    
-                                    <%
-=======
                                     <tbody> 
                                            
                                     <%
@@ -324,7 +295,6 @@
                                      else{
                                     %>
                                 <%
->>>>>>> origin/duvan
                                         UsuarioDao UsuarioDao = new UsuarioDao();
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
@@ -740,3 +710,4 @@
 </body>
 
 </html>
+

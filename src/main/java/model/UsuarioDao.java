@@ -350,7 +350,7 @@ public class UsuarioDao {
 
     // Contador de elementos
 
-    Connection con;
+
 
     public List<UsuarioVo> contadorUsuarios() throws SQLException {
 
