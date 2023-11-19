@@ -210,20 +210,20 @@ public class UsuarioDao {
         return usuarioValidado;
     }
 
-    private int obtenerUltimoIdUsuario() throws SQLException {
-        int idUsuario = 0;
-        sql = "SELECT MAX(id) AS last_id FROM usuarios";
-        try (Connection conexion = Conexion.conectar();
-                PreparedStatement ps = conexion.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                idUsuario = rs.getInt("last_id");
-            }
-        } catch (Exception e) {
-            System.out.println("Error al obtener el último ID de usuario: " + e.getMessage());
-        }
-        return idUsuario;
-    }
+    // private int obtenerUltimoIdUsuario() throws SQLException {
+    //     int idUsuario = 0;
+    //     sql = "SELECT MAX(id) AS last_id FROM usuarios";
+    //     try (Connection conexion = Conexion.conectar();
+    //             PreparedStatement ps = conexion.prepareStatement(sql);
+    //             ResultSet rs = ps.executeQuery()) {
+    //         if (rs.next()) {
+    //             idUsuario = rs.getInt("last_id");
+    //         }
+    //     } catch (Exception e) {
+    //         System.out.println("Error al obtener el último ID de usuario: " + e.getMessage());
+    //     }
+    //     return idUsuario;
+    // }
 /* 
     public List<UsuarioVo> buscarUsuariosPorNombre(String nombre) throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
