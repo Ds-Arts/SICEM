@@ -40,7 +40,7 @@ public class Usuario extends HttpServlet {
                 case "dash":
                     System.out.println("Se ha direccionado al dashboard de administrador.");
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
-                    break;
+                    break; 
 
                 case "login":
                     System.out.println("Se ha direccionado al login de usuarios.");
@@ -53,20 +53,26 @@ public class Usuario extends HttpServlet {
                     break;
 
                 case "search":
-                    System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
-                    buscarUsuariosPorNombre(request, response);
+                   System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
+                   System.out.println(  request.getParameter("nombre"));   
+                buscarUsuariosPorNombre(request, response); 
                     break;
 
                 case "searchById": // Nueva acción para buscar por ID
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
-                    buscarUsuarioPorId(request, response);
+                    System.out.println(request.getParameter("numidusuario"));
+                    buscarUsuariosPornumIdentificacion(request, response);
+                    /*  buscarUsuarioPorId(request, response); */
                     break;
 
                 case "detalle":
                     System.out.println("Se ha redireccionado al metodo 'mostrarDetalleUsuario'");
                     mostrarDetalleUsuario(request, response);
                     break;
-
+                case "profile":
+                    System.out.println("Se ha direccionado al perfil del ususario.");
+                    request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -232,23 +238,13 @@ public class Usuario extends HttpServlet {
         }
     }
 
-    private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Obtener el término de búsqueda ingresado por el usuario
-        String searchTerm = request.getParameter("searchTerm");
-
+    private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+    
+        String nombre = request.getParameter("nombre");
         try {
-            List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(searchTerm);
+            List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(nombre);
+            request.setAttribute("nombre",nombre);
             request.setAttribute("usuarios", usuarios);
-
-            // Si hay un usuario encontrado, lo agregamos al atributo para mostrarlo en el
-            // JSP
-            UsuarioVo usuarioEncontrado = null;
-            if (!usuarios.isEmpty()) {
-                usuarioEncontrado = usuarios.get(0);
-            }
-            request.setAttribute("usuarioEncontrado", usuarioEncontrado);
-
             request.getRequestDispatcher("Usuario?action=test").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -256,18 +252,24 @@ public class Usuario extends HttpServlet {
         }
     }
 
-    private void buscarUsuarioPorId(HttpServletRequest request, HttpServletResponse response)
+
+    private void buscarUsuariosPornumIdentificacion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener el ID del usuario a buscar
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-
+        int idUsuario = 1;
         try {
             // Realizar la búsqueda del usuario por ID
             UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuario);
             request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
+            request.setAttribute("numidentificacionusuario",request.getParameter("numidusuario") );
+            System.out.println(request.getParameter("numidusuario")+"se esta enviando el parametro");
+            String numidentificacionusuario = request.getParameter("numidusuario");
+            System.out.println(request.getAttribute(numidentificacionusuario));
+            System.out.println(numidentificacionusuario + "esta vacio");
+            request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
             // Redireccionar a la página de lista de usuarios con el usuario encontrado
-            listarUsuarios(request, response);
+         /*    listarUsuarios(request, response); */
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener el usuario por ID");

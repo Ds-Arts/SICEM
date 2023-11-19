@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.UsuarioDao" %>
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -106,11 +110,7 @@
                                     class="form-label">Numero de identificación</label>
                                 <input
                                     type="text"
-                                    class="form-control"
                                     id=""
-                                    name=""
-                                    value="1028756545"
-                                    required />
                             </div> --%>
                             <!-- CONTRASEÑA -->
                             <%-- <div class="col-md-6">

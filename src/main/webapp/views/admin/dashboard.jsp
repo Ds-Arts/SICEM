@@ -36,7 +36,8 @@
             integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
             crossorigin="anonymous"></script>
     <link href="../assets/CSS/custom.css" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/IMG/logo1.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <body class="bg-body-tertiary">
@@ -107,8 +108,8 @@
                             <div class="border-bottom pb-2 mb-0 row">
                                 <h6 class="col mb-0">Elementos registrados</h6>
 
-                                <div class="row">
-                                    <form class="row g-3"  action="elemento" method="GET">
+                                <div class="input-group mb-3">
+                                    <form class="row g-2"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <label for="staticEmail2" class="visually-hidden">Email</label>
                                           <input name="placa" type="text" class="form-control" placeholder="Buscar por N° de placa">
@@ -116,12 +117,12 @@
                                         <div class="col-auto">
                                             <button type="submit" class="btn btn-success" name="accion" value="buscar_elementos">Buscar</button>
                                         </div>
-                                        
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                       </form>
-                                      <form class="row g-3"  action="elemento" method="GET">
+                                      <form class="row g-2"  action="elemento" method="GET">
                                         <div class="col-auto">
                                           <select class="form-select" name="TipoElemento" id="TipoElemento" required="">
-                                            <option disabled="" selected="" value="">Buscar</option>
+                                            <option disabled="" selected="" name="accion" value="buscar_tipo">Buscar</option>
                                             <option>Consumo</option>
                                             <option>Desechable</option>
                                         </select>                                   
@@ -189,11 +190,13 @@
                                         <td><%=elemento.getEstado()%></td>
                                         <td><%=usuario.getNombre()%></td>
                                         <td> <form action="elemento" method="post">
-                                            <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
-                                            <input type="text" name="nombre_cuentadante" value="<%=usuario.getNombre()%>" hidden>
-                                            <input type="number" name="n_placa_prestamo" value="<%= elemento.getNumeroPlaca()%>" hidden>
-                                            <button type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
-                                        </form>  </td>
+                                                <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
+                                                <input type="text" name="nombre_cuentadante" value="<%=usuario.getNombre()%>" hidden>
+                                                <input type="number" name="n_placa_prestamo" value="<%= elemento.getNumeroPlaca()%>" hidden>
+                                            
+                                                <button class="btn btn-light" type="submit" name="accion" value="data_prestamo"><center>Prestamo</center></button>
+                                            </form>  
+                                        </td>
                                     </tr>
                                     <% } %>
                                     </tbody>
@@ -206,8 +209,26 @@
                     <section>
                         <div style="width: 163vh; height: 25em;" class="my-3 p-3 bg-body rounded shadow-sm border overflow-auto">
                             <div class="border-bottom pb-2 mb-0 row">
-                                <h6 class="col mb-0">usuarios registrados</h6>
+                                <h6 class="col mb-0">Usuarios registrados</h6>
                                 <a class="col text-end text" data-bs-toggle="modal" data-bs-target="#registroUsuarioModal">Nuevo usuario</a>
+                            </div>
+                            <div class="input-group mb-3">
+                                <form class="row g-2" action="Usuario" method="GET">
+                                    <div class="col-auto">
+                                        <input type="text" name="nombre" placeholder="Buscar por nombre" class="form-control rounded"/>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+                                    </div>
+                                </form>
+                                <form class="row g-2" action="Usuario" method="GET">
+                                    <div class="col-auto">
+                                        <input type="text" name="numidusuario" placeholder="Buscar por Num Identificaion" class="form-control rounded"/>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" name="action" value="searchById" class="btn btn-success">Buscar</button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
@@ -223,13 +244,61 @@
 
                                     </tr>
                                     </thead>
-                                    <tbody>                                    
+                                    <tbody> 
+                                           
                                     <%
+                                    String nombre=request.getParameter("nombre");
+                                    String numidentificacion= request.getParameter("numidentificacionusuario") ;
+                                    System.out.print(numidentificacion);
+                                    System.out.print(numidentificacion+"el nombre que llega por busqueda de nombre ");
+                                    System.out.print(nombre+"el nombre que llega por busqueda de nombre ");
+                                    if(nombre != null  && ! nombre.isEmpty()){
+                                    
+                                        System.out.println("el nombre llego") ;
+                                        UsuarioDao UsuarioDao = new UsuarioDao();
+                                        List<UsuarioVo> usu =  usuarioDao.buscarUsuariosPorNombre(nombre);
+                                        for (UsuarioVo usuari : usu)
+                                      {
+                                     %>
+                                     <tr>
+                                        <td><%= usuari.getId() %></td>
+                                        <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                                        <td><%= usuari.getEmail() %></td>
+                                        <td><%= usuari.getNumIdentificacion() %></td>
+                                        <td><%= usuari.getRol_fk() %></td>
+                                        <td><%= usuari.getActivo() %></td>
+                                    </tr>
+                                    <%
+                                     }
+                                    }
+                                     if (numidentificacion != null  && ! numidentificacion.isEmpty() ){
+                                        System.out.println("el id llego") ;
+                                        UsuarioDao UsuarioDao = new UsuarioDao();
+                                        int id = Integer.parseInt(numidentificacion);
+                                        List<UsuarioVo> usu =  usuarioDao.buscarUsuariosPornumIdentificacion(id);
+                                        for (UsuarioVo usuari : usu){
+
+                                         %>
+
+                                        <tr>
+                                            <td><%= usuari.getId() %></td>
+                                            <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                                            <td><%= usuari.getEmail() %></td>
+                                            <td><%= usuari.getNumIdentificacion() %></td>
+                                            <td><%= usuari.getRol_fk() %></td>
+                                            <td><%= usuari.getActivo() %></td>
+                                        </tr>
+                                    
+                      <%             }
+                                     }
+                                 
+                                     else{
+                                    %>
+                                <%
                                         UsuarioDao UsuarioDao = new UsuarioDao();
                                         List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
                                         for (UsuarioVo usuari : usu) {
                                     %>
-
                                     <tr>
                                         <td><%= usuari.getId() %></td>
                                         <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
@@ -250,7 +319,7 @@
                                         </form>
                                     </td>
                                     </tr>
-                                    <% } %>
+                                    <% } }%>
                                     </tbody>
                                 </table>
                             </div>
@@ -363,18 +432,27 @@
         <div class="mb-3 border rounded p-2">
 
             <div>
-
+                <%
+                PrestamosDao pDao = new PrestamosDao();
+                    UsuarioDao urDao = new UsuarioDao(); // Importa la clase UsuarioDao
+                List<PrestamosVo> prest = prestamoDao.listarPrestamos();
+                for (PrestamosVo pres : prest) {
+                    // Obtener el Usuario correspondiente por su ID
+                    UsuarioVo ur = urDao.buscarUsuarioPorId(pres.getUsu());
+                    UsuarioVo nazi = urDao.buscarUsuarioPorId(pres.getUs());// Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+                %>
                 <h4  class="mb-3 pb-1 border-bottom">Nueva solucitud</h4>
-                <p><b>Propietario:</b> </p>
-                <p><b>Prestatario:</b></p>
-                <p><b>Fecha de solicitud:</b> </p>
-                <p><b>Elemento solicitado:</b></p>
-                <p><b>Placa del elemento solicitado:</b></p>
+                <p><b>Propietario:</b><%=ur.getNombre()%></p>
+                <p><b>Prestatario:</b><%= nazi.getNombre() %></p>
+                <p><b>Fecha de solicitud:</b> <%= pres.getFechaInicio() %></p>
+                <p><b>Elemento solicitado:</b><%= pres.getFechaFin() %></p>
+                <p><b>Placa del elemento solicitado:</b><%=pres.getElementoFk()%></p>
+                
             </div>
             <div class="my-2">
-                <button type="button" class="btn btn-success">Success</button>
-                <button type="button" class="btn btn-danger">Danger</button>
+                <button type="button" class="btn btn-danger">Cancelar solicitud</button>
             </div>
+            <% } %>
         </div>
         <div class="mb-3 border rounded p-2">
             <div>
@@ -599,11 +677,11 @@
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
-                            <select class="form-select" id="inputGroupSelect01" name="rol_fk" id="rol_fk" required>
+                            <select class="form-select"  name="rol_fk" id="rol_fk" required>
                                 <option selected>Elige categoria del usuario</option>
-                                <option value="3">Instructor</option>
-                                <option value="2">Cuentadante</option>
-                                <option value="1">Administrador</option>
+                                <option>Instructor</option>
+                                <option>Cuentadante</option>
+                                <option>Administrador</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">
@@ -632,3 +710,4 @@
 </body>
 
 </html>
+

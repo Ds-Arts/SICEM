@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDao {
+    Connection con; // objeto de conexión
     private PreparedStatement ps;
     private ResultSet rs;
     static String sql = null;
@@ -223,7 +224,7 @@ public class UsuarioDao {
         }
         return idUsuario;
     }
-
+/* 
     public List<UsuarioVo> buscarUsuariosPorNombre(String nombre) throws SQLException {
         List<UsuarioVo> usuarios = new ArrayList<>();
         sql = "SELECT * FROM usuarios WHERE nombre LIKE ? ORDER BY nombre ASC";
@@ -249,6 +250,75 @@ public class UsuarioDao {
         }
         return usuarios;
     }
+*/
+        public List<UsuarioVo> buscarUsuariosPorNombre(String nombre) throws SQLException {
+        List<UsuarioVo> usuarios = new ArrayList<>();
+        sql = "SELECT * FROM usuarios WHERE nombre = ? ORDER BY nombre ASC";
+        try {
+            con = Conexion.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                    UsuarioVo usuario = new UsuarioVo();
+                    usuario.setId(rs.getInt("id"));
+                    usuario.setNombre(rs.getString("nombre"));
+                    usuario.setApellido(rs.getString("apellido"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                    usuario.setRol_fk(rs.getString("rol_fk"));
+                    usuario.setActivo(rs.getString("activo"));
+                    usuarios.add(usuario);    
+            }
+            ps.close();
+        } catch (Exception e) {
+            System.out.println("Error en la consulta: " + e.getMessage());
+        } finally {
+            con.close();
+        }
+
+        return usuarios ;
+    }
+    
+      
+      public List<UsuarioVo> buscarUsuariosPornumIdentificacion(int numIdentificacion) throws SQLException {
+        List<UsuarioVo> usuarios = new ArrayList<>();
+        sql = "SELECT * FROM usuarios WHERE numIdentificacion = ? ORDER BY nombre ASC";
+        try {
+            con = Conexion.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, numIdentificacion);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                    UsuarioVo usuario = new UsuarioVo();
+                    usuario.setId(rs.getInt("id"));
+                    usuario.setNombre(rs.getString("nombre"));
+                    usuario.setApellido(rs.getString("apellido"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                    usuario.setRol_fk(rs.getString("rol_fk"));
+                    usuario.setActivo(rs.getString("activo"));
+                    usuarios.add(usuario);    
+            }
+            ps.close();
+        } catch (Exception e) {
+            System.out.println("Error en la consulta: " + e.getMessage());
+        } finally {
+            con.close();
+        }
+
+        return usuarios ;
+    }
+    
+      
+
+
+
+
+
+
+
+
 
     public UsuarioVo buscarUsuarioPorId(int idUsuario) throws SQLException {
         UsuarioVo usuarioEncontrado = null;

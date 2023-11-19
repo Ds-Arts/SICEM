@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.UsuarioDao" %>
+<%@ page import="model.UsuarioVo" %>
+<%@ page import="java.util.List" %>
+
+>>>>>>> origin/duvan
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,6 +34,7 @@
         <link rel="stylesheet" href="../css/custom.css" />
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
     </head>
+<<<<<<< HEAD
 <body>
     <!-- CONTENIDO GENERAL -->
     <%
@@ -36,11 +45,43 @@
     %>
         <div class="container-md bg-body my-5 py-5 shadow">
             <h2>Perfil de usuario</h2>
+=======
+
+    <body class="bg-body-tertiary">
+        <!-- HEADER -->
+        <nav class="navbar navbar-light bg-body border-bottom justify-content-between">
+            <!-- ORGANIZADOR DEL CONTENIDO -->
+            <div class="container-fluid">
+                <!-- LOGO -->
+                <a class="navbar-brand" href="#">
+                    <img
+                        src="assets/IMG/logo1.png"
+                        alt
+                        width="30"
+                        height="30"
+                        class="d-inline-block align-text-top me-1" />
+                    | SICEM - PERFIL
+                </a>
+                <!-- CONTENEDOR DE BOTONES -->
+                <div class="navbar-nav">
+                    <a href="Usuario?action=dash" type="button" class="btn btn-danger">Salir</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- CONTENIDO GENERAL -->
+        <div class="container-md bg-body my-5 py-5 shadow">
+
+>>>>>>> origin/duvan
             <!-- INFORMACION DEL PERFIL -->
             <div class="container">
                 <div
                     style="display: flex; align-items: center; justify-content: center;"
                     class="row">
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/duvan
                     <!-- CONTENEDOR DE LA FOTO DE PERFIL -->
                     <div class="col-3">
                         <img class="profile-photo-xl float-start" />
@@ -58,6 +99,7 @@
                             }
                         </style>
                     </div>
+<<<<<<< HEAD
                     <!-- CONTENDDOR DE INFORMACION DEL PERFIL -->
                     <div class="col-9">
                         <!-- FORMULARIO PARA ACTUALIZAR INFO DEL PERFIL DE USUARIO -->
@@ -66,15 +108,30 @@
                             <input type="hidden" name="action" value="updateProfile">
                             <input type="hidden" name="idUsuario" value="<%= usuarioSesion.getId() %>">
 
+=======
+                    
+                    <!-- CONTENDDOR DE INFORMACION DEL PERFIL -->
+                    <div class="col-9">
+                        <!-- FORMULARIO PARA ACTUALIZAR INFO DEL PERFIL DE USUARIO -->
+                        <form class="row g-3 needs-validation" method="" action="" novalidate>
+>>>>>>> origin/duvan
                             <!-- NOMBRE DE USUARIO -->
                             <div class="col-md-6">
                                 <label
                                     class="form-label">Nombres</label>
                                 <input
+<<<<<<< HEAD
                                     type="text" 
                                     name="nombre" 
                                     value="<%= usuarioSesion.getNombre() %>"
                                     class="form-control"
+=======
+                                    type="text"
+                                    class="form-control"
+                                    id=""
+                                    name=""
+                                    value="Mark Ly"
+>>>>>>> origin/duvan
                                     required />
                             </div>
                             <!-- APELLIDO DEL USUARIO -->
@@ -82,10 +139,18 @@
                                 <label
                                     class="form-label">Apellidos</label>
                                 <input
+<<<<<<< HEAD
                                     type="text" 
                                     name="apellido" 
                                     value="<%= usuarioSesion.getApellido() %>"
                                     class="form-control"
+=======
+                                    type="text"
+                                    class="form-control"
+                                    id=""
+                                    name=""
+                                    value="Otto Stanlyson"
+>>>>>>> origin/duvan
                                     required />
                             </div>
                             <!-- CORREO ELECTRONICO -->
@@ -95,13 +160,26 @@
                                 <div class="input-group has-validation">
                                     <span class="input-group-text">@</span>
                                     <input
+<<<<<<< HEAD
                                         type="email" name="email" value="<%= usuarioSesion.getEmail() %>"
                                         class="form-control"
+=======
+                                        type="email"
+                                        class="form-control"
+                                        id=""
+                                        name=""
+                                        aria-describedby="inputGroupPrepend"
+                                        value="photo's@gmail.com"
+>>>>>>> origin/duvan
                                         required />
                                 </div>
                             </div>
                             <!-- NUMERO DE IDENTIDICACION -->
+<<<<<<< HEAD
                             <%-- <div class="col-md-123">
+=======
+                            <div class="col-md-123">
+>>>>>>> origin/duvan
                                 <label
                                     class="form-label">Numero de identificación</label>
                                 <input
@@ -111,9 +189,15 @@
                                     name=""
                                     value="1028756545"
                                     required />
+<<<<<<< HEAD
                             </div> --%>
                             <!-- CONTRASEÑA -->
                             <%-- <div class="col-md-6">
+=======
+                            </div>
+                            <!-- CONTRASEÑA -->
+                            <div class="col-md-6">
+>>>>>>> origin/duvan
                                 <label
                                     class="form-label">Contraseña</label>
                                 <input
@@ -135,6 +219,7 @@
                                     name=""
                                     value="12345"
                                     required />
+<<<<<<< HEAD
                             </div> --%>
                             <!-- BOTON DE ENVIO DE INFO DEL FORMULAIRO --->
                             <div class="col-6">
@@ -147,11 +232,21 @@
                                     Volver
                                 </a>
                             </div>
+=======
+                            </div>
+                            <!-- BOTON DE ENVIO DE INFO DEL FORMULAIRO --->
+                            <div class="col-12">
+                                <button class="btn btn-success" type="submit">
+                                    Actualizar Información
+                                </button>
+                            </div>
+>>>>>>> origin/duvan
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <%
             } else {
         %>
@@ -199,5 +294,7 @@
         <%
             }
         %>
+=======
+>>>>>>> origin/duvan
     </body>
 </html>
