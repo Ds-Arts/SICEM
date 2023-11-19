@@ -49,7 +49,7 @@ public class Usuario extends HttpServlet {
 
                 case "lll":
                     System.out.println("Se ha direccionado al perfil de usuario.");
-                    request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+                    request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
                     break;
 
                 case "search":
@@ -138,7 +138,7 @@ public class Usuario extends HttpServlet {
                     request.setAttribute("usuarioEncontrado", usuariosEncontrados.get(0));
                 }
             }
-            request.getRequestDispatcher("views/listarUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("Usuario?action=test").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener la lista de usuarios");
@@ -187,7 +187,7 @@ public class Usuario extends HttpServlet {
                         request.getSession().setAttribute("usuarioSesion", usuarioSesion);
 
                         // Redirecciona a la página de perfil actualizada
-                        request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+                        request.getRequestDispatcher("Usuario?action=lll").forward(request, response);
                     } else {
                         // Manejar el error de actualización, por ejemplo, redirigir a una página de
                         // error
@@ -225,7 +225,7 @@ public class Usuario extends HttpServlet {
             request.setAttribute("elementos", elementos);
 
             // Redireccionar a la página de detalles del usuario
-            request.getRequestDispatcher("views/admin/detallesUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("Usuario?action=test").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener los detalles del usuario y sus elementos asociados");
@@ -249,7 +249,7 @@ public class Usuario extends HttpServlet {
             }
             request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
-            request.getRequestDispatcher("listarUsu.jsp").forward(request, response);
+            request.getRequestDispatcher("Usuario?action=test").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener la lista de usuarios");
@@ -303,7 +303,7 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("Usuario?action=test").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
@@ -343,7 +343,7 @@ public class Usuario extends HttpServlet {
             // Actualizar el estado del usuario a inactivo en la base de datos
             usuarioDao.actualizarEstadoUsuario(idUsuario, false);
             // Redireccionar a la página de lista de usuarios después de la desactivación
-            response.sendRedirect(request.getContextPath() + "/Usuario?action=list");
+            response.sendRedirect(request.getContextPath() + "Usuario?action=list");
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
@@ -371,9 +371,9 @@ public class Usuario extends HttpServlet {
                     session.setAttribute("usuarioSesion", usuVo);
 
                     // Redirige al usuario a la página de dashboard
-                    response.sendRedirect(request.getContextPath() + "/Usuario?action=dash");
+                    response.sendRedirect(request.getContextPath() + "/Usuario?action=test");
                 } else {
-                    request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
+                    request.getRequestDispatcher("Usuario?action=login").forward(request, response);
                 }
             } else {
                 // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus
@@ -417,7 +417,7 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.editar_Usuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("views/registroUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("Usuario?action=test").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
@@ -434,7 +434,7 @@ if (session != null) {
 }
 
 // Redirige a la página de inicio de sesión o a la página principal
-response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
+response.sendRedirect(request.getContextPath() + "/Usuario?action=home");
 }
 
 
