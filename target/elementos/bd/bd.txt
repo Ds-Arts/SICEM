@@ -132,9 +132,19 @@ DELIMITER ;
 CALL InsertarRol('Cuentadante');
 CALL InsertarRol('Instructor');
 CALL InsertarRol('Administrador');
+
 CALL InsertarUsuario('GzAdmin', 'Omega', 'gzsans@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
 CALL InsertarUsuario('Forest', 'Paradise Origen', 'andjcordoba1@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
 
 INSERT INTO `categoria` (`nombreCategoria`, `DescripcionCategoria`) VALUES ('Electronica', 'Dispositivos electronicos'), ('Vehiculos', 'Cualquier medio de transporte');
 
 INSERT INTO `elementos` (`NombreElemento`, `N_placa`, `cantidad`, `Costo`, `TipoElemento`, `FechaIngresoElemento`, `categoriaElemento`, `NumAula`, `Descripcion`, `EstadoElemento`, `usuario_fk`) VALUES ('Longboard', '1029742107', '1', '399000', 'Skateboard', '2023-09-05', 'Vehiculos', '302', 'Lorem impus vimps', 'Usado', '1');
+
+CALL InsertarUsuario('GzAdmin', 'Omega', 'gzsans@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
+
+CALL InsertarUsuario('juan', 'camilo', 'gzsans268@sena.edu.co', 12345, '12345', 'Cuentadante', 'Activo');
+
+call elementos1.InsertarCategoria('laptops', 'laptops :v');
+
+call elementos1.InsertarElemento('aaaa', 123456, 2, 7245, 'Consumo', '2023-11-02', 'laptops', 2, 'gggsgsg', 'Activo', 1);
+

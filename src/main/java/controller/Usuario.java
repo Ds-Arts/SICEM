@@ -21,9 +21,9 @@ public class Usuario extends HttpServlet {
     UsuarioVo usuVo = new UsuarioVo();
     ElementosDao elementoDao = new ElementosDao();
 
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String action = request.getParameter("action");
 
         System.out.println("\nDoGet del controlador de usuario.\n");
@@ -45,6 +45,11 @@ public class Usuario extends HttpServlet {
                 case "login":
                     System.out.println("Se ha direccionado al login de usuarios.");
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
+                    break;
+
+                case "lll":
+                    System.out.println("Se ha direccionado al perfil de usuario.");
+                    request.getRequestDispatcher("views/profile.jsp").forward(request, response);
                     break;
 
                 case "search":
@@ -70,7 +75,8 @@ public class Usuario extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String action = request.getParameter("action");
 
         System.out.println("DoPost del controlador de usuario.");
@@ -97,35 +103,16 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha enviado al metodo 'iniciar'");
                     iniciar(request, response);
                     break;
-                case "editar_info":
-                System.out.println("Se ha enviado al metodo edit");
-                request.setAttribute("id",request.getParameter("id"));
-                int a = Integer.parseInt(request.getParameter("id"));
-                    try {
-                     request.setAttribute( "usuario",usuarioDao.buscarUsuarioPorId(a));
-                     System.out.print(request.getAttribute("usuario"));
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-         /*         request.setAttribute("nombre",request.getParameter("nombre"));
-                    request.setAttribute("apellido",request.getParameter("apellido"));
-                    request.setAttribute("email", request.getParameter("email"));
-                    request.setAttribute(  "identificacion" , request.getParameter("identificacion"));
-                    request.setAttribute("rol",request.getParameter("rol"));
-                    request.setAttribute("activo",request.getParameter("activo"));
-                    System.out.println( request.getParameter("id"));
-                    System.out.println( request.getParameter("nombre"));
-                    System.out.println( request.getParameter("identificacion"));
-                    System.out.println( request.getParameter("rol"));
-           */
-                    request.getRequestDispatcher("views/user/Edit_usu.jsp").forward(request, response);
+
+                case "updateProfile":
+                    actualizarPerfilUsuario(request, response);
                     break;
-                case"editar_usuario" :
-                    editarUsuario(request,response);
-                    break;
+
                 case "logout":
                     cerrarSesion(request, response);
                     break;
+                
+
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -158,30 +145,92 @@ public class Usuario extends HttpServlet {
         }
     }
 
+    private void actualizarPerfilUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Recupera el usuario de la sesión
+        model.UsuarioVo usuarioSesion = (model.UsuarioVo) request.getSession().getAttribute("usuarioSesion");
+
+        // Verifica que el usuario esté autenticado
+        if (usuarioSesion != null) {
+            // Obtiene los datos del formulario
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String email = request.getParameter("email");
+            String contrasena = request.getParameter("contrasena"); // Nueva contraseña
+
+            // Verifica que los campos requeridos no estén vacíos
+            if (nombre != null && !nombre.isEmpty() && apellido != null && !apellido.isEmpty() && email != null
+                    && !email.isEmpty()) {
+                try {
+                    // Crea un objeto UsuarioVo con los datos actualizados
+                    model.UsuarioVo usuarioActualizado = new model.UsuarioVo();
+                    usuarioActualizado.setId(usuarioSesion.getId());
+                    usuarioActualizado.setNombre(nombre);
+                    usuarioActualizado.setApellido(apellido);
+                    usuarioActualizado.setEmail(email);
+
+                    // Si se proporcionó una nueva contraseña, actualízala
+                    if (contrasena != null && !contrasena.isEmpty()) {
+                        usuarioActualizado.setContrasena(contrasena);
+                    }
+
+                    // Llama al método de actualización en el DAO
+                    int exito = usuarioDao.actualizarPerfil(usuarioActualizado);
+
+                    if (exito > 0) {
+                        // Actualiza la variable usuarioSesion con los datos actualizados
+                        usuarioSesion.setNombre(nombre);
+                        usuarioSesion.setApellido(apellido);
+                        usuarioSesion.setEmail(email);
+
+                        // Vuelve a almacenar el usuario actualizado en la sesión
+                        request.getSession().setAttribute("usuarioSesion", usuarioSesion);
+
+                        // Redirecciona a la página de perfil actualizada
+                        request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+                    } else {
+                        // Manejar el error de actualización, por ejemplo, redirigir a una página de
+                        // error
+                        response.sendRedirect("error.jsp");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    // Manejar el error de base de datos
+                    response.sendRedirect("error.jsp");
+                }
+            } else {
+                // Manejar campos obligatorios vacíos, por ejemplo, redirigir a una página de
+                // error
+                response.sendRedirect("error.jsp");
+            }
+        } else {
+            // El usuario no está autenticado, redirige a la página de inicio de sesión
+            response.sendRedirect("login.jsp");
+        }
+    }
+
     private void mostrarDetalleUsuario(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-    // Obtener el ID del usuario a mostrar detalles
-    int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
+            throws ServletException, IOException {
+        // Obtener el ID del usuario a mostrar detalles
+        int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
 
+        try {
+            // Obtener los detalles del usuario
+            UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuarioDetalle);
+            request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
-    try {
-    // Obtener los detalles del usuario
-    UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuarioDetalle);
-    request.setAttribute("usuarioEncontrado", usuarioEncontrado);
+            // Obtener la lista de elementos asociados al usuario
+            List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
 
-    // Obtener la lista de elementos asociados al usuario
-    List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
+            request.setAttribute("elementos", elementos);
 
-    request.setAttribute("elementos", elementos);
-
-    // Redireccionar a la página de detalles del usuario
-    request.getRequestDispatcher("views/detalleUsuario.jsp").forward(request, response);
-    } catch (SQLException e) {
-    e.printStackTrace();
-    response.getWriter().println("Error al obtener los detalles del usuario y sus elementos asociados");
+            // Redireccionar a la página de detalles del usuario
+            request.getRequestDispatcher("views/admin/detallesUsuario.jsp").forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.getWriter().println("Error al obtener los detalles del usuario y sus elementos asociados");
+        }
     }
-    }
-
 
     private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -303,7 +352,7 @@ public class Usuario extends HttpServlet {
     }
 
     public void iniciar(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("entro al inicio");
+        System.out.println("Entro al inicio");
 
         // Obtener los parámetros del formulario
         String numIdentificacionStr = request.getParameter("numIdentificacion");
@@ -314,13 +363,15 @@ public class Usuario extends HttpServlet {
                 // Convertir el valor de numIdentificacionStr a un entero
                 Integer numIdentificacion = Integer.parseInt(numIdentificacionStr);
 
-                // Luego, puedes continuar con la verificación del usuario
-                usuVo = UsuarioDao.verificarUsuario(numIdentificacion, contrasena);
+                // Obtén el usuario de la base de datos según su número de identificación
+                usuVo = usuarioDao.obtenerUsuarioPorNumeroIdentificacion(numIdentificacion);
 
-                if (usuVo != null) {
-                    HttpSession iniciar = request.getSession();
-                    iniciar.setAttribute("numIdentificacion", usuVo);
-                    request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+                if (usuVo != null && usuVo.getContrasena().equals(contrasena)) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuarioSesion", usuVo);
+
+                    // Redirige al usuario a la página de dashboard
+                    response.sendRedirect(request.getContextPath() + "/Usuario?action=dash");
                 } else {
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                 }
