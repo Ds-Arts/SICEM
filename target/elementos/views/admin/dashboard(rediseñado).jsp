@@ -47,7 +47,12 @@
         <!-- JAVASCRIPT IMPORTANTE -->
         <script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>\views\admin\js\dashboard.js"></script>
     </head>
+<%
+                // Recupera el usuario de la sesión
+                model.UsuarioVo usuarioSesion = (model.UsuarioVo) session.getAttribute("usuarioSesion");
 
+                if (usuarioSesion != null) {
+            %>
     <body class="bg-body-tertiary">
         
         <%
@@ -177,7 +182,7 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-            <%
+             <%
             } else {
         %>
             <!DOCTYPE html>
@@ -200,17 +205,12 @@
                     integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
                     crossorigin="anonymous"></script>
                 <link rel="stylesheet" href="/css/custom.css">
-                <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+                <link rel="shortcut icon" href="assets/IMG/favicon.ico" type="image/x-icon">
             </head>
 
             <body style="color: #1f1f1f;" class="bg-body-tertiary">
-            <%
-        // Recupera el usuario de la sesión
-        model.UsuarioVo usuarioSesion = (model.UsuarioVo) session.getAttribute("usuarioSesion");
-
-        if (usuarioSesion != null) {
-    %>
             
+           
                 <div class=".container-fluid text-center">
                     <div class="container my-3 border-bottom py-3">
                         <h1><span class="text-success">Ups</span>, parece que ha habido un error.</h1>
