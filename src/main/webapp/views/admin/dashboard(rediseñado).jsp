@@ -64,7 +64,7 @@
             <!-- ORGANIZADOR DEL CONTENIDO -->
             <div class="container-fluid">
                 <!-- LOGO -->
-                <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
+                <a class="navbar-brand col-11" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
                         src="\views\admin\img\logo_mono.png"
                         
@@ -75,10 +75,19 @@
                     | SICEM - DASHBOARD
                 </a>
                 <!-- CONTENEDOR DE BOTONES -->
-                <div class="navbar-nav">
-                    <form action="Usuario" method="POST">
-                        <button name="action" value="logout" class="btn btn-danger">Salir</button>
-                    </form>
+                <div class="button-group-3">
+                    <div>
+                        <form class="btn btn-danger" type="submit" action="Usuario" method="POST">
+                            <input type="hidden" name="action" value="logout" >
+                            <p>Salir</p>
+                        </form>
+                    </div>
+                    <div>
+                        <form class="btn btn-light" type="submit" action="Usuario" method="get">
+                            <input type="hidden" name="action" value="lll">
+                            <p>perfil</p>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </nav>
