@@ -53,13 +53,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Registro</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Acerca de nosotros</a>
+              <a class="nav-link active" aria-current="page" href="Usuario?action=index">Inicio</a>
             </li>
           </ul>
         </div>
@@ -84,7 +78,6 @@
               <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
-            <p class="my-3">¿Aún no tienes una cuenta? <a style="color: rgb(59, 169, 0);" href="#">Click aquí</a>.</p>
           </form>
         </aside><!-- END FORMULARIO / LOGIN -->
 
@@ -92,7 +85,7 @@
           <!-- FONDO DE PANTALLA -->
           <style>
             .backgroundCover{
-              background-image: url(assets/IMG/imagen1.jpg);
+              background-image: url(https://images.unsplash.com/photo-1545830790-68595959c491?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
               background-position: center center;
               background-size: cover;
               background-repeat: no-repeat;

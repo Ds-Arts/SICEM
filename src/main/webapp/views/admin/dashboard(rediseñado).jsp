@@ -23,6 +23,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SENA - SICEM</title>
+        <link rel="icon" href="assets/IMG/favicon.ico">
         <!-- BOOTSTRAP -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -66,7 +67,7 @@
                 <!-- LOGO -->
                 <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
-                        src="\views\admin\img\logo_mono.png"
+                        src="assets\IMG\logo1.png"
                         
                         alt
                         width="30"
