@@ -17,7 +17,7 @@
 <%@ page import="model.PrestamosVo" %>
 <%@ page import="model.PrestamosDao" %>
 
-<div id="tabla-registrarUsuarios" class="container mb-5">
+<div id="tabla-registrarUsuarios" class="container my-5">
     <h3>Registrar elementos</h3>
     <form class="row g-3 needs-validation" novalidate action="elemento" method="post">
         <div class="col-md-6">

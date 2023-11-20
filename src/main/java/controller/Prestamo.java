@@ -52,7 +52,7 @@ public class Prestamo extends HttpServlet {
             }
         } else {
             // Si no se proporciona un parámetro "action", redirecciona a una página predeterminada
-            req.getRequestDispatcher("views/paginaPredeterminada.jsp").forward(req, resp);
+            req.getRequestDispatcher("Usuario?action=testing").forward(req, resp);
         }
     }
 
@@ -105,14 +105,14 @@ public class Prestamo extends HttpServlet {
     
         try {
             prestamosDao.registrar(prestamo);
-            req.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(req, resp);
+            req.getRequestDispatcher("Usuario?action=testing").forward(req, resp);
             System.out.println("Registro de préstamo creado correctamente");
           /*   req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);   */
             
 
         } catch (SQLException e) {
             System.out.println("Error en la inserción del registro de préstamo: " + e.getMessage());
-            req.getRequestDispatcher("views/error.jsp").forward(req, resp);
+            req.getRequestDispatcher("Usuario?action=testing").forward(req, resp);
         }
     }
     
