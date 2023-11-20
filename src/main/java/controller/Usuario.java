@@ -33,6 +33,10 @@ public class Usuario extends HttpServlet {
             switch (action) {
                 // elementos que solo me redirigen a una pagina no necesitan una funcion propia
                 // como estos dos primeros
+                case "index":
+                    System.out.println("Se ha direccionado a una vista de testing.");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    break;
                 case "testing":
                     System.out.println("Se ha direccionado a una vista de testing.");
                         request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
@@ -306,7 +310,11 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
+<<<<<<< HEAD
+            request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
+=======
             request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
+>>>>>>> 256512526a5cc2c3822abab76e8df28dd4418df8
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
@@ -421,7 +429,7 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.editar_Usuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("Usuario?action=test").forward(request, response);
+            request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL

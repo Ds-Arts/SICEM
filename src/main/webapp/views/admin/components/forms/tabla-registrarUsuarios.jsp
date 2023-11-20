@@ -48,10 +48,10 @@
           <div class="input-group">
             <label class="input-group-text" for="inputGroupSelect01">Options</label>
             <select class="form-select" name="rol_fk" id="rol_fk">
-              <option selected>Elige categoria del usuario</option>
-              <option value="3">Instructor</option>
-              <option value="2">Cuentadante</option>
-              <option value="1">Administrador</option>
+                <option selected>Elige categoria del usuario</option>
+                <option>Instructor</option>
+                <option>Cuentadante</option>
+                <option>Administrador</option>
             </select>
           </div>
         </div>
