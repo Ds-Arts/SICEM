@@ -37,7 +37,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<section id="tabla-registrosElementos" class="container-fluid mt-3">
+<section id="tabla-registrosElementos" class="container-fluid mt-3 py-5">
     <!-- TABLA DE ELEMENTOS -->
     <div class="container">
         <div class="row mx-0 mb-3">
@@ -102,7 +102,7 @@
                 <div class="accordion accordion-flush rounded-3" id="<%= elemento.getNumeroPlaca()%>">
                     <div class="accordion-item rounded-3 shadow-sm">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed rounded-3 bg-success text-white text" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <button class="accordion-button rounded-3 bg-success text-white text" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
                                 <div class="row">
                                     <div class="row">
                                         <h6>#0909 | <span class="bi-text-paragraph"><%= elemento.getNumeroPlaca()%></span></h6>
