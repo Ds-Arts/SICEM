@@ -23,7 +23,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SENA - SICEM</title>
-        <link rel="icon" href="assets/IMG/favicon.ico">
         <!-- BOOTSTRAP -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -65,9 +64,9 @@
             <!-- ORGANIZADOR DEL CONTENIDO -->
             <div class="container-fluid">
                 <!-- LOGO -->
-                <a class="navbar-brand col-11" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
+                <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
-                        src="assets\IMG\logo1.png"
+                        src="\views\admin\img\logo_mono.png"
                         
                         alt
                         width="30"
@@ -76,19 +75,16 @@
                     | SICEM - DASHBOARD
                 </a>
                 <!-- CONTENEDOR DE BOTONES -->
-                <div class="button-group-3">
-                    <div>
-                        <form class="btn btn-danger" type="submit" action="Usuario" method="POST">
-                            <input type="hidden" name="action" value="logout" >
-                            <p>Salir</p>
-                        </form>
-                    </div>
-                    <div>
-                        <form class="btn btn-light" type="submit" action="Usuario" method="get">
-                            <input type="hidden" name="action" value="lll">
-                            <p>perfil</p>
-                        </form> 
-                    </div>
+                <div class="navbar-nav">
+                    <form action="Usuario" method="POST">
+                        <button name="action" value="logout" class="btn btn-danger">Salir</button>
+                    </form>
+                </div>
+                <div class="navbar-nav">
+                    <form action="Usuario" method="get">
+                        <input type="hidden" name="action" value="lll">
+                        <button type="submit" class="btn btn-light">perfil</button>
+                    </form> 
                 </div>
             </div>
         </nav>

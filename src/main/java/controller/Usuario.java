@@ -310,11 +310,7 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-<<<<<<< HEAD
-            request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
-=======
             request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
->>>>>>> 256512526a5cc2c3822abab76e8df28dd4418df8
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
