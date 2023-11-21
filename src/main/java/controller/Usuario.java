@@ -14,7 +14,7 @@ import model.ElementosDao;
 import model.ElementosVo;
 import model.UsuarioDao;
 import model.UsuarioVo;
-
+import org.mindrot.jbcrypt.BCrypt;
 public class Usuario extends HttpServlet {
 
     UsuarioDao usuarioDao = new UsuarioDao();
@@ -298,7 +298,9 @@ public class Usuario extends HttpServlet {
             usuVo.setNumIdentificacion(Integer.parseInt(request.getParameter("numIdentificacion")));
         }
         if (request.getParameter("contrasena") != null) {
-            usuVo.setContrasena(request.getParameter("contrasena"));
+            String contrasenaClara = request.getParameter("contrasena");
+            String contrasenaEncriptada = BCrypt.hashpw(contrasenaClara, BCrypt.gensalt());
+            usuVo.setContrasena(contrasenaEncriptada); // Se asigna la contraseña encriptada
         }
         if (request.getParameter("rol_fk") != null) {
             usuVo.setRol_fk(request.getParameter("rol_fk"));

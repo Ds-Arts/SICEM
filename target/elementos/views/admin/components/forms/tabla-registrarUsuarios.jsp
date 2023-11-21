@@ -57,8 +57,8 @@
         </div>
 
         <div class="col-md-12">
-          <label for="validationCustom03" class="form-label">Contraseña</label>
-          <input type="text" class="form-control" id="contrasena" name="contrasena" required>
+            <label for="validationCustom03" class="form-label">Contraseña</label>
+            <input type="text" class="form-control" id="contrasena" name="contrasena" required>
         </div>
         <div class="col-12">
           <button class="btn btn-success" type="submit" name="action" value="register">Registrar</button>
