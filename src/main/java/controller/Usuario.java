@@ -310,12 +310,12 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
             response.getWriter().println("Error al registrar el usuario");
-            request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
         }
     }
 
@@ -381,7 +381,7 @@ public class Usuario extends HttpServlet {
                     // Redirige al usuario a la página de dashboard
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
                 } else {
-                    request.getRequestDispatcher("/Usuario?action=testing").forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/Usuario?action=login");;
                 }
             } else {
                 // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus
