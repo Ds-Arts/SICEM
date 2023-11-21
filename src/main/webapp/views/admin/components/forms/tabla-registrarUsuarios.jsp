@@ -21,14 +21,14 @@
             <label for="validationCustomUsername" class="form-label">N. identificación</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend">#</span>
-              <input type="text" class="form-control" id="numIdentificacion" name="numIdentificacion" required>
+              <input type="number" class="form-control" id="numIdentificacion" name="numIdentificacion" required>
             </div>
           </div>
         <div class="col-md-6">
           <label for="validationCustomUsername" class="form-label">Correo electronico</label>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input type="text" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" required>
           </div>
         </div>
 
