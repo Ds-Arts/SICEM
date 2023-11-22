@@ -192,7 +192,7 @@
                                     %>
                                     <p class="h2 text-success mt-1"><%=categoria.getIdCategoria()%></p>
                                     <% } %>
-                                    <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosElementos.jsp')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
+                                    <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosCategorias.jsp')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
                                 </div>
                             </div>
 

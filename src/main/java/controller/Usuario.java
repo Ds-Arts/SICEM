@@ -39,6 +39,7 @@ public class Usuario extends HttpServlet {
                     break;
                 case "testing":
                     System.out.println("Se ha direccionado a una vista de testing.");
+
                         request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
                     break;
                 case "dash":
@@ -58,14 +59,23 @@ public class Usuario extends HttpServlet {
 
                 case "search":
                    System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
-                   System.out.println(  request.getParameter("nombre"));   
-                buscarUsuariosPorNombre(request, response); 
+                   System.out.println( request.getParameter("nombre"));
+                   String nombre = request.getParameter("nombre");
+                   request.setAttribute("nombre",nombre);
+                    String numeros ="1";
+                    request.setAttribute("numerodecaso",numeros);
+                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp").forward(request, response);
                     break;
 
                 case "searchById": // Nueva acción para buscar por ID
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
                     System.out.println(request.getParameter("numidusuario"));
-                    buscarUsuariosPornumIdentificacion(request, response);
+                    String numero ="2";
+                    request.setAttribute("numerodecaso",numero);
+                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp").forward(request, response);
+                   request.setAttribute("numidusuario",request.getParameter("numidusuario"));
+
+                   /* buscarUsuariosPornumIdentificacion(request, response);*/
                     /*  buscarUsuarioPorId(request, response); */
                     break;
 
@@ -77,6 +87,9 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha direccionado al perfil del ususario.");
                     request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
                     break;
+
+
+
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -121,7 +134,9 @@ public class Usuario extends HttpServlet {
                 case "logout":
                     cerrarSesion(request, response);
                     break;
-                
+                case "busquedaxnombre":
+                    System.out.print( request.getParameter("busquedaxnombre")+"este es el parametro por id"   );
+                    break;
 
                 default:
                     response.sendRedirect(request.getContextPath());
