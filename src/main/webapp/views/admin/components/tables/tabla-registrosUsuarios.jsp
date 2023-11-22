@@ -5,16 +5,6 @@
 <%@ page import="model.UsuarioVo" %>
 <%@ page import="java.util.List" %>
 
-<form action="Usuario" method="GET">
-     <input type="text" name="numidusuario"  PLACEHOLDER=" BUSCAR POR ID ">
-    <button type="submit" class="btn btn-outline-success" name="action" value="searchById">Buscar por id</button>
-</form>
-<form action="Usuario" method="GET">
-    <input type="text" name="nombre"  PLACEHOLDER=" BUSCAR POR NOMBRE">
-    <button  type="submit" class="btn btn-outline-success" name="action" value="search">Buscar por nombre </button>
-</form>
-
-
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
@@ -30,20 +20,14 @@
                         <i class="bi bi-plus-lg"></i>
                     </button>
                     <div class="vr"></div>
-
-                    <div class="vr"></div>
-                    <!-- BOTONES PARA ORGANIZAR LOS REGISTROS CONSULTADOS (INCOMPLETO) -->
-                    <h5>Organizar</h5>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-success" for="btnradio1">Aa</label>
-                        
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-success" for="btnradio2">#</label>
-                        
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                        <label class="btn btn-outline-success" for="btnradio3">@</label>
-                    </div>
+                    <form id="buscar-x-id" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+                        <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por ID" class="form-control">
+                        <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
+                    </form>
+                    <form id="buscar-x-nombre" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+                        <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
+                        <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+                    </form>
                 </div>
             </div>
             <thead>
@@ -139,9 +123,11 @@
                     <td><%= usuari.getActivo() %></td>
                 </tr>
                 <%};%>
-            <%    break;
+
+            <%    
+                break;
                     }
-                 %>
+             %>
 
 
 

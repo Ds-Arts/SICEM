@@ -30,6 +30,7 @@
                         <i class="bi bi-plus-lg"></i>
                     </button>
                     <div class="vr"></div>
+<<<<<<< HEAD
 
                     <div class="vr"></div>
                     <!-- BOTONES PARA ORGANIZAR LOS REGISTROS CONSULTADOS (INCOMPLETO) -->
@@ -44,6 +45,16 @@
                         <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
                         <label class="btn btn-outline-success" for="btnradio3">@</label>
                     </div>
+=======
+                    <form id="buscar-x-id" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+                        <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por ID" class="form-control">
+                        <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
+                    </form>
+                    <form id="buscar-x-nombre" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+                        <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
+                        <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+                    </form>
+>>>>>>> 135858fa7d51ebdb9df21a12955f4a705982bd81
                 </div>
             </div>
             <thead>
@@ -139,9 +150,17 @@
                     <td><%= usuari.getActivo() %></td>
                 </tr>
                 <%};%>
+<<<<<<< HEAD
             <%    break;
                     }
                  %>
+=======
+
+            <%    
+                break;
+                    }
+             %>
+>>>>>>> 135858fa7d51ebdb9df21a12955f4a705982bd81
 
 
 
