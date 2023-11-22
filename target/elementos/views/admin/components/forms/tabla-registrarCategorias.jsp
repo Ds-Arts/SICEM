@@ -10,11 +10,11 @@
     <form class="row g-3 needs-validation" novalidate action="categoria" method="post" >
         <div class="col-md-6">
           <label class="form-label">Nombres</label>
-          <input type="text" class="form-control" placeholder="Escribe tus nombres" name="n_categoria" required>
+          <input type="text" class="form-control" placeholder="Escribe el nombre" name="n_categoria" required>
         </div>
-        <div class="col-md-6">
-          <label class="form-label">Apellidos</label>
-          <input type="text" class="form-control" placeholder="Escribe tus apellidos" name="d_categoria" required>
+        <div class="col-md-12">
+          <label for="exampleFormControlTextarea1" class="form-label">Escriba una descripción del elemento</label>
+          <textarea class="form-control" placeholder="Descripción" name="d_categoria" required rows="3"></textarea>
         </div>
         <div class="col-12">
           <button class="btn btn-success" type="submit" name="action" value="en_categoria">Registrar</button>

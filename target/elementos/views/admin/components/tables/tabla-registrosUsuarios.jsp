@@ -20,31 +20,14 @@
                         <i class="bi bi-plus-lg"></i>
                     </button>
                     <div class="vr"></div>
-                    <!-- BARRA DE BUSQUEDA -->
-                    <input id="buscar-x-id" class="form-control me-auto barra-busqueda-usuario"  style="display: none;" type="text" placeholder="Buscar por ID">
-                    <input id="buscar-x-nombre" class="form-control me-auto barra-busqueda-usuario" type="text" placeholder="Buscar por nombre">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Buscar por...
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button onclick="cambiarBusqueda('buscar-x-id')" class="dropdown-item" href="#">ID</button></li>
-                            <li><button onclick="cambiarBusqueda('buscar-x-nombre')" class="dropdown-item" href="#">Nombre</button></li>
-                        </ul>
-                    </div>
-                    <div class="vr"></div>
-                    <!-- BOTONES PARA ORGANIZAR LOS REGISTROS CONSULTADOS (INCOMPLETO) -->
-                    <h5>Organizar</h5>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-success" for="btnradio1">Aa</label>
-                        
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-success" for="btnradio2">#</label>
-                        
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                        <label class="btn btn-outline-success" for="btnradio3">@</label>
-                    </div>
+                    <form id="buscar-x-id" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+                        <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por ID" class="form-control">
+                        <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
+                    </form>
+                    <form id="buscar-x-nombre" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+                        <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
+                        <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+                    </form>
                 </div>
             </div>
             <thead>
@@ -58,11 +41,33 @@
                 </tr>
             </thead>
             <tbody>
+
+
+
                 <%
-                    UsuarioDao UsuarioDao = new UsuarioDao();
-                    List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
-                    for (UsuarioVo usuari : usu) {
-                %>
+
+                   if (request.getAttribute("numerodecaso") == null ) {
+                       String numerocaso ="0";
+                       request.setAttribute("numerodecaso",numerocaso);
+                       String numcaso = request.getAttribute("numerodecaso").toString();
+                       System.out.println(numcaso);
+                   }
+
+                    String numcaso = request.getAttribute("numerodecaso").toString();
+                    System.out.println(numcaso);
+
+                    switch (numcaso){
+
+                        case "1":
+                            System.out.println("el nombre llego") ;
+                            String  nombre = request.getParameter("nombre");
+                            UsuarioDao Usuario1Dao = new UsuarioDao();
+
+                            List<UsuarioVo> usu1 =  Usuario1Dao.buscarUsuariosPorNombre(nombre);
+
+                            for (UsuarioVo usuari : usu1) {
+                                 %>
+
                 <tr>
                     <th scope="row"><%= usuari.getId() %></th>
                     <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
@@ -72,8 +77,60 @@
                     <td><%= usuari.getActivo() %></td>
                 </tr>
                 <%
-                    } 
+                    };
                 %>
+                    <%
+                            break;
+
+                        case "2":
+
+                            System.out.println("el id llego") ;
+                            UsuarioDao UsuarioDao2 = new UsuarioDao();
+                            String numidentificacion = request.getParameter("numidusuario");
+                            int id = Integer.parseInt(numidentificacion);
+                            List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
+                            for (UsuarioVo usuari : usu2){
+                    %>
+                <tr>
+                    <th scope="row"><%= usuari.getId() %></th>
+                    <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                    <td><%= usuari.getNumIdentificacion() %></td>
+                    <td><%= usuari.getEmail() %></td>
+                    <td><%= usuari.getRol_fk() %></td>
+                    <td><%= usuari.getActivo() %></td>
+                </tr>
+                <%
+                            };
+
+
+                %>
+
+
+                <%
+                        break;
+                    default:
+                            System.out.println("el caso viene por default");
+                            UsuarioDao UsuarioDao = new UsuarioDao();
+                            List<UsuarioVo> usu = UsuarioDao.listarUsuarios();
+                        for (UsuarioVo usuari : usu) {
+                %>
+                <tr>
+                    <th scope="row"><%= usuari.getId() %></th>
+                    <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
+                    <td><%= usuari.getNumIdentificacion() %></td>
+                    <td><%= usuari.getEmail() %></td>
+                    <td><%= usuari.getRol_fk() %></td>
+                    <td><%= usuari.getActivo() %></td>
+                </tr>
+                <%};%>
+
+            <%    
+                break;
+                    }
+             %>
+
+
+
             </tbody>
         </table>
     </div>
