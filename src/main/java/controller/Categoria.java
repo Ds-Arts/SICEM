@@ -47,7 +47,7 @@ public class Categoria extends HttpServlet {
         categoria.setDescripcionCategoria(descripcionCategoria);
         try {
             cd.crearCategoria(categoria);
-            request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
 
         } catch (SQLException e) {
             e.printStackTrace();

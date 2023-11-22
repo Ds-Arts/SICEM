@@ -61,7 +61,7 @@
           </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-6">
           <label for="validationCustom03" class="form-label">Categoria</label>
           <select class="form-select" name="categoriaElemento" id="categoriaElemento" required>
             <option selected>Elige una categoria...</option>
@@ -74,6 +74,12 @@
               <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getNombreCategoria() %></option>
             <% } %>
           </select>
+        </div>
+        <div class="col-md-6">
+            <label for="validationCustomUsername" class="form-label">Aula</label>
+            <div class="input-group">
+                <input type="Number" placeholder="Ambiente de formacion" class="form-control" name="NumAula" id="NumAula" required/>
+            </div>
         </div>
         <div class="col-md-12">
           <label for="exampleFormControlTextarea1" class="form-label">Escriba una descripción del elemento</label>

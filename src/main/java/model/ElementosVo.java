@@ -16,12 +16,13 @@ public class ElementosVo {
     private String descripcion;
     private int usu;
 
+    private  int cate;
+
 
     public ElementosVo() {
     }
-    
-    public ElementosVo(int id, String nombre, int numeroPlaca, int cantidad, int costo, String tipo,
-            LocalDate fechaIngreso, String estado, int categoria, int numeroAula, String descripcion, int usu) {
+
+    public ElementosVo(int id, String nombre, int numeroPlaca, int cantidad, int costo, String tipo, LocalDate fechaIngreso, String estado, int categoria, int numeroAula, String descripcion, int usu, int cate) {
         Id = id;
         this.nombre = nombre;
         this.numeroPlaca = numeroPlaca;
@@ -34,6 +35,15 @@ public class ElementosVo {
         this.numeroAula = numeroAula;
         this.descripcion = descripcion;
         this.usu = usu;
+        this.cate = cate;
+    }
+
+    public int getCate() {
+        return cate;
+    }
+
+    public void setCate(int cate) {
+        this.cate = cate;
     }
 
     public int getUsu() {

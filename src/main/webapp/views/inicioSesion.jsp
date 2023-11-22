@@ -35,7 +35,7 @@
     <header class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container mx-2" style="width: 150px; height: 85px;">
         <a class="navbar-brand" href="#">
-          <img src="assets\IMG\logo_mono.png" alt="Logo" width="150" height="50" class="d-inline-block align-text-top"> 
+          <img src="assets\IMG\logo_mono.png" alt="Logo" width="150" height="50" class="d-inline-block align-text-top">
         </a>
       </div>
       <div class="vr mx-3"></div>
@@ -53,7 +53,7 @@
     <section class="container">
 
       <div class="container-sm row my-5 border border-1 p-0 shadow"><!-- CONTENEDOR GENERAL LOGIN -->
-        
+
         <aside class="col-6 px-5 py-5"><!-- FORMULARIO / LOGIN -->
           <h2 class="text-success">Iniciar sesión</h2>
           <p>Siempre es un placer verte de nuevo.</p>
@@ -83,7 +83,7 @@
           </style>
         </aside><!-- END CONTENIDO / MAS INFORMACION -->
         <article style="height: 20px; font-size: 12px; color: white; " class="text-end px-2 bg-success">
-          <p>Esta imagen proviene de 
+          <p>Esta imagen proviene de
             <a style="color: white;" href="https://unsplash.com/es/fotos/xj7HV0FvSg0">
               Unsplash
             </a>

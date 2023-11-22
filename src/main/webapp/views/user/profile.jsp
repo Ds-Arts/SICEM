@@ -9,6 +9,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SENA - SICEM</title>
+        <!-- ICON -->
+        <link rel="icon" href="assets/IMG/favicon.ico">
         <!-- BOOTSTRAP -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -138,12 +140,12 @@
                             </div> --%>
                             <!-- BOTON DE ENVIO DE INFO DEL FORMULAIRO --->
                             <div class="col-6">
-                                <button class="btn btn-success" type="submit" value="updateProfile">
+                                <a class="btn btn-success" href="Usuario?action=prof">
                                     Actualizar Información
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6">
-                                <a class="btn btn-danger" href="Usuario?action=login">
+                                <a class="btn btn-danger" href="Usuario?action=testing">
                                     Volver
                                 </a>
                             </div>

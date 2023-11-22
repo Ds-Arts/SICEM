@@ -14,6 +14,10 @@
 <%@ page import="model.UsuarioVo" %>
 <%@ page import="java.util.List" %>
 
+<%-- IMPORTS DE CATEGORIA --%>
+<%@ page import="model.CategoriaDao" %>
+<%@ page import="model.CategoriaVo" %>
+
 <head>
 <!-- BOOTSTRAP -->
         <link
@@ -78,6 +82,7 @@
                 System.out.println("");
                 ElementosDao elementosDao = new ElementosDao();
                 UsuarioDao usuarioDao = new UsuarioDao(); // Importa la clase UsuarioDao
+                CategoriaDao categoriaDao = new CategoriaDao();
 
                 List<ElementosVo> elementos;
                 String placa = request.getParameter("placa");
@@ -95,6 +100,7 @@
                 for (ElementosVo elemento : elementos) {
                     // Obtener el Usuario correspondiente por su ID
                     UsuarioVo usuario = usuarioDao.buscarUsuarioPorId(elemento.getUsu()); // Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+                    CategoriaVo categoria = categoriaDao.obtenerCategoriaId(elemento.getCate());
             %>
             <!-- ACORDION AUTOGENERADO -->
             <div class="col-6 p-3">
@@ -153,7 +159,7 @@
                                         </div>
                                         <div class="col">
                                             <h6>Categoria</h6>
-                                            <p><%=elemento.getCategoria()%></p>
+                                            <p><%=categoria.getNombreCategoria()%></p>
                                         </div>
                                     </div>
                                     <form class="row" action="elemento" method="post">

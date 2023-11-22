@@ -102,6 +102,7 @@ public class ElementosDao {
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
                 l.setUsu(rs.getInt("usuario_fk"));
+                l.setCate(rs.getInt(("categoriaElemento")));
                 Elementos.add(l);
                 Elementos.size();
             }

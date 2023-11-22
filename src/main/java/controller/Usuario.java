@@ -51,7 +51,10 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha direccionado al login de usuarios.");
                     request.getRequestDispatcher("views/inicioSesion.jsp").forward(request, response);
                     break;
-
+                case "prof":
+                    System.out.println("Se ha direccionado al perfil de usuario.");
+                    request.getRequestDispatcher("views/user/Edit_usu.jsp").forward(request, response);
+                    break;
                 case "lll":
                     System.out.println("Se ha direccionado al perfil de usuario.");
                     request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
@@ -396,7 +399,7 @@ public class Usuario extends HttpServlet {
                     // Redirige al usuario a la página de dashboard
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/Usuario?action=login");;
+                    response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
                 }
             } else {
                 // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus
@@ -457,7 +460,7 @@ if (session != null) {
 }
 
 // Redirige a la página de inicio de sesión o a la página principal
-response.sendRedirect(request.getContextPath() + "/Usuario?action=home");
+    response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
 }
 
 

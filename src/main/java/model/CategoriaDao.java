@@ -75,6 +75,30 @@ public class CategoriaDao {
         return categorias;
     }
 
+    public CategoriaVo obtenerCategoriaId(int idCategoria)  throws SQLException {
+        CategoriaVo categoriaEncontrada = null;
+        sql = "SELECT * FROM Categoria WHERE idCategoria = ?";
+        try (
+                Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)
+        ) {
+            ps.setInt(1, idCategoria);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    categoriaEncontrada = new CategoriaVo();
+                    categoriaEncontrada.setIdCategoria(rs.getInt("idCategoria"));
+                    categoriaEncontrada.setNombreCategoria(rs.getString("nombreCategoria"));
+                    categoriaEncontrada.setDescripcionCategoria(rs.getString("DescripcionCategoria"));
+
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al obtener el usuario por ID: " + e.getMessage());
+        }
+        return categoriaEncontrada;
+    }
+
     public List<CategoriaVo> contadorCategorias() throws SQLException {
 
         // Creamos una lista/arreglo basada en UsuarioVo
