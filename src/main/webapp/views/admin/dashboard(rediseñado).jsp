@@ -45,7 +45,7 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
             integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
             crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="assets/IMG/favicon.ico">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         
         <!-- JAVASCRIPT IMPORTANTE -->
@@ -64,32 +64,32 @@
         %>
 
         <!-- HEADER -->
-        <nav class="navbar navbar-light bg-body border-bottom justify-content-between position-sticky ">
+        <nav class="navbar navbar-light bg-body border-bottom position-sticky ">
             <!-- ORGANIZADOR DEL CONTENIDO -->
-            <div class="container-fluid">
+            <div class="container-fluid justify-content-between">
                 <!-- LOGO -->
-                <a class="navbar-brand" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
+                <a class="navbar-brand col-9" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
                     <img
-                        src="\views\admin\img\logo_mono.png"
-                        
-                        alt
-                        width="30"
-                        height="30"
+                        src="assets\IMG\logo_mono.png"
+                        alt="Logo_Sena_Sicem"
+                        width="150"
+                        height="50"
                         class="d-inline-block align-text-top me-1" />
-                    | SICEM - DASHBOARD
                 </a>
-                <!-- CONTENEDOR DE BOTONES -->
-                <div class="navbar-nav">
+                <div class="d-flex flex-row col-2">
+                    <form action="Usuario" method="get">
+                        <input type="hidden" name="action" value="lll">
+                        <button type="submit" class="btn btn-success-underline me-3">perfil</button>
+                    </form> 
                     <form action="Usuario" method="POST">
                         <button name="action" value="logout" class="btn btn-danger">Salir</button>
                     </form>
                 </div>
-                <div class="navbar-nav">
-                    <form action="Usuario" method="get">
-                        <input type="hidden" name="action" value="lll">
-                        <button type="submit" class="btn btn-light">perfil</button>
-                    </form> 
-                </div>
+                <!-- CONTENEDOR DE BOTONES -->
+                
+                <ul class="navbar-nav col-4">
+                    
+                </ul> 
             </div>
         </nav>
 

@@ -60,16 +60,15 @@
                     <button type="submit" name="accion" value="buscar_elementos" class="btn btn-success">Enviar</button>
                 </form> --%>
                 <div class="vr"></div>
-                    <div class="d-flex align-content-around" role="group" aria-label="Basic radio toggle button group">
-                        <form action="elemento" method="GET">
-                            <input type="radio" name="TipoElemento" id="TipoElemento" class="btn-check" autocomplete="off" checked  value="Desechable">
-                            <button type="submit" class="btn btn-outline-success" name="accion" value="buscar_tipo">Desechable</button>
-                        </form>
-                        <form action="elemento" method="GET">
-                            <input type="radio" name="TipoElemento" id="TipoElemento" class="btn-check"  autocomplete="off" value="Consumo">
-                            <button  type="submit" class="btn btn-outline-success" name="accion" value="buscar_tipo">Consumo</button>
-                        </form>
-                    </div>
+                <form action="elemento" method="GET">
+                    <input name="TipoElemento" id="TipoElemento" class="btn-check" autocomplete="off" checked  value="Desechable">
+                    <button type="submit" class="btn btn-outline-success" name="accion" value="buscar_tipo">Desechable</button>
+                </form>
+                <div class="vr"></div>
+                <form action="elemento" method="GET">
+                    <input name="TipoElemento" id="TipoElemento" class="btn-check"  autocomplete="off" value="Consumo">
+                    <button  type="submit" class="btn btn-outline-success" name="accion" value="buscar_tipo">Consumo</button>
+                </form>
 
             </div>
         </div>

@@ -31,12 +31,11 @@
 <!-- HEADER -->
 <header class="navbar navbar-expand-lg bg-body shadow-sm">
     <!-- LOGO -->
-    <div class="container ms-5" style="width: 85px; height: 85px">
-        <a class="navbar-brand" href="elemento?action=entrahome">
-            <img src="https://senacertificados.co/wp-content/uploads/2021/10/Logo-de-SENA-png-verde-300x300-1.png"
-                 alt="Logo" width="90" height="90" class="d-inline-block align-text-top" />
+    <div class="container mx-2" style="width: 150px; height: 85px;">
+        <a class="navbar-brand" href="#">
+          <img src="assets\IMG\logo_mono.png" alt="Logo" width="150" height="50" class="d-inline-block align-text-top"> 
         </a>
-    </div>
+      </div>
     <!-- BOTONES -->
     <div class="container-fluid botones">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -46,13 +45,13 @@
         <div class="collapse navbar-collapse me-4 justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav me-5">
                 <li class="nav-item me-3">
-                    <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=login">Ingresar</a>
+                    <a class="nav-link active px-4" aria-current="page" href="Usuario?action=login"><button class="btn btn-outline-success">Ingresar</button></a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=testing">Testing 1</a>
+                    <a class="nav-link active px-4" aria-current="page" href="Usuario?action=testing">Testing 1</a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link active buttom__default px-4" aria-current="page" href="Usuario?action=dash">Testing 2</a>
+                    <a class="nav-link active px-4" aria-current="page" href="Usuario?action=dash">Testing 2</a>
                 </li>
             </ul>
         </div>
@@ -62,7 +61,11 @@
 <!-- CONTENEDOR DE LA PRESENTACION -->
 <div class="container text-center mt-5">
     <H1>Bienvenido a SICEM</H1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum hic est unde dignissimos officia enim. optio voluptatum adipisci magni accusamus nemo, magnam ad at? Est, dolore. Possimus, numquam officiis? Dolorum, assumenda tempora, ipsum sint, consectetur deleniti voluptatem distinctio eligendi rerum quos iusto iure?</p>
+    <p>El Sistema de Inventario y Control de Elementos SICEM, le da la bienvenida. Si ya tiene una cuenta válida proceda a ingresar a nuestro sistema
+        mediante el botón que mostrará el formulario de Logeo. Una vez dentro, podrá acceder a todas las herramientas y funcionalidades diseñadas para brindar asistencia 
+        en el manejo y control del stock de elementos perteneciente a la coordinación de teleinformática para el SENA ubicado en la calle 52
+        ¡Comencemos a simplificar y potenciar la gestión de inventario juntos! Cordialmente. El equipo desarrollador de SICEM 
+    </p>
 </div>
 <!-- CONTENEDOR DEL CAROUSEL -->
 <div class="container w-75 h-25">
@@ -80,17 +83,17 @@
         <div class="carousel-inner mt-5">
             <!-- IMAGEN -->
             <div class="carousel-item active" data-bs-interval="10000">
-                <img src="https://images.unsplash.com/photo-1692782040975-96fe03291fa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                <img src="https://www.elpolideportivo.com/wp-content/uploads/2021/07/IMG-20210721-WA0085-1024x682.jpg"
                      class="d-block w-100" style="height: 500px; background-position: center center" alt="..." />
             </div>
             <!-- IMAGEN -->
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="https://images.unsplash.com/photo-1692095296815-943c0e214cd0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
+                <img src="https://mexico.unir.net/wp-content/uploads/sites/6/2022/09/que-hace-programador.jpg"
                      class="d-block w-100" style="height: 500px; background-position: center center" alt="..." />
             </div>
             <!-- IMAGEN -->
             <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1693040516624-a22f0906faab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjN8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                <img src="https://www.sena.edu.co/es-co/sena/PublishingImages/Directorio-.jpg"
                      class="d-block w-100" style="height: 500px; background-position: center center" alt="..." />
             </div>
         </div>
@@ -125,14 +128,23 @@
             </div>
             <div class="col-6">
                 <h2>¿Para que sirve?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate est ipsa perspiciatis non, ut incidunt aliquid numquam quaerat quos quo obcaecati reiciendis voluptatum dolores quas qui ipsum, et pariatur nihil. Vel aut et earum minus molestias, eos tempora maxime ratione voluptatum dolorem perferendis saepe sequi ea officia. Sunt suscipit totam, quo voluptatum eaque unde molestias cupiditate deserunt tenetur. Aliquid non accusantium beatae atque tempora! Sint recusandae nulla officiis laudantium nostrum. Magni eligendi, distinctio eius optio dolorum labore nam perferendis dignissimos necessitatibus error nihil temporibus itaque mollitia iure dicta praesentium repellat odio corrupti. Voluptates, minus animi sit mollitia libero quis quibusdam!</p>
+                <p>SICEM es una herramienta digital desarrollada con el propósito y visión de ayudar y simplificar las tareas de control y préstamo de elementos del personal administrativo también llamados cuentadantes.
+                    Con SICEM, los encargados reducirán en gran medida el error humano y los posibles errores de memoria a la hora de realizar el préstamo de herramientas materiales e insumos registrados en el sistema y realizar la observación de novedades relacionadas al estado de los equipos de determinados ambientes ya que todo queda registrado y auditado en el propio sistema de información.
+                    Los elementos registrados en el sistema está limitado exclusivamente a la coordinación de teleinformática del CGMLTI.<br>
+                    
+                    ¡Optimicemos la gestión de recursos para potenciar el crecimiento educativo de nuestra familia SENA!
+                    <p>
             </div>
         </article>
         <!-- ARTICULO 2 -->
         <article  class="row text-start my-5 py-3">
             <div class="col-6">
                 <h2>¿Quienes lo pueden usar?</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi debitis ut consectetur repudiandae eligendi quam atque optio, temporibus recusandae beatae incidunt nulla molestiae fugit voluptatum nemo enim voluptatem ab officiis.</p>
+                <p>El sistema de información podrá ser utilizado por el usuario Administrador o cuentadantes, e instructores de planta pertenecientes a la institución SENA CGMLTI ubicado en la calle 52
+                    Los distintos actores del sistema tienen diversas funciones dentro de SICEM, algunas de estas son las acciones de gestión de todos los elementos que se registren, solicitar y decidir los términos referentes a cualquier 
+                    préstamo que se solicite a travéz del programa.
+
+                </p>
             </div>
             <div class="col-6 justify-content-md-around justify-content-center">
                 <img style="width: 30em; height: 300px;" class="float-end rounded shadow border-0 opacity-0">
@@ -145,7 +157,9 @@
             </div>
             <div class="col-6">
                 <h2>¿Que problema soluciona?</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi debitis ut consectetur repudiandae eligendi quam atque optio, temporibus recusandae beatae incidunt nulla molestiae fugit voluptatum nemo enim voluptatem ab officiis.</p>
+                <p>El traspaso de inventarios, la pérdida de elementos al no saber a quien se le habían prestado, y la tediosa mecánica para llevar cuenta de estas acciones
+                    eran casos los cuales presentaban gran número de desperfectos y problemas. SICEM fue diseñada teniendo en cuenta estas problemáticas, por lo cual es la herramienta infaltable para los cuentadantes de la institución.
+                </p>
             </div>
         </article>
     </section>
@@ -164,10 +178,8 @@
                 <div class="card-body">
                     <h5 class="card-title">¿Cuantos elementos me pueden prestar?</h5>
                     <h6 class="card-subtitle mb-2 text-muted ">Johan Ruisales</h6>
-                    <p style="height: 20rem;" class="card-text overflow-x-hidden">He pedido varios elementos esta semana,
-                        tengo un proyecto final este fin de trimestre, sin embargo,
-                        necesito mucho material para producir el producto final.
-                        El punto es, cuantos elementos puedo pedir?
+                    <p style="height: 20rem;" class="card-text overflow-x-hidden">El cuentadante es quien verificará y analizará tu caso y acordará el límite
+                        de elementos según considere oportuno en cada caso.
                         <style>
                             ::-webkit-scrollbar {
                                 display: none;
@@ -179,12 +191,11 @@
             <!-- CARTA -->
             <div class="card shadow" style="width:18rem; height: 20rem;">
                 <div class="card-body">
-                    <h5 class="card-title">¿Cuantos elementos me pueden prestar?</h5>
-                    <h6 class="card-subtitle mb-2 text-muted ">Johan Ruisales</h6>
-                    <p style="height: 20rem;" class="card-text overflow-x-hidden">He pedido varios elementos esta semana,
-                        tengo un proyecto final este fin de trimestre, sin embargo,
-                        necesito mucho material para producir el producto final.
-                        El punto es, cuantos elementos puedo pedir?
+                    <h5 class="card-title">¿Como solicito un préstamo?</h5>
+                    <h6 class="card-subtitle mb-2 text-muted ">Luis Tapia</h6>
+                    <p style="height: 20rem;" class="card-text overflow-x-hidden">Pensando en este caso el equipo de desarrollo 
+                        ha dispuesto una serie de formularios para que puedas solicitar tu préstamo. El único requiesito es tener una cuenta hábil
+                        dentro de nuestro sistema.
                         <style>
                             ::-webkit-scrollbar {
                                 display: none;
@@ -196,12 +207,9 @@
             <!-- CARTA -->
             <div class="card shadow" style="width:18rem; height: 20rem;">
                 <div class="card-body">
-                    <h5 class="card-title">¿Cuantos elementos me pueden prestar?</h5>
-                    <h6 class="card-subtitle mb-2 text-muted ">Johan Ruisales</h6>
-                    <p style="height: 20rem;" class="card-text overflow-x-hidden">He pedido varios elementos esta semana,
-                        tengo un proyecto final este fin de trimestre, sin embargo,
-                        necesito mucho material para producir el producto final.
-                        El punto es, cuantos elementos puedo pedir?
+                    <h5 class="card-title">Soy un usuario ¿Cómo puedo registrar elementos?</h5>
+                    <h6 class="card-subtitle mb-2 text-muted ">Martha Cifuentes</h6>
+                    <p style="height: 20rem;" class="card-text overflow-x-hidden">El sistema pone a disposición los formularios necesarios para que el cuentadantes, único usuario con el privilegio de registrar elementos. Realice esta acción dentro del sistema.
                         <style>
                             ::-webkit-scrollbar {
                                 display: none;
