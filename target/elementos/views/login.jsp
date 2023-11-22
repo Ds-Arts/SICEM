@@ -34,13 +34,11 @@
 
 <header class="navbar navbar-expand-lg bg-body-tertiary">
 
-    <div class="container ms-5" style="width: 85px; height: 85px;">
-        <a class="navbar-brand">
-            <img src="https://senacertificados.co/wp-content/uploads/2021/10/Logo-de-SENA-png-verde-300x300-1.png"
-                 alt="Logo" width="90" height="90" class="d-inline-block align-text-top">
+    <div class="container mx-2" style="width: 150px; height: 85px;">
+        <a class="navbar-brand" href="#">
+          <img src="assets\IMG\logo_mono.png" alt="Logo" width="150" height="50" class="d-inline-block align-text-top"> 
         </a>
-        <h2 class="ms-5">SICEM</h2>
-    </div>
+      </div>
 
     <div class="container-fluid botones">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -80,7 +78,7 @@
                     </div>
                 </article>
                 <article>
-                    <button class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
+                    <button class="btn btn-success border-success" type="submit" name="action" value="login">Ingresar</button>
                 </article>
             </form>
         </aside>
@@ -97,7 +95,7 @@
                 }
             </style>
         </aside>
-        <article style="height: 20px; font-size: 12px; color: white; background-color: rgb(59, 169, 0);" class="text-end px-2">
+        <article style="height: 20px; font-size: 12px; color: white;" class="text-end px-2 bg-success">
             <p>Esta imagen proviene de
                 <a style="color: white;" href="https://unsplash.com/es/fotos/xj7HV0FvSg0">
                     Unsplash

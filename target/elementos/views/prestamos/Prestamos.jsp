@@ -30,7 +30,7 @@
             integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
             crossorigin="anonymous"></script>
         <link href="../assets/CSS/custom.css" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="assets/IMG/favicon.ico">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     </head>
 
@@ -45,11 +45,11 @@
             <main>
                 <div class="py-3 text-center">
                     <img
-                        class="d-block mx-auto"
-                        src="https://www.epicu.co/wp-content/uploads/2023/02/Logosimbolo-SENA-PRINCIPAL.png"
+                        class="d-block mx-auto mb-3"
+                        src="assets\IMG\logo_mono.png"
                         alt
-                        width="200"
-                        height="200" />
+                        width="300"
+                        height="100" />
                     <h2>Solicitar prestamos</h2>
                     <p class="lead mb-5">
                         Este es un formulario creado especificamente para que solicites algun prestamo.
@@ -122,7 +122,7 @@
 
                                 <div class="col-12">
                                     <label for="lastName" class="form-label">Numero de placa</label>
-                                    <input type="number" class="form-control" id="elemento_fk" name="elemento_fk" placeholder='<%=request.getAttribute("n_placa_prestamo") %>' value='<%=request.getAttribute("n_placa_prestamo") %>' readonly required/>
+                                    <input type="text" class="form-control" id="elemento_fk" name="elemento_fk" placeholder='<%=request.getAttribute("n_placa_prestamo") %>' value='<%=request.getAttribute("n_placa_prestamo") %>' readonly required/>
                                 </div>
 
                                 <div class="col-sm-6">
