@@ -14,7 +14,7 @@ import model.ElementosDao;
 import model.ElementosVo;
 import model.UsuarioDao;
 import model.UsuarioVo;
-
+import org.mindrot.jbcrypt.BCrypt;
 public class Usuario extends HttpServlet {
 
     UsuarioDao usuarioDao = new UsuarioDao();
@@ -313,7 +313,9 @@ public class Usuario extends HttpServlet {
             usuVo.setNumIdentificacion(Integer.parseInt(request.getParameter("numIdentificacion")));
         }
         if (request.getParameter("contrasena") != null) {
-            usuVo.setContrasena(request.getParameter("contrasena"));
+            String contrasenaClara = request.getParameter("contrasena");
+            String contrasenaEncriptada = BCrypt.hashpw(contrasenaClara, BCrypt.gensalt());
+            usuVo.setContrasena(contrasenaEncriptada); // Se asigna la contraseña encriptada
         }
         if (request.getParameter("rol_fk") != null) {
             usuVo.setRol_fk(request.getParameter("rol_fk"));
@@ -325,12 +327,12 @@ public class Usuario extends HttpServlet {
             // Registrar el nuevo usuario en la base de datos
             usuarioDao.registrarUsuario(usuVo);
             // Redireccionar a la página de éxito después del registro
-            request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
         } catch (SQLException e) {
             e.printStackTrace();
             // Imprimir mensaje de error si ocurre una excepción SQL
             response.getWriter().println("Error al registrar el usuario");
-            request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
         }
     }
 
@@ -396,7 +398,7 @@ public class Usuario extends HttpServlet {
                     // Redirige al usuario a la página de dashboard
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
                 } else {
-                    request.getRequestDispatcher("/Usuario?action=testing").forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/Usuario?action=login");;
                 }
             } else {
                 // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus

@@ -1,5 +1,6 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "juan"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

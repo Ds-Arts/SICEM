@@ -6,7 +6,8 @@ USE elementos1;
 
 -- Crea una tabla llamada "Categoria" con dos columnas: "nombreCategoria" y "DescripcionCategoria"
 CREATE TABLE Categoria (
-   nombreCategoria VARCHAR(50) PRIMARY KEY,
+   idCategoria int primary key auto_increment,
+   nombreCategoria VARCHAR(50),
    DescripcionCategoria VARCHAR(300)
 );
 
@@ -23,7 +24,7 @@ CREATE TABLE Elementos (
    Costo INT,
    TipoElemento VARCHAR(50),
    FechaIngresoElemento DATE,
-   categoriaElemento VARCHAR(30),
+   categoriaElemento int,
    NumAula INT,
    Descripcion VARCHAR(300),
    EstadoElemento VARCHAR(20),
@@ -37,7 +38,7 @@ CREATE TABLE usuarios (
    apellido VARCHAR(50),
    email VARCHAR(225),
    numIdentificacion INT,
-   contrasena VARCHAR(50),
+   contrasena VARCHAR(200),
    rol_fk VARCHAR(50),
    activo VARCHAR(50),
    FOREIGN KEY (rol_fk) REFERENCES rol (nombreRol)
@@ -66,7 +67,7 @@ REFERENCES usuarios (id);
 -- Agrega una restricción de clave externa a la tabla "Elementos" para vincularla con la tabla "Categoria"
 ALTER TABLE Elementos
 ADD CONSTRAINT fkcategoria FOREIGN KEY (categoriaElemento)
-REFERENCES Categoria (nombreCategoria);
+REFERENCES Categoria (idCategoria);
 
 -- Define un procedimiento almacenado llamado "InsertarCategoria" para insertar categorías
 DELIMITER //
@@ -105,7 +106,7 @@ CREATE PROCEDURE InsertarElemento(
    IN costo INT,
    IN tipoElemento VARCHAR(50),
    IN fechaIngreso DATE,
-   IN categoriaElemento VARCHAR(50),
+   IN categoriaElemento INT,
    IN numAula INT,
    IN descripcion VARCHAR(300),
    IN estadoElemento VARCHAR(20),
@@ -133,8 +134,4 @@ CALL InsertarRol('Cuentadante');
 CALL InsertarRol('Instructor');
 CALL InsertarRol('Administrador');
 CALL InsertarUsuario('GzAdmin', 'Omega', 'gzsans@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
-CALL InsertarUsuario('Forest', 'Paradise Origen', 'andjcordoba1@sena.edu.co', 1234, '1234', 'Cuentadante', 'Activo');
-
-INSERT INTO `categoria` (`nombreCategoria`, `DescripcionCategoria`) VALUES ('Electronica', 'Dispositivos electronicos'), ('Vehiculos', 'Cualquier medio de transporte');
-
-INSERT INTO `elementos` (`NombreElemento`, `N_placa`, `cantidad`, `Costo`, `TipoElemento`, `FechaIngresoElemento`, `categoriaElemento`, `NumAula`, `Descripcion`, `EstadoElemento`, `usuario_fk`) VALUES ('Longboard', '1029742107', '1', '399000', 'Skateboard', '2023-09-05', 'Vehiculos', '302', 'Lorem impus vimps', 'Usado', '1');
+call elementos1.InsertarCategoria('computador', 'hola');

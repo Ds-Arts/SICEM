@@ -33,14 +33,14 @@
             <label for="validationCustomUsername" class="form-label">Cantidad</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend">#</span>
-              <input type="text" placeholder="Cantidad" class="form-control" name="cantidad" id="cantidad" required/>
+              <input type="number" placeholder="Cantidad" class="form-control" name="cantidad" id="cantidad" required/>
             </div>
           </div>
         <div class="col-md-6">
           <label for="validationCustomUsername" class="form-label">Costo</label>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">$</span>
-            <input type="text" placeholder="Costo" aria-label="First name" class="form-control" name="Costo" id="Costo" required/>
+            <input type="number" placeholder="Costo" aria-label="First name" class="form-control" name="Costo" id="Costo" required/>
           </div>
         </div>
 

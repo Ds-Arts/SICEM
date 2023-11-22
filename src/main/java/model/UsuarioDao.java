@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.mindrot.jbcrypt.BCrypt;
 public class UsuarioDao {
     Connection con; // objeto de conexión
     private PreparedStatement ps;
@@ -15,19 +15,25 @@ public class UsuarioDao {
     private int r;
 
     public int registrarUsuario(UsuarioVo nuevoUsuario) throws SQLException {
-        sql = "INSERT INTO usuarios(nombre, apellido, email,numIdentificacion,contrasena,rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
-        try (
-                Connection conexion = Conexion.conectar();
-                PreparedStatement ps = conexion.prepareStatement(sql)) {
+        String sql = "INSERT INTO usuarios(nombre, apellido, email, numIdentificacion, contrasena, rol_fk, activo) VALUES (?, ? , ? , ? , ?, ?, ?)";
+        int r = 0;
+        try (Connection conexion = Conexion.conectar();
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, nuevoUsuario.getNombre());
             ps.setString(2, nuevoUsuario.getApellido());
             ps.setString(3, nuevoUsuario.getEmail());
             ps.setInt(4, nuevoUsuario.getNumIdentificacion());
-            ps.setString(5, nuevoUsuario.getContrasena());
+
+            // Encriptar la contraseña antes de almacenarla
+            String contrasenaEncriptada = BCrypt.hashpw(nuevoUsuario.getContrasena(), BCrypt.gensalt());
+            ps.setString(5, contrasenaEncriptada);
+
             ps.setString(6, nuevoUsuario.getRol_fk());
-            ps.setString(7, nuevoUsuario.getActivo()); // Establecer el estado de activación
+            ps.setString(7, nuevoUsuario.getActivo());
+            System.out.println(contrasenaEncriptada);
             r = ps.executeUpdate();
+
             System.out.println("Registro de usuario finalizado.");
 
         } catch (Exception e) {
@@ -35,6 +41,7 @@ public class UsuarioDao {
         }
         return r;
     }
+
     public int editar_Usuario(UsuarioVo nuevoUsuario) throws SQLException {
         sql = "UPDATE  usuarios set nombre=?, apellido=?, email=?,numIdentificacion=?,contrasena=?,rol_fk=?,activo=?  where id =?";
         try (
@@ -192,16 +199,20 @@ public class UsuarioDao {
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
         UsuarioVo usuarioValidado = null;
-        String sql = "SELECT * FROM usuarios WHERE numIdentificacion = ? AND contrasena = ?";
+        String sql = "SELECT * FROM usuarios WHERE numIdentificacion = ?";
         try (Connection conexion = Conexion.conectar();
-                PreparedStatement ps = conexion.prepareStatement(sql)) {
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
             ps.setInt(1, numIdentificacion);
-            ps.setString(2, contrasena);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    usuarioValidado = new UsuarioVo();
-                    usuarioValidado.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuarioValidado.setContrasena(rs.getString("contrasena"));
+                    // Obtener la contraseña encriptada almacenada en la base de datos
+                    String contrasenaEncriptada = rs.getString("contrasena");
+
+                    // Verificar la contraseña proporcionada con la contraseña encriptada de la BD
+                    if (BCrypt.checkpw(contrasena, contrasenaEncriptada)) {
+                        usuarioValidado = new UsuarioVo();
+                        usuarioValidado.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                    }
                 }
             }
         } catch (Exception e) {
@@ -209,6 +220,7 @@ public class UsuarioDao {
         }
         return usuarioValidado;
     }
+
 
     // private int obtenerUltimoIdUsuario() throws SQLException {
     //     int idUsuario = 0;

@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Listado de Préstamos</title>
+    <link rel="icon" href="assets/IMG/favicon.ico">
 </head>
 <body>
 <%
