@@ -151,6 +151,10 @@
                                             <h6>Descripción</h6>
                                             <p><%=elemento.getDescripcion()%></p>
                                         </div>
+                                        <div class="col">
+                                            <h6>Categoria</h6>
+                                            <p><%=elemento.getCategoria()%></p>
+                                        </div>
                                     </div>
                                     <form class="row" action="elemento" method="post">
                                         <input type="number" name="id_cuentadante" value="<%=elemento.getUsu()%>" hidden>
