@@ -17,6 +17,10 @@
 <%@ page import="model.UsuarioVo" %>
 <%@ page import="java.util.List" %>
 
+<%-- IMPORTS DE CATEGORIAS --%>
+<%@ page import="model.CategoriaDao" %>
+<%@ page import="model.CategoriaVo" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -171,9 +175,32 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- CATEGORIAS -->
+                        <div class="col">
+                            <div class="rounded-3 shadow-sm border">
+                                <div class="border-3 border-start border-success p-3 rounded-3">
+                                    <p class="h6">Categorias</p>
+                                    <%
+                                        System.out.println("");
+                                        CategoriaDao categoriaDao = new CategoriaDao();
+
+                                        List<CategoriaVo> categorias;
+                                        String cantidadcategorias = request.getParameter("cantidad");
+                                        categorias = categoriaDao.contadorCategorias();
+
+                                        for (CategoriaVo categoria : categorias) {
+                                    %>
+                                    <p class="h2 text-success mt-1"><%=categoria.getIdCategoria()%></p>
+                                    <% } %>
+                                    <button onclick="mostrarComponente('views/admin/components/tables/tabla-registrosElementos.jsp')" class="btn px-1 link-success"><i class="bi bi-arrow-down-square-fill"></i> Ver mas</button>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="row mt-5 text-center opacity-50">
                             <p><i class="bi bi-info-circle-fill"></i> Selecciona uno de los contadores para ver los <span class="text-success">registros</span>.</p>
                         </div>
+
                     </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ CREATE TABLE usuarios (
    apellido VARCHAR(50),
    email VARCHAR(225),
    numIdentificacion INT,
-   contrasena VARCHAR(50),
+   contrasena VARCHAR(200),
    rol_fk VARCHAR(50),
    activo VARCHAR(50),
    FOREIGN KEY (rol_fk) REFERENCES rol (nombreRol)

@@ -73,4 +73,37 @@ public class CategoriaDao {
 
         return categorias;
     }
+
+    public List<CategoriaVo> contadorCategorias() throws SQLException {
+
+        // Creamos una lista/arreglo basada en UsuarioVo
+        List<CategoriaVo>  categorias = new ArrayList<>();
+
+        // Asignamos una consulta que muestre cuantos usuarios hay en la base de datos.
+        sql = "SELECT count(*) as contado FROM Categoria";
+
+        // Inicializamos la comsulta.
+        try {
+            System.out.println("Se estan contando usuarios...");
+            con = Conexion.conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                CategoriaVo l = new CategoriaVo();
+                l.setIdCategoria(rs.getInt("contado"));
+                categorias.add(l);
+                categorias.size();
+            }
+            ps.close();
+            System.out.println("Cuenta de usuarios finalizada.");
+            System.out.println("Comprueba la vista correspondiente para comprobar el correcto funcionamiento de la consulta.");
+        } catch (Exception e) {
+            System.out.println("La consulta no pudo ser ejecutada " + e.getMessage().toString());
+        } finally {
+            con.close();
+        }
+
+        return categorias;
+    }
 }

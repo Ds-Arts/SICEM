@@ -199,16 +199,20 @@ public class UsuarioDao {
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
         System.out.println("entro al inicio");
         UsuarioVo usuarioValidado = null;
-        String sql = "SELECT * FROM usuarios WHERE numIdentificacion = ? AND contrasena = ?";
+        String sql = "SELECT * FROM usuarios WHERE numIdentificacion = ?";
         try (Connection conexion = Conexion.conectar();
-                PreparedStatement ps = conexion.prepareStatement(sql)) {
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
             ps.setInt(1, numIdentificacion);
-            ps.setString(2, contrasena);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    usuarioValidado = new UsuarioVo();
-                    usuarioValidado.setNumIdentificacion(rs.getInt("numIdentificacion"));
-                    usuarioValidado.setContrasena(rs.getString("contrasena"));
+                    // Obtener la contraseña encriptada almacenada en la base de datos
+                    String contrasenaEncriptada = rs.getString("contrasena");
+
+                    // Verificar la contraseña proporcionada con la contraseña encriptada de la BD
+                    if (BCrypt.checkpw(contrasena, contrasenaEncriptada)) {
+                        usuarioValidado = new UsuarioVo();
+                        usuarioValidado.setNumIdentificacion(rs.getInt("numIdentificacion"));
+                    }
                 }
             }
         } catch (Exception e) {
@@ -216,6 +220,7 @@ public class UsuarioDao {
         }
         return usuarioValidado;
     }
+
 
     // private int obtenerUltimoIdUsuario() throws SQLException {
     //     int idUsuario = 0;
