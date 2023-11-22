@@ -76,7 +76,7 @@ public class Usuario extends HttpServlet {
                     String numero ="2";
                     request.setAttribute("numerodecaso",numero);
                     request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp").forward(request, response);
-                   request.setAttribute("numidusuario",request.getParameter("numidusuario"));
+                    request.setAttribute("numidusuario",request.getParameter("numidusuario"));
 
                    /* buscarUsuariosPornumIdentificacion(request, response);*/
                     /*  buscarUsuarioPorId(request, response); */
