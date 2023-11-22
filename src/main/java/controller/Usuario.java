@@ -391,7 +391,7 @@ public class Usuario extends HttpServlet {
 
                 if (usuVo != null && usuVo.getContrasena().equals(contrasena)) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("usuarioSesion", usuVo);
+                    session.setAttribute("usuarioSesion",usuVo);
 
                     // Redirige al usuario a la página de dashboard
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
