@@ -11,7 +11,7 @@ public class ElementosVo {
     private String tipo;
     private LocalDate fechaIngreso;
     private String estado;
-    private String categoria;
+    private int categoria;
     private int numeroAula;
     private String descripcion;
     private int usu;
@@ -21,7 +21,7 @@ public class ElementosVo {
     }
     
     public ElementosVo(int id, String nombre, int numeroPlaca, int cantidad, int costo, String tipo,
-            LocalDate fechaIngreso, String estado, String categoria, int numeroAula, String descripcion, int usu) {
+            LocalDate fechaIngreso, String estado, int categoria, int numeroAula, String descripcion, int usu) {
         Id = id;
         this.nombre = nombre;
         this.numeroPlaca = numeroPlaca;
@@ -109,11 +109,11 @@ public class ElementosVo {
         this.estado = estado;
     }
 
-    public String getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 

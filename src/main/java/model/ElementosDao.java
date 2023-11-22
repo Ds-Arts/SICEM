@@ -37,7 +37,7 @@ public class ElementosDao {
             ps.setInt(4, elementos.getCosto());
             ps.setString(5, elementos.getTipo());
             ps.setDate(6, Date.valueOf(elementos.getFechaIngreso()));
-            ps.setString(7, elementos.getCategoria());
+            ps.setInt(7, elementos.getCategoria());
             ps.setInt(8, elementos.getNumeroAula());
             ps.setString(9, elementos.getDescripcion());
             ps.setString(10, elementos.getEstado());
@@ -97,7 +97,7 @@ public class ElementosDao {
                 l.setNumeroPlaca(rs.getInt("N_placa"));
                 l.setTipo(rs.getString("TipoElemento"));
                 l.setFechaIngreso(rs.getDate("FechaIngresoElemento").toLocalDate());
-                l.setCategoria(rs.getString("categoriaElemento"));
+                l.setCategoria(rs.getInt("categoriaElemento"));
                 l.setNumeroAula(rs.getInt("NumAula"));
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
@@ -134,7 +134,7 @@ public class ElementosDao {
                 l.setNumeroPlaca(rs.getInt("N_placa"));
                 l.setTipo(rs.getString("TipoElemento"));
                 l.setFechaIngreso(rs.getDate("FechaIngresoElemento").toLocalDate());
-                l.setCategoria(rs.getString("categoriaElemento"));
+                l.setCategoria(rs.getInt("categoriaElemento"));
                 l.setNumeroAula(rs.getInt("NumAula"));
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
@@ -170,7 +170,7 @@ public class ElementosDao {
                 l.setNumeroPlaca(rs.getInt("N_placa"));
                 l.setTipo(rs.getString("TipoElemento"));
                 l.setFechaIngreso(rs.getDate("FechaIngresoElemento").toLocalDate());
-                l.setCategoria(rs.getString("categoriaElemento"));
+                l.setCategoria(rs.getInt("categoriaElemento"));
                 l.setNumeroAula(rs.getInt("NumAula"));
                 l.setDescripcion(rs.getString("Descripcion"));
                 l.setEstado(rs.getString("EstadoElemento"));
@@ -204,7 +204,7 @@ public class ElementosDao {
             l.setNumeroPlaca(rs.getInt("N_placa"));
             l.setTipo(rs.getString("TipoElemento"));
             l.setFechaIngreso(rs.getDate("FechaIngresoElemento").toLocalDate());
-            l.setCategoria(rs.getString("categoriaElemento"));
+            l.setCategoria(rs.getInt("categoriaElemento"));
             l.setNumeroAula(rs.getInt("NumAula"));
             l.setDescripcion(rs.getString("Descripcion"));
             l.setEstado(rs.getString("EstadoElemento"));
