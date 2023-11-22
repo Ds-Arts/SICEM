@@ -82,6 +82,7 @@ public class Usuario extends HttpServlet {
                     /*  buscarUsuarioPorId(request, response); */
                     break;
 
+
                 case "detalle":
                     System.out.println("Se ha redireccionado al metodo 'mostrarDetalleUsuario'");
                     mostrarDetalleUsuario(request, response);
@@ -214,8 +215,10 @@ public class Usuario extends HttpServlet {
                         // Vuelve a almacenar el usuario actualizado en la sesión
                         request.getSession().setAttribute("usuarioSesion", usuarioSesion);
 
+
                         // Redirecciona a la página de perfil actualizada
-                        request.getRequestDispatcher("Usuario?action=lll").forward(request, response);
+                         response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
+                       /*  request.getRequestDispatcher("Usuario?action=lll").forward(request, response); */
                     } else {
                         // Manejar el error de actualización, por ejemplo, redirigir a una página de
                         // error
@@ -396,8 +399,16 @@ public class Usuario extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("usuarioSesion",usuVo);
 
-                    // Redirige al usuario a la página de dashboard
+
+
+                      if(usuVo.getRol_fk().equals("Administrador")){                      
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
+                      } 
+                    else if (usuVo.getRol_fk().equals("Cuentadante")||usuVo.getRol_fk().equals("Instructor")){
+                         
+                        request.getRequestDispatcher("views/user/dashboard.jsp").forward(request, response);
+                    }
+
                 } else {
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
                 }

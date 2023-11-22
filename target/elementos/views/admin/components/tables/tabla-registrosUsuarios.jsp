@@ -5,19 +5,40 @@
 <%@ page import="model.UsuarioVo" %>
 <%@ page import="java.util.List" %>
 
-<form action="Usuario" method="GET">
-     <input type="text" name="numidusuario"  PLACEHOLDER=" BUSCAR POR ID ">
-    <button type="submit" class="btn btn-outline-success" name="action" value="searchById">Buscar por id</button>
-</form>
-<form action="Usuario" method="GET">
-    <input type="text" name="nombre"  PLACEHOLDER=" BUSCAR POR NOMBRE">
-    <button  type="submit" class="btn btn-outline-success" name="action" value="search">Buscar por nombre </button>
-</form>
-
+<head>
+    <!-- BOOTSTRAP -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+            crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="assets/IMG/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    </head>
 
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
+        <form id="buscar-x-id" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+            <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
+            <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
+        </form>
+        <!-- <form id="buscar-x-nombre" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
+            <input id="buscar-x-nombre" type="hidden" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
+            <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+        </form> -->
         <table class="table table-striped shadow border rounded-3 mb-3">
             <div class="row mx-0 mb-3">
                 <div class="hstack gap-3">
@@ -30,31 +51,7 @@
                         <i class="bi bi-plus-lg"></i>
                     </button>
                     <div class="vr"></div>
-<<<<<<< HEAD
 
-                    <div class="vr"></div>
-                    <!-- BOTONES PARA ORGANIZAR LOS REGISTROS CONSULTADOS (INCOMPLETO) -->
-                    <h5>Organizar</h5>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-success" for="btnradio1">Aa</label>
-                        
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-success" for="btnradio2">#</label>
-                        
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                        <label class="btn btn-outline-success" for="btnradio3">@</label>
-                    </div>
-=======
-                    <form id="buscar-x-id" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
-                        <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por ID" class="form-control">
-                        <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
-                    </form>
-                    <form id="buscar-x-nombre" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
-                        <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
-                        <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
-                    </form>
->>>>>>> 135858fa7d51ebdb9df21a12955f4a705982bd81
                 </div>
             </div>
             <thead>
@@ -150,17 +147,11 @@
                     <td><%= usuari.getActivo() %></td>
                 </tr>
                 <%};%>
-<<<<<<< HEAD
-            <%    break;
-                    }
-                 %>
-=======
 
             <%    
                 break;
                     }
              %>
->>>>>>> 135858fa7d51ebdb9df21a12955f4a705982bd81
 
 
 
