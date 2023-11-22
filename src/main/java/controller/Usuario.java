@@ -313,9 +313,7 @@ public class Usuario extends HttpServlet {
             usuVo.setNumIdentificacion(Integer.parseInt(request.getParameter("numIdentificacion")));
         }
         if (request.getParameter("contrasena") != null) {
-            String contrasenaClara = request.getParameter("contrasena");
-            String contrasenaEncriptada = BCrypt.hashpw(contrasenaClara, BCrypt.gensalt());
-            usuVo.setContrasena(contrasenaEncriptada); // Se asigna la contraseña encriptada
+            usuVo.setContrasena(request.getParameter("contrasena"));
         }
         if (request.getParameter("rol_fk") != null) {
             usuVo.setRol_fk(request.getParameter("rol_fk"));

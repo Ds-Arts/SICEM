@@ -51,6 +51,7 @@ public class CategoriaDao {
 
             while (rs.next()) {
                 CategoriaVo categoria = new CategoriaVo();
+                categoria.setIdCategoria(rs.getInt("idCategoria"));
                 categoria.setNombreCategoria(rs.getString("nombreCategoria"));
                 categoria.setDescripcionCategoria(rs.getString("DescripcionCategoria"));
                 categorias.add(categoria);

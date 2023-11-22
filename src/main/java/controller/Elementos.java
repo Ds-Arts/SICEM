@@ -137,7 +137,7 @@ public class Elementos extends HttpServlet {
             e.setFechaIngreso(fechaIngreso);
         }
         if (req.getParameter("categoriaElemento") != null) {
-            e.setCategoria(req.getParameter("categoriaElemento"));
+            e.setCategoria(Integer.parseInt(req.getParameter("categoriaElemento")));
         }
         if (req.getParameter("NumAula") != null) {
             e.setNumeroAula((Integer.parseInt(req.getParameter("NumAula"))));
