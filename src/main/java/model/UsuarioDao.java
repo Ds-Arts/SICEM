@@ -23,15 +23,11 @@ public class UsuarioDao {
             ps.setString(1, nuevoUsuario.getNombre());
             ps.setString(2, nuevoUsuario.getApellido());
             ps.setString(3, nuevoUsuario.getEmail());
-            ps.setInt(4, nuevoUsuario.getNumIdentificacion());
-
-            // Encriptar la contraseña antes de almacenarla
-            String contrasenaEncriptada = BCrypt.hashpw(nuevoUsuario.getContrasena(), BCrypt.gensalt());
-            ps.setString(5, contrasenaEncriptada);
+            ps.setInt(4, nuevoUsuario.getNumIdentificacion());;
+            ps.setString(5, nuevoUsuario.getContrasena());
 
             ps.setString(6, nuevoUsuario.getRol_fk());
             ps.setString(7, nuevoUsuario.getActivo());
-            System.out.println(contrasenaEncriptada);
             r = ps.executeUpdate();
 
             System.out.println("Registro de usuario finalizado.");

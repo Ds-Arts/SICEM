@@ -8,7 +8,8 @@ public class CategoriaVo {
     public CategoriaVo() {
     }
 
-    public CategoriaVo(String nombreCategoria, String descripcionCategoria) {
+    public CategoriaVo(int idCategoria, String nombreCategoria, String descripcionCategoria) {
+        this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.descripcionCategoria = descripcionCategoria;
     }

@@ -71,7 +71,7 @@
                 List<CategoriaVo> categoriass=ad.obtenerCategorias();
                 for (CategoriaVo categoria : categoriass ) { 
             %>
-            <option value="<%= categoria.getNombreCategoria() %>"><%= categoria.getNombreCategoria() %></option>
+              <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getNombreCategoria() %></option>
             <% } %>
           </select>
         </div>

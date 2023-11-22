@@ -3,6 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.PrestamosDao" %>
 <%@ page import="model.PrestamosVo" %>
+<%@ page import="model.UsuarioDao" %>
+<%@ page import="model.UsuarioVo" %>
 
 <section id="tabla-registrosPrestamos" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
@@ -50,16 +52,21 @@
                 </tr>
             </thead>
             <tbody>
-                <%
-                    PrestamosDao prestamoDao = new PrestamosDao();
-                    List<PrestamosVo> prestamos = prestamoDao.listarPrestamos();
-                    for (PrestamosVo prestamo : prestamos) {
-                %>
-                    <tr>
+            <%
+                PrestamosDao prestamoDao = new PrestamosDao();
+                UsuarioDao usuariDao = new UsuarioDao(); // Importa la clase UsuarioDao
+                List<PrestamosVo> prestamos = prestamoDao.listarPrestamos();
+                for (PrestamosVo prestamo : prestamos) {
+                    // Obtener el Usuario correspondiente por su ID
+                    UsuarioVo usuario = usuariDao.buscarUsuarioPorId(prestamo.getUsu());
+                    UsuarioVo usuari = usuariDao.buscarUsuarioPorId(prestamo.getUs());// Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+            %>
+
+            <tr>
                         <th scope="row"><%= prestamo.getElementoFk() %></th>
                         <td><%= prestamo.isTipo() %></td>
-                        <td><%= prestamo.getCuentadantefk() %></td>
-                        <td><%= prestamo.getPrestatariofk() %></td>
+                        <td><%=usuario.getNombre()%></td>
+                        <td><%= usuari.getNombre() %></td>
                         <td><%= prestamo.getFechaTranspaso() %></td>
                         <td><%= prestamo.getFechaInicio() %></td>
                         <td><%= prestamo.getFechaFin() %></td>
