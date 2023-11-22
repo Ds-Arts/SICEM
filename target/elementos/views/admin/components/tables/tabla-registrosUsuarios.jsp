@@ -6,7 +6,11 @@
 <%@ page import="java.util.List" %>
 
 <head>
+<<<<<<< HEAD
     <!-- BOOTSTRAP -->
+=======
+<!-- BOOTSTRAP -->
+>>>>>>> 19866ad582efd6438a5f229270b7058b308e5d2a
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -26,11 +30,16 @@
             crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="assets/IMG/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<<<<<<< HEAD
     </head>
+=======
+</head>
+>>>>>>> 19866ad582efd6438a5f229270b7058b308e5d2a
 
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
+<<<<<<< HEAD
         <form id="buscar-x-id" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
             <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
             <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
@@ -39,6 +48,17 @@
             <input id="buscar-x-nombre" type="hidden" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
             <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
         </form> -->
+=======
+        <form action="Usuario" method="GET" class="form-group">
+            <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por ID" class="form-control">
+            <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
+        </form>
+        <div class="vr"></div>
+        <form action="Usuario" method="GET" class="form-group">
+            <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
+            <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+        </form>
+>>>>>>> 19866ad582efd6438a5f229270b7058b308e5d2a
         <table class="table table-striped shadow border rounded-3 mb-3">
             <div class="row mx-0 mb-3">
                 <div class="hstack gap-3">
@@ -50,8 +70,11 @@
                     <button class="btn btn-outline-success" onclick="mostrarComponente('views/admin/components/forms/tabla-registrarUsuarios.jsp')">
                         <i class="bi bi-plus-lg"></i>
                     </button>
+<<<<<<< HEAD
                     <div class="vr"></div>
 
+=======
+>>>>>>> 19866ad582efd6438a5f229270b7058b308e5d2a
                 </div>
             </div>
             <thead>
@@ -152,9 +175,12 @@
                 break;
                     }
              %>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 19866ad582efd6438a5f229270b7058b308e5d2a
             </tbody>
         </table>
     </div>
