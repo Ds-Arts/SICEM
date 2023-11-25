@@ -1,16 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="model.UsuarioDao" %>
-<%@ page import="model.UsuarioVo" %>
-<%@ page import="java.util.List" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SENA - SICEM</title>
-        <!-- ICON -->
-        <link rel="icon" href="assets/IMG/favicon.ico">
         <!-- BOOTSTRAP -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -112,7 +106,11 @@
                                     class="form-label">Numero de identificación</label>
                                 <input
                                     type="text"
+                                    class="form-control"
                                     id=""
+                                    name=""
+                                    value="1028756545"
+                                    required />
                             </div> --%>
                             <!-- CONTRASEÑA -->
                             <%-- <div class="col-md-6">
@@ -140,12 +138,12 @@
                             </div> --%>
                             <!-- BOTON DE ENVIO DE INFO DEL FORMULAIRO --->
                             <div class="col-6">
-                                <a class="btn btn-success" href="Usuario?action=prof">
+                                <button class="btn btn-success" type="submit" value="updateProfile">
                                     Actualizar Información
-                                </a>
+                                </button>
                             </div>
                             <div class="col-6">
-                                <a class="btn btn-danger" href="Usuario?action=testing">
+                                <a class="btn btn-danger" href="Usuario?action=login">
                                     Volver
                                 </a>
                             </div>

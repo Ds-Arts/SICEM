@@ -11,7 +11,7 @@
         <table class="table table-striped shadow border rounded-3 mb-3">
             <div class="row mx-0 mb-3">
                 <div class="hstack gap-3">
-                    <h3>Usuarios</h3>
+                    <h3>categorias</h3>
                     <div class="vr"></div>
                     <!-- BOTON DE AGREGAR NUEVO USUARIO -->
                     <h5>Agregar</h5>

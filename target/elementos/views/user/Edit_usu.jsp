@@ -42,7 +42,7 @@
         <option value="Activo">Activo</option>
         <option value="inactivo">Inactivo</option>
     </select>
-<button name="action" value="editar_usuario"> Actualizar  </button>
+<button name="action" value="updateProfile"> Actualizar  </button>
 </form>
 <%
             } else {
