@@ -148,6 +148,12 @@
                                 </a>
                             </div>
                         </form>
+                        <form>
+                            <a class="btn btn-danger" href="Usuario?action=list">
+                                list
+                            </a>
+
+                        </form>
                     </div>
                 </div>
             </div>

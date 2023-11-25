@@ -47,6 +47,11 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha direccionado al dashboard de administrador.");
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
                     break;
+                case "list":
+                    System.out.println("Se ha direccionado al login de usuarios.");
+                    request.getRequestDispatcher("views/user/listarUsuario.jsp").forward(request, response);
+                    break;
+                
 
                 case "login":
                     System.out.println("Se ha direccionado al login de usuarios.");
@@ -243,26 +248,27 @@ public class Usuario extends HttpServlet {
     }
 
     private void mostrarDetalleUsuario(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Obtener el ID del usuario a mostrar detalles
-        int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
+    throws ServletException, IOException {
+    // Obtener el ID del usuario a mostrar detalles
+    int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
 
-        try {
-            // Obtener los detalles del usuario
-            UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuarioDetalle);
-            request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
-            // Obtener la lista de elementos asociados al usuario
-            List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
+    try {
+    // Obtener los detalles del usuario
+    UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuarioDetalle);
+    request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
-            request.setAttribute("elementos", elementos);
+    // Obtener la lista de elementos asociados al usuario
+    List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
 
-            // Redireccionar a la página de detalles del usuario
-            request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.getWriter().println("Error al obtener los detalles del usuario y sus elementos asociados");
-        }
+    request.setAttribute("elementos", elementos);
+
+    // Redireccionar a la página de detalles del usuario
+    request.getRequestDispatcher("views/user/detalleUsuario.jsp").forward(request, response);
+    } catch (SQLException e) {
+    e.printStackTrace();
+    response.getWriter().println("Error al obtener los detalles del usuario y sus elementos asociados");
+    }
     }
 
     private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)

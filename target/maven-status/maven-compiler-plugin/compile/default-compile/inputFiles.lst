@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\model\CategoriaVo.java
 c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\controller\Categoria.java
 c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\model\UsuarioVo.java
@@ -12,18 +11,3 @@ c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\model\ElementosDao
 c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\model\PrestamosDao.java
 c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\model\Conexion.java
 c:\Users\juanc\Desktop\clone presentacion\SICEM\src\main\java\model\CategoriaDao.java
-=======
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\UsuarioVo.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\controller\Categoria.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\CategoriaVo.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\controller\Prestamo.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\PrestamosVo.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\UsuarioDao.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\controller\Elementos.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\ElementosDao.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\Conexion.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\PrestamosDao.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\CategoriaDao.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\controller\Usuario.java
-c:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\java\model\ElementosVo.java
->>>>>>> 19866ad582efd6438a5f229270b7058b308e5d2a
