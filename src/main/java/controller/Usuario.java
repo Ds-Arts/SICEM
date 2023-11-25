@@ -15,6 +15,7 @@ import model.ElementosVo;
 import model.UsuarioDao;
 import model.UsuarioVo;
 import org.mindrot.jbcrypt.BCrypt;
+
 public class Usuario extends HttpServlet {
 
     UsuarioDao usuarioDao = new UsuarioDao();
@@ -40,12 +41,12 @@ public class Usuario extends HttpServlet {
                 case "testing":
                     System.out.println("Se ha direccionado a una vista de testing.");
 
-                        request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
+                    request.getRequestDispatcher("views/admin/dashboard(rediseñado).jsp").forward(request, response);
                     break;
                 case "dash":
                     System.out.println("Se ha direccionado al dashboard de administrador.");
                     request.getRequestDispatcher("views/admin/dashboard.jsp").forward(request, response);
-                    break; 
+                    break;
 
                 case "login":
                     System.out.println("Se ha direccionado al login de usuarios.");
@@ -61,27 +62,28 @@ public class Usuario extends HttpServlet {
                     break;
 
                 case "search":
-                   System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
-                   System.out.println( request.getParameter("nombre"));
-                   String nombre = request.getParameter("nombre");
-                   request.setAttribute("nombre",nombre);
-                    String numeros ="1";
-                    request.setAttribute("numerodecaso",numeros);
-                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp").forward(request, response);
+                    System.out.println("Se ha redireccionado al metodo 'buscarUsuariosPorNombre'");
+                    System.out.println(request.getParameter("nombre"));
+                    String nombre = request.getParameter("nombre");
+                    request.setAttribute("nombre", nombre);
+                    String numeros = "1";
+                    request.setAttribute("numerodecaso", numeros);
+                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp")
+                            .forward(request, response);
                     break;
 
                 case "searchById": // Nueva acción para buscar por ID
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
                     System.out.println(request.getParameter("numidusuario"));
-                    String numero ="2";
-                    request.setAttribute("numerodecaso",numero);
-                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp").forward(request, response);
-                    request.setAttribute("numidusuario",request.getParameter("numidusuario"));
+                    String numero = "2";
+                    request.setAttribute("numerodecaso", numero);
+                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp")
+                            .forward(request, response);
+                    request.setAttribute("numidusuario", request.getParameter("numidusuario"));
 
-                   /* buscarUsuariosPornumIdentificacion(request, response);*/
-                    /*  buscarUsuarioPorId(request, response); */
+                    /* buscarUsuariosPornumIdentificacion(request, response); */
+                    /* buscarUsuarioPorId(request, response); */
                     break;
-
 
                 case "detalle":
                     System.out.println("Se ha redireccionado al metodo 'mostrarDetalleUsuario'");
@@ -91,8 +93,6 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha direccionado al perfil del ususario.");
                     request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
                     break;
-
-
 
                 default:
                     response.sendRedirect(request.getContextPath());
@@ -139,7 +139,7 @@ public class Usuario extends HttpServlet {
                     cerrarSesion(request, response);
                     break;
                 case "busquedaxnombre":
-                    System.out.print( request.getParameter("busquedaxnombre")+"este es el parametro por id"   );
+                    System.out.print(request.getParameter("busquedaxnombre") + "este es el parametro por id");
                     break;
 
                 default:
@@ -215,10 +215,12 @@ public class Usuario extends HttpServlet {
                         // Vuelve a almacenar el usuario actualizado en la sesión
                         request.getSession().setAttribute("usuarioSesion", usuarioSesion);
 
-
                         // Redirecciona a la página de perfil actualizada
-                         response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
-                       /*  request.getRequestDispatcher("Usuario?action=lll").forward(request, response); */
+                        response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
+                        /*
+                         * request.getRequestDispatcher("Usuario?action=lll").forward(request,
+                         * response);
+                         */
                     } else {
                         // Manejar el error de actualización, por ejemplo, redirigir a una página de
                         // error
@@ -263,21 +265,21 @@ public class Usuario extends HttpServlet {
         }
     }
 
-    private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-    
+    private void buscarUsuariosPorNombre(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         String nombre = request.getParameter("nombre");
         try {
             List<UsuarioVo> usuarios = usuarioDao.buscarUsuariosPorNombre(nombre);
-            request.setAttribute("nombre",nombre);
+            request.setAttribute("nombre", nombre);
             request.setAttribute("usuarios", usuarios);
             request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener la lista de usuarios");
-            
+
         }
     }
-
 
     private void buscarUsuariosPornumIdentificacion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -288,14 +290,14 @@ public class Usuario extends HttpServlet {
             UsuarioVo usuarioEncontrado = usuarioDao.buscarUsuarioPorId(idUsuario);
             request.setAttribute("usuarioEncontrado", usuarioEncontrado);
 
-            request.setAttribute("numidentificacionusuario",request.getParameter("numidusuario") );
-            System.out.println(request.getParameter("numidusuario")+"se esta enviando el parametro");
+            request.setAttribute("numidentificacionusuario", request.getParameter("numidusuario"));
+            System.out.println(request.getParameter("numidusuario") + "se esta enviando el parametro");
             String numidentificacionusuario = request.getParameter("numidusuario");
             System.out.println(request.getAttribute(numidentificacionusuario));
             System.out.println(numidentificacionusuario + "esta vacio");
             request.getRequestDispatcher("Usuario?action=testing").forward(request, response);
             // Redireccionar a la página de lista de usuarios con el usuario encontrado
-         /*    listarUsuarios(request, response); */
+            /* listarUsuarios(request, response); */
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error al obtener el usuario por ID");
@@ -339,12 +341,6 @@ public class Usuario extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
         }
     }
-
-
-
-
-
-
 
     private void activarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -397,15 +393,12 @@ public class Usuario extends HttpServlet {
 
                 if (usuVo != null && usuVo.getContrasena().equals(contrasena)) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("usuarioSesion",usuVo);
+                    session.setAttribute("usuarioSesion", usuVo);
 
+                    if (usuVo.getRol_fk().equals("Administrador")) {
+                        response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
+                    } else if (usuVo.getRol_fk().equals("Cuentadante") || usuVo.getRol_fk().equals("Instructor")) {
 
-
-                      if(usuVo.getRol_fk().equals("Administrador")){                      
-                    response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
-                      } 
-                    else if (usuVo.getRol_fk().equals("Cuentadante")||usuVo.getRol_fk().equals("Instructor")){
-                         
                         request.getRequestDispatcher("views/user/dashboard.jsp").forward(request, response);
                     }
 
@@ -423,6 +416,7 @@ public class Usuario extends HttpServlet {
             System.out.println("Error en la modificación: " + e.getMessage());
         }
     }
+
     private void editarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parámetros del formulario de editar
@@ -447,7 +441,7 @@ public class Usuario extends HttpServlet {
         if (request.getParameter("rol_fk") != null) {
             usuVo.setRol_fk(request.getParameter("rol_fk"));
         }
-        if (request.getParameter("activo") != null  ) {
+        if (request.getParameter("activo") != null) {
             usuVo.setActivo(request.getParameter("activo"));
         }
         try {
@@ -462,27 +456,16 @@ public class Usuario extends HttpServlet {
         }
     }
 
-private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
-throws ServletException, IOException {
-// Invalida la sesión actual
-HttpSession session = request.getSession(false);
-if (session != null) {
-    session.invalidate();
-}
+    private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Invalida la sesión actual
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
 
-// Redirige a la página de inicio de sesión o a la página principal
-    response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
-}
-
-
-
-
-
-
-
-
-
-
+        // Redirige a la página de inicio de sesión o a la página principal
+        response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
+    }
 
 }
-
