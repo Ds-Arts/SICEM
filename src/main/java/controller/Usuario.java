@@ -92,8 +92,6 @@ public class Usuario extends HttpServlet {
                     request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
                     break;
 
-
-
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -381,6 +379,7 @@ public class Usuario extends HttpServlet {
     }
 
     public void iniciar(HttpServletRequest request, HttpServletResponse response) {
+
         System.out.println("Entro al inicio");
 
         // Obtener los parámetros del formulario
@@ -388,7 +387,9 @@ public class Usuario extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
 
         try {
+ 
             if (numIdentificacionStr != null && !numIdentificacionStr.isEmpty()) {
+
                 // Convertir el valor de numIdentificacionStr a un entero
                 Integer numIdentificacion = Integer.parseInt(numIdentificacionStr);
 
@@ -396,31 +397,41 @@ public class Usuario extends HttpServlet {
                 usuVo = usuarioDao.obtenerUsuarioPorNumeroIdentificacion(numIdentificacion);
 
                 if (usuVo != null && usuVo.getContrasena().equals(contrasena)) {
+
                     HttpSession session = request.getSession();
                     session.setAttribute("usuarioSesion",usuVo);
+                
+                    if(usuVo.getRol_fk().equals("Administrador")){                      
 
+                        response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
 
-
-                      if(usuVo.getRol_fk().equals("Administrador")){                      
-                    response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
-                      } 
-                    else if (usuVo.getRol_fk().equals("Cuentadante")||usuVo.getRol_fk().equals("Instructor")){
+                    }else if (usuVo.getRol_fk().equals("Cuentadante")||usuVo.getRol_fk().equals("Instructor")){
                          
                         request.getRequestDispatcher("views/user/dashboard.jsp").forward(request, response);
+
                     }
 
                 } else {
+
                     response.sendRedirect(request.getContextPath() + "/Usuario?action=login");
+
                 }
             } else {
+
                 // El valor de numIdentificacionStr es nulo o vacío, maneja este caso según tus
                 // necesidades
+
             }
+
         } catch (NumberFormatException e) {
+
             // Manejar la excepción de conversión aquí, si es necesario
             e.printStackTrace();
+
         } catch (Exception e) {
+
             System.out.println("Error en la modificación: " + e.getMessage());
+
         }
     }
     private void editarUsuario(HttpServletRequest request, HttpServletResponse response)

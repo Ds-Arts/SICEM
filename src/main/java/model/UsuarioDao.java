@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
+
 public class UsuarioDao {
+
     Connection con; // objeto de conexión
     private PreparedStatement ps;
     private ResultSet rs;
@@ -193,6 +195,7 @@ public class UsuarioDao {
     }
 
     public static UsuarioVo verificarUsuario(Integer numIdentificacion, String contrasena) throws SQLException {
+
         System.out.println("entro al inicio");
         UsuarioVo usuarioValidado = null;
         String sql = "SELECT * FROM usuarios WHERE numIdentificacion = ?";
@@ -308,7 +311,9 @@ public class UsuarioDao {
                     usuario.setActivo(rs.getString("activo"));
                     usuarios.add(usuario);    
             }
+
             ps.close();
+
         } catch (Exception e) {
             System.out.println("Error en la consulta: " + e.getMessage());
         } finally {
