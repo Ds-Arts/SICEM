@@ -59,7 +59,7 @@
         </tr>
         <% } %> 
         <div>
-            <a href="Usuario?accion=list">Volver</a>
+            <a href="Usuario?action=list">Volver</a>
         </div>
     </table>
 

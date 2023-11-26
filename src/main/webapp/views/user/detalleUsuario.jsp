@@ -33,7 +33,6 @@
             <th>Descripción</th>
             <th>Acciones</th>
         </tr>
-        
         <% 
             int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
             ElementosDao elementoDao = new ElementosDao();
@@ -59,7 +58,7 @@
         </tr>
         <% } %> 
         <div>
-            <a href="Usuario?accion=list">Volver</a>
+            <a href="Usuario?action=list">Volver</a>
         </div>
     </table>
 
