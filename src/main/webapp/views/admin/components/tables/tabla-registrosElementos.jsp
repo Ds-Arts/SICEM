@@ -18,7 +18,7 @@
 <%@ page import="model.CategoriaDao" %>
 <%@ page import="model.CategoriaVo" %>
 
-<head>
+<>
 <!-- BOOTSTRAP -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -38,8 +38,7 @@
             integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
             crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="assets/IMG/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-</head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.
 
 <section id="tabla-registrosElementos" class="container-fluid mt-3 py-5">
     <!-- TABLA DE ELEMENTOS -->
