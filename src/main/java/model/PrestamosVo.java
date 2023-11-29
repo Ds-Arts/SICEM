@@ -13,6 +13,8 @@ public class PrestamosVo {
     private int usu;
     private int us;
 
+    private int u;
+
     // Tranquilos, espara los ultimos 4 prestamos regitrados
     private String nom_cuenta;
     private String nom_presta;
@@ -22,7 +24,7 @@ public class PrestamosVo {
     }
 
     public PrestamosVo(int cuentadantefk, int elementoFk, LocalDate fechaTranspaso, boolean tipo, LocalDate fechaInicio,
-            LocalDate fechaFin, int prestatariofk, int usu,int us) {
+                       LocalDate fechaFin, int prestatariofk, int usu, int us, int u) {
         this.cuentadantefk = cuentadantefk;
         this.elementoFk = elementoFk;
         this.fechaTranspaso = fechaTranspaso;
@@ -32,6 +34,8 @@ public class PrestamosVo {
         this.prestatariofk = prestatariofk;
         this.usu= usu;
         this.us= us;
+        this.u= u;
+
     }
 
     // Constructor para los ultimos 4 elementos
@@ -44,6 +48,14 @@ public class PrestamosVo {
         this.elementoFk = id_elemento;
         this.nom_elemento = nom_elemento;
 
+    }
+
+    public int getU() {
+        return u;
+    }
+
+    public void setU(int u) {
+        this.u = u;
     }
 
     public int getUs() {

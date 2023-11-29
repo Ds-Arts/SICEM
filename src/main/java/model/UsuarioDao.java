@@ -24,8 +24,8 @@ public class UsuarioDao {
             ps.setString(2, nuevoUsuario.getApellido());
             ps.setString(3, nuevoUsuario.getEmail());
             ps.setInt(4, nuevoUsuario.getNumIdentificacion());;
+            // Encriptar la contraseña antes de almacenarla
             ps.setString(5, nuevoUsuario.getContrasena());
-
             ps.setString(6, nuevoUsuario.getRol_fk());
             ps.setString(7, nuevoUsuario.getActivo());
             r = ps.executeUpdate();

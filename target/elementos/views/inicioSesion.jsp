@@ -57,17 +57,19 @@
         <aside class="col-6 px-5 py-5"><!-- FORMULARIO / LOGIN -->
           <h2 class="text-success">Iniciar sesión</h2>
           <p>Siempre es un placer verte de nuevo.</p>
-          <form class="my-5" action="Usuario" method="POST">
+          <form id="loginForm" class="my-5" action="Usuario" method="POST">
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">123</span>
-              <input type="text" class="form-control" id="numIdentificacion" name="numIdentificacion" placeholder="Numero de identificacion" aria-label="Username" aria-describedby="basic-addon1">
+              <span class="input-group-text" id="basic-addon1">@</span>
+              <input type="text" class="form-control" id="numIdentificacion" name="numIdentificacion" placeholder="Numero de identificacion" aria-label="Username" aria-describedby="basic-addon1" required pattern="^[0-9]+$" title="Ingrese solo números y no esté vacío">
             </div>
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">***</span>
-              <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <button class="btn btn-primary border-success bg-success" type="submit" name="action" value="login">Ingresar</button>
+              <span class="input-group-text" id="basic-addon1">*</span>
+              <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" required pattern=".{1,}" title="Este campo no puede estar vacío">
+            </div><p id="contrasena-error-message" class="error-message">Por favor, ingrese su contraseña.</p>
+
+            <button id="submit-button" class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
           </form>
+
         </aside><!-- END FORMULARIO / LOGIN -->
 
         <aside class="backgroundCover col-6"><!-- CONTENIDO / MAS INFORMACION -->
@@ -93,6 +95,6 @@
       </div><!-- END CONTENEDOR LOGIN -->
 
     </section><!-- END CONTENEDOR GENERAL -->
-
+    <script src="login.js"></script>
   </body>
 </html>

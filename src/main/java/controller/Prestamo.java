@@ -105,14 +105,14 @@ public class Prestamo extends HttpServlet {
     
         try {
             prestamosDao.registrar(prestamo);
-            resp.sendRedirect(req.getContextPath() + "/Usuario?action=testing");
-            System.out.println("Registro de préstamo creado correctamente");
+            System.out.println("exito");
+            resp.sendRedirect(req.getContextPath() + "/Usuario?action=volver");
           /*   req.getRequestDispatcher("views/ListarElementos.jsp").forward(req, resp);   */
             
 
         } catch (SQLException e) {
             System.out.println("Error en la inserción del registro de préstamo: " + e.getMessage());
-            req.getRequestDispatcher("Usuario?action=testing").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/Usuario?action=volver");
         }
     }
     

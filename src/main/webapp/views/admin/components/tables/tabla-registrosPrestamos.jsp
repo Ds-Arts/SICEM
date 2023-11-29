@@ -1,10 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.PrestamosDao" %>
+<%@ page import="model.*" %>
+
+<%-- IMPORTS DE PRESTAMOS --%>
 <%@ page import="model.PrestamosVo" %>
+<%@ page import="model.PrestamosDao" %>
+<%-- IMPORTS DE ELEMENTOS --%>
+<%@ page import="model.ElementosDao" %>
+<%@ page import="model.ElementosVo" %>
+<%-- IMPORTS DE USUARIOS --%>
 <%@ page import="model.UsuarioDao" %>
 <%@ page import="model.UsuarioVo" %>
+<%@ page import="java.util.List" %>
+
+<%-- IMPORTS DE CATEGORIA --%>
+<%@ page import="model.CategoriaDao" %>
+<%@ page import="model.CategoriaVo" %>
 
 <head>
 <!-- BOOTSTRAP -->
@@ -66,7 +78,7 @@
             <thead class="">
                 <tr>
                     <th scope="col">Elemento</th>
-                    <th scope="col">Tipo</th>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Prestamista</th>
                     <th scope="col">Prestatario</th>
                     <th scope="col">Fecha Transpaso</th>
@@ -77,17 +89,20 @@
             <tbody>
             <%
                 PrestamosDao prestamoDao = new PrestamosDao();
-                UsuarioDao usuariDao = new UsuarioDao(); // Importa la clase UsuarioDao
+                UsuarioDao usuariDao = new UsuarioDao();
+                ElementosDao elementosDao = new ElementosDao();// Importa la clase UsuarioDao
                 List<PrestamosVo> prestamos = prestamoDao.listarPrestamos();
                 for (PrestamosVo prestamo : prestamos) {
                     // Obtener el Usuario correspondiente por su ID
                     UsuarioVo usuario = usuariDao.buscarUsuarioPorId(prestamo.getUsu());
-                    UsuarioVo usuari = usuariDao.buscarUsuarioPorId(prestamo.getUs());// Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+                    UsuarioVo usuari = usuariDao.buscarUsuarioPorId(prestamo.getUs());
+                    // Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
+                    ElementosVo element = elementosDao.buscarElementoPorId(prestamo.getU());
             %>
 
             <tr>
                         <th scope="row"><%= prestamo.getElementoFk() %></th>
-                        <td><%= prestamo.isTipo() %></td>
+                        <td><%=element.getNombre()%></td>
                         <td><%=usuario.getNombre()%></td>
                         <td><%= usuari.getNombre() %></td>
                         <td><%= prestamo.getFechaTranspaso() %></td>

@@ -68,39 +68,40 @@ public class PrestamosDao {
     }
 
 
-    public List<PrestamosVo> listarPrestamos() throws SQLException {
-        List<PrestamosVo> prestamos = new ArrayList<>();
-        sql = "SELECT cuentadante_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin,prestatario_fk FROM propiedad";
-
-        try {
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int cuentadantefk = rs.getInt("cuentadante_fk");
-                int elementoFk = rs.getInt("elemento_fk");
-                LocalDate fechaTranspaso = rs.getDate("fecha_transpaso").toLocalDate();
-                boolean tipo = rs.getBoolean("tipo");
-                LocalDate fechaInicio = rs.getDate("fecha_inicio").toLocalDate();
-                LocalDate fechaFin = rs.getDate("fecha_fin").toLocalDate();
-                int prestatario_fk = rs.getInt("prestatario_fk");
-                int usu= rs.getInt("cuentadante_fk");
-                int us= rs.getInt("prestatario_fk");
-                PrestamosVo prestamo = new PrestamosVo(cuentadantefk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin,prestatario_fk,usu,us);
-                prestamos.add(prestamo);
+        public List<PrestamosVo> listarPrestamos() throws SQLException {
+            List<PrestamosVo> prestamos = new ArrayList<>();
+            sql = "SELECT cuentadante_fk, elemento_fk, fecha_transpaso, tipo, fecha_inicio, fecha_fin,prestatario_fk FROM propiedad";
+    
+            try {
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+    
+                while (rs.next()) {
+                    int cuentadantefk = rs.getInt("cuentadante_fk");
+                    int elementoFk = rs.getInt("elemento_fk");
+                    LocalDate fechaTranspaso = rs.getDate("fecha_transpaso").toLocalDate();
+                    boolean tipo = rs.getBoolean("tipo");
+                    LocalDate fechaInicio = rs.getDate("fecha_inicio").toLocalDate();
+                    LocalDate fechaFin = rs.getDate("fecha_fin").toLocalDate();
+                    int prestatario_fk = rs.getInt("prestatario_fk");
+                    int usu= rs.getInt("cuentadante_fk");
+                    int us= rs.getInt("prestatario_fk");
+                    int u= rs.getInt("prestatario_fk");
+                    PrestamosVo prestamo = new PrestamosVo(cuentadantefk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin,prestatario_fk,usu,us, u);
+                    prestamos.add(prestamo);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ps != null) {
-                ps.close();
-            }
+            return prestamos;
         }
-        return prestamos;
-    }
 
     // Contador de elementos
     public List<PrestamosVo> contadorPrestamos() throws SQLException {

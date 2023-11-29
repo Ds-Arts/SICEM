@@ -77,6 +77,7 @@
             </div>
         </div>
         <!-- CONTENEDOR DE ACORDIONES -->
+        <div id="allacordion" class="allacordion" data-bs-parent="allacordion">
         <div class="container d-flex flex-row flex-wrap">
             <%
                 System.out.println("");
@@ -173,6 +174,7 @@
                 </div>
             </div>
             <% } %>
+        </div>
         </div>
     </div>
 </section>

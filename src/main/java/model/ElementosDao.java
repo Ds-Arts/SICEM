@@ -118,6 +118,38 @@ public class ElementosDao {
         return Elementos;
     }
 
+    public ElementosVo buscarElementoPorId(int id) throws SQLException {
+        ElementosVo elementoEncontrado = null;
+        String sql = "SELECT * FROM Elementos WHERE id = ?";
+        try (
+                Connection conexion = Conexion.conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql)
+        ) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    ElementosVo elemento = new ElementosVo();
+                    elemento.setNombre(rs.getString("NombreElemento"));
+                    elemento.setCantidad(rs.getInt("cantidad"));
+                    elemento.setCosto(rs.getInt("Costo"));
+                    elemento.setNumeroPlaca(rs.getInt("N_placa"));
+                    elemento.setTipo(rs.getString("TipoElemento"));
+                    elemento.setFechaIngreso(rs.getDate("FechaIngresoElemento").toLocalDate());
+                    elemento.setCategoria(rs.getInt("categoriaElemento"));
+                    elemento.setNumeroAula(rs.getInt("NumAula"));
+                    elemento.setDescripcion(rs.getString("Descripcion"));
+                    elemento.setEstado(rs.getString("EstadoElemento"));
+                    elemento.setUsu(rs.getInt("usuario_fk"));
+                    elemento.setCate(rs.getInt("categoriaElemento"));
+                    elementoEncontrado = elemento;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener el elemento por ID: " + e.getMessage());
+        }
+        return elementoEncontrado;
+    }
+
     public List<ElementosVo> buscarPorNumeroPlaca(String placa) throws SQLException {
         List<ElementosVo> elementos = new ArrayList<>();
         sql = "SELECT * FROM Elementos WHERE N_placa = ?";

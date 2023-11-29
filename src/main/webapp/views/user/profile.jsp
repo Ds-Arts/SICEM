@@ -143,7 +143,7 @@
                                 </button>
                             </div>
                             <div class="col-6">
-                                <a class="btn btn-danger" href="Usuario?action=login">
+                                <a class="btn btn-danger" href="Usuario?action=volver">
                                     Volver
                                 </a>
                             </div>

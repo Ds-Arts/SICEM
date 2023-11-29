@@ -98,7 +98,14 @@ public class Usuario extends HttpServlet {
                     System.out.println("Se ha direccionado al perfil del ususario.");
                     request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
                     break;
+                case "volver":
+                    if (usuVo.getRol_fk().equals("Administrador")) {
+                        response.sendRedirect(request.getContextPath() + "/Usuario?action=testing");
+                    } else if (usuVo.getRol_fk().equals("Cuentadante") || usuVo.getRol_fk().equals("Instructor")) {
 
+                        request.getRequestDispatcher("views/user/dashboard.jsp").forward(request, response);
+                    }
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath());
                     break;
@@ -327,7 +334,9 @@ public class Usuario extends HttpServlet {
             usuVo.setNumIdentificacion(Integer.parseInt(request.getParameter("numIdentificacion")));
         }
         if (request.getParameter("contrasena") != null) {
-            usuVo.setContrasena(request.getParameter("contrasena"));
+        String contrasenaClara = request.getParameter("contrasena");
+        String contrasenaEncriptada = BCrypt.hashpw(contrasenaClara, BCrypt.gensalt());
+        usuVo.setContrasena(contrasenaEncriptada); // Se asigna la contraseña encriptada
         }
         if (request.getParameter("rol_fk") != null) {
             usuVo.setRol_fk(request.getParameter("rol_fk"));
@@ -398,6 +407,7 @@ public class Usuario extends HttpServlet {
                 usuVo = usuarioDao.obtenerUsuarioPorNumeroIdentificacion(numIdentificacion);
 
                 if (usuVo != null && usuVo.getContrasena().equals(contrasena)) {
+                    //BCrypt.checkpw(usuVo.getContrasena(),contrasena)
                     HttpSession session = request.getSession();
                     session.setAttribute("usuarioSesion", usuVo);
 
