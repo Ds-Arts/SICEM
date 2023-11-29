@@ -80,37 +80,25 @@
                     <th scope="col">Elemento</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Prestamista</th>
-                    <th scope="col">Prestatario</th>
-                    <th scope="col">Fecha Transpaso</th>
-                    <th scope="col">Inicio</th>
-                    <th scope="col">Fin</th>
+                    <th scope="col">Prestatario</th>h>
                 </tr>
             </thead>
             <tbody>
-            <%
-                PrestamosDao prestamoDao = new PrestamosDao();
-                UsuarioDao usuariDao = new UsuarioDao();
-                ElementosDao elementosDao = new ElementosDao();// Importa la clase UsuarioDao
-                List<PrestamosVo> prestamos = prestamoDao.listarPrestamos();
-                for (PrestamosVo prestamo : prestamos) {
-                    // Obtener el Usuario correspondiente por su ID
-                    UsuarioVo usuario = usuariDao.buscarUsuarioPorId(prestamo.getUsu());
-                    UsuarioVo usuari = usuariDao.buscarUsuarioPorId(prestamo.getUs());
-                    // Reemplaza "buscarUsuarioPorId" con el método real de tu clase UsuarioDao
-                    ElementosVo element = elementosDao.buscarElementoPorId(prestamo.getU());
-            %>
-
-            <tr>
-                        <th scope="row"><%= prestamo.getElementoFk() %></th>
-                        <td><%=element.getNombre()%></td>
-                        <td><%=usuario.getNombre()%></td>
-                        <td><%= usuari.getNombre() %></td>
-                        <td><%= prestamo.getFechaTranspaso() %></td>
-                        <td><%= prestamo.getFechaInicio() %></td>
-                        <td><%= prestamo.getFechaFin() %></td>
-                    </tr>
                 <%
-                    }
+                PrestamosDao prestamoDao = new PrestamosDao();
+                List<PrestamosVo> prestamos = prestamoDao.ultimosPrestamos();
+                for (PrestamosVo prestamo : prestamos) {
+
+                %>
+            
+                <tr>
+                    <th scope="row"> <%= prestamo.getElementoFk() %></th>
+                    <td><%= prestamo.getNom_elemento() %></td>
+                    <td><%= prestamo.getNom_cuenta() %></td>
+                    <td><%= prestamo.getNom_presta() %></td>
+
+                <%
+                }
                 %>
             </tbody>
         </table>
