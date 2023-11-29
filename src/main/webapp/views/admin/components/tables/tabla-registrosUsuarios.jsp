@@ -99,16 +99,6 @@
 
                     case "2":
 
-<<<<<<< HEAD
-                            System.out.println("el id llego") ;
-                            UsuarioDao UsuarioDao2 = new UsuarioDao();
-                            String numidentificacion =request.getParameter("idUsuario");
-                            System.out.println(numidentificacion);
-                            int id = Integer.parseInt(numidentificacion);
-                            List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
-                            for (UsuarioVo usuari : usu2){
-                    %>
-=======
                         System.out.println("el id llego") ;
                         UsuarioDao UsuarioDao2 = new UsuarioDao();
                         String numidentificacion = request.getParameter("numidusuario");
@@ -116,7 +106,6 @@
                         List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
                         for (UsuarioVo usuari : usu2){
                 %>
->>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
                 <tr>
                     <th scope="row"><%= usuari.getId() %></th>
                     <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>

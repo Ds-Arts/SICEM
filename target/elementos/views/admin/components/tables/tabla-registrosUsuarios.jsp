@@ -6,7 +6,6 @@
 <%@ page import="java.util.List" %>
 
 <head>
-<<<<<<< HEAD
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -20,8 +19,8 @@
 
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
-    <div class="container mb-5">
-        <div class="hstack gap-3 mb-3">
+    <div class="container">
+        <div class="hstack gap-3">
             <h3>Usuarios</h3>
             <div class="vr"></div>
             <!-- BOTON DE AGREGAR NUEVO USUARIO -->
@@ -36,75 +35,6 @@
                     <div class="input-group mb-3">
                         <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
                         <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
-=======
-<<<<<<< HEAD
-    <!-- BOOTSTRAP -->
-=======
-<!-- BOOTSTRAP -->
->>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-            crossorigin="anonymous" />
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-            crossorigin="anonymous"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
-            integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
-            crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="assets/IMG/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    </head>
-
-<section id="tabla-registrosUsuarios" class="container-fluid mt-3">
-    <!-- TABLA DE USUARIOS -->
-    <div class="container">
-<<<<<<< HEAD
-        <form action="Usuario" method="GET" class="form-group">
-            <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
-            <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
-        </form>
-        <div class="vr"></div>
-        <form action="Usuario" method="GET" class="form-group">
-            <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
-            <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
-        </form>
-        <table class="table table-striped shadow border rounded-3 mb-3">
-            <div class="row mx-0 mb-3">
-                <div class="hstack gap-3">
-=======
-    <div class="hstack gap-3">
->>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
-                    <h3>Usuarios</h3>
-                    <div class="vr"></div>
-                    <!-- BOTON DE AGREGAR NUEVO USUARIO -->
-                    <h5>Agregar</h5>
-                    <input class="btn-check">
-                    <button class="btn btn-outline-success" onclick="mostrarComponente('views/admin/components/forms/tabla-registrarUsuarios.jsp')">
-                        <i class="bi bi-plus-lg"></i>
-                    </button>
-                    <div class="vr"></div>
-                    <div class="container-fluid d-flex flex-row">
-                        <form action="Usuario" method="GET" class="container">
-                            <div class="input-group mb-3">
-                                <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
-                                <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
-                            </div>
-                        </form>
-                        <form action="Usuario" method="GET" class="container">
-                            <div class="input-group mb-3">
-                                <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
-                                <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
-                            </div>
-                        </form>
->>>>>>> 0d746c7b76f77593d68a7fa88bc31119bae5a5b0
                     </div>
                 </form>
                 <form action="Usuario" method="GET" class="container">
@@ -169,16 +99,6 @@
 
                     case "2":
 
-<<<<<<< HEAD
-                            System.out.println("el id llego") ;
-                            UsuarioDao UsuarioDao2 = new UsuarioDao();
-                            String numidentificacion =request.getParameter("idUsuario");
-                            System.out.println(numidentificacion);
-                            int id = Integer.parseInt(numidentificacion);
-                            List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
-                            for (UsuarioVo usuari : usu2){
-                    %>
-=======
                         System.out.println("el id llego") ;
                         UsuarioDao UsuarioDao2 = new UsuarioDao();
                         String numidentificacion = request.getParameter("numidusuario");
@@ -186,7 +106,6 @@
                         List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
                         for (UsuarioVo usuari : usu2){
                 %>
->>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
                 <tr>
                     <th scope="row"><%= usuari.getId() %></th>
                     <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>
