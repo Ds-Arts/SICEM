@@ -86,7 +86,7 @@ public class PrestamosDao {
                     int prestatario_fk = rs.getInt("prestatario_fk");
                     int usu= rs.getInt("cuentadante_fk");
                     int us= rs.getInt("prestatario_fk");
-                    int u= rs.getInt("prestatario_fk");
+                    int u= rs.getInt("cuentadante_fk");
                     PrestamosVo prestamo = new PrestamosVo(cuentadantefk, elementoFk, fechaTranspaso, tipo, fechaInicio, fechaFin,prestatario_fk,usu,us, u);
                     prestamos.add(prestamo);
                 }
