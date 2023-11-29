@@ -10,58 +10,56 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="assets/CSS/Listas.css">
-    <style>
-        /* Estilos de la tabla y la barra de búsqueda */
-        /* ... */
-    </style>
 </head>
 <body>
-    <h1>Lista de Elementos por Usuario</h1>
-    
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Número de Placa</th>
-            <th>Cantidad</th>
-            <th>Costo</th>
-            <th>Tipo</th>
-            <th>Fecha de Ingreso</th>
-            <th>Estado</th>
-            <th>Categoría</th>
-            <th>Número de Aula</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-        </tr>
+    <div class="container">
+        <h3 class="text-center my-5">Lista de Elementos por Usuario</h3>
         
-        <% 
-            int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
-            ElementosDao elementoDao = new ElementosDao();
-            List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
-            
-            for (ElementosVo elemento : elementos) {
-        %>
-        <tr>
-            <td><%= elemento.getId() %></td>
-            <td><%= elemento.getNombre() %></td>
-            <td><%= elemento.getNumeroPlaca() %></td>
-            <td><%= elemento.getCantidad() %></td>
-            <td><%= elemento.getCosto() %></td>
-            <td><%= elemento.getTipo() %></td>
-            <td><%= elemento.getFechaIngreso() %></td>
-            <td><%= elemento.getEstado() %></td>
-            <td><%= elemento.getCategoria() %></td>
-            <td><%= elemento.getNumeroAula() %></td>
-            <td><%= elemento.getDescripcion() %></td>
-            <td>
-                <a href="DetalleElemento.jsp?id=<%= elemento.getId() %>">Ver Detalles</a>
-            </td>
-        </tr>
-        <% } %> 
-        <div>
-            <a href="Usuario?action=list">Volver</a>
+        <table class="table table-bordered">
+            <head>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Número de Placa</th>
+                <th>Cantidad</th>
+                <th>Costo</th>
+                <th>Tipo</th>
+                <th>Fecha de Ingreso</th>
+                <th>Estado</th>
+                <th>Categoría</th>
+                <th>Número de Aula</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </head>
+            <% 
+                int idUsuarioDetalle = Integer.parseInt(request.getParameter("idUsuarioDetalle"));
+                ElementosDao elementoDao = new ElementosDao();
+                List<ElementosVo> elementos = elementoDao.getElementosByUsuarioId(idUsuarioDetalle);
+                
+                for (ElementosVo elemento : elementos) {
+            %>
+            <tr>
+                <td><%= elemento.getId() %></td>
+                <td><%= elemento.getNombre() %></td>
+                <td><%= elemento.getNumeroPlaca() %></td>
+                <td><%= elemento.getCantidad() %></td>
+                <td>$<%= elemento.getCosto() %></td>
+                <td><%= elemento.getTipo() %></td>
+                <td><%= elemento.getFechaIngreso() %></td>
+                <td><%= elemento.getEstado() %></td>
+                <td><%= elemento.getCategoria() %></td>
+                <td><%= elemento.getNumeroAula() %></td>
+                <td><%= elemento.getDescripcion() %></td>
+                <td>
+                    <a href="DetalleElemento.jsp?id=<%= elemento.getId() %>">Ver Detalles</a>
+                </td>
+            </tr>
+        </table>
+        <% } %>
+        <div class="btn-group">
+            <a class="btn btn-success" href="Usuario?accion=list">Volver</a>
+            <a class="btn btn-info" href="/user/listar.html">Lista de usuarios</a>
         </div>
-    </table>
+    </div>
 
     <!-- jQuery y Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
