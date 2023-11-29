@@ -13,12 +13,12 @@
 <body>
     <h3 class="text-center mt-5">Lista de usuarios registrados</h3>
     <div class="container d-flex my-5">
-        <form class="input-group col-6">
-            <input class="form-control" type="text" name="searchTerm" placeholder="Buscar por nombre">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <form class="input-group col-6" action="Usuario"  method="get"  >
+            <input class="form-control" type="text" name="nombre" placeholder="Buscar por nombre">
+            <button class="btn btn-outline-success" type="submit"  name="action" value="search">Buscar</button>
         </form>
-        <form class="input-group col-6">
-            <input class="form-control" type="number" name="idUsuario" placeholder="Buscar por ID">
+        <form class="input-group col-6" action="Usuario"  method="get" >
+            <input class="form-control" type="text" name="idUsuario" placeholder="Buscar por ID">
             <button class="btn btn-outline-success" type="submit" name="action" value="searchById">Buscar por ID</button>
         </form>
     </div>
