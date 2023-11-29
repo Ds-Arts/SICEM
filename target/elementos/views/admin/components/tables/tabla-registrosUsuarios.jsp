@@ -6,7 +6,11 @@
 <%@ page import="java.util.List" %>
 
 <head>
+<<<<<<< HEAD
     <!-- BOOTSTRAP -->
+=======
+<!-- BOOTSTRAP -->
+>>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -31,6 +35,7 @@
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
+<<<<<<< HEAD
         <form action="Usuario" method="GET" class="form-group">
             <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
             <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
@@ -43,6 +48,9 @@
         <table class="table table-striped shadow border rounded-3 mb-3">
             <div class="row mx-0 mb-3">
                 <div class="hstack gap-3">
+=======
+    <div class="hstack gap-3">
+>>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
                     <h3>Usuarios</h3>
                     <div class="vr"></div>
                     <!-- BOTON DE AGREGAR NUEVO USUARIO -->
@@ -52,8 +60,25 @@
                         <i class="bi bi-plus-lg"></i>
                     </button>
                     <div class="vr"></div>
-
+                    <div class="container-fluid d-flex flex-row">
+                        <form action="Usuario" method="GET" class="container">
+                            <div class="input-group mb-3">
+                                <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
+                                <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
+                            </div>
+                        </form>
+                        <form action="Usuario" method="GET" class="container">
+                            <div class="input-group mb-3">
+                                <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
+                                <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+        
+        <table class="table table-striped shadow border rounded-3 mb-3">
+            <div class="row mx-0 mb-3">
+                
             </div>
             <thead>
                 <tr>
@@ -88,7 +113,7 @@
                             List<UsuarioVo> usu1 =  Usuario1Dao.buscarUsuariosPorNombre(nombre);
 
                             for (UsuarioVo usuari : usu1) {
-                                 %>
+                %>
 
                 <tr>
                     <th scope="row"><%= usuari.getId() %></th>
@@ -102,11 +127,12 @@
                 <%
                     };
                 %>
-                    <%
-                            break;
+                <%
+                        break;
 
-                        case "2":
+                    case "2":
 
+<<<<<<< HEAD
                             System.out.println("el id llego") ;
                             UsuarioDao UsuarioDao2 = new UsuarioDao();
                             String numidentificacion =request.getParameter("idUsuario");
@@ -115,6 +141,15 @@
                             List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
                             for (UsuarioVo usuari : usu2){
                     %>
+=======
+                        System.out.println("el id llego") ;
+                        UsuarioDao UsuarioDao2 = new UsuarioDao();
+                        String numidentificacion = request.getParameter("numidusuario");
+                        int id = Integer.parseInt(numidentificacion);
+                        List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
+                        for (UsuarioVo usuari : usu2){
+                %>
+>>>>>>> a37d563cb567409f8efcde52cd64af71e23e27c3
                 <tr>
                     <th scope="row"><%= usuari.getId() %></th>
                     <td><p><%= usuari.getNombre() %> <%= usuari.getApellido() %></p></td>

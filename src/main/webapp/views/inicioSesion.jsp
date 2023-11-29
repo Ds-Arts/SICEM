@@ -67,7 +67,7 @@
               <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" required pattern=".{1,}" title="Este campo no puede estar vacío">
             </div><p id="contrasena-error-message" class="error-message">Por favor, ingrese su contraseña.</p>
 
-            <button id="submit-button" class="btn btn-primary" style="background-color: rgb(59, 169, 0); border-color: rgb(59, 169, 0);" type="submit" name="action" value="login">Ingresar</button>
+            <button id="submit-button" class="btn btn-success border-success" type="submit" name="action" value="login">Ingresar</button>
           </form>
 
         </aside><!-- END FORMULARIO / LOGIN -->
