@@ -80,7 +80,7 @@
                     <th scope="col">Elemento</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Prestamista</th>
-                    <th scope="col">Prestatario</th>h>
+                    <th scope="col">Prestatario</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,18 +88,14 @@
                 PrestamosDao prestamoDao = new PrestamosDao();
                 List<PrestamosVo> prestamos = prestamoDao.ultimosPrestamos();
                 for (PrestamosVo prestamo : prestamos) {
-
                 %>
-            
                 <tr>
                     <th scope="row"> <%= prestamo.getElementoFk() %></th>
                     <td><%= prestamo.getNom_elemento() %></td>
                     <td><%= prestamo.getNom_cuenta() %></td>
                     <td><%= prestamo.getNom_presta() %></td>
-
-                <%
-                }
-                %>
+                <tr>
+                <% } %>
             </tbody>
         </table>
     </div>

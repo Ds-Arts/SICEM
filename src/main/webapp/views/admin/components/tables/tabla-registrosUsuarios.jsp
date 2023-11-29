@@ -19,8 +19,8 @@
 
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
-    <div class="container">
-        <div class="hstack gap-3">
+    <div class="container mb-5">
+        <div class="hstack gap-3 mb-3">
             <h3>Usuarios</h3>
             <div class="vr"></div>
             <!-- BOTON DE AGREGAR NUEVO USUARIO -->
