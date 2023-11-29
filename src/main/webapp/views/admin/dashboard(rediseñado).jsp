@@ -57,7 +57,7 @@
 
     if (usuarioSesion != null) {
 %> --%>
-    <body class="bg-body-tertiary">
+    <body class="bg-body-tertiary" id="dashboard">
         
         <%
             System.out.println("Estas en la vista Dashboard(rediseñado)");
@@ -68,7 +68,7 @@
             <!-- ORGANIZADOR DEL CONTENIDO -->
             <div class="container-fluid justify-content-between">
                 <!-- LOGO -->
-                <a class="navbar-brand col-9" href="#"><!-- C:\AJCV_DEV_STUDIO\SICEM\SICEM\src\main\webapp\views\admin\dashboard(rediseñado).jsp -->
+                <a class="navbar-brand col-9" href="#">
                     <img
                         src="assets\IMG\logo_mono.png"
                         alt="Logo_Sena_Sicem"
@@ -79,17 +79,15 @@
                 <div class="d-flex flex-row col-2">
                     <form action="Usuario" method="get">
                         <input type="hidden" name="action" value="lll">
-                        <button type="submit" class="btn btn-success-underline me-3">perfil</button>
+                        <button type="submit" class="btn btn-outline-success me-3">perfil</button>
                     </form> 
+                    <a class="btn btn-outline-success me-3" data-bs-toggle="offcanvas" href="#news" role="button" aria-controls="offcanvasExample">
+                        <svg class="text-success" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
+                    </a>
                     <form action="Usuario" method="POST">
-                        <button name="action" value="logout" class="btn btn-danger">Salir</button>
+                        <button name="action" value="logout" class="btn btn-danger me-3">Salir</button>
                     </form>
                 </div>
-                <!-- CONTENEDOR DE BOTONES -->
-                
-                <ul class="navbar-nav col-4">
-                    
-                </ul> 
             </div>
         </nav>
 
@@ -211,6 +209,54 @@
         <div id="contenedor-tablas" class="container-fluid">
             <!-- AQUI SE MUESTRAN LOS COMPONENTES QUE VOY A ASIGNAR EN DASHBOARD.JS -->
         </div>
+
+        <!-- NOTIFICACIONES -->
+        <div class="offcanvas offcanvas-end o" tabindex="-1" id="news" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h3 class="offcanvas-title" id="offcanvasExampleLabel">Notificaciones</h3>
+                <button type="button" class="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body overflow-x-auto">
+                <div class="mb-3 border rounded p-2">
+                    <div>
+                        <%
+                            PrestamosDao pDao = new PrestamosDao();
+                            UsuarioDao urDao = new UsuarioDao();
+
+                            List<PrestamosVo> prest = prestamosDao.listarPrestamos();
+
+                            for (PrestamosVo pres : prest) {
+                                UsuarioVo ur = urDao.buscarUsuarioPorId(pres.getUsu());
+                                UsuarioVo nazi = urDao.buscarUsuarioPorId(pres.getUs());
+                        %>
+                        <h4 class="mb-3 pb-1 border-bottom">Nueva solucitud</h4>
+                        <p><b>Propietario:</b> <%=ur.getNombre()%> </p>
+                        <p><b>Prestatario:</b> <%= nazi.getNombre() %> </p> 
+                        <p><b>Fecha de solicitud:</b> <%= pres.getFechaInicio() %> </p>
+                        <p><b>Elemento solicitado:</b> <%= pres.getFechaFin() %> </p>
+                        <p><b>Placa del elemento solicitado:</b> <%=pres.getElementoFk()%> </p>
+                        
+                    </div>
+                    <div class="my-2">
+                        <button type="button" class="btn btn-danger">Cancelar solicitud</button>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="mb-3 border rounded p-2">
+                    <div>
+                        <h4  class="mb-3 pb-1 border-bottom">Se ha notificado un daño</h4>
+                        <p><b>Profesor:</b> Nombre del profesor.</p>
+                        <p><b>Fecha de solicitud:</b> 00/00/00.</p>
+                        <p><b>Elemento:</b> Nombre del elemento.</p>
+                        <p><b>Placa del elemento:</b> Placa del elemento.</p>
+                    </div>
+                    <div class="my-2">
+                        <button type="button" class="btn btn-success">Success</button>
+                        <button type="button" class="btn btn-danger">Danger</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -258,6 +304,7 @@
                         <a class="btn btn-success" href="Usuario?action=login">Iniciar sesión</a>
                     </div>
                 </div>
+                
             </body>
             </html>
         <%

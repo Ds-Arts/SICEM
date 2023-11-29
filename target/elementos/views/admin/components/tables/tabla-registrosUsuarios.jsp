@@ -6,15 +6,7 @@
 <%@ page import="java.util.List" %>
 
 <head>
-<<<<<<< HEAD
-
     <!-- BOOTSTRAP -->
-
-<!-- BOOTSTRAP -->
-
-=======
-    <!-- BOOTSTRAP -->
->>>>>>> c6758ccb7589dd566d3fe0aee7393f8f264a7c10
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -34,28 +26,11 @@
             crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="assets/IMG/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<<<<<<< HEAD
-
     </head>
-
-</head>
-
-=======
-    </head>
->>>>>>> c6758ccb7589dd566d3fe0aee7393f8f264a7c10
 
 <section id="tabla-registrosUsuarios" class="container-fluid mt-3">
     <!-- TABLA DE USUARIOS -->
     <div class="container">
-<<<<<<< HEAD
-
-        <!-- <form id="buscar-x-nombre" action="Usuario" method="GET" style="display: none;" class="input-group d-flex">
-            <input id="buscar-x-nombre" type="hidden" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
-            <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
-        </form> -->
-
-=======
->>>>>>> c6758ccb7589dd566d3fe0aee7393f8f264a7c10
         <form action="Usuario" method="GET" class="form-group">
             <input id="buscar-x-id" type="text" name="numidusuario"  PLACEHOLDER="Buscar por numero de identificaciòn" class="form-control">
             <button id="buscar-x-id" type="submit" class="btn btn-success" name="action" value="searchById">Buscar</button>
@@ -65,10 +40,6 @@
             <input id="buscar-x-nombre" type="text" name="nombre"  PLACEHOLDER="Buscar por nombre" class="form-control">
             <button id="buscar-x-nombre"  type="submit" class="btn btn-success" name="action" value="search">Buscar</button>
         </form>
-<<<<<<< HEAD
-
-=======
->>>>>>> c6758ccb7589dd566d3fe0aee7393f8f264a7c10
         <table class="table table-striped shadow border rounded-3 mb-3">
             <div class="row mx-0 mb-3">
                 <div class="hstack gap-3">
@@ -104,7 +75,6 @@
                        String numcaso = request.getAttribute("numerodecaso").toString();
                        System.out.println(numcaso);
                    }
-
                     String numcaso = request.getAttribute("numerodecaso").toString();
                     System.out.println(numcaso);
 
@@ -139,7 +109,8 @@
 
                             System.out.println("el id llego") ;
                             UsuarioDao UsuarioDao2 = new UsuarioDao();
-                            String numidentificacion = request.getParameter("numidusuario");
+                            String numidentificacion =request.getParameter("idUsuario");
+                            System.out.println(numidentificacion);
                             int id = Integer.parseInt(numidentificacion);
                             List<UsuarioVo> usu2 =  UsuarioDao2.buscarUsuariosPornumIdentificacion(id);
                             for (UsuarioVo usuari : usu2){

@@ -79,12 +79,13 @@ public class Usuario extends HttpServlet {
 
                 case "searchById": // Nueva acción para buscar por ID
                     System.out.println("Se ha redireccionado al metodo 'buscarUsuarioPorId'");
-                    System.out.println(request.getParameter("numidusuario"));
+                    System.out.println(request.getParameter("idUsuario")+"numidusu");
                     String numero = "2";
                     request.setAttribute("numerodecaso", numero);
-                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp")
-                            .forward(request, response);
-                    request.setAttribute("numidusuario", request.getParameter("numidusuario"));
+                     request.setAttribute("idUsuario", request.getParameter("idUsuario")); 
+                     System.out.println(request.getAttribute("idUsuario")+"este es en el controlador");
+                    request.getRequestDispatcher("views/admin/components/tables/tabla-registrosUsuarios.jsp").forward(request, response);
+                   
 
                     /* buscarUsuariosPornumIdentificacion(request, response); */
                     /* buscarUsuarioPorId(request, response); */
