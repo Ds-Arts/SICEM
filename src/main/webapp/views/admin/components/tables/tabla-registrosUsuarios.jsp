@@ -88,7 +88,15 @@
                     <td><%= usuari.getNumIdentificacion() %></td>
                     <td><%= usuari.getEmail() %></td>
                     <td><%= usuari.getRol_fk() %></td>
-                    <td><%= usuari.getActivo() %></td>
+                    <td>
+                        <form action="Usuario?action=updateProfile" method="post">
+                            <input type="hidden" name="id" value="<%= usuari.getId() %>">
+                            <input type="hidden" name="activo" value="<%= usuari.getActivo() %>">
+                            <button type="submit" name="toggleActivo">
+                                <%= usuari.getActivo().equals("activo") ? "Inactivar" : "Activar" %>
+                            </button>
+                        </form>
+                    </td>
                     <td> <a href="Usuario?action=detalle&idUsuarioDetalle=<%= usuari.getId() %>">Mas info...</a> </td>
                 </tr>
                 <%
