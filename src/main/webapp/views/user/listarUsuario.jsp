@@ -25,7 +25,7 @@
 
     <div class="container">
         <table class="table table-striped-columns border-bottom">
-            <tr>
+            <thead>
                 <th>ID</th>
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
@@ -34,7 +34,7 @@
                 <th>USUARIO</th>
                 <th>ACTIVO</th>
                 <th>DETALLES</th>
-            </tr>
+            </thead>
             <% 
                 UsuarioDao usuarioDao = new UsuarioDao();
                 List<UsuarioVo> usuarios = usuarioDao.listarUsuarios();

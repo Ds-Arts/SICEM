@@ -198,6 +198,7 @@ public class Usuario extends HttpServlet {
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
             String email = request.getParameter("email");
+            String activo = request.getParameter("activo");
             String contrasena = request.getParameter("contrasena"); // Nueva contraseña
 
             // Verifica que los campos requeridos no estén vacíos
@@ -210,6 +211,7 @@ public class Usuario extends HttpServlet {
                     usuarioActualizado.setNombre(nombre);
                     usuarioActualizado.setApellido(apellido);
                     usuarioActualizado.setEmail(email);
+                    usuarioActualizado.setActivo(activo);
 
                     // Si se proporcionó una nueva contraseña, actualízala
                     if (contrasena != null && !contrasena.isEmpty()) {
@@ -224,6 +226,7 @@ public class Usuario extends HttpServlet {
                         usuarioSesion.setNombre(nombre);
                         usuarioSesion.setApellido(apellido);
                         usuarioSesion.setEmail(email);
+                        usuarioSesion.setActivo(activo);
 
                         // Vuelve a almacenar el usuario actualizado en la sesión
                         request.getSession().setAttribute("usuarioSesion", usuarioSesion);

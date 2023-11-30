@@ -99,6 +99,16 @@
                                         class="form-control"
                                         required />
                                 </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Estado</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">@</span>
+                                        <select name="elije" type="activo" class="form-select" value="<%= usuarioSesion.getActivo() %>" required>
+                                            <option value="activo">Activo</option>
+                                            <option value="inactivo">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <!-- NUMERO DE IDENTIDICACION -->
                             <%-- <div class="col-md-123">

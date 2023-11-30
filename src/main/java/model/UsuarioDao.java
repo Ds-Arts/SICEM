@@ -172,13 +172,14 @@ public class UsuarioDao {
 
     public int actualizarPerfil(UsuarioVo usuario) throws SQLException {
         int r = 0;
-        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, activo = ? WHERE id = ?";
         try (Connection conexion = Conexion.conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql)) {
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setString(3, usuario.getEmail());
-            ps.setInt(4, usuario.getId());
+            ps.setString(4, usuario.getActivo());
+            ps.setInt(5, usuario.getId());
             r = ps.executeUpdate();
             if (r > 0) {
                 System.out.println("Perfil de usuario actualizado correctamente");
