@@ -1,0 +1,125 @@
+body{
+    font-family: 'Overpass', sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: #848484;
+    background-image :url(../31_07_2023/fondo.png);
+        background-size:contain ;
+        background-repeat: no-repeat;
+}
+
+#contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+.user-img{
+    margin-top: -100px;
+    margin-bottom: 35px;
+}
+
+.user-img img{
+    width: 100xp;
+    height: 120px;
+    box-shadow: 0px 0px 3px #848484;
+    border-radius: 50%;
+}
+input[type=date] {
+    height: 35px;
+    margin: 0 auto;
+    width: 100%;
+    font-family: arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    outline: none;
+    border: 0;
+    border-radius: 3px;
+    padding: 0 3px;
+    color: #848484;
+  }
+#login {
+    width: 100%;
+    padding: 50px 40px;
+    background-color: #239e3c;
+    color: #ffffff;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.234);
+    border-radius: 3px;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#login input {
+    font-family: arial, sans-serif;
+    font-size: 110%;
+    color: #848484;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    height: 40px;
+    
+    margin-bottom: 27px;
+    padding: 5px 5px 5px 10px;
+    
+    box-sizing: border-box;
+    
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+}
+
+#login button {
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #7a7a7a;
+    margin-top: 10px;
+}
+
+#login button:hover {
+    background-color: #4b4b4b;
+}
+
+.pie-form {
+    font-size: 17px;
+    text-align: center;    
+    margin-top: 15px;
+}
+
+.pie-form a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.pie-form a:hover {
+    color: #4b4b4b;
+}
+
+.inferior {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #848484;
+}
+
+/* Estilo para hacer la imagen circular */
+#img img {
+    border-radius: 80%;
+}
